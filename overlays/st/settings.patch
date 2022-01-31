@@ -1,0 +1,92 @@
+diff --git a/config.def.h b/config.def.h
+index 91ab8ca..21fa0e6 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -5,7 +5,7 @@
+  *
+  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
+  */
+-static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
++static char *font = "Monospace-16:bold:antialias=true:autohint=true";
+ static int borderpx = 2;
+ 
+ /*
+@@ -34,7 +34,7 @@ static float chscale = 1.0;
+  *
+  * More advanced example: L" `'\"()[]{}"
+  */
+-wchar_t *worddelimiters = L" ";
++wchar_t *worddelimiters = L" (){}[]<>'\"`";
+ 
+ /* selection timeouts (in milliseconds) */
+ static unsigned int doubleclicktimeout = 300;
+@@ -95,33 +95,29 @@ unsigned int tabspaces = 8;
+ 
+ /* Terminal colors (16 first used in escape sequence) */
+ static const char *colorname[] = {
+-	/* 8 normal colors */
+-	"black",
+-	"red3",
+-	"green3",
+-	"yellow3",
+-	"blue2",
+-	"magenta3",
+-	"cyan3",
+-	"gray90",
+-
+-	/* 8 bright colors */
+-	"gray50",
+-	"red",
+-	"green",
+-	"yellow",
+-	"#5c5cff",
+-	"magenta",
+-	"cyan",
+-	"white",
+-
+-	[255] = 0,
+-
+-	/* more colors can be added after 255 to use with DefaultXX */
+-	"#cccccc",
+-	"#555555",
+-	"gray90", /* default foreground colour */
+-	"black", /* default background colour */
++  /* 8 normal colors */
++  [0] = "#000000", /* black   */
++  [1] = "#C75646", /* red     */
++  [2] = "#8EB33B", /* green   */
++  [3] = "#D0B03C", /* yellow  */
++  [4] = "#72B3CC", /* blue    */
++  [5] = "#D356CF", /* magenta */
++  [6] = "#218693", /* cyan    */
++  [7] = "#B0B0B0", /* white   */
++
++  /* 8 bright colors */
++  [8]  = "#5D5D5D", /* black   */
++  [9]  = "#E09690", /* red     */
++  [10] = "#CDEE69", /* green   */
++  [11] = "#FFE377", /* yellow  */
++  [12] = "#9CD9F0", /* blue    */
++  [13] = "#FBB1F9", /* magenta */
++  [14] = "#77DFD8", /* cyan    */
++  [15] = "#F7F7F7", /* white   */
++
++  /* special colors */
++  [256] = "#2E3436", /* background */
++  [257] = "#D3D7CF", /* foreground */
+ };
+ 
+ 
+@@ -129,9 +125,9 @@ static const char *colorname[] = {
+  * Default colors (colorname index)
+  * foreground, background, cursor, reverse cursor
+  */
+-unsigned int defaultfg = 258;
+-unsigned int defaultbg = 259;
+-unsigned int defaultcs = 256;
++unsigned int defaultfg = 257;
++unsigned int defaultbg = 256;
++unsigned int defaultcs = 257;
+ static unsigned int defaultrcs = 257;
+ 
+ /*
