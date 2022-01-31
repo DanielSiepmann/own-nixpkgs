@@ -1,7 +1,7 @@
 self: super: {
-  st = super.st.overrideAttrs( oldAttributes: {
-    patches = oldAttributes.patches ++ [
+  st = super.st.override {
+    patches = [
       ./settings.patch
     ];
-  });
+  };
 }

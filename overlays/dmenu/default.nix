@@ -1,7 +1,7 @@
 self: super: {
-  dmenu = super.dmenu.overrideAttrs( oa: {
+  dmenu = super.dmenu.override {
     patches = [
       ./settings.patch
     ];
-  });
+  };
 }
