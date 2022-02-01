@@ -1,9 +1,19 @@
 nixpkgs
 =======
 
-My personal ``~/.config/nixpkgs`` folder, for sharing, inspiration and retrieving feedback.
+I currently use Ubuntu and installed nix alongside.
+This repository contains my personal ``~/.config/nixpkgs`` folder,
+for sharing, inspiration and retrieving feedback.
 
 .. contents:: Table of Contents
+
+Disclaimer
+----------
+
+This is my personal setup for my local laptop running Ubuntu.
+I share this for free so everyone can have a look and inspiration or provide feedback to me.
+
+This is not intended to be used by anyone else just by copy and pasting or cloning.
 
 Installation
 ------------
@@ -59,11 +69,3 @@ It then will update nix itself.
 Then upgrade all installed derivations (packages).
 Delete old generations, except last 5.
 And run garbage collection.
-
-Disclaimer
-----------
-
-This is my personal setup for my local laptop running Ubuntu.
-I share this for free so everyone can have a look and inspiration or provide feedback to me.
-
-This is not intended to be used by anyone else just by copy and pasting or cloning.
