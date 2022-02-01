@@ -23,6 +23,16 @@ The idea: Provide a configuration instead of some state.
 It can be installed via ``nix-env -i my-packages``
 which also "updates" state accordingly to the current defined set.
 
+systemd units
+-------------
+
+Some derivations will provide ready to use systemd units.
+Those are most likely placed within ``~/.nix-profile/lib/systemd/*``.
+
+One can symlink them into ``~/.config/systemd``.
+
+E.g. ``~/.config/systemd/user/dunst.service -> ~/.nix-profile/lib/systemd/user/dunst.service``
+
 Update
 ------
 

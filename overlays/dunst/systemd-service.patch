@@ -1,0 +1,11 @@
+diff --git a/dunst.systemd.service.in b/dunst.systemd.service.in
+index 9fa168c..5ac2217 100644
+--- a/dunst.systemd.service.in
++++ b/dunst.systemd.service.in
+@@ -7,3 +7,6 @@ PartOf=graphical-session.target
+ Type=dbus
+ BusName=org.freedesktop.Notifications
+ ExecStart=##PREFIX##/bin/dunst
++
++[Install]
++WantedBy=default.target
