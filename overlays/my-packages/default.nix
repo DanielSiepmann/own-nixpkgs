@@ -12,6 +12,9 @@ self: super: {
       self.litecli
       self.mkcert
 
+      # Writing
+      self.languagetool
+
       # Media
       self.vlc
     ];
