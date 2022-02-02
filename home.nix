@@ -19,6 +19,9 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  # Install packages
+  # Some are installed via `programs` below, as they are also configured.
+  # Some packages don't have a module for configuration, and are configured via `home.file` below.
   home.packages = [
     pkgs.nix
     pkgs.cacert
@@ -28,9 +31,6 @@
     pkgs.st
     pkgs.dunst
     pkgs.i3lock-color
-
-    # System monitoring
-    pkgs.htop
 
     # Dev tools
     pkgs.litecli
@@ -50,6 +50,9 @@
   programs = {
     git = import ./home/programs/git.nix {
       inherit pkgs;
+    };
+    htop = import ./home/programs/htop.nix {
+      inherit config;
     };
   };
 
