@@ -43,5 +43,9 @@
     pkgs.vlc
   ];
 
-  services.dunst = import ./home/services/dunst.nix;
+  services.dunst = import ./home/configurations/dunst.nix;
+
+  systemd.user.services.languagetool = import ./home/services/languagetool.nix {
+    inherit pkgs;
+  };
 }

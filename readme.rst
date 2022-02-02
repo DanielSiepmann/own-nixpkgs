@@ -31,6 +31,25 @@ Usage
 
 Add packages to ``home.nix`` and run ``home-manager switch``.
 
+Folder structure
+----------------
+
+The folder ``overlays`` contains overlays for nix itself.
+E.g. alter packages like patching.
+
+The folder ``home`` is related to extras for home-manager.
+It has the following sub folder:
+
+``home/configurations``
+   Holds home-manager configuration for packages / services.
+   Each file corresponds to a single package.
+   Each file is loaded within ``home.nix``.
+
+``home/services``
+   Holds custom definitions for systemd services.
+   Each file corresponds to a single service.
+   Each file is loaded within ``home.nix``.
+
 Update
 ------
 
