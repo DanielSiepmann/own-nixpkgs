@@ -64,3 +64,16 @@ This will update the channel (fetch state of nixpkgs).
 It then will update system.
 Delete old generations.
 And run garbage collection.
+
+Resources
+---------
+
+Some resources I found useful (in no particular order):
+
+* https://www.youtube.com/playlist?list=PLRGI9KQ3_HP_OFRG6R-p4iFgMSK1t5BHs
+
+* https://nixos.org/learn.html
+
+* https://nix-community.github.io/home-manager/index.html
+
+* https://nixcloud.io/main/en/
