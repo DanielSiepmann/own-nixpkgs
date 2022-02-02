@@ -44,6 +44,8 @@
     pkgs.vlc
   ];
 
+  home.file.".myclirc".source = ./home/files/myclirc;
+
   services.dunst = import ./home/configurations/dunst.nix;
 
   systemd.user.services.languagetool = import ./home/services/languagetool.nix {
