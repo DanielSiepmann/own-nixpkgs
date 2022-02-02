@@ -65,6 +65,38 @@ It then will update system.
 Delete old generations.
 And run garbage collection.
 
+Todos
+-----
+
+No particular order:
+
+* Migrate ``./home/services/languagetool.nix`` to a custom module (maybe PR upstream).
+
+* Migrate other local configurations (inspect ``~/.config`` folder)
+  All other dotfiles in home dir are already migrated :yay:
+
+* Migrate zsh
+
+* Migrate ssh config (I don't really like to expose customer server names and configs to outer world, how to handle?)
+
+* Migrate PGP?
+
+* Migrate other tools from local system (which are not part of above migrations)
+
+* Migrate other systemd services.
+
+* Migrate other system configurations like keyboard?!
+
+* Migrate desktop environment (is that possible? I select it within ubuntu login screen, guess it needs to be installed or registered somwhere in ubuntu)
+
+* Begin migrating further configuration, e.g. php fpm pools and apache config (Again I don't like customer internals in public repo, how to handle?)
+
+Ideas
+-----
+
+* Maybe I can have a private channel which provides more sensitive info like customer related things and is referenced from here?
+  I then can make that repo private but keep this one here public?
+
 Resources
 ---------
 
