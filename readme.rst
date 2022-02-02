@@ -1,5 +1,5 @@
-nixpkgs
-=======
+nixpkgs / nix home-manager
+==========================
 
 I currently use Ubuntu and installed nix alongside.
 This repository contains my personal ``~/.config/nixpkgs`` folder,
