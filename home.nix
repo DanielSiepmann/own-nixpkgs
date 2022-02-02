@@ -21,6 +21,7 @@
 
   home.packages = [
     pkgs.nix
+    pkgs.cacert
 
     # System tools
     pkgs.dmenu
