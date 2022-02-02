@@ -38,6 +38,7 @@
     pkgs.mkcert
     pkgs.tig
     pkgs.universal-ctags
+    pkgs.silver-searcher
 
     # Writing
     pkgs.languagetool
@@ -55,6 +56,7 @@
   home.file = {
     ".myclirc".source = ./home/files/myclirc;
     ".config/ctags/config".source = ./home/files/ctags;
+    ".agignore".source = ./home/files/agignore;
   };
 
   services.dunst = import ./home/configurations/dunst.nix;

@@ -1,0 +1,9 @@
+typo3temp
+uploads
+_build
+Data
+venv
+tags
+tags.lock
+*.pyc
+__pycache__
