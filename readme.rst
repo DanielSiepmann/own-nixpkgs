@@ -36,15 +36,12 @@ Update
 
 The following will update the whole system and clean things up::
 
-    nix-channel --update \
-      && nix-env -ia nixpkgs.nix nixpkgs.cacert \
-      && home-manager switch \
-      && home-manager expire-generations '-30 days' \
-      && nix-env --delete-generations +5 \
-      && nix-store --gc
+nix-channel --update \
+   && home-manager switch \
+   && home-manager expire-generations '-30 days' \
+   && nix-store --gc
 
 This will update the channel (fetch state of nixpkgs).
-It then will update nix itself.
-Then upgrade all installed derivations (packages).
-Delete old generations, except last 5.
+It then will update system.
+Delete old generations.
 And run garbage collection.

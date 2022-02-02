@@ -20,6 +20,8 @@
   programs.home-manager.enable = true;
 
   home.packages = [
+    pkgs.nix
+
     # System tools
     pkgs.dmenu
     pkgs.st
