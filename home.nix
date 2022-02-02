@@ -47,6 +47,10 @@
   services.dunst = import ./home/configurations/dunst.nix;
 
   systemd.user.services.languagetool = import ./home/services/languagetool.nix {
+    settings = {
+      port = "8081";
+      allow-origin = "*";
+    };
     inherit pkgs;
   };
 }
