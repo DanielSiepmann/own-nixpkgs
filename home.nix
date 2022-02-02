@@ -36,6 +36,7 @@
     pkgs.litecli
     pkgs.mycli
     pkgs.mkcert
+    pkgs.tig
 
     # Writing
     pkgs.languagetool
@@ -43,6 +44,12 @@
     # Media
     pkgs.vlc
   ];
+
+  programs = {
+    git = import ./home/programs/git.nix {
+      inherit pkgs;
+    };
+  };
 
   home.file.".myclirc".source = ./home/files/myclirc;
 
