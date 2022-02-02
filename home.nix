@@ -37,6 +37,7 @@
     pkgs.mycli
     pkgs.mkcert
     pkgs.tig
+    pkgs.universal-ctags
 
     # Writing
     pkgs.languagetool
@@ -51,7 +52,10 @@
     };
   };
 
-  home.file.".myclirc".source = ./home/files/myclirc;
+  home.file = {
+    ".myclirc".source = ./home/files/myclirc;
+    ".config/ctags/config".source = ./home/files/ctags;
+  };
 
   services.dunst = import ./home/configurations/dunst.nix;
 
