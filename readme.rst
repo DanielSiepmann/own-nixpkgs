@@ -5,6 +5,9 @@ I currently use Ubuntu and installed nix alongside.
 This repository contains my personal ``~/.config/nixpkgs`` folder,
 for sharing, inspiration and retrieving feedback.
 
+This includes ``home.nix`` to maintain ``home-manager``,
+see: https://nix-community.github.io/home-manager/index.html
+
 .. contents:: Table of Contents
 
 Disclaimer
@@ -20,38 +23,13 @@ Installation
 
 Install (clone) into ``~/.config/nixpkgs``.
 
+Install ``home-manager`` see: https://nix-community.github.io/home-manager/index.html
+Execute ``home-manager switch``
+
 Usage
 -----
 
-Install packages as usual.
-
-``my-packages``
----------------
-
-The special ``my-packages`` includes a derivation which holds a set of packages.
-The idea: Provide a configuration instead of some state.
-It can be installed via ``nix-env -i my-packages``
-which also "updates" state accordingly to the current defined set.
-
-Configurations
---------------
-
-Some derivations will provide ready to use configuration.
-Those are most likely placed within ``~/.nix-profile/etc/*``.
-
-One can symlink them into ``~/.config/*``.
-
-E.g. ``~/.config/dunst -> ~/.nix-profile/etc/dunst``
-
-systemd units
--------------
-
-Some derivations will provide ready to use systemd units.
-Those are most likely placed within ``~/.nix-profile/share/systemd/*``.
-
-One can symlink them into ``~/.config/systemd``.
-
-E.g. ``~/.config/systemd/user/dunst.service -> ~/.nix-profile/share/systemd/user/dunst.service``
+Add packages to ``home.nix`` and run ``home-manager switch``.
 
 Update
 ------
@@ -59,8 +37,9 @@ Update
 The following will update the whole system and clean things up::
 
     nix-channel --update \
-      && nix-env -iA nixpkgs.nix nixpkgs.cacert \
-      && nix-env --upgrade \
+      && nix-env -ia nixpkgs.nix nixpkgs.cacert \
+      && home-manager switch \
+      && home-manager expire-generations '-30 days' \
       && nix-env --delete-generations +5 \
       && nix-store --gc
 
