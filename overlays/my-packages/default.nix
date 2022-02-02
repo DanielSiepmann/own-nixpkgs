@@ -10,6 +10,7 @@ self: super: {
 
       # Dev tools
       self.litecli
+      self.mycli
       self.mkcert
 
       # Writing
