@@ -84,6 +84,9 @@ List of manual needed changes for various reasons.
 
 * robo3t desktop file is not linked, that's done by hand for now.
 
+* I now create a desktop file for cmus (first module ;) yeay)
+  But that is not linked as well, done by hand now …
+
 Todos
 -----
 

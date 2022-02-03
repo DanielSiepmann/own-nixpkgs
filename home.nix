@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ./home/modules/programs/cmus.nix
+  ];
+
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "daniels";
@@ -56,6 +60,9 @@
     };
     tmux = import ./home/programs/tmux.nix {
     };
+
+    # Media
+    cmus.enable = true;
   };
 
   home.file = {
