@@ -1,0 +1,83 @@
+# Some sources of settings:
+# - http://blog.sanctum.geek.nz/vi-mode-in-tmux/
+# http://man.cx/tmux
+
+set -g set-titles on
+set -g set-titles-string " Terminal | #{session_name} | #{window_name}"
+
+# Indicate activity in other panes
+setw -g monitor-activity on
+set -g visual-activity on
+# automatically renumber tmux windows
+set -g renumber-windows on
+
+# v starts a selection and y finishes it in the same way that Space and Enter do, more like Vim:
+# bind-key -t vi-copy 'v' begin-selection
+# bind-key -t vi-copy 'y' copy-selection
+# allow to copy to system clipboard with enter
+bind -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel "xsel -i --clipboard"
+# Use hjkl to switch between panes: http://stackoverflow.com/questions/16373859/why-tmux-panel-switch-is-vim-likehow-to-change#answer-18942253
+
+bind-key | kill-session
+# Respawn the pane, kill running process and restart
+bind-key R respawn-pane -k
+# Senct CTRL+c, clear history for bash and tmux
+bind-key C-c send-keys clear C-m \; clear-history \; display "Cleared pane + history!"
+
+# split window and fix path
+bind % split-window -h -c "#{pane_current_path}"
+# Find how to remap double quote sign
+bind '"' split-window -v -c "#{pane_current_path}"
+# Switch to last session
+bind -r \\ switch-client -l
+# Switch to last window
+bind -r ] select-window -t :!
+
+# Define update interval of status line
+set -g status-interval 30
+
+# Change status line
+set -g status-left ""
+set -g status-left-length 0
+# set -g status-left-length 37
+# set -g status-left "#[fg=blue]#{session_name}"
+
+set -g status-right-length 0
+# set -g status-right-length 60
+# set -g status-right "#(node --version | cut -d'.' -f1,2 | sed s/v//)📦 #(php --version | head -1 | cut -d' ' -f2 | cut -d'.' -f1,2)🐘 #[fg=green]%l:%M%p %d %b %Y"
+# set -g status-right "#[fg=green]%l:%M%p %d %b %Y"
+set -g status-right ""
+
+# Move status bar to top
+set-option -g status-position top
+set -g status-justify centre
+
+# Change colors
+# https://github.com/seebi/tmux-colors-solarized/blob/master/tmuxcolors-light.conf
+set -gF message-style bg=black
+set -gw mode-style bg=blue,fg=brightwhite
+
+# default statusbar colors
+set-option -g status-style "bg=black,fg=white"
+
+# active window title colors
+set-window-option -g window-status-current-style "fg=blue"
+
+# pane border
+set-option -g pane-border-style "fg=white"
+set-option -g pane-active-border-style "fg=blue"
+
+# message text
+set-option -g message-style "fg=brightwhite"
+
+# pane number display
+set-option -g display-panes-active-colour blue
+set-option -g display-panes-colour white
+
+# clock
+set-window-option -g clock-mode-colour white
+
+# bell
+set-window-option -g window-status-bell-style fg=white,bg=red
+
+# vi: ft=tmux

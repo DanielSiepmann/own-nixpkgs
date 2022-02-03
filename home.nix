@@ -54,6 +54,8 @@
     htop = import ./home/programs/htop.nix {
       inherit config;
     };
+    tmux = import ./home/programs/tmux.nix {
+    };
   };
 
   home.file = {
