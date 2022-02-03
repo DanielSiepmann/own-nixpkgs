@@ -26,7 +26,6 @@ in {
     package = mkOption {
       type = types.package;
       default = pkgs.cmus;
-      defaultText = literalExpression "pkgs.cmus";
       description = "Cmus package to install.";
     };
   };

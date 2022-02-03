@@ -3,6 +3,7 @@
 {
   imports = [
     ./home/modules/programs/cmus.nix
+    ./home/modules/programs/languagetool.nix
   ];
 
   # Home Manager needs a bit of information about you and the
@@ -44,9 +45,6 @@
     pkgs.universal-ctags
     pkgs.silver-searcher
 
-    # Writing
-    pkgs.languagetool
-
     # Media
     pkgs.vlc
   ];
@@ -72,12 +70,5 @@
   };
 
   services.dunst = import ./home/services/dunst.nix;
-
-  systemd.user.services.languagetool = import ./home/systemd/languagetool.nix {
-    settings = {
-      port = "8081";
-      allow-origin = "*";
-    };
-    inherit pkgs;
-  };
+  services.languagetool.enable = true;
 }
