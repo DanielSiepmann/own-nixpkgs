@@ -7,6 +7,7 @@
   escapeTime = 10;
   keyMode = "vi";
   shortcut = "t";
+  customPaneNavigationAndResize = true;
 
   resizeAmount = 5;
   aggressiveResize = true;
