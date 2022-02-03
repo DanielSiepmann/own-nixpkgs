@@ -30,7 +30,6 @@
     pkgs.dmenu
     pkgs.st
     pkgs.dunst
-    pkgs.i3lock-color
 
     # Dev tools
     pkgs.litecli

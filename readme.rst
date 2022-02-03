@@ -89,6 +89,8 @@ Todos
 
 No particular order:
 
+* Fix broken lock screen (i3lock-color)
+
 * Migrate ``./home/services/languagetool.nix`` to a custom module (maybe PR upstream).
 
 * Migrate other local configurations (inspect ``~/.config`` folder)
