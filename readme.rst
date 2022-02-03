@@ -96,6 +96,8 @@ No particular order:
 * Migrate other local configurations (inspect ``~/.config`` folder)
   All other dotfiles in home dir are already migrated :yay:
 
+* Migrate mailhog (manually installed right now)
+
 * Migrate zsh
 
 * Migrate ssh config (I don't really like to expose customer server names and configs to outer world, how to handle?)
