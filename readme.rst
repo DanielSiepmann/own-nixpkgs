@@ -69,6 +69,7 @@ The following will update the whole system and clean things up::
 nix-channel --update \
    && home-manager switch \
    && home-manager expire-generations '-30 days' \
+   && nix-env --delete-generations +5 \
    && nix-store --gc
 
 This will update the channel (fetch state of nixpkgs).
