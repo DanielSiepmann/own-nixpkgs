@@ -28,17 +28,17 @@
 
     # System tools
     pkgs.dmenu
-    pkgs.st
     pkgs.dunst
+    pkgs.st
 
     # Dev tools
     pkgs.litecli
     pkgs.mycli
+    pkgs.robo3t
     pkgs.mkcert
     pkgs.tig
     pkgs.universal-ctags
     pkgs.silver-searcher
-    pkgs.robo3t
 
     # Writing
     pkgs.languagetool
