@@ -64,9 +64,9 @@
     ".agignore".source = ./home/files/agignore;
   };
 
-  services.dunst = import ./home/configurations/dunst.nix;
+  services.dunst = import ./home/services/dunst.nix;
 
-  systemd.user.services.languagetool = import ./home/services/languagetool.nix {
+  systemd.user.services.languagetool = import ./home/systemd/languagetool.nix {
     settings = {
       port = "8081";
       allow-origin = "*";

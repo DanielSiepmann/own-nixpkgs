@@ -40,12 +40,23 @@ E.g. alter packages like patching.
 The folder ``home`` is related to extras for home-manager.
 It has the following sub folder:
 
-``home/configurations``
-   Holds home-manager configuration for packages / services.
-   Each file corresponds to a single package.
+``home/files``
+   Holds configuration files.
+   home-manager doesn't provide modules for all programs.
+   Those files can be loaded via ``biuiltins.readFile``
+   or linked via ``home.file.``.
+
+``home/programs``
+   Holds home-manager `programs.` entries.
+   Each file corresponds to a single program.
    Each file is loaded within ``home.nix``.
 
 ``home/services``
+   Holds home-manager `services.` entries.
+   Each file corresponds to a single service.
+   Each file is loaded within ``home.nix``.
+
+``home/systemd``
    Holds custom definitions for systemd services.
    Each file corresponds to a single service.
    Each file is loaded within ``home.nix``.
