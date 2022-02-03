@@ -76,6 +76,13 @@ It then will update system.
 Delete old generations.
 And run garbage collection.
 
+Manual changes
+--------------
+
+List of manual needed changes for various reasons.
+
+* robo3t desktop file is not linked, that's done by hand for now.
+
 Todos
 -----
 

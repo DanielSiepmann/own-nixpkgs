@@ -39,6 +39,7 @@
     pkgs.tig
     pkgs.universal-ctags
     pkgs.silver-searcher
+    pkgs.robo3t
 
     # Writing
     pkgs.languagetool
