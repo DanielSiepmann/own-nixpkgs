@@ -91,6 +91,8 @@ No particular order:
 
 * Begin migrating further configuration, e.g. php fpm pools and apache config (Again I don't like customer internals in public repo, how to handle?)
 
+* Switch to stable channels
+
 Ideas
 -----
 
