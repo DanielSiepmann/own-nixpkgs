@@ -35,7 +35,7 @@
     hide_userland_threads = 0;
 
     sort_key = 47;
-    sort_direction = 1;
+    sort_direction = 0;
 
   } // (with config.lib.htop; leftMeters [
     (bar "LeftCPUs")
