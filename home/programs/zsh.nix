@@ -14,7 +14,7 @@
     LANGUAGE = "en_US";
 
     EDITOR = "nvim";
-    SHELL = pkgs.zsh;
+    SHELL = "${pkgs.zsh}/bin/zsh";
 
     LESS = "-R -J -W -i -M";
     LSCOLORS = "HxGxDxDxbxDxDxababcxcx";
