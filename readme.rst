@@ -92,10 +92,6 @@ Todos
 
 No particular order:
 
-* Fix broken lock screen (i3lock-color)
-
-* Migrate ``./home/services/languagetool.nix`` to a custom module (maybe PR upstream).
-
 * Migrate other local configurations (inspect ``~/.config`` folder)
   All other dotfiles in home dir are already migrated :yay:
 
@@ -118,6 +114,10 @@ No particular order:
 * Begin migrating further configuration, e.g. php fpm pools and apache config (Again I don't like customer internals in public repo, how to handle?)
 
 * Switch to stable channels
+
+* Fix broken lock screen (i3lock-color)
+
+* Maybe PR upstream: ``./home/modules/programs/languagetool.nix``.
 
 Ideas
 -----
