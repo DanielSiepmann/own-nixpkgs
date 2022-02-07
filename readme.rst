@@ -111,6 +111,10 @@ No particular order:
 
 * Migrate desktop environment (is that possible? I select it within ubuntu login screen, guess it needs to be installed or registered somwhere in ubuntu)
 
+* Begin migrating local development to execute nodejs, yarn, php, etc. On a per customer project.
+  Use flakes?
+  Most are more or less the same, maybe provide a general flake inside this repo which can be used by projects?
+
 * Begin migrating further configuration, e.g. php fpm pools and apache config (Again I don't like customer internals in public repo, how to handle?)
 
 * Switch to stable channels
