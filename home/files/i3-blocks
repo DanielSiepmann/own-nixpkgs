@@ -1,0 +1,78 @@
+# i3blocks config file
+#
+# Please see man i3blocks for a complete reference!
+# The man page is also hosted at http://vivien.github.io/i3blocks
+#
+# List of valid properties:
+#
+# align
+# color
+# command
+# full_text
+# instance
+# interval
+# label
+# min_width
+# name
+# separator
+# separator_block_width
+# short_text
+# signal
+# urgent
+
+# Global properties
+#
+# The top properties below are applied to every block, but can be overridden.
+# Each block command defaults to the script name to avoid boilerplate.
+command=/usr/share/i3blocks/$BLOCK_NAME
+separator_block_width=15
+markup=pango
+
+# Versions for development
+[php_version]
+label=🐘
+command=
+command=echo "$(php --version | head -1 | cut -d' ' -f2 | cut -d'.' -f1,2)"
+interval=once
+signal=10
+
+[xdebug]
+label=🤸
+command=[ -L /etc/php/8.0/cli/conf.d/20-xdebug.ini ] && echo "yes" || echo "no"
+interval=once
+signal=10
+
+[composer_version]
+label=📦
+command=
+command=echo "$(composer --version | cut -d ' ' -f 3 | cut -d '.' -f -2)"
+interval=once
+signal=10
+
+[node_version]
+label=⚛️
+command=echo "$(node --version | cut -d'.' -f1,2 | sed s/v//) 📦 $(npm -v | cut -d'.' -f1,2)"
+interval=once
+separator=false
+signal=10
+
+# System info
+
+[wifi]
+instance=wlp2s0
+label=📡
+interval=10
+separator=false
+min_width=50
+
+# Battery indicator
+[battery]
+label=🔋
+interval=30
+
+# Date Time
+[time]
+command=date '+📅 %a %Y-%m-%d %H:%M'; date '+📅 %a %d. %H:%M'
+interval=60
+
+# vi: ft=conf

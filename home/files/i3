@@ -1,0 +1,298 @@
+# Use "xev" to detect keycodes and names
+# https://superuser.com/a/248568/709946
+
+# i3 config file (v4)
+#
+# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+
+set $mod Mod4
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:monospace 12
+
+# Styling - Own
+# class                 border  backgr. text    indicator child_border
+client.focused          #000000 #000000 #72B3CC #72B3CC   #000000
+client.focused_inactive #000000 #000000 #B0B0B0 #5D5D5D   #000000
+client.unfocused        #000000 #000000 #B0B0B0 #5D5D5D   #000000
+client.urgent           #72B3CC #72B3CC #FFFFFF #72B3CC   #72B3CC
+client.placeholder      #000000 #000000 #D3D7CF #000000   #000000
+client.background       #2E3436
+bar {
+    colors {
+        background              #000000
+        separator               #72B3CC
+        statusline              #72B3CC
+        # class                 border  backgr. text
+        focused_workspace       #72B3CC #000000 #72B3CC
+        active_workspace        #000000 #000000 #72B3CC
+        inactive_workspace      #000000 #000000 #72B3CC
+        urgent_workspace        #72B3CC #72B3CC #FFFFFF
+    }
+    font pango:monospace bold 12
+    position top
+    workspace_buttons yes
+    binding_mode_indicator yes
+    separator_symbol " "
+    mode hide
+    status_command i3blocks
+}
+
+# Set background color of X11 root (nothing), e.g. empty workspace
+exec --no-startup-id xsetroot -solid "#2E3436"
+
+# For some reason, default_border does not exist as option?
+# I might run an old version
+# default_border normal 3
+# new_window 0pixel
+hide_edge_borders both
+
+workspace_layout tabbed
+
+# start a terminal
+bindsym $mod+Return exec st
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start dmenu (a program launcher)
+# bindsym $mod+d exec dmenu_run
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+# For docs, see: https://developer.gnome.org/integration-guide/stable/desktop-files.html.en
+bindsym $mod+a exec --no-startup-id i3-dmenu-desktop
+
+bindsym $mod+space exec --no-startup-id dmenu_selection
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# split in horizontal orientation
+bindsym $mod+Right split h
+
+# split in vertical orientation
+bindsym $mod+Down split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+t layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+f floating toggle
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+# toggle sticky
+bindsym $mod+Shift+s sticky toggle
+
+# For debugging, include class (https://i3wm.org/docs/userguide.html#command_criteria)
+# also use bash tool "xprop" or "xwininfo"
+# for_window [class=".*"] title_format "<span size='xx-small'>(%class)</span><b>%title</b>"
+for_window [class=".*"] title_format "<b>%title</b>"
+
+# Make sure dialogs are sticky, visible on all workspaces
+# This takes attention once raised
+# As they are floating they can be moved around to get out of the way
+for_window [window_type="dialog"] sticky enable
+# As well as keepass, in order to make it easier usable side by side
+for_window [class="keepassxc"] sticky enable floating enable
+
+assign [class="^node-debugger$"] 1
+
+assign [class="^toggl$"] 2:💶
+assign [class="^mailhog$"] 2:💶
+assign [class="^sentry$"] 2:💶
+assign [class="^Firefox$"] 2:💶
+
+assign [class="^Slack$"] 3:💬
+assign [class="^slack-.*"] 3:💬
+assign [class="^whatsapp$"] 3:💬
+assign [class="^Signal$"] 3:💬
+assign [class="^teams-.*"] 3:💬
+assign [class="^mattermost-.*$"] 3:💬
+assign [class="^mattermost$"] 3:💬
+assign [class="^Mattermost$"] 3:💬
+assign [class="^jitsi-.*$"] 3:💬
+
+assign [class="^Thunderbird$"] 4:✉️
+
+assign [class="^cmus$"] 5:🎵
+assign [class="^vlc$"] 5:🎵
+for_window [class="^vlc$"] border none
+assign [class="^Pavucontrol$"] 5:🎵
+assign [class="^Audacity$"] 5:🎵
+assign [class="^gplay-music$"] 5:🎵
+# assign [class=".*spotify.*"] 5:🎵
+# assign [title=".*Spotify Free.*"] 5:🎵
+
+# TODO: Use some more specific, to only fetch testing instances?
+assign [class="^Chromium-browser$"] 8
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2:💶
+bindsym $mod+3 workspace 3:💬
+bindsym $mod+4 workspace 4:✉️
+bindsym $mod+5 workspace 5:🎵
+bindsym $mod+6 workspace 6:T3
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9:🖥️
+bindsym $mod+0 workspace 10:🌐
+
+# Allow to switch to recent workspace by using same combination
+workspace_auto_back_and_forth yes
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2:💶
+bindsym $mod+Shift+3 move container to workspace 3:💬
+bindsym $mod+Shift+4 move container to workspace 4:✉️
+bindsym $mod+Shift+5 move container to workspace 5:🎵
+bindsym $mod+Shift+6 move container to workspace 6:T3
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9:🖥️
+bindsym $mod+Shift+0 move container to workspace 10:🌐
+
+# workspace 9:🖥️  output DP2
+
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+# Show the first scratchpad window
+bindsym $mod+minus scratchpad show
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+    # These bindings trigger as soon as you enter the resize mode
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
+    bindsym Shift+h resize shrink width 50 px or 50 ppt
+    bindsym Shift+j resize grow height 50 px or 50 ppt
+    bindsym Shift+k resize shrink height 50 px or 50 ppt
+    bindsym Shift+l resize grow width 50 px or 50 ppt
+
+    # same bindings, but for the arrow keys
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# Configure input, keyboard and mouse
+# Increase mouse speed
+exec --no-startup-id "xinput --set-prop 13 'libinput Accel Speed' 1"
+# Use natural scrolling for trackpad
+exec --no-startup-id "xinput --set-prop 'DELL07E6:00 06CB:76AF Touchpad' 'libinput Natural Scrolling Enabled' 1"
+exec --no-startup-id "xinput --set-prop 'DELL07E6:00 06CB:76AF Touchpad' 'libinput Tapping Enabled' 1"
+# Use CAPS LOCK as ctrl
+# TODO: Check udev and trigger everytime apple keyboard is attached?
+exec_always --no-startup-id "setxkbmap -option ctrl:nocaps; setxkbmap -option compose:ralt"
+# Turn off screensaver
+exec --no-startup-id "xset s off"
+
+# Configure display
+exec xrandr --output eDP1 --scale 0.75x0.75 --mode 2560x1440 --brightness 1
+exec xbacklight -set 25
+bindsym $mod+Shift+a exec xrandr --auto
+# display mode
+set $mode_setup Setup: [a]uto [e]extern only [w]ork [h]ome [i]intern [r]ecord [v]ideo
+mode "$mode_setup" {
+    bindsym a exec xrandr --auto --output eDP1 --scale 1x1 --mode 1920x1080 && xbacklight -set 10;
+    bindsym e exec xrandr --auto --output eDP1 --off
+    bindsym w exec xrandr --output eDP1 --off --output DP1 --scale 1x1 --mode 2560x1440 && setxkbmap -option ctrl:nocaps && setxkbmap -option compose:ralt
+    bindsym h exec xrandr --output eDP1 --off --output DP2-1 --scale 1x1 --mode 2560x1440 && setxkbmap -option ctrl:nocaps && setxkbmap -option compose:ralt && setxkbmap -option numpad:mac
+    bindsym v exec xrandr --auto --output DP2-1 --primary --scale 1x1 --mode 2560x1440 --output eDP1 --mode 1920x1080 --left-of DP2-1 && setxkbmap -option ctrl:nocaps && setxkbmap -option compose:ralt && setxkbmap -option numpad:mac
+    # bindsym h exec xrandr --output eDP1 --off --output DP1 --scale 1x1 --mode 2560x1440 && setxkbmap -option ctrl:nocaps && setxkbmap -option compose:ralt && setxkbmap -option numpad:mac
+    bindsym i exec xrandr --output DP1 --off --output DP2 --off --output eDP1 --scale 1x1 --mode 1920x1080 && xbacklight -set 10
+    bindsym r exec xrandr --output DP1 --primary --mode 1920x1080 --output eDP1 --mode 1920x1080 --left-of DP1 && xbacklight -set 100;
+
+    # Mirror
+    # xrandr --output eDP1 --rate 60 --mode 1920x1080 --fb 1920x1080 --output DP1 --mode 1920x1080 --same-as eDP1
+    # To turn off, use position, e.g.:
+    # xrandr --output DP1 --right-of eDP1
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+d mode "$mode_setup"
+
+# Move workspace between displays
+bindsym $mod+Shift+Left move workspace to output left
+bindsym $mod+Shift+Right move workspace to output right
+
+# Provide clipboard
+exec --no-startup-id clipit
+# Start ssh agent
+exec --no-startup-id eval $(ssh-agent)
+# Start network manager applet (Icon in toolbar for wifi and vpn)
+exec --no-startup-id nm-applet
+# Start pulse audio tray
+# Does for some reason not show up when addded here
+# exec --no-startup-id pasystray --include-monitors --always-notify
+
+# Function Key Bindings (🎵)
+bindsym XF86AudioPause exec cmus-remote --pause && pkill -SIGRTMIN+11 i3blocks
+bindsym XF86AudioPlay exec cmus-remote --pause && pkill -SIGRTMIN+11 i3blocks
+bindsym XF86AudioPrev exec cmus-remote --prev && pkill -SIGRTMIN+11 i3blocks
+bindsym XF86AudioNext exec cmus-remote --next && pkill -SIGRTMIN+11 i3blocks
+bindsym XF86AudioMute exec "amixer -D pulse sset Master 0 && pkill -SIGRTMIN+11 i3blocks"
+bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master 5%+ && pkill -SIGRTMIN+11 i3blocks"
+bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master 5%- && pkill -SIGRTMIN+11 i3blocks"
+
+# Switch sound device:
+# https://askubuntu.com/a/72076/491377
+#
+# Detect current devices
+# pulseaudio -k && pactl load-module module-detect
+#
+# Run Pulseaudio Volume Control and adjust
+# Adjust also "default / fallback" device, in order to make volume control work.
+#
+# Alternativly via cli:
+# ~ > pacmd list-sinks
+# ~ > pacmd list-sink-inputs
+# ~ > pacmd set-default-sink 8
+# ~ > pacmd move-sink-input 3 8
+
+# Function Key Bindings (💡)
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10 && notify-send "Changed Display Brightness" "Now: $(xbacklight)"
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10 && notify-send "Changed Display Brightness" "Now: $(xbacklight)"
+bindsym Shift+XF86MonBrightnessUp exec xbacklight -inc 1 && notify-send "Changed Display Brightness" "Now: $(xbacklight)"
+bindsym Shift+XF86MonBrightnessDown exec xbacklight -dec 1 && notify-send "Changed Display Brightness" "Now: $(xbacklight)"
+
+# Dunst Key Bindings
+# See: man dunstctl.1
+bindsym Control+space exec --no-startup-id dunstctl close-all
+bindsym Control+grave exec --no-startup-id dunstctl history-pop
+
+# vi: ft=conf

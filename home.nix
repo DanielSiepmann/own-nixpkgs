@@ -65,8 +65,13 @@
 
   home.file = {
     ".myclirc".source = ./home/files/myclirc;
-    ".config/ctags/config".source = ./home/files/ctags;
     ".agignore".source = ./home/files/agignore;
+  };
+
+  xdg.configFile = {
+    "ctags/config".source = ./home/files/ctags;
+    "i3/config".source = ./home/files/i3;
+    "i3blocks/config".source = ./home/files/i3-blocks;
   };
 
   services.dunst = import ./home/services/dunst.nix;
