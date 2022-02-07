@@ -47,6 +47,7 @@
 
     # Media
     pkgs.vlc
+    pkgs.yt-dlp
   ];
 
   programs = {
