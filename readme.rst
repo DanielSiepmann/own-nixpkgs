@@ -82,10 +82,10 @@ Manual changes
 
 List of manual needed changes for various reasons.
 
-* robo3t desktop file is not linked, that's done by hand for now.
+* .desktop files seem not to be supported by home-manager yet.
+  They need to manually be linked, e.g.::
 
-* I now create a desktop file for cmus (first module ;) yeay)
-  But that is not linked as well, done by hand now …
+     cd ~/.local/share/applications && ln -s ~/.nix-profile/share/applications/* .
 
 Todos
 -----
