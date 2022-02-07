@@ -43,8 +43,12 @@ It has the following sub folder:
 ``home/files``
    Holds configuration files.
    home-manager doesn't provide modules for all programs.
-   Those files can be loaded via ``biuiltins.readFile``
-   or linked via ``home.file.``.
+   Those files can be added via ``xdg.configFile``.
+
+``home/modules``
+   Holds nix modules.
+   Not all programs provide modules out of the box.
+   I add my own here, which I might create PRs for in future.
 
 ``home/programs``
    Holds home-manager `programs.` entries.
@@ -53,11 +57,6 @@ It has the following sub folder:
 
 ``home/services``
    Holds home-manager `services.` entries.
-   Each file corresponds to a single service.
-   Each file is loaded within ``home.nix``.
-
-``home/systemd``
-   Holds custom definitions for systemd services.
    Each file corresponds to a single service.
    Each file is loaded within ``home.nix``.
 
@@ -91,9 +90,6 @@ Todos
 -----
 
 No particular order:
-
-* Migrate other local configurations (inspect ``~/.config`` folder)
-  All other dotfiles in home dir are already migrated :yay:
 
 * Migrate mailhog (manually installed right now)
 
