@@ -34,6 +34,7 @@
 
     # System tools
     pkgs.dmenu
+    pkgs.networkmanager_dmenu
     pkgs.dunst
     pkgs.st
 
