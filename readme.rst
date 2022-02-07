@@ -93,7 +93,7 @@ No particular order:
 
 * Migrate mailhog (manually installed right now)
 
-* Migrate zsh
+* Migrate neovim
 
 * Migrate ssh config (I don't really like to expose customer server names and configs to outer world, how to handle?)
 

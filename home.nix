@@ -59,6 +59,10 @@
     };
     tmux = import ./home/programs/tmux.nix {
     };
+    zsh = import ./home/programs/zsh.nix {
+      inherit config;
+      inherit pkgs;
+    };
 
     # Media
     cmus.enable = true;
