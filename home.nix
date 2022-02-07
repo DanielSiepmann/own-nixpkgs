@@ -74,6 +74,9 @@
     "phpactor/phpactor.yml".source = ./home/files/phpactor.yml;
     "tig/config".source = ./home/files/tig;
 
+    "cmus/smyckblue.theme".source = ./home/files/cmus/smyckblue.theme;
+    "cmus/rc".source = ./home/files/cmus/rc;
+
     "i3/config".source = ./home/files/i3;
     "i3blocks/config".source = ./home/files/i3-blocks;
   };
