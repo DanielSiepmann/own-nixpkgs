@@ -80,6 +80,8 @@
     "phpactor/phpactor.yml".source = ./home/files/phpactor.yml;
     "tig/config".source = ./home/files/tig;
 
+    "nix/nix.conf".source = ./home/files/nix.conf;
+
     "cmus/smyckblue.theme".source = ./home/files/cmus/smyckblue.theme;
     "cmus/rc".source = ./home/files/cmus/rc;
 
