@@ -4,6 +4,7 @@
   imports = [
     ./home/modules/programs/cmus.nix
     ./home/modules/programs/languagetool.nix
+    ./home/modules/programs/mailhog.nix
   ];
 
   # Home Manager needs a bit of information about you and the
@@ -87,5 +88,6 @@
   };
 
   services.dunst = import ./home/services/dunst.nix;
+  services.mailhog.enable = true;
   services.languagetool.enable = true;
 }
