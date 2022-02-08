@@ -35,6 +35,7 @@
     # System tools
     pkgs.dmenu
     pkgs.networkmanager_dmenu
+    pkgs.dmenu-custom-scripts
     pkgs.dunst
     pkgs.st
 

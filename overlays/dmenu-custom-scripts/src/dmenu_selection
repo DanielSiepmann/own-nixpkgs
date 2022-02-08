@@ -1,0 +1,10 @@
+#!/bin/bash
+
+pushd "$out/scripts"
+
+# use "." for files in folder, use "*" for subfolder as well
+chosen=$(ls -1 . | $dmenu -i -l 20)
+
+popd
+
+sh "$out/scripts/$chosen" || exit 0

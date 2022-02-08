@@ -1,0 +1,7 @@
+#!/bin/bash
+
+nodechosen=$(update-alternatives --list node | $dmenu -i -l 20 -p "$(node --version | cut -d'.' -f1,2 | sed s/v//)")
+npmchoosen="$(dirname $(dirname $nodechosen))/lib/node_modules"
+sudo update-alternatives --set node $nodechosen > /dev/null
+sudo update-alternatives --set npm $npmchoosen > /dev/null
+pkill -SIGRTMIN+10 i3blocks

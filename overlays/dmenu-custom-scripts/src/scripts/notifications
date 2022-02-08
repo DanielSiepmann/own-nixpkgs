@@ -1,0 +1,14 @@
+#!/bin/bash
+
+chosen=$(echo "pause\nresume" | $dmenu -i)
+case "$chosen" in
+"pause")
+    $dunstctl set-paused true
+    ;;
+"resume")
+    $dunstctl set-paused false
+    ;;
+*)
+    exit 0
+    ;;
+esac
