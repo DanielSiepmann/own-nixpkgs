@@ -1,6 +1,0 @@
-#!/bin/bash
-
-chosen=$(update-alternatives --list php | $dmenu -i -l 20 -p "$(php --version | head -1 | cut -d' ' -f2 | cut -d'.' -f1,2)")
-sudo update-alternatives --set php $chosen > /dev/null
-pkill -SIGRTMIN+10 i3blocks
-notify-send "switching php version" "$(php --version)"

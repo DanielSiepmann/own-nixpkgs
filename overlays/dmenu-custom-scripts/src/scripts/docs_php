@@ -1,4 +1,0 @@
-#!/bin/bash
-
-file=$(ls ~/Projects/docs/php/ | $dmenu -i -l 20 -p "Search Term")
-firefox --new-tab http://php.docs.localhost/$file

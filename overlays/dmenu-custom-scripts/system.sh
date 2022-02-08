@@ -4,7 +4,7 @@
 # TODO: Stop all software before logout
 # https://faq.i3wm.org/question/239/how-do-i-suspendlockscreen-and-logout.1.html#post-id-1927
 
-chosen=$(echo "lock\nsuspend\nlogout" | $dmenu -i)
+chosen=$(echo -e "lock\nsuspend\nlogout" | dmenu -i)
 case "$chosen" in
 "lock")
     # See: https://faq.i3wm.org/question/5654/how-can-i-disable-notifications-when-the-screen-locks-and-enable-them-again-when-unlocking/index.html#post-id-5655

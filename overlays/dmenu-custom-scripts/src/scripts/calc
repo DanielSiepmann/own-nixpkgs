@@ -1,5 +1,0 @@
-#!/bin/bash
-
-input=$($dmenu -i)
-result=$(echo $input | scale=4 bc -l)
-echo $result | $dmenu -i -p "Result:"

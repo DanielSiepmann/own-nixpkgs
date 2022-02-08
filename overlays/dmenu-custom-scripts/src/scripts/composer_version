@@ -1,6 +1,0 @@
-#!/bin/bash
-
-chosen=$(echo "1\n2\n"| $dmenu -i -l 20 -p "$(composer --version)")
-composer selfupdate --$chosen
-pkill -SIGRTMIN+10 i3blocks
-notify-send "switching composer version" "$(composer --version)"
