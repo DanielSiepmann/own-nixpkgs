@@ -48,6 +48,7 @@
     pkgs.litecli
     pkgs.sqlite
     pkgs.mycli
+    # pkgs.mytop
     pkgs.robo3t
     pkgs.mkcert
     pkgs.tig
