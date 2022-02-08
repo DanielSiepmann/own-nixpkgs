@@ -38,6 +38,7 @@
     pkgs.dmenu-custom-scripts
     pkgs.dunst
     pkgs.st
+    pkgs.ncdu
 
     # Dev tools
     pkgs.litecli
