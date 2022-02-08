@@ -39,6 +39,7 @@
     pkgs.dunst
     pkgs.st
     pkgs.ncdu
+    pkgs.tree
 
     # Dev tools
     pkgs.litecli
