@@ -60,6 +60,7 @@
     # Media
     pkgs.vlc
     pkgs.yt-dlp
+    pkgs.sound-juicer
     pkgs.audacity
     pkgs.ffmpeg
   ];

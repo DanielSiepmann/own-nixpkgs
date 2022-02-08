@@ -95,7 +95,11 @@ No particular order:
 
 * Migrate neovim
 
-* Add derivation for mytop, doesn't exist yet.
+* Add derivation for things that don't exist yet:
+
+   * mytop
+
+   * rst2pdf
 
 * Migrate ssh config (I don't really like to expose customer server names and configs to outer world, how to handle?)
 
