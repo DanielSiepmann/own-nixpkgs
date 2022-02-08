@@ -53,6 +53,7 @@
     pkgs.curl
     pkgs.wget
     pkgs.yamllint
+    pkgs.kcachegrind
 
     pkgs.custom-customer-project
 
