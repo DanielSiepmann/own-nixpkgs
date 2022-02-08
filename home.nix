@@ -46,6 +46,7 @@
     pkgs.tig
     pkgs.universal-ctags
     pkgs.silver-searcher
+    pkgs.jq
 
     # Media
     pkgs.vlc
