@@ -105,12 +105,16 @@ No particular order:
 
 * Migrate PGP?
 
+   * Right now I've instaled gnupg2, gnupg, gpg on ubuntu
+
+* Migrate firefox (with geckodriver), thunderbird, ungoogled chromium
+
 * Migrate other tools from local system (which are not part of above migrations)
 
 * Migrate other system configurations like keyboard?!
 
 * Migrate desktop environment (is that possible? I select it within ubuntu login screen, guess it needs to be installed or registered somwhere in ubuntu)
-   lock screen (i3lock-color)
+  i3-wm, i3, i3lock-color
 
 * Begin migrating local development to execute nodejs, yarn, php, etc. On a per customer project.
   Use flakes?
