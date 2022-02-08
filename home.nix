@@ -51,6 +51,10 @@
 
     pkgs.custom-customer-project
 
+    # Communication
+    pkgs.signal-desktop
+    pkgs.mattermost-desktop
+
     # Media
     pkgs.vlc
     pkgs.yt-dlp
