@@ -60,6 +60,7 @@
     pkgs.vlc
     pkgs.yt-dlp
     pkgs.audacity
+    pkgs.ffmpeg
   ];
 
   programs = {
