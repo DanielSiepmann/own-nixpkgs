@@ -43,6 +43,7 @@
 
     # Dev tools
     pkgs.litecli
+    pkgs.sqlite
     pkgs.mycli
     pkgs.robo3t
     pkgs.mkcert
