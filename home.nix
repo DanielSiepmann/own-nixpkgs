@@ -48,6 +48,7 @@
     pkgs.universal-ctags
     pkgs.silver-searcher
     pkgs.jq
+    pkgs.curl
 
     pkgs.custom-customer-project
 
