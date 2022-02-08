@@ -206,7 +206,7 @@ in {
 
     src = source;
 
-    unpackPhase = "true";
+    dontUnpack = true;
 
     installPhase = ''
       mkdir -p "$out/bin"
