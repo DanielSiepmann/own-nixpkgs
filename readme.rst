@@ -65,11 +65,11 @@ Update
 
 The following will update the whole system and clean things up::
 
-nix-channel --update \
-   && home-manager switch \
-   && home-manager expire-generations '-30 days' \
-   && nix-env --delete-generations +5 \
-   && nix-store --gc
+   nix-channel --update \
+      && home-manager switch \
+      && home-manager expire-generations '-30 days' \
+      && nix-env --delete-generations +5 \
+      && nix-store --gc
 
 This will update the channel (fetch state of nixpkgs).
 It then will update system.
@@ -98,8 +98,6 @@ No particular order:
 * Add derivation for things that don't exist yet:
 
    * mytop
-
-   * rst2pdf
 
 * Migrate ssh config (I don't really like to expose customer server names and configs to outer world, how to handle?)
 

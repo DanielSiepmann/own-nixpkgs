@@ -40,6 +40,7 @@
     pkgs.st
     pkgs.ncdu
     pkgs.tree
+    pkgs.rst2pdf
 
     pkgs.keepassxc
 
