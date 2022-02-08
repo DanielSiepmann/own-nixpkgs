@@ -41,6 +41,8 @@
     pkgs.ncdu
     pkgs.tree
 
+    pkgs.keepassxc
+
     # Dev tools
     pkgs.litecli
     pkgs.sqlite

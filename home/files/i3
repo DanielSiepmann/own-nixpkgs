@@ -101,7 +101,6 @@ bindsym $mod+Shift+s sticky toggle
 
 # For debugging, include class (https://i3wm.org/docs/userguide.html#command_criteria)
 # also use bash tool "xprop" or "xwininfo"
-# for_window [class=".*"] title_format "<span size='xx-small'>(%class)</span><b>%title</b>"
 for_window [class=".*"] title_format "<b>%title</b>"
 
 # Make sure dialogs are sticky, visible on all workspaces
@@ -109,7 +108,7 @@ for_window [class=".*"] title_format "<b>%title</b>"
 # As they are floating they can be moved around to get out of the way
 for_window [window_type="dialog"] sticky enable
 # As well as keepass, in order to make it easier usable side by side
-for_window [class="keepassxc"] sticky enable floating enable
+for_window [class="KeePassXC"] sticky enable floating enable
 
 assign [class="^node-debugger$"] 1
 
