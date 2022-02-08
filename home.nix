@@ -125,4 +125,10 @@
   services.dunst = import ./home/services/dunst.nix;
   services.mailhog.enable = true;
   services.languagetool.enable = true;
+
+  services.nextcloud-client.enable = true;
+  # Temporary fix to OpenGL issue by using GLX.
+  # Start nextcloud without GLX support which is fine for me for noe.
+  # I don't have a better way for now, then using `pkgs.lib.mkForce` and setting whole value (repeating from modules/services/nextcloud-client.nix).
+  systemd.user.services.nextcloud-client.Service.Environment = pkgs.lib.mkForce "PATH=${config.home.profileDirectory}/bin QT_XCB_GL_INTEGRATION=none";
 }
