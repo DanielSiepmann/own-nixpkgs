@@ -209,7 +209,6 @@ in {
     unpackPhase = "true";
 
     installPhase = ''
-      declare -xp
       mkdir -p "$out/bin"
       printf "%s" "$src" > "$out/bin/customerProject"
       chmod ug+x $out/bin/customerProject
