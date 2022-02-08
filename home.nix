@@ -52,6 +52,7 @@
     pkgs.jq
     pkgs.curl
     pkgs.wget
+    pkgs.yamllint
 
     pkgs.custom-customer-project
 
