@@ -1,4 +1,4 @@
-{ }:
+{ pkgs }:
 
 {
   enable = true;
@@ -15,6 +15,8 @@
   # Use tmux with 256 colors.
   # Also see https://github.com/neovim/neovim/wiki/FAQ#colors-arent-displayed-correctly
   terminal = "tmux-256color";
+
+  shell = "${pkgs.zsh}/bin/zsh";
 
   sensibleOnTop = false;
 

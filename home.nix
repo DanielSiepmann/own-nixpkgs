@@ -80,6 +80,7 @@
       inherit config;
     };
     tmux = import ./home/programs/tmux.nix {
+      inherit pkgs;
     };
     zsh = import ./home/programs/zsh.nix {
       inherit config;
