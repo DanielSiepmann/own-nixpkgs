@@ -58,6 +58,7 @@
     # Media
     pkgs.vlc
     pkgs.yt-dlp
+    pkgs.audacity
   ];
 
   programs = {
