@@ -90,6 +90,17 @@
     "i3blocks/config".source = ./home/files/i3-blocks;
   };
 
+  xdg.desktopEntries.networkmanager-dmenu = {
+    type = "Application";
+    exec = "${pkgs.networkmanager_dmenu}/bin/networkmanager_dmenu";
+    name = "Networkmanager dmenu";
+    comment = "Networkmanaging using dmenu";
+    genericName = "Networkmanager Setting";
+    categories = [
+      "Network"
+    ];
+  };
+
   services.dunst = import ./home/services/dunst.nix;
   services.mailhog.enable = true;
   services.languagetool.enable = true;
