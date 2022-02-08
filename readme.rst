@@ -91,8 +91,6 @@ Todos
 
 No particular order:
 
-* Provide local dev environment for nodejs stuff
-
 * Migrate neovim
 
 * Migrate ssh config (I don't really like to expose customer server names and configs to outer world, how to handle?)
@@ -101,21 +99,18 @@ No particular order:
 
 * Migrate other tools from local system (which are not part of above migrations)
 
-* Migrate other systemd services.
-
 * Migrate other system configurations like keyboard?!
 
 * Migrate desktop environment (is that possible? I select it within ubuntu login screen, guess it needs to be installed or registered somwhere in ubuntu)
+   lock screen (i3lock-color)
 
 * Begin migrating local development to execute nodejs, yarn, php, etc. On a per customer project.
   Use flakes?
   Most are more or less the same, maybe provide a general flake inside this repo which can be used by projects?
 
 * Begin migrating further configuration, e.g. php fpm pools and apache config (Again I don't like customer internals in public repo, how to handle?)
-
-* Switch to stable channels
-
-* Fix broken lock screen (i3lock-color)
+  Does that work? I guess nix (home-manager) shouldn't write outside of user home.
+  Maybe within vm as preparation of switch to nix os?
 
 * Maybe PR upstream: ``./home/modules/programs/languagetool.nix``.
 
