@@ -49,6 +49,8 @@
     pkgs.silver-searcher
     pkgs.jq
 
+    pkgs.custom-customer-project
+
     # Media
     pkgs.vlc
     pkgs.yt-dlp
