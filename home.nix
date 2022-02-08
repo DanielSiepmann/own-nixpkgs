@@ -51,6 +51,7 @@
     pkgs.silver-searcher
     pkgs.jq
     pkgs.curl
+    pkgs.wget
 
     pkgs.custom-customer-project
 
