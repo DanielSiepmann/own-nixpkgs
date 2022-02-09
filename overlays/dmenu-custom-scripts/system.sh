@@ -28,6 +28,8 @@ case "$chosen" in
     pkill -u "$USER" -USR2 dunst
     ;;
 "suspend")
+    # TODO: Fix that suspend is also locked
+    i3lock -c '#2E3436'
     systemctl suspend
     ;;
 "logout")
