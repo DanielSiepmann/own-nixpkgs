@@ -91,8 +91,6 @@ Todos
 
 No particular order:
 
-* Integrate zsh autocompletions coming from nix installed tools
-
 * Migrate neovim
 
 * Migrate ssh config (I don't really like to expose customer server names and configs to outer world, how to handle?)
