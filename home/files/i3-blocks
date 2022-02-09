@@ -49,13 +49,6 @@ command=echo "$(composer --version | cut -d ' ' -f 3 | cut -d '.' -f -2)"
 interval=once
 signal=10
 
-[node_version]
-label=⚛️
-command=echo "$(node --version | cut -d'.' -f1,2 | sed s/v//) 📦 $(npm -v | cut -d'.' -f1,2)"
-interval=once
-separator=false
-signal=10
-
 # System info
 
 [wifi]

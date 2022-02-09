@@ -97,7 +97,7 @@ Todos
 
 * Migrate firefox (with geckodriver), thunderbird, ungoogled chromium
 
-* Begin migrating local development to execute nodejs, yarn, php, etc. On a per customer project.
+* Begin migrating local development to execute php. On a per customer project.
   Use flakes?
   Most are more or less the same, maybe provide a general flake inside this repo which can be used by projects?
   Also include psysh

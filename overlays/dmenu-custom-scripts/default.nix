@@ -111,23 +111,6 @@ self: super: {
     text = builtins.readFile ./xdebug.sh;
   };
 
-  dmenu-custom-scripts-node-version = super.pkgs.writeShellApplication {
-    name = "dmenu-custom-scripts-node-version";
-
-    runtimeInputs = [
-      super.pkgs.dmenu
-    ];
-
-    text = ''
-      nodechosen=$(update-alternatives --list node | dmenu -i -l 20 -p "$(node --version | cut -d'.' -f1,2 | sed s/v//)")
-      npmchoosen="$(dirname "$(dirname "$nodechosen")")/lib/node_modules"
-      sudo update-alternatives --set node "$nodechosen" > /dev/null
-      sudo update-alternatives --set npm "$npmchoosen" > /dev/null
-      pkill -SIGRTMIN+10 i3blocks
-      notify-send "switching node version" "$(node --version)"
-    '';
-  };
-
   dmenu-custom-scripts = super.pkgs.writeShellApplication rec {
     name = "dmenu_selection";
 
@@ -141,7 +124,6 @@ self: super: {
       scripts+=("${super.pkgs.dmenu-custom-scripts-php-version.name}")
       scripts+=("${super.pkgs.dmenu-custom-scripts-composer-version.name}")
       scripts+=("${super.pkgs.dmenu-custom-scripts-xdebug.name}")
-      scripts+=("${super.pkgs.dmenu-custom-scripts-node-version.name}")
 
       OIFS="$IFS" IFS=$'\n'
       scriptsString="''${scripts[*]}"
@@ -170,9 +152,6 @@ self: super: {
         ;;
       "${super.pkgs.dmenu-custom-scripts-xdebug.name}")
         bash "${super.pkgs.dmenu-custom-scripts-xdebug}/bin/${super.pkgs.dmenu-custom-scripts-xdebug.name}" || exit 0
-        ;;
-      "${super.pkgs.dmenu-custom-scripts-node-version.name}")
-        bash "${super.pkgs.dmenu-custom-scripts-node-version}/bin/${super.pkgs.dmenu-custom-scripts-node-version.name}" || exit 0
         ;;
       *)
         exit 0
