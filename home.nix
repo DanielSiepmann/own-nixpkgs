@@ -60,6 +60,11 @@
     pkgs.yamllint
     pkgs.kcachegrind
 
+    # Coding / Neovim
+    # Does not provide any autocompletion yet, don't know why
+    # Use in conjuncion with https://github.com/autozimu/LanguageClient-neovim
+    # pkgs.rnix-lsp
+
     pkgs.custom-customer-project
 
     # Communication
