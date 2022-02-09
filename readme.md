@@ -2,13 +2,11 @@ nixpkgs / nix home-manager
 ==========================
 
 I currently use Ubuntu and installed nix alongside.
-This repository contains my personal ``~/.config/nixpkgs`` folder,
+This repository contains my personal `~/.config/nixpkgs` folder,
 for sharing, inspiration and retrieving feedback.
 
-This includes ``home.nix`` to maintain ``home-manager``,
+This includes `home.nix` to maintain `home-manager`,
 see: https://nix-community.github.io/home-manager/index.html
-
-.. contents:: Table of Contents
 
 Disclaimer
 ----------
@@ -21,55 +19,55 @@ This is not intended to be used by anyone else just by copy and pasting or cloni
 Installation
 ------------
 
-Install (clone) into ``~/.config/nixpkgs``.
+Install (clone) into `~/.config/nixpkgs`.
 
-Install ``home-manager`` see: https://nix-community.github.io/home-manager/index.html
-Execute ``home-manager switch``
+Install `home-manager` see: https://nix-community.github.io/home-manager/index.html
+Execute `home-manager switch`
 
 Usage
 -----
 
-Add packages to ``home.nix`` and run ``home-manager switch``.
+Add packages to `home.nix` and run `home-manager switch`.
 
 Folder structure
 ----------------
 
-The folder ``overlays`` contains overlays for nix itself.
+The folder `overlays` contains overlays for nix itself.
 E.g. alter packages like patching.
 
-The folder ``home`` is related to extras for home-manager.
+The folder `home` is related to extras for home-manager.
 It has the following sub folder:
 
-``home/files``
+`home/files`
    Holds configuration files.
    home-manager doesn't provide modules for all programs.
-   Those files can be added via ``xdg.configFile``.
+   Those files can be added via `xdg.configFile`.
 
-``home/modules``
+`home/modules`
    Holds nix modules.
    Not all programs provide modules out of the box.
    I add my own here, which I might create PRs for in future.
 
-``home/programs``
+`home/programs`
    Holds home-manager `programs.` entries.
    Each file corresponds to a single program.
-   Each file is loaded within ``home.nix``.
+   Each file is loaded within `home.nix`.
 
-``home/services``
+`home/services`
    Holds home-manager `services.` entries.
    Each file corresponds to a single service.
-   Each file is loaded within ``home.nix``.
+   Each file is loaded within `home.nix`.
 
 Update
 ------
 
-The following will update the whole system and clean things up::
+The following will update the whole system and clean things up:
 
-   nix-channel --update \
-      && home-manager switch \
-      && home-manager expire-generations '-30 days' \
-      && nix-env --delete-generations +5 \
-      && nix-store --gc
+    nix-channel --update \
+       && home-manager switch \
+       && home-manager expire-generations '-30 days' \
+       && nix-env --delete-generations +5 \
+       && nix-store --gc
 
 This will update the channel (fetch state of nixpkgs).
 It then will update system.
@@ -82,9 +80,9 @@ Manual changes
 List of manual needed changes for various reasons.
 
 * .desktop files seem not to be supported by home-manager yet.
-  They need to manually be linked, e.g.::
+  They need to manually be linked, e.g.:
 
-     cd ~/.local/share/applications && ln -s ~/.nix-profile/share/applications/* .
+      cd ~/.local/share/applications && ln -s ~/.nix-profile/share/applications/* .
 
 Todos
 -----
@@ -95,7 +93,7 @@ Todos
 
 * Migrate PGP?
 
-   * Right now I've instaled gnupg2, gnupg, gpg on ubuntu
+   * Right now I've installed gnupg2, gnupg, gpg on ubuntu
 
 * Migrate firefox (with geckodriver), thunderbird, ungoogled chromium
 
@@ -104,7 +102,7 @@ Todos
   Most are more or less the same, maybe provide a general flake inside this repo which can be used by projects?
   Also include psysh
 
-* Maybe PR upstream: ``./home/modules/programs/languagetool.nix``.
+* Maybe PR upstream: `./home/modules/programs/languagetool.nix`.
 
 * Migrate other system configurations like keyboard?!
 
