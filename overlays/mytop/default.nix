@@ -15,6 +15,9 @@ self: super: {
     # Didn't find anything relating dbi for perl in nixpks.
     # It self explaines: runs on most Unix systems which have Perl, DBI, and Term::ReadKey installed. And with Term::ANSIColor installed you even get color.
 
+    # Dependencies of ubuntu package:
+    # perl:any, libdbi-perl, libdbd-mysql-perl, libterm-readkey-perl, libconfig-inifiles-perl
+
     outputs = [
       "out"
     ];
