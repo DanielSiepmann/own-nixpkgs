@@ -58,6 +58,10 @@ It has the following sub folder:
    Each file corresponds to a single service.
    Each file is loaded within `home.nix`.
 
+`flakes/`
+    Holds structure with specific flakes.
+    Those should provide libraries and template for development projects.
+
 Update
 ------
 
@@ -98,9 +102,10 @@ Todos
 * Migrate firefox (with geckodriver), thunderbird, ungoogled chromium
 
 * Begin migrating local development to execute php. On a per customer project.
-  Use flakes?
-  Most are more or less the same, maybe provide a general flake inside this repo which can be used by projects?
-  Also include psysh
+
+  * I make use of https://github.com/fossar/nix-phps
+  * `flake.nix` and `flake.lock` need to be checked into a repo … How to handle that if customer doesn't want the file?
+    Maybe symlinks will work, so I've a dedicated repo with the project flakes and link them into project repos?
 
 * Maybe PR upstream: `./home/modules/programs/languagetool.nix`.
 
