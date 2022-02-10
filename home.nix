@@ -61,6 +61,10 @@
     pkgs.yamllint
     pkgs.kcachegrind
 
+    # In order to pull binaries from their.
+    # E.g. phpcs: https://github.com/fossar/nix-phps#how-to-use
+    pkgs.cachix
+
     # Coding / Neovim
     # Does not provide any autocompletion yet, don't know why
     # Use in conjuncion with https://github.com/autozimu/LanguageClient-neovim

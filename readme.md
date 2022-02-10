@@ -103,7 +103,6 @@ Todos
 
 * Begin migrating local development to execute php. On a per customer project.
 
-  * I make use of https://github.com/fossar/nix-phps
   * `flake.nix` and `flake.lock` need to be checked into a repo … How to handle that if customer doesn't want the file?
     Maybe symlinks will work, so I've a dedicated repo with the project flakes and link them into project repos?
 
