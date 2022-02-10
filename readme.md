@@ -71,7 +71,8 @@ The following will update the whole system and clean things up:
        && home-manager switch \
        && home-manager expire-generations '-30 days' \
        && nix-env --delete-generations +5 \
-       && nix-store --gc
+       && nix store gc \
+       && nix store optimise
 
 This will update the channel (fetch state of nixpkgs).
 It then will update system.
@@ -105,6 +106,8 @@ Todos
 
   * `flake.nix` and `flake.lock` need to be checked into a repo … How to handle that if customer doesn't want the file?
     Maybe symlinks will work, so I've a dedicated repo with the project flakes and link them into project repos?
+
+* Migrate home manager to use flake for better rollback support if update breaks something.
 
 * Maybe PR upstream: `./home/modules/programs/languagetool.nix`.
 
