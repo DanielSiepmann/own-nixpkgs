@@ -42,6 +42,7 @@
     pkgs.tree
     pkgs.rst2pdf
 
+    pkgs.borgbackup
     pkgs.keepassxc
 
     # Dev tools
@@ -116,6 +117,8 @@
 
     "i3/config".source = ./home/files/i3;
     "i3blocks/config".source = ./home/files/i3-blocks;
+
+    "borg/exclude".source = ./home/files/borg-exclude;
   };
 
   xdg.desktopEntries.networkmanager-dmenu = {
