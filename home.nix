@@ -104,6 +104,7 @@
   };
 
   home.file = {
+    ".profile".source = ./home/files/profile;
     ".myclirc".source = ./home/files/myclirc;
     ".agignore".source = ./home/files/agignore;
   };

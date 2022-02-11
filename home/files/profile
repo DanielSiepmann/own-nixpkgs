@@ -1,0 +1,8 @@
+if [[ -z $SSH_AGENT_PID ]]; then
+    hash ssh-agent 2> /dev/null && eval $(ssh-agent) > /dev/null
+fi
+
+# "install" nix
+if [ -e /home/daniels/.nix-profile/etc/profile.d/nix.sh ]; then . /home/daniels/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+export LOCALE_ARCHIVE="$(readlink ~/.nix-profile/lib/locale)/locale-archive"
+export NIX_PATH=$HOME/.nix-defexpr/channels

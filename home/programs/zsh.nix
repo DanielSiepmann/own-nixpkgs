@@ -60,22 +60,6 @@
     share = false;
   };
 
-  initExtraBeforeCompInit = ''
-    if [[ -z $SSH_AGENT_PID ]]; then
-        hash ssh-agent 2> /dev/null && eval $(ssh-agent) > /dev/null
-    fi
-
-    # Global composer installed packages.
-    export PATH=~/.composer/vendor/bin:$PATH
-    # Own "binaries" / executables, local to this machine
-    export PATH=~/bin:$PATH
-
-    # "install" nix
-    if [ -e /home/daniels/.nix-profile/etc/profile.d/nix.sh ]; then . /home/daniels/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-    export LOCALE_ARCHIVE="$(readlink ~/.nix-profile/lib/locale)/locale-archive"
-    export NIX_PATH=$HOME/.nix-defexpr/channels
-  '';
-
   initExtra = ''
     autoload -U colors && colors
     autoload -U promptinit
