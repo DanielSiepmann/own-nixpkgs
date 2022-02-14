@@ -111,7 +111,7 @@ self: super: {
     text = builtins.readFile ./xdebug.sh;
   };
 
-  dmenu-custom-scripts = super.pkgs.writeShellApplication rec {
+  dmenu-custom-scripts = super.pkgs.writeShellApplication {
     name = "dmenu_selection";
 
     # TODO: Find way to remove the nix prefixes from "files"

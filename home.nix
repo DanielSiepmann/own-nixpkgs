@@ -96,8 +96,7 @@
       inherit pkgs;
     };
     zsh = import ./home/programs/zsh.nix {
-      inherit config;
-      inherit pkgs;
+      inherit config pkgs;
     };
 
     # Media
