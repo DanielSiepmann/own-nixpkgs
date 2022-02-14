@@ -65,19 +65,8 @@ It has the following sub folder:
 Update
 ------
 
-The following will update the whole system and clean things up:
-
-    nix-channel --update \
-       && home-manager switch \
-       && home-manager expire-generations '-30 days' \
-       && nix-env --delete-generations +5 \
-       && nix store gc \
-       && nix store optimise
-
-This will update the channel (fetch state of nixpkgs).
-It then will update system.
-Delete old generations.
-And run garbage collection.
+Update can be done via `custom-update-system` package which is available within
+the overlay.
 
 Manual changes
 --------------

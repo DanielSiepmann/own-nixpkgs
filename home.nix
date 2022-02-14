@@ -36,6 +36,7 @@
     pkgs.dmenu
     pkgs.networkmanager_dmenu
     pkgs.dmenu-custom-scripts
+    pkgs.custom-update-system
     pkgs.dunst
     pkgs.st
     pkgs.ncdu
