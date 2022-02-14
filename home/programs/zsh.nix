@@ -19,7 +19,6 @@
     LESS = "-R -J -W -i -M";
     LSCOLORS = "HxGxDxDxbxDxDxababcxcx";
     LS_COLORS = "di=1;37:ln=1;36:so=1;33:pi=1;33:ex=31:bd=1;33:cd=1;33:su=30;41:sg=30;41:tw=32:ow=32 # I use this";
-    JQ_COLORS = "1;35:0;35:0;35:0;32:0;33:1;37:1;37";
     GREP_COLOR = "0;30;44";
 
     TYPO3_CONTEXT = "Development/dsiepmann";

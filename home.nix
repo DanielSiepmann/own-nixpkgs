@@ -56,7 +56,6 @@
     pkgs.tig
     pkgs.universal-ctags
     pkgs.silver-searcher
-    pkgs.jq
     pkgs.curl
     pkgs.wget
     pkgs.yamllint
@@ -94,6 +93,9 @@
     };
     tmux = import ./home/programs/tmux.nix {
       inherit pkgs;
+    };
+    jq = import ./home/programs/jq.nix {
+      inherit config;
     };
     zsh = import ./home/programs/zsh.nix {
       inherit config pkgs;
