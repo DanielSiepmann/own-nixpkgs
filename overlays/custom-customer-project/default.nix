@@ -19,7 +19,6 @@ let
     projectRoot="$(pwd)/$1"
     url="https://$domain.$(basename $(pwd) | ${sed} 's/\-//g').localhost/"
     editorPath="$projectRoot"
-    additionalConfiguration="/home/daniels/.dotfiles/configs/php/typo3/AdditionalConfiguration.inc.php"
 
     # Only create session if not already exists
     ${tmux} has-session -t "$session"
@@ -67,7 +66,7 @@ let
 
         # Open Editor
         ${tmux} new-session -s "$session" -n editor -d
-        ${tmux} send-keys " export TYPO3_BASE=$url TYPO3_COMPOSER_AUTOLOAD=1 TYPO3_ADDITIONAL_CONFIGURATION=$additionalConfiguration SOLR_HOST=localhost SOLR_PORT=8983 SOLR_SCHEME=http SOLR_CORE=core_de" C-m
+        ${tmux} send-keys " export TYPO3_BASE=$url TYPO3_COMPOSER_AUTOLOAD=1  SOLR_HOST=localhost SOLR_PORT=8983 SOLR_SCHEME=http SOLR_CORE=core_de" C-m
         if [ "$testingDatabaseName" != "" ]; then
             ${tmux} send-keys " export typo3DatabaseName=$testingDatabaseName typo3DatabaseHost=localhost typo3DatabaseUsername=testing typo3DatabasePassword=testing" C-m
         fi
@@ -85,7 +84,7 @@ let
         ${tmux} new-window -n project -t "$session"
         ${tmux} send-keys -t "$session:$windowId" "cd $editorPath" C-m
         ${tmux} send-keys " renice -n 5 \$\$" C-m
-        ${tmux} send-keys " export TYPO3_BASE=$url TYPO3_COMPOSER_AUTOLOAD=1 TYPO3_ADDITIONAL_CONFIGURATION=$additionalConfiguration SOLR_HOST=localhost SOLR_PORT=8983 SOLR_SCHEME=http SOLR_CORE=core_de" C-m
+        ${tmux} send-keys " export TYPO3_BASE=$url TYPO3_COMPOSER_AUTOLOAD=1 SOLR_HOST=localhost SOLR_PORT=8983 SOLR_SCHEME=http SOLR_CORE=core_de" C-m
         ${tmux} send-keys C-l
         if [ "$testingDatabaseName" != "" ]; then
             ${tmux} send-keys " export typo3DatabaseName=$testingDatabaseName typo3DatabaseHost=localhost typo3DatabaseUsername=testing typo3DatabasePassword=testing" C-m
