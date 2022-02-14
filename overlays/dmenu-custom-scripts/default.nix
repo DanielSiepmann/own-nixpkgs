@@ -86,21 +86,6 @@ self: super: {
     '';
   };
 
-  dmenu-custom-scripts-composer-version = super.pkgs.writeShellApplication {
-    name = "dmenu-custom-scripts-composer-version";
-
-    runtimeInputs = [
-      super.pkgs.dmenu
-    ];
-
-    text = ''
-      chosen=$(echo -e "1\n2\n"| dmenu -i -l 20 -p "$(composer --version)")
-      composer selfupdate --"$chosen"
-      pkill -SIGRTMIN+10 i3blocks
-      notify-send "switching composer version" "$(composer --version)"
-    '';
-  };
-
   dmenu-custom-scripts-xdebug = super.pkgs.writeShellApplication {
     name = "dmenu-custom-scripts-xdebug";
 
@@ -122,7 +107,6 @@ self: super: {
       scripts+=("${super.pkgs.dmenu-custom-scripts-system.name}")
       scripts+=("${super.pkgs.dmenu-custom-scripts-docs-php.name}")
       scripts+=("${super.pkgs.dmenu-custom-scripts-php-version.name}")
-      scripts+=("${super.pkgs.dmenu-custom-scripts-composer-version.name}")
       scripts+=("${super.pkgs.dmenu-custom-scripts-xdebug.name}")
 
       OIFS="$IFS" IFS=$'\n'
@@ -146,9 +130,6 @@ self: super: {
         ;;
       "${super.pkgs.dmenu-custom-scripts-php-version.name}")
         bash "${super.pkgs.dmenu-custom-scripts-php-version}/bin/${super.pkgs.dmenu-custom-scripts-php-version.name}" || exit 0
-        ;;
-      "${super.pkgs.dmenu-custom-scripts-composer-version.name}")
-        bash "${super.pkgs.dmenu-custom-scripts-composer-version}/bin/${super.pkgs.dmenu-custom-scripts-composer-version.name}" || exit 0
         ;;
       "${super.pkgs.dmenu-custom-scripts-xdebug.name}")
         bash "${super.pkgs.dmenu-custom-scripts-xdebug}/bin/${super.pkgs.dmenu-custom-scripts-xdebug.name}" || exit 0
