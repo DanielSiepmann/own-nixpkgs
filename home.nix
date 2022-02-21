@@ -82,6 +82,7 @@
     pkgs.sound-juicer
     pkgs.audacity
     pkgs.ffmpeg
+    pkgs.python39Packages.mutagen
   ];
 
   programs = {
