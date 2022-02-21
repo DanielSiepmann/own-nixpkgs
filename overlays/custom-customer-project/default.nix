@@ -74,7 +74,7 @@ let
         ${tmux} send-keys " cd $editorPath" C-m
         # I guess I don't need that?! The editor doesn't use the database
         if [ "$databaseName" != "" ]; then
-            ${tmux} send-keys " export TYPO3_DATABASE=$databaseName" C-m
+            ${tmux} send-keys "export TYPO3_DATABASE=$databaseName" C-m
         fi
         ${tmux} send-keys C-l
         ${tmux} send-keys " nvim" C-m
@@ -91,10 +91,10 @@ let
             ${tmux} send-keys C-l
         fi
         if [ "$databaseName" != "" ]; then
-            ${tmux} send-keys " export TYPO3_DATABASE=$databaseName" C-m
+            ${tmux} send-keys" export TYPO3_DATABASE=$databaseName" C-m
             ${tmux} send-keys C-l
         else
-            ${tmux} send-keys " export TYPO3_DATABASE="
+            ${tmux} send-keys "export TYPO3_DATABASE="
         fi
         let "windowId+=1"
 
