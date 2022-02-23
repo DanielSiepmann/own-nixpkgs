@@ -43,6 +43,8 @@
     pkgs.tree
     pkgs.rst2pdf
 
+    pkgs.espeak
+
     pkgs.borgbackup
     pkgs.keepassxc
 
