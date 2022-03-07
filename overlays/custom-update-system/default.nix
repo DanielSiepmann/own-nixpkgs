@@ -4,11 +4,6 @@ self: super:
   custom-update-system = super.pkgs.writeShellApplication {
     name = "custom-update-system";
 
-    runtimeInputs = [
-      super.pkgs.nix
-      super.pkgs.home-manager
-    ];
-
     text = ''
       nix-channel --update
       home-manager switch
