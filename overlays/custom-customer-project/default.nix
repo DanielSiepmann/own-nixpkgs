@@ -44,18 +44,6 @@ let
             databaseName=$(basename $projectName)
             databaseName=''${databaseName//-/_}
         fi
-        testingDatabaseName="$(echo $databaseName)_testing"
-
-        if ! mysql -u admin "$databaseName" -e exit > /dev/null 2>&1 ; then
-            databaseName=
-            testingDatabaseName=
-        fi
-        if ! mysql -u admin "$testingDatabaseName" -e exit > /dev/null 2>&1 ; then
-            testingDatabaseName=
-        fi
-        if [ "$testingDatabaseName" == "" ]; then
-            testingDatabaseName="testing"
-        fi
 
         editorPath="$projectRoot"
         if [ -d "$projectRoot/project" ]; then
@@ -67,9 +55,7 @@ let
         # Open Editor
         ${tmux} new-session -s "$session" -n editor -d
         ${tmux} send-keys " export TYPO3_BASE=$url TYPO3_COMPOSER_AUTOLOAD=1  SOLR_HOST=localhost SOLR_PORT=8983 SOLR_SCHEME=http SOLR_CORE=core_de" C-m
-        if [ "$testingDatabaseName" != "" ]; then
-            ${tmux} send-keys " export typo3DatabaseName=$testingDatabaseName typo3DatabaseHost=localhost typo3DatabaseUsername=testing typo3DatabasePassword=testing" C-m
-        fi
+          ${tmux} send-keys " export typo3DatabaseName=testing typo3DatabaseHost=localhost typo3DatabaseUsername=testing typo3DatabasePassword=testing" C-m
         ${tmux} send-keys " renice -n 5 \$\$" C-m
         ${tmux} send-keys " cd $editorPath" C-m
         # I guess I don't need that?! The editor doesn't use the database
@@ -85,11 +71,8 @@ let
         ${tmux} send-keys -t "$session:$windowId" "cd $editorPath" C-m
         ${tmux} send-keys " renice -n 5 \$\$" C-m
         ${tmux} send-keys " export TYPO3_BASE=$url TYPO3_COMPOSER_AUTOLOAD=1 SOLR_HOST=localhost SOLR_PORT=8983 SOLR_SCHEME=http SOLR_CORE=core_de" C-m
+        ${tmux} send-keys " export typo3DatabaseName=testing typo3DatabaseHost=localhost typo3DatabaseUsername=testing typo3DatabasePassword=testing" C-m
         ${tmux} send-keys C-l
-        if [ "$testingDatabaseName" != "" ]; then
-            ${tmux} send-keys " export typo3DatabaseName=$testingDatabaseName typo3DatabaseHost=localhost typo3DatabaseUsername=testing typo3DatabasePassword=testing" C-m
-            ${tmux} send-keys C-l
-        fi
         if [ "$databaseName" != "" ]; then
             ${tmux} send-keys" export TYPO3_DATABASE=$databaseName" C-m
             ${tmux} send-keys C-l
@@ -108,7 +91,7 @@ let
         ${tmux} select-pane -t 0
 
         # Connect to MySQL
-        if [ "$databaseName" != "" ] || [ "$testingDatabaseName" != "" ]; then
+        if [ "$databaseName" != "" ]; then
             ${tmux} new-window -n database -t "$session"
             ${tmux} send-keys -t "$session:$windowId" "cd $editorPath" C-m
             ${tmux} send-keys " renice -n 5 \$\$" C-m
@@ -119,14 +102,6 @@ let
                 ${tmux} send-keys " ${mycli} -u admin -D "
             fi
             ${tmux} send-keys C-l
-
-            if [ "$testingDatabaseName" != "" ]; then
-                ${tmux} split-window
-                ${tmux} send-keys " cd $editorPath" C-m
-                ${tmux} send-keys " renice -n 5 \$\$" C-m
-                ${tmux} send-keys " ${mycli} -u admin -D $testingDatabaseName" C-m
-                ${tmux} send-keys C-l
-            fi
 
             ${tmux} select-pane -t 0
             let "windowId+=1"
