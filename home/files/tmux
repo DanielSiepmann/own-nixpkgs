@@ -14,24 +14,18 @@ set -g renumber-windows on
 # v starts a selection and y finishes it in the same way that Space and Enter do, more like Vim:
 # bind-key -t vi-copy 'v' begin-selection
 # bind-key -t vi-copy 'y' copy-selection
-# allow to copy to system clipboard with enter
-bind -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel "xsel -i --clipboard"
+bind-key -N "Copy to system clipboard with enter" -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel "xsel -i --clipboard"
 # Use hjkl to switch between panes: http://stackoverflow.com/questions/16373859/why-tmux-panel-switch-is-vim-likehow-to-change#answer-18942253
 
-bind-key | kill-session
-# Respawn the pane, kill running process and restart
-bind-key R respawn-pane -k
-# Senct CTRL+c, clear history for bash and tmux
-bind-key C-c send-keys clear C-m \; clear-history \; display "Cleared pane + history!"
+bind-key -N "Kill current session" | kill-session
+bind-key -N "Respawn the pane, kill running process and restart" R respawn-pane -k
+bind-key -N "Send CTRL+c, clear history for bash and tmux" C-c send-keys clear C-m \; clear-history \; display "Cleared pane + history!"
 
-# split window and fix path
-bind % split-window -h -c "#{pane_current_path}"
+bind-key -N "Split window horizontal" % split-window -h -c "#{pane_current_path}"
 # Find how to remap double quote sign
-bind '"' split-window -v -c "#{pane_current_path}"
-# Switch to last session
-bind -r \\ switch-client -l
-# Switch to last window
-bind -r ] select-window -t :!
+bind-key -N "Split window vertical" '"' split-window -v -c "#{pane_current_path}"
+bind-key -N "Switch to last session" -r \\ switch-client -l
+bind-key -N "Switch to last window" -r ] select-window -t :!
 
 # Define update interval of status line
 set -g status-interval 30
