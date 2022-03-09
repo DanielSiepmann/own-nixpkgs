@@ -14,7 +14,8 @@
 
   # Use tmux with 256 colors.
   # Also see https://github.com/neovim/neovim/wiki/FAQ#colors-arent-displayed-correctly
-  terminal = "tmux-256color";
+  # Use screen instead of tmux as some tools might not be aware of tmux
+  terminal = "screen-256color";
 
   shell = "${pkgs.zsh}/bin/zsh";
 
