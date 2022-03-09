@@ -44,6 +44,7 @@
     pkgs.rst2pdf
 
     pkgs.espeak
+    pkgs.bc
 
     pkgs.borgbackup
     pkgs.keepassxc
