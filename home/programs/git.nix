@@ -102,10 +102,6 @@
       defaultBranch = "main";
     };
 
-    diff = {
-      tool = toString pkgs.xxdiff + "/bin/xxdiff";
-    };
-
     merge = {
       ff = true;
       tool = "nvimdiff4";
