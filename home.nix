@@ -78,6 +78,7 @@
     # Communication
     pkgs.signal-desktop
     pkgs.mattermost-desktop
+    pkgs.thunderbird
 
     # Media
     pkgs.vlc
