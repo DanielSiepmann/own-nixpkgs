@@ -106,6 +106,10 @@
       inherit config pkgs;
     };
 
+    firefox = import ./home/programs/firefox.nix {
+      inherit pkgs;
+    };
+
     # Media
     cmus.enable = true;
   };

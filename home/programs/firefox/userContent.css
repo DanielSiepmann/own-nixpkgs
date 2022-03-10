@@ -1,0 +1,47 @@
+/* @-moz-document regexp("https://twitter.com/.*") { */
+@-moz-document url("about:newtab") {
+    body {
+        background-color: #2E3436 !important;
+    }
+}
+@-moz-document url("about:blank") {
+    body {
+        background-color: #2E3436 !important;
+    }
+}
+@-moz-document domain(drewdevault.com) {
+    body {
+        color: #d3d7cf;
+    }
+}
+@-moz-document domain(xdebug.org) {
+    body {
+        color: black;
+        background: white;
+    }
+}
+@-moz-document domain(mongoosejs.com) {
+    body {
+        background: white;
+    }
+}
+@-moz-document domain(docs.npmjs.com) {
+    body {
+        background: white;
+    }
+}
+@-moz-document domain(laravel.com) {
+    body {
+        background: white;
+    }
+}
+@-moz-document domain(solr-hosting.info) {
+    body {
+        background: white;
+    }
+}
+@-moz-document domain(solr.localhost) {
+    body {
+        background: white;
+    }
+}
