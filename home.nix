@@ -49,6 +49,8 @@
     pkgs.borgbackup
     pkgs.keepassxc
 
+    pkgs.chromium
+
     # Dev tools
     pkgs.litecli
     pkgs.sqlite
@@ -64,6 +66,7 @@
     pkgs.yamllint
     pkgs.kcachegrind
     pkgs.geckodriver
+    pkgs.chromedriver
 
     # In order to pull binaries from their.
     # E.g. phpcs: https://github.com/fossar/nix-phps#how-to-use
