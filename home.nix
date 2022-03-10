@@ -63,6 +63,7 @@
     pkgs.wget
     pkgs.yamllint
     pkgs.kcachegrind
+    pkgs.geckodriver
 
     # In order to pull binaries from their.
     # E.g. phpcs: https://github.com/fossar/nix-phps#how-to-use
