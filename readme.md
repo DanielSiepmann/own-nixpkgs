@@ -78,6 +78,10 @@ List of manual needed changes for various reasons.
 
       cd ~/.local/share/applications && ln -s ~/.nix-profile/share/applications/* .
 
+  Or link whole folder:
+
+      cd ~/.local/share && ln -s ~/.nix-profile/share/applications
+
 Todos
 -----
 

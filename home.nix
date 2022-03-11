@@ -87,7 +87,8 @@
     # Media
     pkgs.vlc
     pkgs.yt-dlp
-    pkgs.sound-juicer
+    # Does not work for some reason, need installed via apt
+    # pkgs.sound-juicer
     pkgs.audacity
     pkgs.ffmpeg
     pkgs.python39Packages.mutagen
