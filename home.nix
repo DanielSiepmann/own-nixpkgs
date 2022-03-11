@@ -95,6 +95,9 @@
   ];
 
   programs = {
+    neovim = import ./home/programs/neovim.nix {
+      inherit pkgs;
+    };
     git = import ./home/programs/git.nix {
       inherit pkgs;
     };
