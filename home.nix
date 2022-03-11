@@ -69,7 +69,7 @@
     pkgs.chromedriver
 
     # In order to pull binaries from their.
-    # E.g. phpcs: https://github.com/fossar/nix-phps#how-to-use
+    # E.g. phps: https://github.com/fossar/nix-phps#how-to-use
     pkgs.cachix
 
     # Coding / Neovim
