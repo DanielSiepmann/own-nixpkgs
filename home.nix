@@ -142,15 +142,47 @@
     "borg/exclude".source = ./home/files/borg-exclude;
   };
 
-  xdg.desktopEntries.networkmanager-dmenu = {
-    type = "Application";
-    exec = "${pkgs.networkmanager_dmenu}/bin/networkmanager_dmenu";
-    name = "Networkmanager dmenu";
-    comment = "Networkmanaging using dmenu";
-    genericName = "Networkmanager Setting";
-    categories = [
-      "Network"
-    ];
+  xdg.desktopEntries = {
+    networkmanager-dmenu = {
+      type = "Application";
+      exec = "${pkgs.networkmanager_dmenu}/bin/networkmanager_dmenu";
+      name = "Networkmanager dmenu";
+      comment = "Networkmanaging using dmenu";
+      genericName = "Networkmanager Setting";
+      categories = [
+        "Network"
+      ];
+    };
+    slack-typo3 = {
+      name = "Slack TYPO3";
+      type = "Application";
+      exec = "${pkgs.chromium}/bin/chromium-browser --class=\"chat\" --new-window --app=https://app.slack.com/client/T024TUMLZ/unreads";
+    };
+    slack-codappix = {
+      name = "Slack Codappix";
+      type = "Application";
+      exec = "${pkgs.chromium}/bin/chromium-browser --class=\"chat\" --new-window --app=https://app.slack.com/client/T2DPNS55W/unreads";
+    };
+    slack-sac = {
+      name = "Slack SAC";
+      type = "Application";
+      exec = "${pkgs.chromium}/bin/chromium-browser --class=\"chat\" --new-window --app=https://app.slack.com/client/T3FANTPL5/unreads";
+    };
+    microsoft-teams = {
+      name = "Microsoft Teams";
+      type = "Application";
+      exec = "${pkgs.chromium}/bin/chromium-browser --class=\"chat\" --new-window --user-agent=\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36\" --new-window --app=https://teams.microsoft.com/";
+    };
+    toggl = {
+      name = "Toggl Time Tracking";
+      type = "Application";
+      exec = "${pkgs.firefox}/bin/firefox --class=\"time-tracking\" --new-instance -P toggl https://track.toggl.com/timer";
+    };
+    mailhog-ui = {
+      name = "Mailhog";
+      type = "Application";
+      exec = "${pkgs.firefox}/bin/firefox --class=\"mailhog\" --new-instance -P mailhog https://mailhog.localhost";
+    };
   };
 
   services.dunst = import ./home/services/dunst.nix;

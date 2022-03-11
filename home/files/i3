@@ -110,22 +110,12 @@ for_window [window_type="dialog"] sticky enable
 # As well as keepass, in order to make it easier usable side by side
 for_window [class="KeePassXC"] sticky enable floating enable
 
-assign [class="^node-debugger$"] 1
-
-assign [class="^toggl$"] 2:💶
+assign [class="^time-tracking$"] 2:💶
 assign [class="^mailhog$"] 2:💶
-assign [class="^sentry$"] 2:💶
 assign [class="^Firefox$"] 2:💶
 
-assign [class="^Slack$"] 3:💬
-assign [class="^slack-.*"] 3:💬
-assign [class="^whatsapp$"] 3:💬
+assign [class="^chat$"] 3:💬
 assign [class="^Signal$"] 3:💬
-assign [class="^teams-.*"] 3:💬
-assign [class="^mattermost-.*$"] 3:💬
-assign [class="^mattermost$"] 3:💬
-assign [class="^Mattermost$"] 3:💬
-assign [class="^jitsi-.*$"] 3:💬
 
 assign [class="^Thunderbird$"] 4:✉️
 
@@ -134,9 +124,6 @@ for_window [class="^vlc$"] border none
 assign [class="^Pavucontrol$"] 5:🎵
 assign [class="^Audacity$"] 5:🎵
 assign [class="^gplay-music$"] 5:🎵
-
-# TODO: Use some more specific, to only fetch testing instances?
-assign [class="^Chromium-browser$"] 8
 
 # switch to workspace
 bindsym $mod+1 workspace 1

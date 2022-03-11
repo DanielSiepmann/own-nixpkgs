@@ -1,0 +1,7 @@
+/*
+ * Important: use "visibility: collapse" instead of "display: none".
+ * I do not know why, but display: none will hide the whole content of the frame.
+ */
+#navigator-toolbox-background {
+    visibility: collapse !important;
+}

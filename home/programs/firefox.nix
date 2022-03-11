@@ -4,6 +4,7 @@
   enable = true;
 
   # https://rycee.gitlab.io/home-manager/options.html#opt-programs.firefox.profiles
+  # https://github.com/pyllyukko/user.js
 
   profiles = {
     default = {
@@ -40,6 +41,8 @@
         "browser.urlbar.showSearchSuggestionsFirst" = false;
         "browser.urlbar.suggest.openpage" = false;
         "browser.urlbar.timesBeforeHidingSuggestionsHint" = 0;
+
+        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
 
         "browser.anchor_color" = "#77dfd8";
         "browser.visited_color" = "#c8a0d1";
@@ -154,6 +157,24 @@
         "security.disable_button.openDeviceManager" = false;
       };
       userContent = pkgs.lib.fileContents ./firefox/userContent.css;
+    };
+    toggl = {
+      name = "toggl";
+      id = 1;
+      isDefault = false;
+      userChrome = pkgs.lib.fileContents ./firefox/kioskLikeUserChrome.css;
+      settings = {
+        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+      };
+    };
+    mailhog = {
+      name = "mailhog";
+      id = 2;
+      isDefault = false;
+      userChrome = pkgs.lib.fileContents ./firefox/kioskLikeUserChrome.css;
+      settings = {
+        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+      };
     };
   };
 }

@@ -89,8 +89,6 @@ Todos
 
    * Right now I've installed gnupg2, gnupg, gpg on ubuntu
 
-* Migrate ungoogled chromium
-
 * Migrate home manager to use flake for better rollback support if update breaks something.
 
 * Maybe PR upstream: `./home/modules/programs/languagetool.nix`.
