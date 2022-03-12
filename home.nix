@@ -126,7 +126,7 @@
   };
 
   xdg.configFile = {
-    "ctags/config".source = ./home/files/ctags;
+    "ctags/config.ctags".source = ./home/files/ctags;
     "litecli/config".source = ./home/files/litecli;
     "phpactor/phpactor.yml".source = ./home/files/phpactor.yml;
     "tig/config".source = ./home/files/tig;
