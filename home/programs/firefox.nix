@@ -129,6 +129,7 @@
 
         "browser.contentblocking.category" = "custom";
         "browser.contentblocking.customBlockList.preferences.ui.enabled" = true;
+        "urlclassifier.trackingTable" = "moztest-track-simple,ads-track-digest256,social-track-digest256,analytics-track-digest256,content-track-digest256";
         "browser.safebrowsing.downloads.remote.enabled" = false;
         "browser.urlbar.speculativeConnect.enabled" = false;
         "datareporting.healthreport.uploadEnabled" = false;
