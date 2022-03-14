@@ -177,7 +177,7 @@ in {
     sqlparse
   ]);
 
-  plugins = [
+  plugins = with pkgs.vimPlugins; [
 
     # My own plugins
 
@@ -190,12 +190,12 @@ in {
     # More UI related
 
     {
-      plugin = pkgs.vimPlugins.nerdtree;
+      plugin = nerdtree;
       config = pkgs.lib.fileContents ./neovim/plugins/nerdtree.vim;
     }
 
     {
-      plugin = pkgs.vimPlugins.undotree;
+      plugin = undotree;
       config = pkgs.lib.fileContents ./neovim/plugins/undotree.vim;
     }
 
@@ -208,7 +208,7 @@ in {
     }
 
     {
-      plugin = pkgs.vimPlugins.ctrlp-vim;
+      plugin = ctrlp-vim;
       config = pkgs.lib.fileContents ./neovim/plugins/ctrlp.vim;
     }
 
@@ -228,16 +228,16 @@ in {
     diff-fold
 
     {
-      plugin = pkgs.vimPlugins.vim-snipmate;
+      plugin = vim-snipmate;
       config = ''
         let g:snipMate = { 'snippet_version' : 0 }
       '';
     }
 
-    pkgs.vimPlugins.vim-fugitive
-    pkgs.vimPlugins.vim-commentary
-    pkgs.vimPlugins.vim-indent-object
-    pkgs.vimPlugins.vim-textobj-comment
+    vim-fugitive
+    vim-commentary
+    vim-indent-object
+    vim-textobj-comment
 
     {
       plugin = vdebug;
@@ -262,23 +262,23 @@ in {
     # More related to testing, linting, …
 
     {
-      plugin = pkgs.vimPlugins.ale;
+      plugin = ale;
       config = pkgs.lib.fileContents ./neovim/plugins/ale.vim;
     }
 
     {
-      plugin = pkgs.vimPlugins.syntastic;
+      plugin = syntastic;
       config = pkgs.lib.fileContents ./neovim/plugins/syntastic.vim;
     }
 
     {
-      plugin = pkgs.vimPlugins.vim-test;
+      plugin = vim-test;
       config = pkgs.lib.fileContents ./neovim/plugins/test.vim;
     }
 
     # Dependencies for other plugins
 
-    pkgs.vimPlugins.vim-addon-mw-utils
-    pkgs.vimPlugins.vim-textobj-user
+    vim-addon-mw-utils
+    vim-textobj-user
   ];
 }
