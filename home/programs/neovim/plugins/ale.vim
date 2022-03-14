@@ -2,9 +2,11 @@ let g:ale_set_quickfix = 0
 let g:ale_set_loclist = 1
 let g:ale_set_highlights = 1
 let g:ale_set_signs = 1
-let g:ale_echo_cursor = 1
-let g:ale_virtualtext_cursor = 1
+let g:ale_sign_column_always = 1
+let g:ale_echo_cursor = 0
+let g:ale_hover_cursor = 0
 let g:ale_cursor_detail = 0
+let g:ale_virtualtext_cursor = 1
 let g:ale_virtualtext_prefix = "! "
 
 " Does not work with 3.0.0 and newer, due to:
