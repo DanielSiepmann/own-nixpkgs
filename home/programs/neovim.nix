@@ -226,7 +226,7 @@ in {
     {
       plugin = pkgs.vimPlugins.vim-snipmate;
       config = ''
-        let g:snipMate = { 'snippet_version' : 1 }
+        let g:snipMate = { 'snippet_version' : 0 }
       '';
     }
 
