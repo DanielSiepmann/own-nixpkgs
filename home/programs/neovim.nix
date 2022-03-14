@@ -157,7 +157,6 @@ in {
     ./neovim/init.vim
 
     ./neovim/config/functions.vim
-    ./neovim/config/grepping.vim
     ./neovim/config/indentation.vim
     ./neovim/config/mappings.vim
     ./neovim/config/searching.vim
