@@ -173,6 +173,10 @@ in {
     ./neovim/config/folderspecific/reuter.vim
   ];
 
+  extraPython3Packages = (ps: with ps; [
+    sqlparse
+  ]);
+
   plugins = [
 
     # My own plugins
