@@ -60,3 +60,7 @@ set wildignore+=*/uploads
 " Symfony
 set wildignore+=*/app/cache
 set wildignore+=*__CG__*
+
+" Customer specifics
+set wildignore+=*/typo3conf/ext/e2_*/*
+set wildignore+=*/imgserver/*
