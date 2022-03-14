@@ -267,11 +267,6 @@ in {
     }
 
     {
-      plugin = syntastic;
-      config = pkgs.lib.fileContents ./neovim/plugins/syntastic.vim;
-    }
-
-    {
       plugin = vim-test;
       config = pkgs.lib.fileContents ./neovim/plugins/test.vim;
     }
