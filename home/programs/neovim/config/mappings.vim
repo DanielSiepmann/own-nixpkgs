@@ -13,6 +13,7 @@ nnoremap <leader>nh :nohlsearch<cr>
 nnoremap <leader>p :CtrlP<cr>
 nnoremap <leader>l :CtrlPBuffer<cr>
 nnoremap <leader>r :CtrlPBufTag<cr>
+nnoremap <silent> <leader>c :call CtrlPCurrentComposerPackage()<cr>
 
 nnoremap <leader>k :NERDTreeToggle<cr>
 nnoremap <leader>f :NERDTreeFind<cr>
