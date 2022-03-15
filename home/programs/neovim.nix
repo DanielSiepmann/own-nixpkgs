@@ -150,6 +150,19 @@ let
     };
   };
 
+  test = pkgs.vimUtils.buildVimPlugin {
+    name = "test";
+    src = pkgs.fetchFromGitHub {
+      owner = "vim-test";
+      repo = "vim-test";
+      rev = "16a3b6da1bab42473d42d7e02d89d549d7a5e138";
+      sha256 = "CVSTy/FeBgyzRK8NWDMiIynz7DRlFenruiCOjowYnMI=";
+    };
+    patches = [
+      ./neovim/patches/disable_test_paratest.patch
+    ];
+  };
+
 in {
   enable = true;
 
@@ -269,7 +282,7 @@ in {
     }
 
     {
-      plugin = vim-test;
+      plugin = test;
       config = pkgs.lib.fileContents ./neovim/plugins/test.vim;
     }
 
