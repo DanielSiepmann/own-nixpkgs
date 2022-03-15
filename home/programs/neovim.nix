@@ -4,11 +4,7 @@ let
 
   configuration = pkgs.vimUtils.buildVimPlugin {
     name = "configuration";
-    src = pkgs.fetchgit {
-      url = "https://gitea.daniel-siepmann.de/danielsiepmann/vim-configuration.git";
-      rev = "53736aec92e92dc600694e90de9a8b7dabc90dd0";
-      sha256 = "9hRXvgtKknFd4Rng+BsedJvwU7sFBDLZmSEGteMroGc=";
-    };
+    src = ./neovim/configuration;
   };
 
   colorscheme-smyckblue = pkgs.vimUtils.buildVimPlugin {
