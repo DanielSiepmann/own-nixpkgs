@@ -2,6 +2,9 @@
 
 let
 
+  # The folder contains the expected `~/.config/nvim/` structure
+  # This structure is the same for plugins.
+  # I therefore just load this folder as plugin.
   configuration = pkgs.vimUtils.buildVimPlugin {
     name = "configuration";
     src = ./neovim/configuration;
@@ -161,6 +164,7 @@ in {
   ];
 
   extraPython3Packages = (ps: with ps; [
+    # Dependency of sqlformat
     sqlparse
   ]);
 
@@ -215,6 +219,7 @@ in {
 
     {
       plugin = vim-snipmate;
+      # I didn't migrate snippets to new format, yet.
       config = ''
         let g:snipMate = { 'snippet_version' : 0 }
       '';
