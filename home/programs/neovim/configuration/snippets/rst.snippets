@@ -1,0 +1,108 @@
+snippet post
+	.. post:: `strftime("%b %d, %Y")`
+	   :tags: ${2}
+	   :excerpt: 2
+	
+	${1:Title}
+	=========
+	
+	Further reading
+	---------------
+	
+snippet filetoc
+	.. raw:: pdf
+	
+	   PageBreak oneColumn
+	
+	.. contents::
+	
+	.. raw:: pdf
+	
+	   PageBreak oneColumn
+
+snippet filefooter
+	.. Some meta configuration for the document
+	
+	.. |date| date:: %d.%m.%Y
+	.. |time| date:: %H:%M
+	
+	.. section-numbering::
+	
+	.. footer::
+	
+	   ###Page### / ###Total###
+	
+	.. vi: spelllang=de
+
+snippet contents
+	.. contents::
+	   :local:
+
+snippet toc
+	.. toctree::
+
+	   Subfolder/index
+
+snippet label
+	.. _${0}:
+
+snippet note
+	.. note::
+	
+	   ${0}
+
+snippet see
+	.. seealso::
+	
+	   ${0}
+
+snippet admo
+	.. ${1:attention, caution, danger, error, hint, important, note, tip, warning, admonition, title}::
+	
+	   ${0}
+
+snippet todo
+	.. todo:: ${0}
+
+snippet include
+	.. literalinclude:: /Includes.txt${0}
+
+snippet sidebar
+	.. sidebar:: ${0}
+
+snippet figure
+	.. figure:: /Images/${1:1-Installation/figure-1-2.png}
+	   :align: center
+
+	   ${2:Figure 1-2: The autocompletion feature will show you possible class names}
+snippet file
+	.. _${1:refLabel}:
+
+	${2:heading}
+	=====
+	
+	$0
+
+snippet codeinclude
+	.. literalinclude:: ${1:filename}
+	   :language: ${2:php}
+	   :emphasize-lines: 12,15-18
+	   :linenos:
+
+snippet code
+	.. code-block:: ${1:php}
+	   :linenos:
+
+	   ${0}
+
+snippet youtube
+	.. youtube:: ${1:videoHash}
+
+snippet index
+	.. index::
+	   single: ${1:indexWord}
+
+snippet option
+	.. option:: ${1:optionName}
+
+	   $0

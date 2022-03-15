@@ -1,0 +1,56 @@
+snippet file Insert Fluid Template File with Namespace
+	<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+		data-namespace-typo3-fluid="true">
+		${0}
+	</html>
+snippet falias
+	<f:alias map="${1}">
+		${0}
+	</f:alias>
+snippet ftrans
+	{f:translate(id: '${1}')}
+snippet fdebug
+	<f:debug>${1:{_all}}</f:debug>${2}
+snippet fcomment
+	<f:comment>
+		${0}
+	</f:comment>
+snippet finput
+	<f:form.${1:textfield} property="${2}" />
+snippet fselect
+	<f:form.select name="${1:name}" options="${2:{variable}}" />${3}
+snippet furiresource
+	{f:uri.resource(path: '${1}')}
+snippet fsubmit
+	<f:form.submit value="${1:value}" />${3}
+snippet fform
+	<f:form action="${1}">
+		${2}
+	</f:form>
+snippet fif
+	<f:if condition="${1}">
+		<f:then>
+			${2}
+		</f:then>
+		<f:else>
+			${3}
+		</f:else>
+	</f:if>
+snippet ffor
+	<f:for each="${1}" as="${2}">
+		${3}
+	</f:for>
+snippet flayout
+	{f:layout(name: '${0}')}
+snippet frender
+	{f:render(${1:section}: '${0}', arguments: _all)}
+snippet fcobject
+	{f:cObject(typoscriptObjectPath: '${0}', ${1:data: ''})}
+snippet fsection
+	<f:section name="${1}">
+		${2}
+	</f:section>
+snippet import
+	{namespace ${1}=${2:TYPO3\Fluid}\ViewHelpers}
+snippet cdata
+	<![CDATA[$0]]>

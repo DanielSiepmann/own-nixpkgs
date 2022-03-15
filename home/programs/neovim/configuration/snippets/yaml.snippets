@@ -1,0 +1,17 @@
+snippet file
+	services:
+	  _defaults:
+	    autowire: true
+	    autoconfigure: true
+	    public: false
+	
+	  DanielSiepmann\DsSite\:
+	    resource: '../Classes/*'
+	
+	  DanielSiepmann\DsSite\Frontend\DataProcessing\:
+	    resource: '../Classes/Frontend/DataProcessing/*'
+
+snippet basevariant
+	  -
+	    base: '%env("TYPO3_BASE")%'
+	    condition: 'getenv("TYPO3_BASE")'

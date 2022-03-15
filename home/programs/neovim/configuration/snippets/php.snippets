@@ -1,0 +1,309 @@
+snippet t3de Insert TYPO3 Extbase var_dump
+	\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump(${1:debug_backtrace()}, '$1', 8, ${2:true});${3:die;}${4}
+
+snippet additionalconf
+	if (getenv('TYPO3_ADDITIONAL_CONFIGURATION')) {
+	    require_once getenv('TYPO3_ADDITIONAL_CONFIGURATION');
+	}
+
+snippet xdebug
+	\xdebug_break();
+
+snippet t3sqlde
+	\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Database\ConnectionPool::class)
+		->getConnectionByName('Default')
+		->getConfiguration()
+		->setSQLLogger(new class implements \Doctrine\DBAL\Logging\SQLLogger {
+			public function startQuery($sql, ?array $params = null, ?array $types = null) {
+				\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($sql, 'sql', 8, false);
+				\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($params, 'params', 8, false);
+				\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($types, 'types', 8, false);
+			}
+			public function stopQuery() { }
+		});
+
+snippet declare_strict
+	declare(strict_types=1);
+
+snippet t3log
+	\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Log\LogManager::class)
+	    ->getLogger('das')
+	    ->debug('DAS', [${1}]);
+
+snippet t3mem
+	\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\CMS\Core\Log\LogManager')
+	->getLogger('das')
+	->debug('memory stats ${1}', [
+	    'memory_get_usage' => \TYPO3\CMS\Core\Utility\GeneralUtility::formatSize(memory_get_usage()),
+	    'memory_get_peak_usage' => \TYPO3\CMS\Core\Utility\GeneralUtility::formatSize(memory_get_peak_usage()),
+	]);
+
+snippet throw
+	throw new \Exception('${1:message}', `system('date +%s')`);
+
+snippet t3devlog
+	\TYPO3\CMS\Core\Utility\GeneralUtility::devLog('${1:message}', '${2:ds}', ${3:0}, ${4:[]});
+
+snippet construct
+	public function __construct(
+		${0}
+	) {
+	}
+
+snippet sfile
+	<?php
+
+	declare(strict_types=1);
+
+	namespace `expand('%:h:gs?src/??:gs?/?\\\?')`;
+
+	/**
+	 * Class `expand('%:t:s?.php??')`
+	 * @package `expand('%:h:gs?src/??:gs?/?\\\?')`
+	 */
+	class `expand('%:t:s?.php??')`
+	{
+	    ${0}
+	}
+
+snippet lfile
+	<?php
+
+	namespace `expand('%:h:gs?/?\\?:s?.?\u&?')`;
+
+	/**
+	 *
+	 */
+	class ${1:`expand('%:t:s?.php??')`}
+	{
+		${2}
+	}
+
+snippet lseedfile
+	<?php
+
+	use Illuminate\Database\Eloquent\Factory;
+	use Illuminate\Database\Seeder;
+	use Illuminate\Support\Facades\DB;
+	use App\\`expand('%:t:r:s?Seeder??')`;
+
+	class `expand('%:t:r')` extends Seeder
+	{
+		public function run(Factory $factory)
+		{
+			$factory->create(`expand('%:t:r:s?Seeder??')`::class, 50)->each(function ($`expand('%:t:r:s?Seeder??:s?.?\l&?')`) use ($factory) {
+				// $`expand('%:t:r:s?Seeder??:s?.?\l&?')`->posts()->save($factory->make(\App\Post::class));
+			});
+		}
+	}
+
+snippet t3file
+	<?php
+
+	declare(strict_types=1);
+
+	/*
+	 * Copyright (C) `system('date +%Y')` `system('git config --get user.name')` <`system('git config --get user.email')`>
+	 *
+	 * This program is free software; you can redistribute it and/or
+	 * modify it under the terms of the GNU General Public License
+	 * as published by the Free Software Foundation; either version 2
+	 * of the License, or (at your option) any later version.
+	 *
+	 * This program is distributed in the hope that it will be useful,
+	 * but WITHOUT ANY WARRANTY; without even the implied warranty of
+	 * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+	 * GNU General Public License for more details.
+	 *
+	 * You should have received a copy of the GNU General Public License
+	 * along with this program; if not, write to the Free Software
+	 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+	 * 02110-1301, USA.
+	 */
+
+	namespace DanielSiepmann`expand('%:h:s?.*ext/??:s?Classes/??:s?local_packages/??:s?localPackages/??:s?packages/??:s?.*_?\u&?:gs?_.?\U&?:gs?_??:gs?/?\\\?:s??\\\?')`;
+
+	class ${1:`expand('%:t:s?.php??')`}
+	{
+		${2}
+	}
+
+snippet localconf
+	<?php
+
+	(function ($extensionKey) {
+		${0}
+	})('${1:}');
+
+snippet file
+	<?php
+
+	declare(strict_types=1);
+
+	/*
+	 * Copyright (C) `system('date +%Y')` `system('git config --get user.name')` <`system('git config --get user.email')`>
+	 *
+	 * This program is free software; you can redistribute it and/or
+	 * modify it under the terms of the GNU General Public License
+	 * as published by the Free Software Foundation; either version 2
+	 * of the License, or (at your option) any later version.
+	 *
+	 * This program is distributed in the hope that it will be useful,
+	 * but WITHOUT ANY WARRANTY; without even the implied warranty of
+	 * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+	 * GNU General Public License for more details.
+	 *
+	 * You should have received a copy of the GNU General Public License
+	 * along with this program; if not, write to the Free Software
+	 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+	 * 02110-1301, USA.
+	 */
+
+	namespace DanielSiepmann`expand('%:h:s?Classes/??:s?.*_?\u&?:gs?_.?\U&?:gs?_??:gs?/?\\\?:s??\\\?')`;
+
+	class ${1:`expand('%:t:s?.php??')`} extends ${2} implements ${3}
+	{
+		${4}
+	}
+
+snippet stestfile
+	<?php
+	declare(strict_types=1);
+
+	namespace `expand('%:h:gs?src/??:gs?/?\\\?')`;
+
+	use PHPUnit\Framework\TestCase;
+
+	/**
+	 * Tests `expand('%:t:s?.php??')`
+	 * @package `expand('%:h:gs?src/??:gs?/?\\\?')`
+	 */
+	class `expand('%:t:s?.php??')` extends TestCase
+	{
+		/**
+		 * @test
+		 */
+		public function ${0}()
+		{
+		    
+		}
+	}
+
+snippet ltestfile
+	<?php
+
+	namespace `expand('%:h:gs?/?\\?:s?.?\u&?')`;
+
+	use Illuminate\Database\Eloquent\Factory;
+	use Illuminate\Foundation\Testing\RefreshDatabase;
+	use Tests\TestCase;
+
+	class ${1:`expand('%:t:s?.php??')`} extends TestCase
+	{
+	    use RefreshDatabase;
+
+	    /**
+	     * @var 
+	     */
+	    protected $subject;
+
+	    public function setUp()
+	    {
+	        parent::setUp();
+
+	        $this->subject = $this->app->make(::class);
+	    }
+	    ${4}
+	}
+
+snippet testfile
+	<?php
+
+	declare(strict_types=1);
+
+	/*
+	 * Copyright (C) `system('date +%Y')` `system('git config --get user.name')` <`system('git config --get user.email')`>
+	 *
+	 * This program is free software; you can redistribute it and/or
+	 * modify it under the terms of the GNU General Public License
+	 * as published by the Free Software Foundation; either version 2
+	 * of the License, or (at your option) any later version.
+	 *
+	 * This program is distributed in the hope that it will be useful,
+	 * but WITHOUT ANY WARRANTY; without even the implied warranty of
+	 * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+	 * GNU General Public License for more details.
+	 *
+	 * You should have received a copy of the GNU General Public License
+	 * along with this program; if not, write to the Free Software
+	 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+	 * 02110-1301, USA.
+	 */
+
+	namespace DanielSiepmann`expand('%:h:s?.*ext/??:s?local_packages/??:s?Classes/??:s?.*_?\u&?:gs?_.?\U&?:gs?_??:gs?/?\\\?:s??\\\?')`;
+
+	use DanielSiepmann`expand('%:r:s?.*ext/??:s?local_packages/??:s?Classes/??:s?Tests/Unit/??:s?Tests/Functional/??:s?Test??:s?.*_?\u&?:gs?_.?\U&?:gs?_??:gs?/?\\\?:s??\\\?')`;
+	use PHPUnit\Framework\TestCase;
+
+	/**
+	 * @covers \DanielSiepmann`expand('%:r:s?.*ext/??:s?local_packages/??:s?Classes/??:s?Tests/Unit/??:s?Tests/Functional/??:s?Test??:s?.*_?\u&?:gs?_.?\U&?:gs?_??:gs?/?\\\?:s??\\\?')`
+	 */
+	class ${1:`expand('%:t:s?.php??')`} extends TestCase
+	{
+		/**
+		 * @test
+		 */
+		public function canBeCreated(): void
+		{
+			$subject = new `expand('%:r:s?Test$??:s?.*/??')`();
+
+			self::assertInstanceOf(
+				`expand('%:r:s?Test$??:s?.*/??')`::class,
+				$subject
+			);
+		}
+	}
+
+snippet Exception
+	throw new \Exception('${1}', `strftime('%s')`);
+
+snippet if
+	if (${1:/* condition */}) {
+		${0}
+	}
+
+snippet foreach
+	foreach ($${1:variable} as $${2:value}) {
+		${0}
+	}
+
+snippet foreachk
+	foreach ($${1:variable} as $${2:key} => $${3:value}) {
+	    ${0}
+	}
+
+snippet fun
+	${1:private} function ${2:name}(${3})${4}
+	{
+	    ${0}
+	}
+
+snippet closure
+	(function () {
+	    ${0}
+	})();
+
+snippet test
+	/**
+	 * @test
+	 */
+	public function ${1:name}(): void
+	{
+	    ${0}
+	}
+
+snippet dump
+	var_dump(${1});${2}
+
+snippet die
+	throw new \Exception('debugging end: ' . var_export(${1}, true));${2}

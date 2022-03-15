@@ -16,15 +16,6 @@ let
     };
   };
 
-  snippets = pkgs.vimUtils.buildVimPlugin {
-    name = "snippets";
-    src = pkgs.fetchgit {
-      url = "https://gitea.daniel-siepmann.de/danielsiepmann/vim-snippets.git";
-      rev = "v1.0.0";
-      sha256 = "23XR2YysdgUW+xKS79tAYP+Hjka0YolLaHlYiD0Hyx8=";
-    };
-  };
-
   neotags = pkgs.vimUtils.buildVimPlugin {
     name = "neotags";
     src = pkgs.fetchgit {
@@ -180,7 +171,6 @@ in {
     colorscheme-smyckblue
     neotags
     configuration
-    snippets
     syntax-typoscript
 
     # More UI related
