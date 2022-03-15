@@ -6,6 +6,10 @@ let g:ctrlp_match_window = 'top,order:ttb,min:1,max:10'
 " let g:ctrlp_lazy_update = 1
 let g:ctrlp_show_hidden = 1
 
+let g:ctrlp_working_path_mode = 'w'
+let g:ctrlp_max_files = 0
+let g:ctrlp_clear_cache_on_exit = 0
+
 " Configure completion for tags in buffer,
 " e.g. configure which kinds to complete for css.
 let g:ctrlp_buftag_types = {
