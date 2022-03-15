@@ -69,6 +69,16 @@ let
     };
   };
 
+  syntax-mustache = pkgs.vimUtils.buildVimPlugin {
+    name = "syntax-mustahce";
+    src = pkgs.fetchFromGitHub {
+      owner = "mustache";
+      repo = "vim-mustache-handlebars";
+      rev = "0153fe03a919add2d6cf2d41b2d5b6e1188bc0e0";
+      sha256 = "lmYt+GKuXhbOhu3HufqIFE2DvzUYlk5vGqU6tpJ2yjY=";
+    };
+  };
+
   ag = pkgs.vimUtils.buildVimPlugin {
     name = "ag";
     src = pkgs.fetchFromGitHub {
@@ -205,6 +215,7 @@ in {
     # Syntax
 
     syntax-nix
+    syntax-mustache
     syntax-fluid
     {
       plugin = syntax-php;
