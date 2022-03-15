@@ -166,6 +166,7 @@ in {
     ./neovim/config/autocommands/vdebug.vim
 
     ./neovim/config/folderspecific/reuter.vim
+    ./neovim/config/folderspecific/sac.vim
   ];
 
   extraPython3Packages = (ps: with ps; [
