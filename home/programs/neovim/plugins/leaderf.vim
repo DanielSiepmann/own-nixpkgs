@@ -12,6 +12,9 @@ let g:Lf_IgnoreCurrentBufferName = 1
 
 let g:Lf_ShowDevIcons = 0
 
+let g:Lf_PreviewInPopup = 0
+let g:Lf_PreviewCode = 0
+
 " TODO: Try to port to existing colorscheme, does it work with load order?
 let g:Lf_PopupPalette = {
     \  'dark': {
@@ -202,12 +205,3 @@ let g:Lf_PopupPalette = {
     \   },
     \  }
     \ }
-
-let g:Lf_PreviewInPopup = 1
-let g:Lf_PreviewHorizontalPosition = 'center'
-let g:Lf_PreviewCode = 0
-let g:Lf_PreviewResult = {
-    \ 'File': 1,
-    \ 'Buffer': 1,
-    \ 'BufTag': 1,
-    \}
