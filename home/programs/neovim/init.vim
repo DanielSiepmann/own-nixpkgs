@@ -17,7 +17,7 @@ set laststatus=2
 set nostartofline
 " Extend completion using spelling if enabled for buffer.
 set complete+=kspell
-set completeopt=menu,noinsert,noselect
+set completeopt=menu,menuone,noinsert,noselect
 
 " Allow syntax highlighting and other file / language specific things
 syntax enable
