@@ -7,8 +7,6 @@ syn spell toplevel
 set nospell
 
 if exists('&omnifunc') && exists('g:loaded_phpactor')
-    setlocal omnifunc=phpactor#Complete
-    " Would enable autocompletion via lsp
-    " setlocal omnifunc=v:lua.vim.lsp.omnifunc
+    setlocal omnifunc=v:lua.vim.lsp.omnifunc
 endif
 

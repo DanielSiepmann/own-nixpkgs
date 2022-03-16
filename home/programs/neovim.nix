@@ -314,6 +314,27 @@ in {
       '';
     }
 
+    # LSP (=Language Server Protocol)
+
+    {
+      plugin = nvim-lspconfig;
+      type = "lua";
+      config = ''
+        require'lspconfig'.phpactor.setup({
+          cmd = {
+            '${phpactor}/bin/phpactor',
+            'language-server',
+          },
+        })
+      '';
+    }
+
+    {
+      plugin = lsp_signature-nvim;
+      type = "lua";
+      config = pkgs.lib.fileContents ./neovim/plugins/lsp-signature.lua;
+    }
+
     # More related to testing, linting, …
 
     {
