@@ -203,7 +203,6 @@ in {
   # - https://github.com/hrsh7th/nvim-cmp (due to actual help of each parameter while adding values to function call)
   #
   # Alternatives:
-  # - https://github.com/junegunn/fzf.vim (Alternative to CtrlP, is it worth it?)
   # - https://github.com/ms-jpq/chadtree/ (due to visual mode, is it worth it?)
   # - https://github.com/mfussenegger/nvim-dap Alternative to Vdebug, more modern and should work with firefox as well? But needs node …)
   #
