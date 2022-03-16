@@ -113,7 +113,7 @@ function! StartProfiling()
     execute(':profile file *')
 endfunc
 
-function! CtrlPCurrentComposerPackage()
+function! LeaderfCurrentComposerPackage()
     let l:filePath = split(expand('%:p:h'), '/')
 
     while !filereadable('/' . join(l:filePath + ['composer.json'], '/')) && len(l:filePath)
@@ -121,7 +121,7 @@ function! CtrlPCurrentComposerPackage()
     endwhile
 
     if len(l:filePath)
-        execute(':CtrlP /' . join(l:filePath, '/'))
+        execute(':LeaderfFile /' . join(l:filePath, '/'))
     else
         echom 'No composer package detected.'
     endif

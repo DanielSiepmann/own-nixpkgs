@@ -10,10 +10,11 @@ nnoremap <leader>v :set paste!<cr>
 nnoremap <leader>nh :nohlsearch<cr>
 
 " Configure navigation, e.g. go to buffer, file, ...
-nnoremap <leader>p :CtrlP<cr>
-nnoremap <leader>l :CtrlPBuffer<cr>
-nnoremap <leader>r :CtrlPBufTag<cr>
-nnoremap <silent> <leader>c :call CtrlPCurrentComposerPackage()<cr>
+nnoremap <leader>pp :LeaderfSelf<cr>
+nnoremap <leader>pf :LeaderfFile<cr>
+nnoremap <leader>pb :LeaderfBuffer<cr>
+nnoremap <leader>pt :LeaderfBufTag<cr>
+nnoremap <silent> <leader>pc :call LeaderfCurrentComposerPackage()<cr>
 
 nnoremap <leader>k :NERDTreeToggle<cr>
 nnoremap <leader>f :NERDTreeFind<cr>

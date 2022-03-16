@@ -239,8 +239,8 @@ in {
     }
 
     {
-      plugin = ctrlp-vim;
-      config = pkgs.lib.fileContents ./neovim/plugins/ctrlp.vim;
+      plugin = LeaderF;
+      config = pkgs.lib.fileContents ./neovim/plugins/leaderf.vim;
     }
 
     # Syntax
