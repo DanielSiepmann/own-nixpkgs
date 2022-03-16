@@ -338,7 +338,12 @@ in {
 
     {
       plugin = ale;
-      config = pkgs.lib.fileContents ./neovim/plugins/ale.vim;
+      config = pkgs.lib.fileContents(./neovim/plugins/ale.vim)
+        # Keep line break as fileContents strips last EOL
+        + ''
+
+          let g:ale_xml_xmllint_executable = '${pkgs.libxml2}/bin/xmllint'
+        '';
     }
 
     {

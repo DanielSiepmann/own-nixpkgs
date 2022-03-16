@@ -146,6 +146,13 @@
     "borg/exclude".source = ./home/files/borg-exclude;
   };
 
+  xdg.dataFile = {
+    "xsd/xliff-core-1.2-strict.xsd".source = pkgs.fetchurl {
+      url = "https://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd";
+      sha256 = "nzevVk7NJ9X2kVTXz+e6jesfYgyBuUzw6rH0IFx01fg=";
+    };
+  };
+
   xdg.desktopEntries = {
     networkmanager-dmenu = {
       type = "Application";

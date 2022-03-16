@@ -5,9 +5,8 @@ syn spell toplevel
 syn region  xmlString contained start=+"+ end=+"+ contains=xmlEntity,@NoSpell display
 syn region  xmlString contained start=+'+ end=+'+ contains=xmlEntity,@NoSpell display
 
-" TODO: Find a way to distribute the files
-" augroup xliff
-"     autocmd!
-"     autocmd BufEnter **/*.xlf :let g:syntastic_xml_xmllint_args = '-schema ~/.dotfiles/xsd/xliff-core-1.2-strict.xsd'
-"     autocmd BufEnter **/*.xlf :let g:ale_xml_xmllint_options = '-schema ~/.dotfiles/xsd/xliff-core-1.2-strict.xsd'
-" augroup END
+augroup xliff
+    autocmd!
+    " xsd is installed via home manager
+    autocmd BufEnter **/*.xlf :let g:ale_xml_xmllint_options = '-schema ~/.local/share/xsd/xliff-core-1.2-strict.xsd'
+augroup END
