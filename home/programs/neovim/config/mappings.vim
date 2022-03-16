@@ -11,7 +11,7 @@ nnoremap <leader>nh :nohlsearch<cr>
 
 " Configure navigation, e.g. go to buffer, file, ...
 nnoremap <leader>pp :Telescope builtin<cr>
-nnoremap <leader>pf :Telescope find_files<cr>
+nnoremap <leader>pf :Telescope git_files<cr>
 nnoremap <leader>pb :Telescope buffers<cr>
 nnoremap <leader>pt :Telescope ctags_outline outline<cr>
 nnoremap <silent> <leader>pc :call TelescopeCurrentComposerPackage()<cr>
