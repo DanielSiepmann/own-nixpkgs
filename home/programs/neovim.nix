@@ -210,7 +210,6 @@ in {
   #
   # - https://github.com/rhysd/conflict-marker.vim/ (check out while resolving next merge conflict)
   # - https://github.com/sindrets/diffview.nvim/ (check out while reviewing PR next time?!)
-  # - https://github.com/folke/trouble.nvim (Prettier lists like quickfix, loclist, is it worth it?)
   # - https://github.com/weilbith/nvim-code-action-menu/ Check with phpactor and lsp
   # - https://github.com/RishabhRD/nvim-lsputils/
   #
