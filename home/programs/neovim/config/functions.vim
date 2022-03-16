@@ -113,7 +113,7 @@ function! StartProfiling()
     execute(':profile file *')
 endfunc
 
-function! LeaderfCurrentComposerPackage()
+function! TelescopeCurrentComposerPackage()
     let l:filePath = split(expand('%:p:h'), '/')
 
     while !filereadable('/' . join(l:filePath + ['composer.json'], '/')) && len(l:filePath)
@@ -121,7 +121,7 @@ function! LeaderfCurrentComposerPackage()
     endwhile
 
     if len(l:filePath)
-        execute(':LeaderfFile /' . join(l:filePath, '/'))
+        execute(':Telescope find_files cwd=/' . join(l:filePath, '/'))
     else
         echom 'No composer package detected.'
     endif

@@ -10,11 +10,11 @@ nnoremap <leader>v :set paste!<cr>
 nnoremap <leader>nh :nohlsearch<cr>
 
 " Configure navigation, e.g. go to buffer, file, ...
-nnoremap <leader>pp :LeaderfSelf<cr>
-nnoremap <leader>pf :LeaderfFile<cr>
-nnoremap <leader>pb :LeaderfBuffer<cr>
-nnoremap <leader>pt :LeaderfBufTag<cr>
-nnoremap <silent> <leader>pc :call LeaderfCurrentComposerPackage()<cr>
+nnoremap <leader>pp :Telescope builtin<cr>
+nnoremap <leader>pf :Telescope find_files<cr>
+nnoremap <leader>pb :Telescope buffers<cr>
+nnoremap <leader>pt :Telescope ctags_outline outline<cr>
+nnoremap <silent> <leader>pc :call TelescopeCurrentComposerPackage()<cr>
 
 nnoremap <leader>k :NERDTreeToggle<cr>
 nnoremap <leader>f :NERDTreeFind<cr>

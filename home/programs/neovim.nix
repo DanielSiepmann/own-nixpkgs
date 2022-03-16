@@ -163,6 +163,16 @@ let
     ];
   };
 
+  telescope-ctags-outline = pkgs.vimUtils.buildVimPlugin {
+    name = "telescope-ctags-outline";
+    src = pkgs.fetchFromGitHub {
+      owner = "fcying";
+      repo = "telescope-ctags-outline.nvim";
+      rev = "35b2df9545f72352502703ba06b7ab711fa25e51";
+      sha256 = "e8QcD7H2unmoaLaN1JUxtOGQYBJGAXtfSnj8sW66ff4=";
+    };
+  };
+
 in {
   enable = true;
 
@@ -238,8 +248,15 @@ in {
     }
 
     {
-      plugin = LeaderF;
-      config = pkgs.lib.fileContents ./neovim/plugins/leaderf.vim;
+      plugin = telescope-nvim;
+      type = "lua";
+      config = pkgs.lib.fileContents ./neovim/plugins/telescope.lua;
+    }
+
+    {
+      plugin = telescope-ctags-outline;
+      type = "lua";
+      config = pkgs.lib.fileContents ./neovim/plugins/telescope-ctags-outline.lua;
     }
 
     # Syntax
@@ -308,5 +325,6 @@ in {
 
     vim-addon-mw-utils
     vim-textobj-user
+    plenary-nvim
   ];
 }
