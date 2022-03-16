@@ -2,6 +2,11 @@
 
 let
 
+  # TODO: Learn lua:
+  # https://www.notonlycode.org/neovim-lua-config/
+  # https://www.lua.org/manual/5.4/
+  # https://www.lua.org/pil/contents.html
+
   # The folder contains the expected `~/.config/nvim/` structure
   # This structure is the same for plugins.
   # I therefore just load this folder as plugin.
