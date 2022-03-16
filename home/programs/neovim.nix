@@ -211,7 +211,6 @@ in {
   # - https://github.com/rhysd/conflict-marker.vim/ (check out while resolving next merge conflict)
   # - https://github.com/sindrets/diffview.nvim/ (check out while reviewing PR next time?!)
   # - https://github.com/weilbith/nvim-code-action-menu/ Check with phpactor and lsp
-  # - https://github.com/RishabhRD/nvim-lsputils/
   #
   # - https://github.com/hrsh7th/nvim-cmp (due to actual help of each parameter while adding values to function call)
   #
