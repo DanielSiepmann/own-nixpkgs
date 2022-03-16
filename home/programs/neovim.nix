@@ -191,6 +191,24 @@ in {
     sqlparse
   ]);
 
+  # TODO: Check out these plugins as additions / replacements:
+  #
+  # - https://github.com/rhysd/conflict-marker.vim/ (check out while resolving next merge conflict)
+  # - https://github.com/sindrets/diffview.nvim/ (check out while reviewing PR next time?!)
+  # - https://github.com/ray-x/lsp_signature.nvim/ (Show signature hint while adding parameters to call)
+  # - https://github.com/folke/trouble.nvim (Prettier lists like quickfix, loclist, is it worth it?)
+  # - https://github.com/weilbith/nvim-code-action-menu/ Check with phpactor and lsp
+  # - https://github.com/RishabhRD/nvim-lsputils/
+  #
+  # - https://github.com/hrsh7th/nvim-cmp (due to actual help of each parameter while adding values to function call)
+  #
+  # Alternatives:
+  # - https://github.com/junegunn/fzf.vim (Alternative to CtrlP, is it worth it?)
+  # - https://github.com/ms-jpq/chadtree/ (due to visual mode, is it worth it?)
+  # - https://github.com/mfussenegger/nvim-dap Alternative to Vdebug, more modern and should work with firefox as well? But needs node …)
+  #
+  # Reviewed plugins until: https://github.com/NixOS/nixpkgs/blob/master/pkgs/applications/editors/vim/plugins/generated.nix#L5810
+
   plugins = with pkgs.vimPlugins; [
 
     # My own plugins

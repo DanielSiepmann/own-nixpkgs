@@ -61,6 +61,9 @@
     "Documentation-GENERATED-temp*/"
   ];
 
+  # TODO: Check out these additions
+  # - https://github.com/dandavison/delta - A syntax-highlighting pager for git, diff, and grep output 
+
   extraConfig = {
     advice = {
       detachedHead = false;
