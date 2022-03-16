@@ -74,4 +74,7 @@ set-window-option -g clock-mode-colour white
 # bell
 set-window-option -g window-status-bell-style fg=white,bg=red
 
+# As requested by neovim for 'autoread'
+set-option -g focus-events on
+
 # vi: ft=tmux
