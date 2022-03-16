@@ -319,6 +319,12 @@ in {
             'language-server',
           },
         })
+        require'lspconfig'.vimls.setup({
+          cmd = {
+            '${pkgs.nodePackages.vim-language-server}/bin/vim-language-server',
+            '--stdio',
+          },
+        })
       '';
     }
 
