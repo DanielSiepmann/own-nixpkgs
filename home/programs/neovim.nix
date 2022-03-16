@@ -14,8 +14,8 @@ let
     name = "colorscheme-smyckblue";
     src = pkgs.fetchgit {
       url = "https://gitea.daniel-siepmann.de/danielsiepmann/vim-colorscheme-smyckblue.git";
-      rev = "v1.0.0";
-      sha256 = "UPh15fMTq/HHnunq+xy8YGOlqfgUaqHuTEE5kQ3j3bM=";
+      rev = "v1.0.1";
+      sha256 = "bBX3dzqKz6kTACfyAU4HH0UFVDYdyqLTvQdYTgWw8Jg=";
     };
   };
 
