@@ -203,16 +203,12 @@ in {
 
   # TODO: Check out these plugins as additions / replacements:
 
-  # - https://github.com/weilbith/nvim-code-action-menu/ Check with phpactor and lsp
-  # - https://github.com/anuvyklack/pretty-fold.nvim Allows easily cosumization of folds
   # - https://github.com/glacambre/firenvim Give it another try, integrates neovim into firefox
   # - https://github.com/kristijanhusak/vim-dadbod-ui Use vim as db browser
-  #
-  # - https://github.com/b0o/SchemaStore.nvim/ autointegrate schemas for json/yaml
-  #
   # - https://github.com/lambdalisue/vim-pager/ (try once I use neovim as pager again)
-  #
   # - https://github.com/hrsh7th/nvim-cmp (due to actual help of each parameter while adding values to function call)
+
+  # - https://github.com/weilbith/nvim-code-action-menu/ Check again in future, right now not of much useness on my setup.
   #
   # Related to diffs / merging
   #
@@ -324,17 +320,30 @@ in {
       plugin = nvim-lspconfig;
       type = "lua";
       config = ''
-        require'lspconfig'.phpactor.setup({
+        require('lspconfig').phpactor.setup({
           cmd = {
             '${pkgs.php80}/bin/php',
             '${phpactor}/bin/phpactor',
             'language-server',
           },
         })
-        require'lspconfig'.vimls.setup({
+        require('lspconfig').vimls.setup({
           cmd = {
             '${pkgs.nodePackages.vim-language-server}/bin/vim-language-server',
             '--stdio',
+          },
+        })
+        require('lspconfig').yamlls.setup({
+          cmd = {
+            '${pkgs.nodePackages.yaml-language-server}/bin/yaml-language-server',
+            '--stdio',
+          },
+          settings = {
+            yaml = {
+              schemaStore = {
+                enable = true,
+              },
+            },
           },
         })
       '';
