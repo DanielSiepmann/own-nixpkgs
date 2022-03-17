@@ -5,12 +5,12 @@ let
   # The folder contains the expected `~/.config/nvim/` structure
   # This structure is the same for plugins.
   # I therefore just load this folder as plugin.
-  configuration = pkgs.vimUtils.buildVimPlugin {
+  configuration = pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "configuration";
     src = ./neovim/configuration;
   };
 
-  colorscheme-smyckblue = pkgs.vimUtils.buildVimPlugin {
+  colorscheme-smyckblue = pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "colorscheme-smyckblue";
     src = pkgs.fetchgit {
       url = "https://gitea.daniel-siepmann.de/danielsiepmann/vim-colorscheme-smyckblue.git";
@@ -19,7 +19,7 @@ let
     };
   };
 
-  neotags = pkgs.vimUtils.buildVimPlugin {
+  neotags = pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "neotags";
     src = pkgs.fetchgit {
       url = "https://gitea.daniel-siepmann.de/danielsiepmann/neotags.git";
@@ -29,7 +29,7 @@ let
   };
 
   # TODO: Update, compare with other forks, move to Gitea
-  syntax-typoscript = pkgs.vimUtils.buildVimPlugin {
+  syntax-typoscript = pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "syntax-typoscript";
     src = pkgs.fetchFromGitHub {
       owner = "DanielSiepmann";
@@ -39,7 +39,7 @@ let
     };
   };
 
-  syntax-nix = pkgs.vimUtils.buildVimPlugin {
+  syntax-nix = pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "syntax-nix";
     src = pkgs.fetchFromGitHub {
       owner = "LnL7";
@@ -49,7 +49,7 @@ let
     };
   };
 
-  syntax-php = pkgs.vimUtils.buildVimPlugin {
+  syntax-php = pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "syntax-php";
     src = pkgs.fetchFromGitHub {
       owner = "StanAngeloff";
@@ -59,7 +59,7 @@ let
     };
   };
 
-  syntax-fluid = pkgs.vimUtils.buildVimPlugin {
+  syntax-fluid = pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "syntax-fluid";
     src = pkgs.fetchFromGitHub {
       owner = "mipmip";
@@ -69,7 +69,7 @@ let
     };
   };
 
-  syntax-mustache = pkgs.vimUtils.buildVimPlugin {
+  syntax-mustache = pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "syntax-mustahce";
     src = pkgs.fetchFromGitHub {
       owner = "mustache";
@@ -79,7 +79,7 @@ let
     };
   };
 
-  ag = pkgs.vimUtils.buildVimPlugin {
+  ag = pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "ag";
     src = pkgs.fetchFromGitHub {
       owner = "rking";
@@ -89,7 +89,7 @@ let
     };
   };
 
-  vdebug = pkgs.vimUtils.buildVimPlugin {
+  vdebug = pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "vdebug";
     src = pkgs.fetchFromGitHub {
       owner = "joonty";
@@ -99,7 +99,7 @@ let
     };
   };
 
-  sqlformat = pkgs.vimUtils.buildVimPlugin {
+  sqlformat = pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "sqlformat";
     src = pkgs.fetchFromGitHub {
       owner = "mpyatishev";
@@ -109,7 +109,7 @@ let
     };
   };
 
-  diff-fold = pkgs.vimUtils.buildVimPlugin {
+  diff-fold = pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "diff-fold";
     src = pkgs.fetchFromGitHub {
       owner = "sgeb";
@@ -119,7 +119,7 @@ let
     };
   };
 
-  phpactor = pkgs.vimUtils.buildVimPlugin {
+  phpactor = pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "phpactor";
     src = pkgs.fetchzip {
       url = "https://daniel-siepmann.de/fileadmin/phpactor-0.18.0.tar.gz";
@@ -127,7 +127,7 @@ let
     };
   };
 
-  neoterm = pkgs.vimUtils.buildVimPlugin {
+  neoterm = pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "neoterm";
     src = pkgs.fetchFromGitHub {
       owner = "kassio";
@@ -140,7 +140,7 @@ let
     ];
   };
 
-  tagbar = pkgs.vimUtils.buildVimPlugin {
+  tagbar = pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "tagbar";
     src = pkgs.fetchFromGitHub {
       owner = "majutsushi";
@@ -150,7 +150,7 @@ let
     };
   };
 
-  test = pkgs.vimUtils.buildVimPlugin {
+  test = pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "test";
     src = pkgs.fetchFromGitHub {
       owner = "vim-test";
@@ -163,7 +163,7 @@ let
     ];
   };
 
-  telescope-ctags-outline = pkgs.vimUtils.buildVimPlugin {
+  telescope-ctags-outline = pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "telescope-ctags-outline";
     src = pkgs.fetchFromGitHub {
       owner = "fcying";
