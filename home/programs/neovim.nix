@@ -202,18 +202,30 @@ in {
   ]);
 
   # TODO: Check out these plugins as additions / replacements:
-  #
-  # - https://github.com/rhysd/conflict-marker.vim/ (check out while resolving next merge conflict)
-  # - https://github.com/sindrets/diffview.nvim/ (check out while reviewing PR next time?!)
+
   # - https://github.com/weilbith/nvim-code-action-menu/ Check with phpactor and lsp
+  # - https://github.com/anuvyklack/pretty-fold.nvim Allows easily cosumization of folds
+  # - https://github.com/glacambre/firenvim Give it another try, integrates neovim into firefox
+  # - https://github.com/kristijanhusak/vim-dadbod-ui Use vim as db browser
+  #
+  # - https://github.com/b0o/SchemaStore.nvim/ autointegrate schemas for json/yaml
+  #
+  # - https://github.com/lambdalisue/vim-pager/ (try once I use neovim as pager again)
   #
   # - https://github.com/hrsh7th/nvim-cmp (due to actual help of each parameter while adding values to function call)
   #
-  # Alternatives:
-  # - https://github.com/ms-jpq/chadtree/ (due to visual mode, is it worth it?)
-  # - https://github.com/mfussenegger/nvim-dap Alternative to Vdebug, more modern and should work with firefox as well? But needs node …)
+  # Related to diffs / merging
   #
-  # Reviewed plugins until: https://github.com/NixOS/nixpkgs/blob/master/pkgs/applications/editors/vim/plugins/generated.nix#L5810
+  # - https://github.com/rhysd/conflict-marker.vim/ (check out while resolving next merge conflict, worst compared to the others?)
+  # - https://github.com/sindrets/diffview.nvim/ (check out while reviewing PR next time?!)
+  # - https://github.com/samoshkin/vim-mergetool/ better merging?!
+  # - https://github.com/sjl/splice.vim/ better merging?!
+  # - https://github.com/tanvirtin/vgit.nvim (alternative to fugitive, looks more modern)
+  #
+  # Alternatives:
+  # - https://github.com/mfussenegger/nvim-dap Alternative to Vdebug, more modern and should work with firefox as well? But needs node …)
+  # - https://github.com/nvim-neo-tree/neo-tree.nvim (General tree, not only filesystem, alternative to nerdtree but can also be used for buffers etc.)
+  # - https://github.com/simrat39/symbols-outline.nvim/ Replacement for tagbar using lsp, combine with https://github.com/jose-elias-alvarez/null-ls.nvim once it supports Workspace Symbols / Document Symbol
 
   plugins = with pkgs.vimPlugins; [
 
