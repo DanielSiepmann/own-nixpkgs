@@ -294,6 +294,13 @@ in {
     vim-indent-object
     vim-textobj-comment
 
+    vim-dadbod
+    {
+      plugin = vim-dadbod-ui;
+      config = pkgs.lib.fileContents ./neovim/plugins/dadbod-ui.vim;
+    }
+    vim-dadbod-completion
+
     {
       plugin = vdebug;
       config = pkgs.lib.fileContents ./neovim/plugins/vdebug.vim;
