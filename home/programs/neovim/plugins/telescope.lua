@@ -4,8 +4,9 @@ require('telescope').setup({
     defaults = {
         layout_strategy = 'center',
         layout_config = {
-            width = 0.9,
+            width = 0.6,
         },
+        sorting_strategy = 'ascending',
         default_mappings = {
             i = {
                 ["<C-j>"] = telescopeActions.move_selection_next,
