@@ -49,6 +49,8 @@
     pkgs.borgbackup
     pkgs.keepassxc
 
+    pkgs.libreoffice
+
     pkgs.chromium
 
     # Dev tools
