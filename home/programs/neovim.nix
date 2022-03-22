@@ -176,26 +176,6 @@ let
 in {
   enable = true;
 
-  extraConfig = pkgs.lib.concatMapStringsSep "\n" (file: pkgs.lib.fileContents file) [
-    ./neovim/init.vim
-
-    ./neovim/config/functions.vim
-    ./neovim/config/indentation.vim
-    ./neovim/config/mappings.vim
-    ./neovim/config/searching.vim
-    ./neovim/config/statusline.vim
-    ./neovim/config/undo.vim
-    ./neovim/config/wildignore.vim
-
-    ./neovim/config/autocommands/basics.vim
-    ./neovim/config/autocommands/gitdiff.vim
-    ./neovim/config/autocommands/typo3.vim
-    ./neovim/config/autocommands/vdebug.vim
-
-    ./neovim/config/folderspecific/reuter.vim
-    ./neovim/config/folderspecific/sac.vim
-  ];
-
   extraPython3Packages = (ps: with ps; [
     # Dependency of sqlformat
     sqlparse
