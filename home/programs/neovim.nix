@@ -301,7 +301,7 @@ in {
       config = ''
         require('lspconfig').phpactor.setup({
           cmd = {
-            '${pkgs.php80}/bin/php',
+            '${pkgs.php74}/bin/php',
             '${phpactor}/bin/phpactor',
             'language-server',
           },
