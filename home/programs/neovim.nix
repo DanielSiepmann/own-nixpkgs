@@ -204,7 +204,6 @@ in {
   # TODO: Check out these plugins as additions / replacements:
 
   # - https://github.com/glacambre/firenvim Give it another try, integrates neovim into firefox
-  # - https://github.com/kristijanhusak/vim-dadbod-ui Use vim as db browser
   # - https://github.com/lambdalisue/vim-pager/ (try once I use neovim as pager again)
   # - https://github.com/hrsh7th/nvim-cmp (due to actual help of each parameter while adding values to function call)
 
@@ -293,13 +292,6 @@ in {
     vim-commentary
     vim-indent-object
     vim-textobj-comment
-
-    vim-dadbod
-    {
-      plugin = vim-dadbod-ui;
-      config = pkgs.lib.fileContents ./neovim/plugins/dadbod-ui.vim;
-    }
-    vim-dadbod-completion
 
     {
       plugin = vdebug;
