@@ -185,7 +185,6 @@ in {
 
   # - https://github.com/glacambre/firenvim Give it another try, integrates neovim into firefox
   # - https://github.com/lambdalisue/vim-pager/ (try once I use neovim as pager again)
-  # - https://github.com/hrsh7th/nvim-cmp (due to actual help of each parameter while adding values to function call)
 
   # - https://github.com/weilbith/nvim-code-action-menu/ Check again in future, right now not of much useness on my setup.
   #
@@ -308,6 +307,15 @@ in {
         })
       '';
     }
+
+    {
+      plugin = nvim-cmp;
+      type = "lua";
+      config = pkgs.lib.fileContents ./neovim/plugins/cmp.lua;
+    }
+    cmp-omni
+    cmp-buffer
+    cmp-nvim-lua
 
     {
       plugin = lsp_signature-nvim;
