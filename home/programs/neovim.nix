@@ -326,25 +326,6 @@ in {
             'language-server',
           },
         })
-        require('lspconfig').vimls.setup({
-          cmd = {
-            '${pkgs.nodePackages.vim-language-server}/bin/vim-language-server',
-            '--stdio',
-          },
-        })
-        require('lspconfig').yamlls.setup({
-          cmd = {
-            '${pkgs.nodePackages.yaml-language-server}/bin/yaml-language-server',
-            '--stdio',
-          },
-          settings = {
-            yaml = {
-              schemaStore = {
-                enable = true,
-              },
-            },
-          },
-        })
       '';
     }
 
