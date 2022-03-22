@@ -285,10 +285,11 @@ in {
     }
 
     {
+      # TODO: Adjust templates: https://phpactor.readthedocs.io/en/master/reference/templates.html
       plugin = phpactor;
       config = ''
         let g:phpactorOmniError = v:true
-        let g:phpactorPhpBin = "${pkgs.php80}/bin/php"
+        let g:phpactorPhpBin = "${pkgs.php74}/bin/php"
       '';
     }
 
