@@ -5,13 +5,13 @@ local actions = require('telescope.actions')
 local action_state = require('telescope.actions.state')
 local conf = require('telescope.config').values
 
-local custom_functions = function(opts)
+local custom_runs = function(opts)
     opts = opts or {}
 
     local results = { 'CopyFileName', 'CopyRelativeFilePath', 'CopyFullFilePath' }
 
     pickers.new(opts, {
-        prompt_title = 'Custom Functions',
+        prompt_title = 'Custom Runs',
         finder = finders.new_table {
             results = results
         },
@@ -28,6 +28,5 @@ local custom_functions = function(opts)
 end
 
 return telescope.register_extension({
-    -- setup = ctags_setup,
-    exports = { custom_functions = custom_functions },
+    exports = { custom_runs = custom_runs },
 })

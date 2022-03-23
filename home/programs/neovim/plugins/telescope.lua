@@ -27,4 +27,4 @@ require('telescope').setup({
     },
 })
 
-require('telescope').load_extension('custom_functions')
+require('telescope').load_extension('custom_runs')

@@ -14,7 +14,7 @@ nnoremap <leader>pp :Telescope builtin<cr>
 nnoremap <leader>pf :Telescope git_files<cr>
 nnoremap <leader>pb :Telescope buffers<cr>
 nnoremap <leader>pt :Telescope ctags_outline outline<cr>
-nnoremap <leader>pc :Telescope custom_functions<cr>
+nnoremap <leader>pr :Telescope custom_runs<cr>
 nnoremap <silent> <leader>pc :call TelescopeCurrentComposerPackage()<cr>
 
 nnoremap <leader>k :NERDTreeToggle<cr>
