@@ -1,3 +1,4 @@
+-- TODO: Add custom source (functions) e.g. the copy functions
 local telescopeActions = require "telescope.actions"
 local telescopeActionsLayout = require "telescope.actions.layout"
 require('telescope').setup({
