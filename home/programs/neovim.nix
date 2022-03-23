@@ -28,14 +28,12 @@ let
     };
   };
 
-  # TODO: Update, compare with other forks, move to Gitea
   syntax-typoscript = pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "syntax-typoscript";
-    src = pkgs.fetchFromGitHub {
-      owner = "DanielSiepmann";
-      repo = "vim.typoscript";
-      rev = "286bc376b55b0d0d0adc6e7ccfa6a75719437120";
-      sha256 = "BPvKwcTo/OL9VkNJ9dv8hs4nlVkxMI6pdkZXXAKBMWs=";
+    src = pkgs.fetchgit {
+      url = "https://gitea.daniel-siepmann.de/danielsiepmann/vim-syntax-typoscript.git";
+      rev = "v1.1.0";
+      sha256 = "ifdebcxzIskrs4FtIOtNc/L9lBS8oGeThJR+vccfVyc=";
     };
   };
 
