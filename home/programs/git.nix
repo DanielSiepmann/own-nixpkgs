@@ -111,7 +111,7 @@
     };
 
     "mergetool \"nvimdiff4\"" = {
-      cmd = "nvim -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J' -c 'diffoff'";
+      cmd = "${pkgs.neovim}/bin/nvim -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J' -c 'diffoff'";
     };
   };
 }
