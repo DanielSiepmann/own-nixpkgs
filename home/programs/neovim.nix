@@ -267,7 +267,14 @@ in {
       '';
     }
 
-    vim-fugitive
+    fugitive
+    {
+      plugin = vim-mergetool;
+      config = ''
+        let g:mergetool_layout = 'b,lr,m'
+      '';
+    }
+
     vim-commentary
     vim-indent-object
     vim-textobj-comment

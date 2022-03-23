@@ -107,11 +107,16 @@
 
     merge = {
       ff = true;
-      tool = "nvimdiff4";
+      tool = "new";
+      conflictStyle = "diff3";
     };
 
     "mergetool \"nvimdiff4\"" = {
       cmd = "${pkgs.neovim}/bin/nvim -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J' -c 'diffoff'";
+    };
+    "mergetool \"new\"" = {
+      cmd = "${pkgs.neovim}/bin/nvim -f $MERGED $BASE $LOCAL $REMOTE -c 'MergetoolStart'";
+      trustExitCode = true;
     };
   };
 }
