@@ -9,7 +9,7 @@ let
 
     # This script will create a new tmux session (or attach existing)
 
-    # TODO/NOTE: mysql is still coming from Ubuntu system, same goes for nvim and docker-compose
+    # TODO/NOTE: mysql is still coming from Ubuntu system, same goes for docker-compose
     # TODO/NOTE: Does not yet start nix shells, something for future once I figured it out.
 
     # Initialize some variables

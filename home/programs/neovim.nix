@@ -183,16 +183,9 @@ in {
 
   # - https://github.com/glacambre/firenvim Give it another try, integrates neovim into firefox
   # - https://github.com/lambdalisue/vim-pager/ (try once I use neovim as pager again)
+  # - https://github.com/sindrets/diffview.nvim/ 
 
   # - https://github.com/weilbith/nvim-code-action-menu/ Check again in future, right now not of much useness on my setup.
-  #
-  # Related to diffs / merging
-  #
-  # - https://github.com/rhysd/conflict-marker.vim/ (check out while resolving next merge conflict, worst compared to the others?)
-  # - https://github.com/sindrets/diffview.nvim/ (check out while reviewing PR next time?!)
-  # - https://github.com/samoshkin/vim-mergetool/ better merging?!
-  # - https://github.com/sjl/splice.vim/ better merging?!
-  # - https://github.com/tanvirtin/vgit.nvim (alternative to fugitive, looks more modern)
   #
   # Alternatives:
   # - https://github.com/mfussenegger/nvim-dap Alternative to Vdebug, more modern and should work with firefox as well? But needs node …)
