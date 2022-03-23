@@ -305,6 +305,7 @@ in {
             '${phpactor}/bin/phpactor',
             'language-server',
           },
+          capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
         })
       '';
     }
@@ -317,6 +318,7 @@ in {
     cmp-omni
     cmp-buffer
     cmp-nvim-lua
+    cmp-nvim-lsp
 
     {
       plugin = lsp_signature-nvim;

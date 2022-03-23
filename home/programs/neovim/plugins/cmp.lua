@@ -8,6 +8,7 @@ require('cmp').setup({
     },
 
     sources = require('cmp').config.sources({
+        { name = 'nvim_lsp' },
         { name = 'omni' },
         { name = 'nvim_lua' },
     }, {
