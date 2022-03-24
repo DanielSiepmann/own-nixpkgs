@@ -25,6 +25,10 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  nix = import ./home/programs/nix.nix {
+    inherit pkgs;
+  };
+
   # Install packages
   # Some are installed via `programs` below, as they are also configured.
   # Some packages don't have a module for configuration, and are configured via `home.file` below.
@@ -135,9 +139,6 @@
     "litecli/config".source = ./home/files/litecli;
     "phpactor/phpactor.yml".source = ./home/files/phpactor.yml;
     "tig/config".source = ./home/files/tig;
-
-    "nix/nix.conf".source = ./home/files/nix/nix.conf;
-    "nix/registry.json".source = ./home/files/nix/registry.json;
 
     "cmus/smyckblue.theme".source = ./home/files/cmus/smyckblue.theme;
     "cmus/rc".source = ./home/files/cmus/rc;
