@@ -134,7 +134,7 @@
   xdg.configFile = {
     "ctags/config.ctags".source = ./home/files/ctags;
     "litecli/config".source = ./home/files/litecli;
-    "phpactor/phpactor.yml".source = ./home/files/phpactor.yml;
+    "phpactor".source = ./home/files/phpactor;
     "tig/config".source = ./home/files/tig;
 
     "cmus/smyckblue.theme".source = ./home/files/cmus/smyckblue.theme;
