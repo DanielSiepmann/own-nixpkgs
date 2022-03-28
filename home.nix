@@ -55,8 +55,6 @@
 
     pkgs.libreoffice
 
-    pkgs.chromium
-
     # Dev tools
     pkgs.litecli
     pkgs.sqlite
@@ -72,7 +70,6 @@
     pkgs.yamllint
     pkgs.kcachegrind
     pkgs.geckodriver
-    pkgs.chromedriver
 
     # In order to pull binaries from their.
     # E.g. phps: https://github.com/fossar/nix-phps#how-to-use
@@ -170,22 +167,22 @@
     slack-typo3 = {
       name = "Slack TYPO3";
       type = "Application";
-      exec = "${pkgs.chromium}/bin/chromium-browser --class=\"chat\" --new-window --app=https://app.slack.com/client/T024TUMLZ/unreads";
+      exec = "/snap/bin/chromium --class=\"chat\" --new-window --app=https://app.slack.com/client/T024TUMLZ/unreads";
     };
     slack-codappix = {
       name = "Slack Codappix";
       type = "Application";
-      exec = "${pkgs.chromium}/bin/chromium-browser --class=\"chat\" --new-window --app=https://app.slack.com/client/T2DPNS55W/unreads";
+      exec = "/snap/bin/chromium --class=\"chat\" --new-window --app=https://app.slack.com/client/T2DPNS55W/unreads";
     };
     slack-sac = {
       name = "Slack SAC";
       type = "Application";
-      exec = "${pkgs.chromium}/bin/chromium-browser --class=\"chat\" --new-window --app=https://app.slack.com/client/T3FANTPL5/unreads";
+      exec = "/snap/bin/chromium --class=\"chat\" --new-window --app=https://app.slack.com/client/T3FANTPL5/unreads";
     };
     microsoft-teams = {
       name = "Microsoft Teams";
       type = "Application";
-      exec = "${pkgs.chromium}/bin/chromium-browser --class=\"chat\" --new-window --user-agent=\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36\" --new-window --app=https://teams.microsoft.com/";
+      exec = "/snap/bin/chromium --class=\"chat\" --new-window --user-agent=\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36\" --new-window --app=https://teams.microsoft.com/";
     };
     toggl = {
       name = "Toggl Time Tracking";
