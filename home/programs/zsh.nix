@@ -13,11 +13,11 @@
     LANG = "en_US.UTF-8";
     LANGUAGE = "en_US";
 
-    PAGER = "${pkgs.less}/bin/less";
+    PAGER = "${pkgs.page}/bin/page";
+    MANPAGER="${pkgs.page}/bin/page -C -e 'au User PageDisconnect sleep 100m|%y p|enew! |bd! #|pu p|set ft=man'";
     EDITOR = "${pkgs.neovim}/bin/nvim";
     SHELL = "${pkgs.zsh}/bin/zsh";
 
-    LESS = "-R -J -W -i -M";
     LSCOLORS = "HxGxDxDxbxDxDxababcxcx";
     LS_COLORS = "di=1;37:ln=1;36:so=1;33:pi=1;33:ex=31:bd=1;33:cd=1;33:su=30;41:sg=30;41:tw=32:ow=32";
     GREP_COLOR = "0;30;44";
