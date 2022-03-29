@@ -182,7 +182,6 @@ in {
   # TODO: Check out these plugins as additions / replacements:
 
   # - https://github.com/glacambre/firenvim Give it another try, integrates neovim into firefox
-  # - https://github.com/lambdalisue/vim-pager/ (try once I use neovim as pager again)
   # - https://github.com/sindrets/diffview.nvim/ 
 
   # - https://github.com/weilbith/nvim-code-action-menu/ Check again in future, right now not of much useness on my setup.

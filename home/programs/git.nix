@@ -81,13 +81,6 @@
       ui = "auto";
     };
 
-    pager = {
-      branch = false;
-      show = false;
-      log = toString pkgs.less + "/bin/less";
-      diff = toString pkgs.less + "/bin/less";
-    };
-
     grep = {
       lineNumber = true;
     };

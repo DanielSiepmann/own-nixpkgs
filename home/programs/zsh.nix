@@ -13,7 +13,8 @@
     LANG = "en_US.UTF-8";
     LANGUAGE = "en_US";
 
-    EDITOR = "nvim";
+    PAGER = "${pkgs.less}/bin/less";
+    EDITOR = "${pkgs.neovim}/bin/nvim";
     SHELL = "${pkgs.zsh}/bin/zsh";
 
     LESS = "-R -J -W -i -M";
