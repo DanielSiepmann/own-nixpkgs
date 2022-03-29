@@ -65,7 +65,7 @@
 # --languages=+ruby
 --languages=+python
 # --languages=+reStructuredText
-# --languages=+Markdown
+--languages=+Markdown
 --languages=+SQL
 # --languages=+Make
 --languages=+Vim
