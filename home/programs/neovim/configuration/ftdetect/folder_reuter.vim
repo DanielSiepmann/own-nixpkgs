@@ -3,6 +3,7 @@ augroup reuterFolder
     autocmd BufEnter **/emoto2/**/Unit/** execute "call ReuterSetupPhpUnitUnit()"
     autocmd BufEnter **/emoto2/**/Functional/** execute "call ReuterSetupPhpUnitFunctional()"
     autocmd BufEnter **/microservices/cms/**/*.js :setlocal tabstop=2 shiftwidth=2
+    autocmd BufEnter **/emoto2/**/.git/COMMIT_EDITMSG let b:ale_gitcommit_gitlint_options = '-c general.contrib=contrib-title-conventional-commits'
 augroup END
 
 " As long as we use older phpunit which does not provider proper testdox output

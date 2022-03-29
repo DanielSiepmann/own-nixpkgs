@@ -333,6 +333,7 @@ in {
         + ''
 
           let g:ale_xml_xmllint_executable = '${pkgs.libxml2}/bin/xmllint'
+          let g:ale_gitcommit_gitlint_executable = '${pkgs.gitlint}/bin/gitlint'
         '';
     }
 
