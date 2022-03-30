@@ -85,6 +85,17 @@ List of manual needed changes for various reasons.
 Todos
 -----
 
+Additions:
+
+* https://github.com/cantino/mcfly as replacement for shell history search?
+
+* Add languagetool integration (via ale?) into Neovim (for rst, markdown, git commit?)
+
+* Integrate https://github.com/Wilfred/difftastic for diffing source code
+  https://github.com/nix-community/home-manager/pull/2850
+
+Migration:
+
 * Migrate ssh config (I don't really like to expose customer server names and configs to outer world, how to handle?)
 
 * Migrate PGP?
