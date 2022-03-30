@@ -81,6 +81,11 @@
       ui = "auto";
     };
 
+    pager = {
+      branch = false;
+      show = false;
+    };
+
     grep = {
       lineNumber = true;
     };
