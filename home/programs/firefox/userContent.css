@@ -45,3 +45,8 @@
         background: white;
     }
 }
+@-moz-document domain(redmine.werkraum-media.de) {
+    #content .badge {
+        display: none;
+    }
+}
