@@ -184,9 +184,14 @@
       exec = "/snap/bin/chromium --class=\"chat\" --new-window --user-agent=\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36\" --new-window --app=https://teams.microsoft.com/";
     };
     mattermost = {
-      name = "Mattermost";
+      name = "Mattermost werkraum-media";
       type = "Application";
       exec = "/snap/bin/chromium --class=\"chat\" --new-window --new-window --app=https://mattermost.werkraum-media.de/";
+    };
+    werkraum-jitsi = {
+      name = "Jitsi werkraum-media";
+      type = "Application";
+      exec = "/snap/bin/chromium --class=\"chat\" --new-window --new-window --app=https://jitsi.werkraum-media.de/codappix";
     };
     toggl = {
       name = "Toggl Time Tracking";
