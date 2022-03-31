@@ -52,7 +52,11 @@
         background: white;
     }
 }
+
 @-moz-document domain(redmine.werkraum-media.de) {
+    /* Hide elements */
+    #sidebar,
+    #hide-sidebar,
     #content .badge {
         display: none;
     }
