@@ -237,6 +237,7 @@ in {
     syntax-nix
     syntax-mustache
     i3config-vim
+    typescript-vim
     syntax-fluid
     {
       plugin = syntax-php;
