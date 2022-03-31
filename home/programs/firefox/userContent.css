@@ -9,6 +9,13 @@
         background-color: #2E3436 !important;
     }
 }
+
+@-moz-document url("www.reddit.com") {
+    .promotedlink {
+        display: none;
+    }
+}
+
 @-moz-document domain(drewdevault.com) {
     body {
         color: #d3d7cf;
