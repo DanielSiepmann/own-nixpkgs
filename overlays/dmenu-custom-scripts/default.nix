@@ -1,4 +1,5 @@
-self: super: {
+self: super:
+let
 
   # Still has many references to Ubuntu system tools.
   # Will migrate step by step and update references.
@@ -96,18 +97,41 @@ self: super: {
     text = builtins.readFile ./xdebug.sh;
   };
 
+  dmenu-custom-scripts-start-videorecording = super.pkgs.writeShellApplication {
+    name = "dmenu-custom-scripts-start-videorecording";
+
+    runtimeInputs = [
+      super.pkgs.dmenu
+    ];
+
+    text = builtins.readFile ./start-videorecording.sh;
+  };
+
+  dmenu-custom-scripts-stop-videorecording = super.pkgs.writeShellApplication {
+    name = "dmenu-custom-scripts-stop-videorecording";
+
+    text = ''
+      kill "$(cat /tmp/runningRecording.txt)"
+      rm /tmp/runningRecording.txt
+      notify-send "Stoped recording"
+    '';
+  };
+
+in {
   dmenu-custom-scripts = super.pkgs.writeShellApplication {
     name = "dmenu_selection";
 
     # TODO: Find way to remove the nix prefixes from "files"
     text = ''
       scripts=()
-      scripts+=("${super.pkgs.dmenu-custom-scripts-calc.name}")
-      scripts+=("${super.pkgs.dmenu-custom-scripts-notifications.name}")
-      scripts+=("${super.pkgs.dmenu-custom-scripts-system.name}")
-      scripts+=("${super.pkgs.dmenu-custom-scripts-docs-php.name}")
-      scripts+=("${super.pkgs.dmenu-custom-scripts-php-version.name}")
-      scripts+=("${super.pkgs.dmenu-custom-scripts-xdebug.name}")
+      scripts+=("${dmenu-custom-scripts-calc.name}")
+      scripts+=("${dmenu-custom-scripts-notifications.name}")
+      scripts+=("${dmenu-custom-scripts-system.name}")
+      scripts+=("${dmenu-custom-scripts-php-version.name}")
+      scripts+=("${dmenu-custom-scripts-docs-php.name}")
+      scripts+=("${dmenu-custom-scripts-xdebug.name}")
+      scripts+=("${dmenu-custom-scripts-start-videorecording.name}")
+      scripts+=("${dmenu-custom-scripts-stop-videorecording.name}")
 
       OIFS="$IFS" IFS=$'\n'
       scriptsString="''${scripts[*]}"
@@ -116,23 +140,29 @@ self: super: {
       action=$(echo -e "$scriptsString" | dmenu -i -l 20)
 
       case "$action" in
-      "${super.pkgs.dmenu-custom-scripts-calc.name}")
-        bash "${super.pkgs.dmenu-custom-scripts-calc}/bin/${super.pkgs.dmenu-custom-scripts-calc.name}" || exit 0
+      "${dmenu-custom-scripts-calc.name}")
+        bash "${dmenu-custom-scripts-calc}/bin/${dmenu-custom-scripts-calc.name}" || exit 0
         ;;
-      "${super.pkgs.dmenu-custom-scripts-notifications.name}")
-        bash "${super.pkgs.dmenu-custom-scripts-notifications}/bin/${super.pkgs.dmenu-custom-scripts-notifications.name}" || exit 0
+      "${dmenu-custom-scripts-notifications.name}")
+        bash "${dmenu-custom-scripts-notifications}/bin/${dmenu-custom-scripts-notifications.name}" || exit 0
         ;;
-      "${super.pkgs.dmenu-custom-scripts-system.name}")
-        bash "${super.pkgs.dmenu-custom-scripts-system}/bin/${super.pkgs.dmenu-custom-scripts-system.name}" || exit 0
+      "${dmenu-custom-scripts-system.name}")
+        bash "${dmenu-custom-scripts-system}/bin/${dmenu-custom-scripts-system.name}" || exit 0
         ;;
-      "${super.pkgs.dmenu-custom-scripts-docs-php.name}")
-        bash "${super.pkgs.dmenu-custom-scripts-docs-php}/bin/${super.pkgs.dmenu-custom-scripts-docs-php.name}" || exit 0
+      "${dmenu-custom-scripts-docs-php.name}")
+        bash "${dmenu-custom-scripts-docs-php}/bin/${dmenu-custom-scripts-docs-php.name}" || exit 0
         ;;
-      "${super.pkgs.dmenu-custom-scripts-php-version.name}")
-        bash "${super.pkgs.dmenu-custom-scripts-php-version}/bin/${super.pkgs.dmenu-custom-scripts-php-version.name}" || exit 0
+      "${dmenu-custom-scripts-php-version.name}")
+        bash "${dmenu-custom-scripts-php-version}/bin/${dmenu-custom-scripts-php-version.name}" || exit 0
         ;;
-      "${super.pkgs.dmenu-custom-scripts-xdebug.name}")
-        bash "${super.pkgs.dmenu-custom-scripts-xdebug}/bin/${super.pkgs.dmenu-custom-scripts-xdebug.name}" || exit 0
+      "${dmenu-custom-scripts-xdebug.name}")
+        bash "${dmenu-custom-scripts-xdebug}/bin/${dmenu-custom-scripts-xdebug.name}" || exit 0
+        ;;
+      "${dmenu-custom-scripts-start-videorecording.name}")
+        bash "${dmenu-custom-scripts-start-videorecording}/bin/${dmenu-custom-scripts-start-videorecording.name}" || exit 0
+        ;;
+      "${dmenu-custom-scripts-stop-videorecording.name}")
+        bash "${dmenu-custom-scripts-stop-videorecording}/bin/${dmenu-custom-scripts-stop-videorecording.name}" || exit 0
         ;;
       *)
         exit 0

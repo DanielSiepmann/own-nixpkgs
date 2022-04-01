@@ -216,7 +216,7 @@ mode "$mode_setup" {
     bindsym v exec xrandr --auto --output DP2-1 --primary --scale 1x1 --mode 2560x1440 --output eDP1 --mode 1920x1080 --left-of DP2-1 && setxkbmap -option ctrl:nocaps && setxkbmap -option compose:ralt && setxkbmap -option numpad:mac
     # bindsym h exec xrandr --output eDP1 --off --output DP1 --scale 1x1 --mode 2560x1440 && setxkbmap -option ctrl:nocaps && setxkbmap -option compose:ralt && setxkbmap -option numpad:mac
     bindsym i exec xrandr --output DP1 --off --output DP2 --off --output eDP1 --scale 1x1 --mode 1920x1080 && xbacklight -set 10
-    bindsym r exec xrandr --output DP1 --primary --mode 1920x1080 --output eDP1 --mode 1920x1080 --left-of DP1 && xbacklight -set 100;
+    bindsym r exec xrandr --output DP2-1 --primary --mode 1920x1080 --output eDP1 --mode 1920x1080 --left-of DP2-1 && xbacklight -set 100;
 
     # Mirror
     # xrandr --output eDP1 --rate 60 --mode 1920x1080 --fb 1920x1080 --output DP1 --mode 1920x1080 --same-as eDP1
