@@ -91,7 +91,7 @@
     pkgs.yt-dlp
     # Does not work for some reason, need installed via apt
     # pkgs.sound-juicer
-    pkgs.audacity
+    # pkgs.audacity
     pkgs.ffmpeg
     pkgs.python39Packages.mutagen
   ];
