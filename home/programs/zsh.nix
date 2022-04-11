@@ -13,7 +13,6 @@
     LANG = "en_US.UTF-8";
     LANGUAGE = "en_US";
 
-    PAGER = "${pkgs.page}/bin/page";
     MANPAGER="${pkgs.page}/bin/page -C -e 'au User PageDisconnect sleep 100m|%y p|enew! |bd! #|pu p|set ft=man'";
     EDITOR = "${pkgs.neovim}/bin/nvim";
     SHELL = "${pkgs.zsh}/bin/zsh";
