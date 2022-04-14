@@ -22,7 +22,7 @@
     GREP_COLOR = "0;30;44";
 
     TYPO3_CONTEXT = "Development/dsiepmann";
-    TYPO3_ADDITIONAL_CONFIGURATION = "/home/daniels/.dotfiles/configs/php/typo3/AdditionalConfiguration.inc.php";
+    TYPO3_ADDITIONAL_CONFIGURATION = "/home/daniels/.local/share/typo3-configuration/AdditionalConfiguration.inc.php";
     PHAN_COLOR_SCHEME = "code";
 
     # Reduce timeout after <ESC> (vi keybindings)

@@ -150,6 +150,7 @@
       url = "https://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd";
       sha256 = "nzevVk7NJ9X2kVTXz+e6jesfYgyBuUzw6rH0IFx01fg=";
     };
+    "typo3-configuration".source = ./home/files/typo3-configuration;
   };
 
   xdg.desktopEntries = {
