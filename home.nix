@@ -67,7 +67,6 @@
     pkgs.silver-searcher
     pkgs.curl
     pkgs.wget
-    pkgs.yamllint
     pkgs.kcachegrind
     pkgs.geckodriver
 
@@ -134,6 +133,7 @@
     "ctags/config.ctags".source = ./home/files/ctags;
     "litecli/config".source = ./home/files/litecli;
     "phpactor".source = ./home/files/phpactor;
+    "yamllint/config".source = ./home/files/yamllint/config;
     "tig/config".source = ./home/files/tig;
 
     "cmus/smyckblue.theme".source = ./home/files/cmus/smyckblue.theme;
