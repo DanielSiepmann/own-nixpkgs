@@ -1,10 +1,10 @@
 {
-  description = "Concrete Flake for TYPO3 project.";
+  description = "First example for soziopolis";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.11";
     flake-utils.url = "github:numtide/flake-utils";
-    typo3.url = "git+https://gitea.daniel-siepmann.de/danielsiepmann/nixpkgs?ref=main&dir=flakes/projects/web/typo3/wm-specific";
+    typo3.url = "/home/daniels/.config/nixpkgs/flakes/projects/web/typo3";
   };
 
   outputs = {
@@ -16,15 +16,16 @@
   flake-utils.lib.eachDefaultSystem (system:
     let
       pkgs = import nixpkgs { inherit system; };
-      packageJsonPath = "packages/sitepackage/Build/";
-      nodePkg = pkgs.nodejs-14_x;
+      packageJsonPath = "packages/soziopolis/Build/";
     in rec {
       apps = rec {
         compileAssets = typo3.lib.compileAssets {
-          inherit pkgs packageJsonPath nodePkg;
+          inherit pkgs packageJsonPath;
+          nodePkg = pkgs.nodejs-14_x;
         };
         watchAssets = typo3.lib.watchAssets {
-          inherit pkgs compileAssets packageJsonPath nodePkg;
+          inherit pkgs compileAssets packageJsonPath;
+          nodePkg = pkgs.nodejs-14_x;
         };
       };
 

@@ -124,6 +124,7 @@
   };
 
   home.file = {
+    ".nix-channels".source = ./home/files/nix-channels;
     ".profile".source = ./home/files/profile;
     ".myclirc".source = ./home/files/myclirc;
     ".agignore".source = ./home/files/agignore;

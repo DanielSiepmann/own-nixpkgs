@@ -58,9 +58,11 @@ It has the following sub folder:
    Each file corresponds to a single service.
    Each file is loaded within `home.nix`.
 
-`flakes/`
-    Holds structure with specific flakes.
-    Those should provide libraries and template.
+`shells/`
+    Holds shells for customer projects.
+    The customers are not aware of Nix and I don't want to stress them.
+    I use this folder to have them in version control and symlink them into the
+    project.
 
 Update
 ------

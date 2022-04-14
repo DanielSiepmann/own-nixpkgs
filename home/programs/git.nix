@@ -48,6 +48,8 @@
     "*.~lock.*#"
     # As I'm using Makefiles in many projects for my own confidence
     "Makefile"
+    # As I'm using nix-shell in many projects for my own confidence
+    "shell.nix"
 
     # Some generics which occur in some projects
     "build/"
