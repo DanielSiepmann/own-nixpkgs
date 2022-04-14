@@ -8,6 +8,7 @@
 
   defaultKeymap = "viins";
 
+  # Can be re sourced via: __HM_ZSH_SESS_VARS_SOURCED= source ~/.zshenv
   sessionVariables = {
     LC_ALL = "en_US.UTF-8";
     LANG = "en_US.UTF-8";
