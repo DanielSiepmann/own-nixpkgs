@@ -260,12 +260,6 @@ in {
     }
 
     fugitive
-    {
-      plugin = vim-mergetool;
-      config = ''
-        let g:mergetool_layout = 'b,lr,m'
-      '';
-    }
 
     vim-commentary
     vim-indent-object
