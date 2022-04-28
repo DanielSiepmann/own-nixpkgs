@@ -22,6 +22,7 @@ in pkgs.mkShell {
 
   shellHook = ''
     export PROJECT_ROOT="$(pwd)"
+    export PATH="/home/daniels/Applications/node-v10.24.1-linux-x64/bin/:$PATH"
 
     export PS1="\033[0;32m\]\W >\[\033[0m\] "
 
