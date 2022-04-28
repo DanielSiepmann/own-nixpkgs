@@ -16,7 +16,7 @@ index 91ab8ca..21fa0e6 100644
   * More advanced example: L" `'\"()[]{}"
   */
 -wchar_t *worddelimiters = L" ";
-+wchar_t *worddelimiters = L" (){}[]<>'\"`│";
++wchar_t *worddelimiters = L" (){}[]<>'\"`│|";
  
  /* selection timeouts (in milliseconds) */
  static unsigned int doubleclicktimeout = 300;
