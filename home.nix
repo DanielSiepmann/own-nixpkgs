@@ -93,6 +93,7 @@
     # pkgs.audacity
     pkgs.ffmpeg
     pkgs.python39Packages.mutagen
+    pkgs.darktable
   ];
 
   programs = {
