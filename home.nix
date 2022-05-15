@@ -41,6 +41,7 @@
     pkgs.networkmanager_dmenu
     pkgs.dmenu-custom-scripts
     pkgs.custom-update-system
+    pkgs.custom-push-etckeeper
     pkgs.dunst
     pkgs.st
     pkgs.ncdu
