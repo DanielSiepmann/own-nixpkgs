@@ -26,6 +26,15 @@ let
       rev = "v0.3.0";
       sha256 = "uJ7cl+1Ngff0FKzjmh1i7O/PkNjPvPT+ZEHgceeZcz0=";
     };
+
+    nativeBuildInputs = [
+      pkgs.python3
+    ];
+
+    preInstall = ''
+      rm -rf Dockerfile readme.rst .gitlab-ci.yml rplugin/test
+      python -m compileall rplugin
+    '';
   };
 
   syntax-typoscript = pkgs.vimUtils.buildVimPluginFrom2Nix {
