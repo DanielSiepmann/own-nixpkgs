@@ -89,6 +89,7 @@
     # Media
     pkgs.vlc
     pkgs.yt-dlp
+    pkgs.spotdl
     # Does not work for some reason, need installed via apt
     # pkgs.sound-juicer
     # pkgs.audacity
