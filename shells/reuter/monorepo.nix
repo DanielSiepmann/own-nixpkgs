@@ -34,6 +34,7 @@ in pkgs.mkShell {
     export TYPO3_CONTEXT=Development/dsiepmann
     export TYPO3_DATABASE=emoto2_reuter
     export TYPO3_BASE=https://reuter.emoto2.localhost/
+    export BASE_URL=https://reuter.emoto2.localhost/
     export TYPO3_ADDITIONAL_CONFIGURATION=/home/daniels/.local/share/typo3-configuration/AdditionalConfiguration.inc.php
   '';
 }
