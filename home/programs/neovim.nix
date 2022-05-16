@@ -126,15 +126,6 @@ let
     };
   };
 
-  phpactor = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    pname = "phpactor";
-    version = "dc54d380";
-    src = pkgs.fetchzip {
-      url = "https://daniel-siepmann.de/fileadmin/${pname}-${version}.tar.gz";
-      sha256 = "sha256-4fXR1KwDF+TNi+OSyFkaeHy/ZmGQiYnHBk0ZU5ft76Y=";
-    };
-  };
-
   neoterm = pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "neoterm";
     src = pkgs.fetchFromGitHub {
@@ -288,10 +279,9 @@ in {
 
     {
       # TODO: Adjust templates: https://phpactor.readthedocs.io/en/master/reference/templates.html
-      plugin = phpactor;
+      plugin = pkgs.phpactor;
       config = ''
         let g:phpactorOmniError = v:true
-        let g:phpactorPhpBin = "${pkgs.php74}/bin/php"
       '';
     }
 
@@ -303,8 +293,7 @@ in {
       config = ''
         require('lspconfig').phpactor.setup({
           cmd = {
-            '${pkgs.php74}/bin/php',
-            '${phpactor}/bin/phpactor',
+            '${pkgs.phpactor}/bin/phpactor',
             'language-server',
           },
         })
