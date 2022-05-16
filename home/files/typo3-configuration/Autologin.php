@@ -62,7 +62,6 @@ if (class_exists(\TYPO3\CMS\Sv\AbstractAuthenticationService\AbstractAuthenticat
 
 // Autologin
 if (
-    false &&
     class_exists(\Codappix\CdxAutoLogin\AutoAuthenticationTypo3Service::class)
     && (
         defined('TYPO3_REQUESTTYPE') === false

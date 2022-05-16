@@ -3,7 +3,7 @@ snippet t3de Insert TYPO3 Extbase var_dump
 
 snippet additionalconf
 	if (getenv('TYPO3_ADDITIONAL_CONFIGURATION')) {
-	    require_once getenv('TYPO3_ADDITIONAL_CONFIGURATION');
+	    require getenv('TYPO3_ADDITIONAL_CONFIGURATION');
 	}
 
 snippet xdebug
