@@ -128,10 +128,10 @@ let
 
   phpactor = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
     pname = "phpactor";
-    version = "dc54d380";
+    version = "ad43a19480d016a140df7fbd8650439b4ff39d5b";
     src = pkgs.fetchzip {
       url = "https://daniel-siepmann.de/fileadmin/${pname}-${version}.tar.gz";
-      sha256 = "sha256-4fXR1KwDF+TNi+OSyFkaeHy/ZmGQiYnHBk0ZU5ft76Y=";
+      sha256 = "sha256-oaewWfZ0WpZiXUVlWsxRlH6MYfPsAVhsxuAggcuQqVs=";
     };
   };
 
