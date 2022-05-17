@@ -139,7 +139,6 @@ let
     ];
 
     postInstall = ''
-      rm -rf tests requirements.txt phpunit.xml.dist phpstan* Makefile phpbench.json .github .git build
       wrapProgram $out/bin/phpactor \
         --prefix PATH : ${pkgs.lib.strings.makeBinPath [ pkgs.php74 ]} \
         --prefix PATH : ${pkgs.lib.strings.makeBinPath [ pkgs.php74Packages.composer ]}
