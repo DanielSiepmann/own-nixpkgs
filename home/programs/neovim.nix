@@ -297,12 +297,12 @@ in {
     }
 
     {
-      # TODO: Adjust templates: https://phpactor.readthedocs.io/en/master/reference/templates.html
       plugin = phpactor;
       config = ''
-        let g:phpactorOmniError = v:true
-        " Make empty, as we have a full blown wrapper
+        " Make empty, as we have a full blown wrapper thanks to nix.
+        " Adding a php in front would interpret the wrapper via PHP.
         let g:phpactorPhpBin = ""
+        let g:phpactorOmniError = v:true
       '';
     }
 
