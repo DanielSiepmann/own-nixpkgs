@@ -17,15 +17,17 @@ nnoremap <leader>pt :Telescope ctags_outline outline<cr>
 nnoremap <leader>pr :Telescope custom_runs<cr>
 nnoremap <silent> <leader>pc :call TelescopeCurrentComposerPackage()<cr>
 
+" lca = lsp code action
+nnoremap <leader>lca :lua vim.lsp.buf.code_action()<cr>
+
 nnoremap <leader>k :NERDTreeToggle<cr>
 nnoremap <leader>f :NERDTreeFind<cr>
 nnoremap <leader>b :TagbarToggle<cr>
 nnoremap <leader>u :UndotreeToggle<cr>
 
-nnoremap <leader>a :PhpactorContextMenu<cr>
+nnoremap <leader>am :PhpactorContextMenu<cr>
 nnoremap <leader>au :PhpactorImportClass<cr>
 nnoremap <leader>ag :PhpactorGotoDefinition<cr>
-nnoremap <leader>ah :PhpactorHover<cr>
 
 nnoremap <silent> <leader>tn :TestNearest<cr>
 nnoremap <silent> <leader>tl :TestLast<cr>
