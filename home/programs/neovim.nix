@@ -133,6 +133,17 @@ let
       url = "https://daniel-siepmann.de/fileadmin/${pname}-${version}.tar.gz";
       sha256 = "sha256-W7aSoQ7NclxaAnOx8mkYxOK9zbe+QQXkIM9+A8kCJHQ=";
     };
+
+    nativeBuildInputs = [
+      pkgs.makeWrapper
+    ];
+
+    postInstall = ''
+      rm -rf tests requirements.txt phpunit.xml.dist phpstan* Makefile phpbench.json .github .git build
+      wrapProgram $out/bin/phpactor \
+        --prefix PATH : ${pkgs.lib.strings.makeBinPath [ pkgs.php74 ]} \
+        --prefix PATH : ${pkgs.lib.strings.makeBinPath [ pkgs.php74Packages.composer ]}
+    '';
   };
 
   neoterm = pkgs.vimUtils.buildVimPluginFrom2Nix {
@@ -291,7 +302,8 @@ in {
       plugin = phpactor;
       config = ''
         let g:phpactorOmniError = v:true
-        let g:phpactorPhpBin = "${pkgs.php74}/bin/php"
+        " Make empty, as we have a full blown wrapper
+        let g:phpactorPhpBin = ""
       '';
     }
 
@@ -303,7 +315,6 @@ in {
       config = ''
         require('lspconfig').phpactor.setup({
           cmd = {
-            '${pkgs.php74}/bin/php',
             '${phpactor}/bin/phpactor',
             'language-server',
           },
