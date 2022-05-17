@@ -61,3 +61,11 @@
         display: none;
     }
 }
+
+@-moz-document domain(redmine.codappix.com) {
+    /* Hide elements */
+    #content .next-prev-links.contextual,
+    #content .badge {
+        display: none !important;
+    }
+}
