@@ -126,6 +126,12 @@ let
     };
   };
 
+  phpactorPhp = pkgs.php74.buildEnv {
+    extraConfig = ''
+       zend.assertions = -1
+    '';
+  };
+
   phpactor = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
     pname = "phpactor";
     version = "042c2f2733189118f8fe95a03b9701e43c81c98f";
@@ -141,7 +147,7 @@ let
     postInstall = ''
       rm -rf tests requirements.txt phpunit.xml.dist phpstan* Makefile phpbench.json .github .git build
       wrapProgram $out/bin/phpactor \
-        --prefix PATH : ${pkgs.lib.strings.makeBinPath [ pkgs.php74 ]} \
+        --prefix PATH : ${pkgs.lib.strings.makeBinPath [ phpactorPhp ]} \
         --prefix PATH : ${pkgs.lib.strings.makeBinPath [ pkgs.php74Packages.composer ]}
     '';
   };
