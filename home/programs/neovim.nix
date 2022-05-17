@@ -259,6 +259,7 @@ in {
     i3config-vim
     typescript-vim
     syntax-fluid
+    vim-twig
     {
       plugin = syntax-php;
       config = pkgs.lib.fileContents ./neovim/plugins/php.vim;
