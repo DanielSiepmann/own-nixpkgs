@@ -178,6 +178,7 @@ let
     };
     patches = [
       ./neovim/patches/disable_test_paratest.patch
+      ./neovim/patches/test_extend_codeception_detection.patch
     ];
   };
 
