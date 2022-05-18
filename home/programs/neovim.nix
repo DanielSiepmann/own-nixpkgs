@@ -271,6 +271,7 @@ in {
     ag
     sqlformat
     diff-fold
+    BufOnly-vim
 
     {
       plugin = vim-snipmate;
