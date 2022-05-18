@@ -121,6 +121,8 @@ Migration:
 * Migrate desktop environment (is that possible? I select it within ubuntu login screen, guess it needs to be installed or registered somwhere in ubuntu)
   i3-wm, i3, i3lock-color
 
+  Use /usr/share/xsessions to start i3 installed via nix?! Thanks Sascha
+
 Ideas
 -----
 
