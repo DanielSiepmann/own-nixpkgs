@@ -74,8 +74,10 @@
     zle -N edit-command-line
     bindkey -M vicmd v edit-command-line
 
-    # ctrl-r starts searching history backward
-    bindkey '^r' history-incremental-search-backward
+    # ctrl-j search history backward
+    bindkey '^j' history-incremental-search-backward
+    # # ctrl-k search history forward
+    bindkey '^k' history-search-forward
 
     zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
     zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
