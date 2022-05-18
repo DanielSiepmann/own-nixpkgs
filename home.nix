@@ -43,6 +43,7 @@
     pkgs.custom-update-system
     pkgs.custom-push-etckeeper
     pkgs.dunst
+    pkgs.i3blocks
     pkgs.st
     pkgs.ncdu
     pkgs.tree
