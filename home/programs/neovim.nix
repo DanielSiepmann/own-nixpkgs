@@ -202,6 +202,8 @@ in {
 
   # TODO: Check out these plugins as additions / replacements:
 
+  # - https://github.com/NTBBloodbath/rest.nvim recommended by Sascha, allows to write and execute requests
+
   # - https://github.com/glacambre/firenvim Give it another try, integrates neovim into firefox
   # - https://github.com/sindrets/diffview.nvim/ 
 
