@@ -118,10 +118,8 @@ Migration:
   Does that work? I guess nix (home-manager) shouldn't write outside of user home.
   Maybe within vm as preparation of switch to nix os?
 
-* Migrate desktop environment (is that possible? I select it within ubuntu login screen, guess it needs to be installed or registered somwhere in ubuntu)
-  i3-wm, i3, i3lock-color
-
-  Use /usr/share/xsessions to start i3 installed via nix?! Thanks Sascha
+* Replace via nix installation?
+  i3lock-color
 
 Ideas
 -----

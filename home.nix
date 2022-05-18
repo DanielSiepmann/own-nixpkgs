@@ -134,6 +134,10 @@
     ".agignore".source = ./home/files/agignore;
   };
 
+  xsession.windowManager.i3 = import ./home/windowManager/i3.nix {
+    inherit config pkgs;
+  };
+
   xdg.configFile = {
     "ctags/config.ctags".source = ./home/files/ctags;
     "litecli/config".source = ./home/files/litecli;
@@ -144,7 +148,6 @@
     "cmus/smyckblue.theme".source = ./home/files/cmus/smyckblue.theme;
     "cmus/rc".source = ./home/files/cmus/rc;
 
-    "i3/config".source = ./home/files/i3;
     "i3blocks/config".source = ./home/files/i3-blocks;
 
     "borg/exclude".source = ./home/files/borg-exclude;
