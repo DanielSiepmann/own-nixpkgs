@@ -63,13 +63,18 @@ in {
     bars = [{
       mode = "hide";
       position = "top";
+
       workspaceButtons = true;
       workspaceNumbers = true;
+
+      statusCommand = "${pkgs.i3blocks}/bin/i3blocks";
+
       fonts = {
         names = ["monospace"];
         style = "Bold";
         size = 12.0;
       };
+
       colors = {
         background = "#000000";
         statusline = "#72B3CC";
@@ -100,6 +105,11 @@ in {
           text = "#FFFFFF";
         };
       };
+
+      extraConfig = ''
+        separator_symbol " "
+      '';
+
     }];
 
     window = {
