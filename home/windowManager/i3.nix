@@ -215,10 +215,6 @@ in {
         command = "eval $(ssh-agent)";
         notification = false;
       }
-      {
-        command = "nm-applet";
-        notification = false;
-      }
     ];
 
     keybindings = {
