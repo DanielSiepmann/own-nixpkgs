@@ -226,4 +226,8 @@
     "PATH=${config.home.profileDirectory}/bin"
     "QT_XCB_GL_INTEGRATION=none"
   ];
+
+  systemd.user.services.batteryicon = import ./home/services/batteryicon.nix {
+    inherit pkgs;
+  };
 }

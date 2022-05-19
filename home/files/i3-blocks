@@ -40,20 +40,6 @@ command=[ -L /etc/php/8.0/cli/conf.d/20-xdebug.ini ] && echo "yes" || echo "no"
 interval=once
 signal=10
 
-# System info
-
-[wifi]
-instance=wlp2s0
-label=📡
-interval=10
-separator=false
-min_width=50
-
-# Battery indicator
-[battery]
-label=🔋
-interval=30
-
 # Date Time
 [time]
 command=date '+📅 %a %Y-%m-%d %H:%M:%S'; date '+📅 %a %d. %H:%M:%S'
