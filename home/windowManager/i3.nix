@@ -305,13 +305,13 @@ in {
       "${modifier}+Shift+Right" = "move workspace to output right";
 
       # Function Key Bindings (🎵)
-      "XF86AudioPause" = "exec cmus-remote --pause && pkill -SIGRTMIN+11 i3blocks";
-      "XF86AudioPlay" = "exec cmus-remote --pause && pkill -SIGRTMIN+11 i3blocks";
-      "XF86AudioPrev" = "exec cmus-remote --prev && pkill -SIGRTMIN+11 i3blocks";
-      "XF86AudioNext" = "exec cmus-remote --next && pkill -SIGRTMIN+11 i3blocks";
-      "XF86AudioMute" = "exec \"amixer -D pulse sset Master 0 && pkill -SIGRTMIN+11 i3blocks\"";
-      "XF86AudioRaiseVolume" = "exec \"amixer -D pulse sset Master 5%+ && pkill -SIGRTMIN+11 i3blocks\"";
-      "XF86AudioLowerVolume" = "exec \"amixer -D pulse sset Master 5%- && pkill -SIGRTMIN+11 i3blocks\"";
+      "XF86AudioPause" = "exec cmus-remote --pause";
+      "XF86AudioPlay" = "exec cmus-remote --pause";
+      "XF86AudioPrev" = "exec cmus-remote --prev";
+      "XF86AudioNext" = "exec cmus-remote --next";
+      "XF86AudioMute" = "exec \"amixer -D pulse sset Master 0\"";
+      "XF86AudioRaiseVolume" = "exec \"amixer -D pulse sset Master 5%+\"";
+      "XF86AudioLowerVolume" = "exec \"amixer -D pulse sset Master 5%-\"";
 
       # Switch sound device:
       # https://askubuntu.com/a/72076/491377
