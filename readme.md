@@ -114,12 +114,7 @@ Migration:
 
 * Migrate other system configurations like keyboard?!
 
-* Begin migrating further configuration, e.g. php fpm pools and apache config (Again I don't like customer internals in public repo, how to handle?)
-  Does that work? I guess nix (home-manager) shouldn't write outside of user home.
-  Maybe within vm as preparation of switch to nix os?
-
-* Replace via nix installation?
-  i3lock-color
+* i3lock-color
 
 Ideas
 -----
