@@ -5,7 +5,6 @@
 
   numlock.enable = true;
 
-  # TODO: Check how to set those options somewhere else?
   initExtra = ''
     eval $(ssh-agent)
 
