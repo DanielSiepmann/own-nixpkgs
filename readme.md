@@ -120,8 +120,6 @@ Migration:
 
 * Maybe PR upstream: `./home/modules/programs/languagetool.nix`.
 
-* Migrate other system configurations like keyboard?!
-
 * i3lock-color
 
 Ideas
