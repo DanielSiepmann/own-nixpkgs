@@ -162,8 +162,10 @@ in {
         { class = "^Thunderbird$"; }
       ];
       "5:🎵" = [
-        { class = "^vlc$"; }
+        # TODO: Assign cmus, but it is opened within terminal
+        # i3-dmenu-desktop does not allow to pass the wm class for the terminal, should I wrap the .desktop call or cmus binary?
         { class = "^Pavucontrol$"; }
+        { class = "^vlc$"; }
         { class = "^Audacity$"; }
       ];
     };
