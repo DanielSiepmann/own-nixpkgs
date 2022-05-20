@@ -75,15 +75,6 @@ Manual changes
 
 List of manual needed changes for various reasons.
 
-* .desktop files seem not to be supported by home-manager yet.
-  They need to manually be linked, e.g.:
-
-      cd ~/.local/share/applications && ln -s ~/.nix-profile/share/applications/* .
-
-  Or link whole folder:
-
-      cd ~/.local/share && ln -s ~/.nix-profile/share/applications
-
 * Allow gdm3 to use xsessions as login.
   Add the following content as `/usr/share/xsessions/xsession.desktop`:
 

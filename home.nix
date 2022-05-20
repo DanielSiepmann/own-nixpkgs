@@ -84,6 +84,10 @@
     inherit pkgs;
   };
 
+  gtk = import ./home/gtk.nix {
+    inherit pkgs;
+  };
+
   services = {
     dunst = import ./home/services/dunst.nix;
     mailhog.enable = true;
@@ -91,19 +95,29 @@
     nextcloud-client.enable = true;
   };
 
-  systemd = {
+  systemd.user = {
 
-    # Temporary fix to OpenGL issue by using GLX.
-    # Start nextcloud without GLX support which is fine for me for noe.
-    # I don't have a better way for now, then using `pkgs.lib.mkForce` and setting whole value (repeating from modules/services/nextcloud-client.nix).
-    user.services.nextcloud-client.Service.Environment = pkgs.lib.mkForce [
-      "PATH=${config.home.profileDirectory}/bin"
-      "QT_XCB_GL_INTEGRATION=none"
-    ];
+    services = {
 
-    user.services.batteryicon = import ./home/services/batteryicon.nix {
-      inherit pkgs;
+      # Temporary fix to OpenGL issue by using GLX.
+      # Start nextcloud without GLX support which is fine for me for noe.
+      # I don't have a better way for now, then using `pkgs.lib.mkForce` and setting whole value (repeating from modules/services/nextcloud-client.nix).
+      nextcloud-client.Service.Environment = pkgs.lib.mkForce [
+        "PATH=${config.home.profileDirectory}/bin"
+        "QT_XCB_GL_INTEGRATION=none"
+      ];
+
+      batteryicon = import ./home/services/batteryicon.nix {
+        inherit pkgs;
+      };
+
     };
+
+    tmpfiles.rules = [
+      "L ${config.home.homeDirectory}/.themes - - - - ${config.home.homeDirectory}/.nix-profile/share/themes"
+      "L ${config.home.homeDirectory}/.icons - - - - ${config.home.homeDirectory}/.nix-profile/share/icons"
+      "L ${config.home.homeDirectory}/.local/share/applications - - - - ${config.home.homeDirectory}/.nix-profile/share/applications"
+    ];
 
   };
 
