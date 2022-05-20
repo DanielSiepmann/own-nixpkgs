@@ -31,6 +31,7 @@ in {
     };
 
     sessionVariables = {
+      TERMINAL = "${pkgs.st}/bin/st";
       EDITOR = "${pkgs.neovim}/bin/nvim";
       SHELL = "${pkgs.zsh}/bin/zsh";
 
