@@ -41,40 +41,8 @@
     inherit pkgs;
   };
 
-  programs = {
-
-    # Let Home Manager install and manage itself.
-    home-manager.enable = true;
-
-    neovim = import ./home/programs/neovim.nix {
-      inherit pkgs;
-    };
-    git = import ./home/programs/git.nix {
-      inherit pkgs;
-    };
-    htop = import ./home/programs/htop.nix {
-      inherit config;
-    };
-    tmux = import ./home/programs/tmux.nix {
-      inherit pkgs;
-    };
-    jq = import ./home/programs/jq.nix {
-      inherit config;
-    };
-    zsh = import ./home/programs/zsh.nix {
-      inherit config pkgs;
-    };
-    keychain = import ./home/programs/keychain.nix {
-      inherit config pkgs;
-    };
-
-    firefox = import ./home/programs/firefox.nix {
-      inherit pkgs;
-    };
-
-    # Media
-    cmus.enable = true;
-
+  programs = import ./home/programs.nix {
+    inherit config pkgs;
   };
 
   fonts.fontconfig.enable = true;
