@@ -27,10 +27,12 @@
 
   gtk3.extraConfig = {
     gtk-application-prefer-dark-theme = 1;
+    gtk-enable-animations = 0;
   };
 
   gtk4.extraConfig = {
     gtk-application-prefer-dark-theme = 1;
+    gtk-enable-animations = 0;
   };
 
 }
