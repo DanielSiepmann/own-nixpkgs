@@ -64,6 +64,9 @@
     zsh = import ./home/programs/zsh.nix {
       inherit config pkgs;
     };
+    keychain = import ./home/programs/keychain.nix {
+      inherit config pkgs;
+    };
 
     firefox = import ./home/programs/firefox.nix {
       inherit pkgs;
