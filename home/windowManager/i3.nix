@@ -146,12 +146,13 @@ in {
       ];
     };
 
+    # For debugging, include class (https://i3wm.org/docs/userguide.html#command_criteria)
+    # also use bash tool "xprop" or "xwininfo"
     assigns = {
       "2:💶" = [
         { class = "^time-tracking$"; }
         { class = "^mailhog$"; }
-        # TODO: Check why this does not work anymore
-        # { class = "^Firefox$"; }
+        { window_role = "^browser$"; }
       ];
       "3:💬" = [
         { class = "^chat$"; }
