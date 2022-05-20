@@ -35,6 +35,8 @@
     inherit pkgs;
   };
 
+  targets.genericLinux.enable = true;
+
   nix = import ./home/programs/nix.nix {
     inherit pkgs;
   };
@@ -71,6 +73,8 @@
     cmus.enable = true;
 
   };
+
+  fonts.fontconfig.enable = true;
 
   xsession = import ./home/xsession.nix {
     inherit config pkgs;
