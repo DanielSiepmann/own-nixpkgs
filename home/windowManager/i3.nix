@@ -168,45 +168,9 @@ in {
     };
 
     startup = [
-      # TODO: Move configuration to configuration instead of calls from i3
-      {
-        # Increase mouse speed
-        command = "xinput --set-prop 13 'libinput Accel Speed' 1";
-        notification = false;
-      }
-      {
-        # Use natural scrolling for trackpad
-        command = "xinput --set-prop 'DELL07E6:00 06CB:76AF Touchpad' 'libinput Natural Scrolling Enabled' 1";
-        notification = false;
-      }
-      {
-        command = "xinput --set-prop 'DELL07E6:00 06CB:76AF Touchpad' 'libinput Tapping Enabled' 1";
-        notification = false;
-      }
-      {
-        command = "xsetroot -solid \"#2E3436\"";
-        notification = false;
-      }
-      {
-        command = "xset s off";
-        notification = false;
-      }
-
-      # Configure display
-      {
-        command = "xrandr --output eDP1 --scale 0.75x0.75 --mode 2560x1440 --brightness 1";
-      }
-      {
-        command = "xbacklight -set 25";
-      }
-
       # Start programs / applets
       {
         command = "clipit";
-        notification = false;
-      }
-      {
-        command = "eval $(ssh-agent)";
         notification = false;
       }
       {
