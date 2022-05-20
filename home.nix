@@ -31,6 +31,8 @@
 
     file = import ./home/files.nix { };
 
+  } // import ./home/home.nix {
+    inherit pkgs;
   };
 
   nix = import ./home/programs/nix.nix {
@@ -70,7 +72,7 @@
 
   };
 
-  xsession.windowManager.i3 = import ./home/windowManager/i3.nix {
+  xsession = import ./home/xsession.nix {
     inherit config pkgs;
   };
 

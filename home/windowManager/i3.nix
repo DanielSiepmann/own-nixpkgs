@@ -184,12 +184,6 @@ in {
         notification = false;
       }
       {
-        # Use CAPS LOCK as ctrl
-        command = "setxkbmap -option ctrl:nocaps; setxkbmap -option compose:ralt";
-        notification = false;
-        always = true;
-      }
-      {
         command = "xsetroot -solid \"#2E3436\"";
         notification = false;
       }
@@ -379,8 +373,8 @@ in {
       displays = {
         "a" = "exec xrandr --auto --output eDP1 --scale 1x1 --mode 1920x1080 && xbacklight -set 10;";
         "e" = "exec xrandr --auto --output eDP1 --off";
-        "h" = "exec xrandr --output eDP1 --off --output DP2-1 --scale 1x1 --mode 2560x1440 && setxkbmap -option ctrl:nocaps && setxkbmap -option compose:ralt && setxkbmap -option numpad:mac";
-        "v" = "exec xrandr --auto --output DP2-1 --primary --scale 1x1 --mode 2560x1440 --output eDP1 --mode 1920x1080 --left-of DP2-1 && setxkbmap -option ctrl:nocaps && setxkbmap -option compose:ralt && setxkbmap -option numpad:mac";
+        "h" = "exec xrandr --output eDP1 --off --output DP2-1 --scale 1x1 --mode 2560x1440";
+        "v" = "exec xrandr --auto --output DP2-1 --primary --scale 1x1 --mode 2560x1440 --output eDP1 --mode 1920x1080 --left-of DP2-1";
         "r" = "exec xrandr --output DP2-1 --primary --mode 1920x1080 --output eDP1 --mode 1920x1080 --left-of DP2-1 && xbacklight -set 100;";
 
         # Mirror

@@ -12,7 +12,7 @@
 
   Install = {
     WantedBy = [
-      "default.target"
+      "hm-graphical-session.target"
     ];
   };
 }
