@@ -24,19 +24,4 @@
 
   };
 
-  registry = {
-
-    customer-projects = {
-      from = {
-        id = "cp";
-        type = "indirect";
-      };
-      to = {
-        path = toString ./../../registries/customer-projects;
-        type = "path";
-      };
-    };
-
-  };
-
 }
