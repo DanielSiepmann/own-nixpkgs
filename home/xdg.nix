@@ -81,18 +81,4 @@
 
   mime.enable = true;
 
-  mimeApps = {
-    enable = true;
-    defaultApplications = {
-      "application/octet-stream" = [ "vlc.desktop" ];
-      "application/x-sql" = [ "nvim.desktop" ];
-      "text/calendar" = [ "thunderbird.desktop" ];
-      "text/html" = [ "firefox.desktop" ];
-      "video/mp4" = [ "vlc.desktop" ];
-      "video/mpeg" = [ "vlc.desktop" ];
-      "video/webm" = [ "vlc.desktop" ];
-      "video/x-matroska" = [ "vlc.desktop" ];
-    };
-  };
-
 }
