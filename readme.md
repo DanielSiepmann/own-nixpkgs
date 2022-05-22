@@ -106,8 +106,6 @@ Additions:
 * Integrate https://github.com/Wilfred/difftastic for diffing source code
   https://github.com/nix-community/home-manager/pull/2850
 
-* https://gitlab.com/khumba/nvd
-
 Migration:
 
 * Migrate ssh config (I don't really like to expose customer server names and configs to outer world, how to handle?)

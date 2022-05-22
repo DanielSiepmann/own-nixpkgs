@@ -3,6 +3,7 @@
 with pkgs; [
   nix
   cacert
+  nvd
 
   # System tools
   dmenu
