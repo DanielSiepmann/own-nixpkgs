@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
 
@@ -53,6 +53,10 @@
 
   xdg = import ./home/xdg.nix {
     inherit pkgs;
+  };
+
+  dconf = import ./home/dconf.nix {
+    inherit lib;
   };
 
   qt = import ./home/qt.nix {
