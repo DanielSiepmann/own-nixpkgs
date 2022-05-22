@@ -65,32 +65,32 @@
     slack-typo3 = {
       name = "Slack TYPO3";
       type = "Application";
-      exec = "/snap/bin/chromium --class=\"chat\" --new-window --app=https://app.slack.com/client/T024TUMLZ/unreads";
+      exec = "${pkgs.chromium}/bin/chromium --class=\"chat\" --new-window --app=https://app.slack.com/client/T024TUMLZ/unreads";
     };
     slack-codappix = {
       name = "Slack Codappix";
       type = "Application";
-      exec = "/snap/bin/chromium --class=\"chat\" --new-window --app=https://app.slack.com/client/T2DPNS55W/unreads";
+      exec = "${pkgs.chromium}/bin/chromium --class=\"chat\" --new-window --app=https://app.slack.com/client/T2DPNS55W/unreads";
     };
     slack-sac = {
       name = "Slack SAC";
       type = "Application";
-      exec = "/snap/bin/chromium --class=\"chat\" --new-window --app=https://app.slack.com/client/T3FANTPL5/unreads";
+      exec = "${pkgs.chromium}/bin/chromium --class=\"chat\" --new-window --app=https://app.slack.com/client/T3FANTPL5/unreads";
     };
     microsoft-teams = {
       name = "Microsoft Teams";
       type = "Application";
-      exec = "/snap/bin/chromium --class=\"chat\" --new-window --user-agent=\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36\" --new-window --app=https://teams.microsoft.com/";
+      exec = "${pkgs.chromium}/bin/chromium --class=\"chat\" --new-window --user-agent=\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36\" --new-window --app=https://teams.microsoft.com/";
     };
     mattermost = {
       name = "Mattermost werkraum-media";
       type = "Application";
-      exec = "/snap/bin/chromium --class=\"chat\" --new-window --new-window --app=https://mattermost.werkraum-media.de/";
+      exec = "${pkgs.chromium}/bin/chromium --class=\"chat\" --new-window --new-window --app=https://mattermost.werkraum-media.de/";
     };
     werkraum-jitsi = {
       name = "Jitsi werkraum-media";
       type = "Application";
-      exec = "/snap/bin/chromium --class=\"chat\" --new-window --new-window --app=https://jitsi.werkraum-media.de/codappix";
+      exec = "${pkgs.chromium}/bin/chromium --class=\"chat\" --new-window --new-window --app=https://jitsi.werkraum-media.de/codappix";
     };
     toggl = {
       name = "Toggl Time Tracking";
