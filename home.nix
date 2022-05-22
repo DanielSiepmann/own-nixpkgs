@@ -54,9 +54,6 @@
   xdg = import ./home/xdg.nix {
     inherit pkgs;
   };
-  xresources = import ./home/xresources.nix {
-    inherit config;
-  };
 
   qt = import ./home/qt.nix {
     inherit pkgs;

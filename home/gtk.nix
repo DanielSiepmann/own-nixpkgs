@@ -13,12 +13,6 @@
     name = "Qogir-ubuntu-dark";
   };
 
-  cursorTheme = {
-    package = pkgs.qogir-icon-theme;
-    name = "Qogir-ubuntu-dark";
-    size = 16;
-  };
-
   font = {
     package = pkgs.roboto-mono;
     name = "Roboto Mono";

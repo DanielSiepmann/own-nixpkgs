@@ -35,6 +35,14 @@ in {
       ];
     };
 
+    pointerCursor = {
+      package = pkgs.qogir-icon-theme;
+      name = "Qogir-ubuntu-dark";
+      size = 16;
+      x11.enable = true;
+      gtk.enable = true;
+    };
+
     sessionVariables = {
       TERMINAL = "${pkgs.st}/bin/st";
       EDITOR = "${pkgs.neovim}/bin/nvim";
