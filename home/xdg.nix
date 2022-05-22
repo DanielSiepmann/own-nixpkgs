@@ -4,18 +4,43 @@
   enable = true;
 
   configFile = {
-    "ctags/config.ctags".source = ./files/ctags;
-    "litecli/config".source = ./files/litecli;
-    "phpactor".source = ./files/phpactor;
-    "yamllint/config".source = ./files/yamllint/config;
-    "tig/config".source = ./files/tig;
-
-    "cmus/smyckblue.theme".source = ./files/cmus/smyckblue.theme;
-    "cmus/rc".source = ./files/cmus/rc;
 
     "i3blocks/config".source = ./files/i3-blocks;
 
     "borg/exclude".source = ./files/borg-exclude;
+    "ctags/config.ctags".source = ./files/ctags;
+    "keepassxc/keepassxc.ini".text = pkgs.lib.generators.toINI { } {
+      General = {
+        ConfigVersion = 2;
+      };
+      GUI = {
+        ApplicationTheme = "dark";
+        CompactMode = true;
+        HidePreviewPanel = false;
+        HideToolbar = true;
+        HideUsernames = false;
+      };
+      PasswordGenerator = {
+        AdditionalChars = "";
+        AdvancedMode = true;
+        Braces = true;
+        Dashes = true;
+        ExcludedChars = "*<>!?";
+        Length = 16;
+        Math = true;
+        Quotes = true;
+        SpecialChars = false;
+      };
+    };
+    "litecli/config".source = ./files/litecli;
+    "phpactor".source = ./files/phpactor;
+    "tig/config".source = ./files/tig;
+    "yamllint/config".source = ./files/yamllint/config;
+
+    # Music player
+    "cmus/rc".source = ./files/cmus/rc;
+    "cmus/smyckblue.theme".source = ./files/cmus/smyckblue.theme;
+
   };
 
   dataFile = {
