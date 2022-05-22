@@ -67,7 +67,9 @@
   };
 
   services = {
-    dunst = import ./home/services/dunst.nix;
+    dunst = import ./home/services/dunst.nix {
+      inherit config;
+    };
     mailhog.enable = true;
     languagetool.enable = true;
     nextcloud-client.enable = true;

@@ -1,5 +1,14 @@
+{ config }:
+
 {
   enable = true;
+
+  iconTheme = {
+    package = config.gtk.iconTheme.package;
+    name = "${config.gtk.iconTheme.name}";
+    size = "32";
+  };
+
   settings = {
     global = {
       monitor = 0;
@@ -50,7 +59,6 @@
       icon_position = "left";
       min_icon_size = 0;
       max_icon_size = 32;
-      icon_path = "/usr/share/icons/gnome/32x32/emblems/:/usr/share/icons/gnome/32x32/status/:/usr/share/icons/gnome/32x32/actions/:/usr/share/icons/gnome/32x32/emotes/:/usr/share/icons/gnome/32x32/apps/:/usr/share/icons/gnome/32x32/devices/";
 
       sticky_history = "yes";
       history_length = 20;
