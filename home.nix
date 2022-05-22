@@ -55,6 +55,9 @@
     inherit pkgs;
   };
 
+  qt = import ./home/qt.nix {
+    inherit pkgs;
+  };
   gtk = import ./home/gtk.nix {
     inherit pkgs;
   };
