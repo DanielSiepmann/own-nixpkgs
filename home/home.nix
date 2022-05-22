@@ -1,23 +1,28 @@
 { pkgs }:
 
 let
-  usLocale = "en_US.UTF-8";
+  enLocale = "en_US.utf8";
+  deLocale = "de_DE.utf8";
 
 in {
 
     language = {
-      base = "${usLocale}";
-      ctype = "${usLocale}";
-      numeric = "${usLocale}";
-      time = "${usLocale}";
-      collate = "${usLocale}";
-      monetary = "${usLocale}";
-      messages = "${usLocale}";
-      paper = "${usLocale}";
-      name = "${usLocale}";
-      address = "${usLocale}";
-      telephone = "${usLocale}";
-      measurement = "${usLocale}";
+      # English
+
+      base = "${enLocale}";
+      ctype = "${enLocale}";
+      numeric = "${enLocale}";
+      collate = "${enLocale}";
+      messages = "${enLocale}";
+
+      # German
+      time = "${deLocale}";
+      monetary = "${deLocale}";
+      paper = "${deLocale}";
+      name = "${deLocale}";
+      address = "${deLocale}";
+      telephone = "${deLocale}";
+      measurement = "${deLocale}";
     };
 
     keyboard = {
