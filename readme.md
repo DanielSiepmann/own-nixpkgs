@@ -97,6 +97,9 @@ Todos
 
 Additions:
 
+* https://github.com/altdesktop/playerctl#selecting-the-most-recent-player in
+  order to not worry about current media player, control whatever was last
+
 * https://github.com/cantino/mcfly as replacement for shell history search?
 
 * https://github.com/darrenburns/dunk diff alternative
