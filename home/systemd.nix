@@ -19,7 +19,7 @@
 
   tmpfiles.rules = [
     "L ${config.home.homeDirectory}/.themes - - - - ${config.home.profileDirectory}/share/themes"
-    "L ${config.home.homeDirectory}/.icons - - - - ${config.home.profileDirectory}/share/icons"
+    "L ${config.home.homeDirectory}/.icons/default - - - - ${config.home.profileDirectory}/share/icons/${config.gtk.iconTheme.name}"
     "L ${config.home.homeDirectory}/.local/share/applications - - - - ${config.home.profileDirectory}/share/applications"
   ];
 }
