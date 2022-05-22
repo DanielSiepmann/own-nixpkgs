@@ -9,6 +9,7 @@ self: super:
       home-manager switch
       home-manager expire-generations '-30 days'
       nix-env --delete-generations +5
+      nix-index
       nix store gc
       nix store optimise
     '';
