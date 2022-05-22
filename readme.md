@@ -102,6 +102,8 @@ Additions:
 
 * https://github.com/cantino/mcfly as replacement for shell history search?
 
+* https://github.com/evilsocket/opensnitch/wiki for better network control?
+
 * https://github.com/darrenburns/dunk diff alternative
 
 * Add languagetool integration (via ale?) into Neovim (for rst, markdown, git commit?)
