@@ -66,13 +66,8 @@
     inherit pkgs;
   };
 
-  services = {
-    dunst = import ./home/services/dunst.nix {
-      inherit config;
-    };
-    mailhog.enable = true;
-    languagetool.enable = true;
-    nextcloud-client.enable = true;
+  services = import ./home/services.nix {
+    inherit config;
   };
 
   systemd.user = import ./home/systemd.nix {
