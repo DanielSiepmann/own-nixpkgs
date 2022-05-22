@@ -32,6 +32,9 @@
     inherit config pkgs;
   };
 
+  zathura = import ./programs/zathura.nix {
+  };
+
   firefox = import ./programs/firefox.nix {
     inherit pkgs;
   };
