@@ -66,4 +66,5 @@ with pkgs; [
   ffmpeg
   python39Packages.mutagen
   darktable
+  feh
 ]
