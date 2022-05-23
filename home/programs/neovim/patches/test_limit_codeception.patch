@@ -1,0 +1,17 @@
+No PR open.
+
+I remove support for phpunit tests ending with test.php.
+I use phpunit all the time right now. Those should not be executed via codeception.
+diff --git a/autoload/test/php/codeception.vim b/autoload/test/php/codeception.vim
+index d627dd5..9615a1d 100644
+--- a/autoload/test/php/codeception.vim
++++ b/autoload/test/php/codeception.vim
+@@ -1,6 +1,6 @@
+ if !exists('g:test#php#codeception#file_pattern')
+   let g:test#php#codeception#file_pattern =
+-        \ '\v((c|C)e(p|s)t\.php$|\.feature$|(t|T)est\.php$)'
++        \ '\v((c|C)e(p|s)t\.php$|\.feature$)'
+ endif
+ 
+ function! test#php#codeception#test_file(file) abort
+
