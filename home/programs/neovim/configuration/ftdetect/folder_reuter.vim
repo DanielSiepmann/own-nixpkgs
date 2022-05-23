@@ -9,23 +9,15 @@ augroup END
 " As long as we use older phpunit which does not provider proper testdox output
 function! ReuterSetupPhpUnitUnit()
     let g:test#php#phpunit#options = {
-        \ 'file': '',
-        \ 'nearest': '',
+        \ 'file': '--testdox --colors',
+        \ 'nearest': '--testdox --colors',
     \}
 endfunction
 
 function! ReuterSetupPhpUnitFunctional()
-
-    " TYPO3 v8
     let g:test#php#phpunit#options = {
-        \ 'file': '-c phpunit.functional.xml.dist --stop-on-error --stop-on-failure',
-        \ 'nearest': '-c phpunit.functional.xml.dist',
-    \}
-
-    " TYPO3 v10
-    let g:test#php#phpunit#options = {
-        \ 'file': '--stop-on-error --stop-on-failure --testdox',
-        \ 'nearest': '--testdox',
+        \ 'file': '--stop-on-error --stop-on-failure --testdox --colors',
+        \ 'nearest': '--testdox --colors',
     \}
 
 endfunction
