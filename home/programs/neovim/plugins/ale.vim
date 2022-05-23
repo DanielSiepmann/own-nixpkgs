@@ -49,5 +49,3 @@ let g:ale_sign_warning = '!'
 " let g:ale_sign_style_warning = '!'
 
 let g:ale_php_phpcs_standard = 'PSR12'
-
-let g:ale_languagetool_executable = 'languagetool-commandline'

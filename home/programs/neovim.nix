@@ -423,6 +423,7 @@ in {
           let g:ale_xml_xmllint_executable = '${pkgs.libxml2}/bin/xmllint'
           let g:ale_gitcommit_gitlint_executable = '${pkgs.gitlint}/bin/gitlint'
           let g:ale_nix_statix_check_executable = '${pkgs.statix}/bin/statix'
+          let g:ale_languagetool_executable = '${pkgs.languagetool}/bin/languagetool-commandline'
         '';
     }
 

@@ -104,8 +104,6 @@ Additions:
 
 * https://github.com/darrenburns/dunk diff alternative
 
-* Add languagetool integration (via ale?) into Neovim (for rst, markdown, git commit?)
-
 * Integrate https://github.com/Wilfred/difftastic for diffing source code
   https://github.com/nix-community/home-manager/pull/2850
 
