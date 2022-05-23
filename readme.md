@@ -100,8 +100,6 @@ Additions:
 * https://github.com/altdesktop/playerctl#selecting-the-most-recent-player in
   order to not worry about current media player, control whatever was last
 
-* https://github.com/evilsocket/opensnitch/wiki for better network control?
-
 * https://github.com/darrenburns/dunk diff alternative
 
 * Integrate https://github.com/Wilfred/difftastic for diffing source code
