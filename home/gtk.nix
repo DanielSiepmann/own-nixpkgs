@@ -1,5 +1,10 @@
 { pkgs }:
 
+# Possible alternatives:
+# https://github.com/FedoraQt/adwaita-qt
+# https://github.com/EliverLara/Nordic
+# And maybe use https://github.com/themix-project/oomox to adjust the color to follow my color scheme
+
 {
   enable = true;
 

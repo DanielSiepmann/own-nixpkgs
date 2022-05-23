@@ -111,15 +111,6 @@ Additions:
 * Integrate https://github.com/Wilfred/difftastic for diffing source code
   https://github.com/nix-community/home-manager/pull/2850
 
-* Try out pidgin? Does it work with slack and ms teams videos?
-
-* Check out other themes? https://github.com/NixOS/nixpkgs/tree/nixos-unstable/pkgs/data/themes
-  Used by some GUI tools like firefox, thunderbird, etc.
-  https://www.gnome-look.org/browse/ might have screenshots for themes.
-
-  Use https://github.com/themix-project/oomox to adjust / create own theme
-  following my existing colors?
-
 Migration:
 
 * Thunderbird configuration to nix. Seems like no module exists, but is same as
