@@ -1,0 +1,33 @@
+diff --git a/src/interface.rs b/src/interface.rs
+index 6cdc801..0508245 100644
+--- a/src/interface.rs
++++ b/src/interface.rs
+@@ -68,7 +68,7 @@ impl MenuMode {
+ 
+     fn bg(&self) -> String {
+         match *self {
+-            MenuMode::Normal => color::Bg(color::LightBlue).to_string(),
++            MenuMode::Normal => color::Bg(color::LightBlack).to_string(),
+             MenuMode::ConfirmDelete => color::Bg(color::Red).to_string(),
+         }
+     }
+@@ -215,7 +215,7 @@ impl<'a> Interface<'a> {
+             let mut highlight = if self.settings.lightmode {
+                 color::Fg(color::Blue).to_string()
+             } else {
+-                color::Fg(color::Green).to_string()
++                color::Fg(color::Cyan).to_string()
+             };
+ 
+             let mut bg = color::Bg(color::Reset).to_string();
+@@ -227,8 +227,8 @@ impl<'a> Interface<'a> {
+                     highlight = color::Fg(color::White).to_string();
+                 } else {
+                     fg = color::Fg(color::Black).to_string();
+-                    bg = color::Bg(color::LightWhite).to_string();
+-                    highlight = color::Fg(color::Green).to_string();
++                    bg = color::Bg(color::LightCyan).to_string();
++                    highlight = color::Fg(color::Cyan).to_string();
+                 }
+             }
+ 

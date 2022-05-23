@@ -38,14 +38,6 @@
     zle -N edit-command-line
     bindkey -M vicmd v edit-command-line
 
-    # ctrl-r search history backward to keep old pattern
-    bindkey '^r' history-incremental-search-backward
-    # ctrl-j search history backward to have vim like binding
-    # TODO: Find out why this breaks within neoterminal when sending commands like from test or repl
-    # bindkey '^j' history-incremental-search-backward
-    # # ctrl-k search history forward to have vim like binding
-    bindkey '^k' history-search-forward
-
     zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
     zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
     zstyle ':completion:*' menu select

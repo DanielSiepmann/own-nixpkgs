@@ -46,6 +46,9 @@
     inherit pkgs;
   };
 
+  mcfly = import ./programs/mcfly.nix {
+  };
+
   # Media
   cmus.enable = true;
 }
