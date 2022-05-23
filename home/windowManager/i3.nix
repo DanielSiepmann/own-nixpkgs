@@ -157,6 +157,7 @@ in {
       "3:💬" = [
         { class = "^chat$"; }
         { class = "^Signal$"; }
+        { class = "^phone$"; }
       ];
       "4:✉️" = [
         { class = "^Thunderbird$"; }

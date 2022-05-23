@@ -92,6 +92,11 @@
       type = "Application";
       exec = "${pkgs.chromium}/bin/chromium --class=\"chat\" --new-window --new-window --app=https://jitsi.werkraum-media.de/codappix";
     };
+    phone = {
+      name = "Phone";
+      type = "Application";
+      exec = "${pkgs.firefox}/bin/firefox --class=\"phone\" --new-instance -P phone https://app.sipgate.com/w3/phone/phone";
+    };
     toggl = {
       name = "Toggl Time Tracking";
       type = "Application";

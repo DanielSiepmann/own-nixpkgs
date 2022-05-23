@@ -159,6 +159,15 @@
       };
       userContent = pkgs.lib.fileContents ./firefox/userContent.css;
     };
+    phone = {
+      name = "phone";
+      id = 3;
+      isDefault = false;
+      userChrome = pkgs.lib.fileContents ./firefox/kioskLikeUserChrome.css;
+      settings = {
+        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+      };
+    };
     toggl = {
       name = "toggl";
       id = 1;
