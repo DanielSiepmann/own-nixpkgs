@@ -1,5 +1,5 @@
 diff --git a/src/interface.rs b/src/interface.rs
-index 6cdc801..0508245 100644
+index 6cdc801..d092e65 100644
 --- a/src/interface.rs
 +++ b/src/interface.rs
 @@ -68,7 +68,7 @@ impl MenuMode {
@@ -31,3 +31,12 @@ index 6cdc801..0508245 100644
                  }
              }
  
+@@ -296,7 +296,7 @@ impl<'a> Interface<'a> {
+                 let highlight = if self.settings.lightmode {
+                     color::Fg(color::Blue).to_string()
+                 } else {
+-                    color::Fg(color::LightBlue).to_string()
++                    color::Fg(color::Cyan).to_string()
+                 };
+ 
+                 write!(screen, "{}", highlight).unwrap();
