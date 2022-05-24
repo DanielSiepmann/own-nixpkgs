@@ -7,17 +7,18 @@ with pkgs; [
 
   # System tools
   dmenu
+
   networkmanager_dmenu
-  dmenu-custom-scripts
-  custom-update-system
-  custom-push-etckeeper
-  custom-backup
+  (callPackage ./packages/custom/dmenu-scripts { })
+  (callPackage ./packages/custom/update-system { })
+  (callPackage ./packages/custom/push-etckeeper { })
+  (callPackage ./packages/custom/backup { })
   dunst
   i3blocks
   st
   ncdu
   tree
-  rst2pdf
+  (callPackage ./packages/rst2pdf { })
 
   espeak
   bc
@@ -52,7 +53,7 @@ with pkgs; [
   # Use in conjuncion with https://github.com/autozimu/LanguageClient-neovim
   # rnix-lsp
 
-  custom-customer-project
+  (callPackage ./packages/custom/customer-project { })
 
   # Communication
   signal-desktop

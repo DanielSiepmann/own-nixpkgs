@@ -97,8 +97,6 @@ Todos
 
 Migration:
 
-* Custom scripts from overlay to packages which are called from home/packages.nix?
-
 * Migrate PGP?
 
    * Right now I've installed gnupg2, gnupg, gpg on ubuntu
