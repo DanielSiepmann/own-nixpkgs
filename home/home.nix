@@ -74,9 +74,6 @@ in {
       t3Pull = "git pull --rebase origin master; git checkout master";
       t3Rollback = "git checkout master; git reset --hard origin/master";
       t3Clean = "t3Rollback && t3Pull";
-
-      # TODO: Move to nix package / shellapplication Create borg backup
-      createBackup = "mkdir -p ~/backup-etc && sudo cp -r /etc/* ~/backup-etc && sudo cp -r /etc/.* ~/backup-etc && sudo chown daniels:daniels -R ~/backup-etc/ && borg create -v --progress --stats --exclude-from ~/.config/borg/exclude /media/daniels/Backup::$(date +%F-%R) ~/; sudo rm -rf ~/backup-etc";
     };
 
 }

@@ -11,6 +11,7 @@ with pkgs; [
   dmenu-custom-scripts
   custom-update-system
   custom-push-etckeeper
+  custom-backup
   dunst
   i3blocks
   st

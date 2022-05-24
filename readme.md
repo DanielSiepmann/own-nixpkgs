@@ -95,6 +95,23 @@ List of manual needed changes for various reasons.
 Todos
 -----
 
+Migration:
+
+* Custom scripts from overlay to packages which are called from home/packages.nix?
+
+* Migrate PGP?
+
+   * Right now I've installed gnupg2, gnupg, gpg on ubuntu
+
+* Thunderbird configuration to nix. Seems like no module exists, but is same as
+  for firefox.
+
+* Migrate home manager to use flake for better rollback support if update breaks something.
+
+* Maybe PR upstream: `./home/modules/programs/languagetool.nix`.
+
+* i3lock-color
+
 Additions:
 
 * https://github.com/altdesktop/playerctl#selecting-the-most-recent-player in
@@ -104,21 +121,6 @@ Additions:
 
 * Integrate https://github.com/Wilfred/difftastic for diffing source code
   https://github.com/nix-community/home-manager/pull/2850
-
-Migration:
-
-* Thunderbird configuration to nix. Seems like no module exists, but is same as
-  for firefox.
-
-* Migrate PGP?
-
-   * Right now I've installed gnupg2, gnupg, gpg on ubuntu
-
-* Migrate home manager to use flake for better rollback support if update breaks something.
-
-* Maybe PR upstream: `./home/modules/programs/languagetool.nix`.
-
-* i3lock-color
 
 Ideas
 -----
