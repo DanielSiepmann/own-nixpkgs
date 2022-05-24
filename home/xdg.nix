@@ -112,10 +112,11 @@
   mime.enable = true;
   mimeApps = {
     enable = true;
+    # Use file --mime-type <filename> to detect mime type
     defaultApplications = {
 
       "application/pdf" = [ "org.pwmt.zathura-pdf-mupdf.desktop" ];
-
+      "text/calendar" = [ "thunderbird.desktop" ];
 
       "image/bmp" = [ "feh.desktop" ];
       "image/gif" = [ "feh.desktop" ];
