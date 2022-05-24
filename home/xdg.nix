@@ -85,17 +85,17 @@
     mattermost = {
       name = "Mattermost werkraum-media";
       type = "Application";
-      exec = "${pkgs.chromium}/bin/chromium --class=\"chat\" --new-window --new-window --app=https://mattermost.werkraum-media.de/";
+      exec = "${pkgs.chromium}/bin/chromium --class=\"chat\" --new-window --app=https://mattermost.werkraum-media.de/";
     };
     werkraum-jitsi = {
       name = "Jitsi werkraum-media";
       type = "Application";
-      exec = "${pkgs.chromium}/bin/chromium --class=\"chat\" --new-window --new-window --app=https://jitsi.werkraum-media.de/codappix";
+      exec = "${pkgs.chromium}/bin/chromium --class=\"chat\" --new-window --app=https://jitsi.werkraum-media.de/codappix";
     };
     phone = {
-      name = "Phone";
+      name = "Phone (Sipgate)";
       type = "Application";
-      exec = "${pkgs.firefox}/bin/firefox --class=\"phone\" --new-instance -P phone https://app.sipgate.com/w3/phone/phone";
+      exec = "${pkgs.chromium}/bin/chromium --class=\"phone\" --new-window --app=https://app.sipgate.com/w3/phone/phone";
     };
     toggl = {
       name = "Toggl Time Tracking";
