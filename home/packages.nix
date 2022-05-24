@@ -22,6 +22,7 @@ with pkgs; [
   bc
 
   borgbackup
+  git-crypt
   keepassxc
 
   libreoffice

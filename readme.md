@@ -110,8 +110,6 @@ Migration:
 * Thunderbird configuration to nix. Seems like no module exists, but is same as
   for firefox.
 
-* Migrate ssh config (I don't really like to expose customer server names and configs to outer world, how to handle?)
-
 * Migrate PGP?
 
    * Right now I've installed gnupg2, gnupg, gpg on ubuntu

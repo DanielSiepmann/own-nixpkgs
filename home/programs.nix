@@ -39,6 +39,9 @@
     inherit config pkgs;
   };
 
+  ssh = import ./programs/ssh.nix {
+  };
+
   zathura = import ./programs/zathura.nix {
   };
 
