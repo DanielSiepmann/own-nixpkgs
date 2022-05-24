@@ -41,22 +41,35 @@ It has the following sub folder:
 `home/files`
    Holds configuration files.
    home-manager doesn't provide modules for all programs.
-   Those files can be added via `xdg.configFile`.
 
 `home/modules`
    Holds nix modules.
    Not all programs provide modules out of the box.
    I add my own here, which I might create PRs for in future.
 
+`home/packages`
+   Holds custom nix packages.
+   Not all programs are available.
+   Foreign programs are added here.
+   Custom programs / scripts are added within subfolder `custom`.
+
 `home/programs`
    Holds home-manager `programs.` entries.
    Each file corresponds to a single program.
-   Each file is loaded within `home.nix`.
 
 `home/services`
    Holds home-manager `services.` entries.
    Each file corresponds to a single service.
-   Each file is loaded within `home.nix`.
+
+`home/*.nix`
+    Holds files for most `home.*` modules.
+    I don't like to clutter a single file with to many entries.
+    Instead `home.nix` loads files from within here.
+    Each file name should correspond to the home sub option / module.
+
+`overlays`
+    Holds overlays for existing packages.
+    E.g. in order to patch them.
 
 `shells/`
     Holds shells for customer projects.
