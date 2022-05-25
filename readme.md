@@ -145,4 +145,14 @@ Some resources I found useful (in no particular order):
 
 * https://nix-community.github.io/home-manager/index.html
 
+* https://nixos.wiki/
+
 * https://nixcloud.io/main/en/
+
+* https://teu5us.github.io/nix-lib.html
+
+* https://ryantm.github.io/nixpkgs/
+
+* https://www.tweag.io/blog/2020-05-25-flakes/
+
+* https://github.com/NixOS/nix-book
