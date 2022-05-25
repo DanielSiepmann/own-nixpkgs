@@ -27,7 +27,7 @@ Execute `home-manager switch`
 Usage
 -----
 
-Add packages to `home.nix` and run `home-manager switch`.
+Add packages to `home/packages.nix` and run `home-manager switch`.
 
 Folder structure
 ----------------
@@ -80,8 +80,7 @@ It has the following sub folder:
 Update
 ------
 
-Update can be done via `custom-update-system` package which is available within
-the overlay.
+Update can be done via `custom-update-system` package which is a custom package.
 
 Manual changes
 --------------
@@ -119,7 +118,9 @@ Migration:
 
 * Migrate home manager to use flake for better rollback support if update breaks something.
 
-* Maybe PR upstream: `./home/modules/programs/languagetool.nix`.
+* Maybe create upstream PRs for
+
+  * `home/modules/programs/*.nix`
 
 * i3lock-color
 
@@ -132,12 +133,6 @@ Additions:
 
 * Integrate https://github.com/Wilfred/difftastic for diffing source code
   https://github.com/nix-community/home-manager/pull/2850
-
-Ideas
------
-
-* Maybe I can have a private channel which provides more sensitive info like customer related things and is referenced from here?
-  I then can make that repo private but keep this one here public?
 
 Resources
 ---------
