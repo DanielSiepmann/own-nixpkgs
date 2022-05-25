@@ -10,7 +10,7 @@ nnoremap <leader>v :set paste!<cr>
 nnoremap <leader>nh :nohlsearch<cr>
 
 " Configure navigation, e.g. go to buffer, file, ...
-nnoremap <leader>pp :Telescope builtin<cr>
+nnoremap <leader>pp :lua require('telescope.builtin').builtin({ include_extensions = true })<cr>
 nnoremap <leader>pf :Telescope git_files<cr>
 nnoremap <leader>pb :Telescope buffers<cr>
 nnoremap <leader>pt :Telescope ctags_outline outline<cr>
