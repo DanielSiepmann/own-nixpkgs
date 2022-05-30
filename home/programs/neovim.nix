@@ -304,52 +304,6 @@ in {
       '';
     }
 
-    # Treesitter
-    {
-
-      # Installs all available grammars:
-      # plugin = nvim-treesitter.withPlugins(plugins: pkgs.tree-sitter.allGrammars);
-
-      # Installs only configured grammars:
-      plugin = nvim-treesitter.withPlugins(plugins: with pkgs.tree-sitter-grammars; [
-
-        tree-sitter-php
-        tree-sitter-vim
-        tree-sitter-rst
-        tree-sitter-lua
-        tree-sitter-css
-        tree-sitter-yaml
-        tree-sitter-scss
-        tree-sitter-json
-        tree-sitter-html
-        tree-sitter-bash
-        tree-sitter-json5
-        tree-sitter-python
-        tree-sitter-markdown
-        tree-sitter-typescript
-        tree-sitter-javascript
-        tree-sitter-dockerfile
-
-      ]);
-
-      type = "lua";
-      config = pkgs.lib.fileContents ./neovim/plugins/treesitter.lua;
-    }
-
-    {
-      # Used to inspect node types to extend colorscheme
-      # Installed for ":TSHighlightCapturesUnderCursor"
-      plugin = playground;
-      type = "lua";
-      config = ''
-        require("nvim-treesitter.configs").setup({
-          playground = {
-            enable = true,
-          },
-        })
-      '';
-    }
-
     # LSP (=Language Server Protocol)
 
     {
