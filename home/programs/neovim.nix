@@ -1,4 +1,7 @@
-{ pkgs }:
+{
+  pkgs,
+  sqlformat
+}:
 
 let
 
@@ -106,16 +109,6 @@ let
     };
   };
 
-  sqlformat = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    name = "sqlformat";
-    src = pkgs.fetchFromGitHub {
-      owner = "mpyatishev";
-      repo = "vim-sqlformat";
-      rev = "2a2a57d75865526f85d94bf769f4fd54d61c426b";
-      sha256 = "LPnHcuh+jxEL8CZ1wizHqi3uzYYtIxzMqnE7y7mTrbE=";
-    };
-  };
-
   diff-fold = pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "diff-fold";
     src = pkgs.fetchFromGitHub {
@@ -196,11 +189,6 @@ let
 in {
   enable = true;
 
-  extraPython3Packages = (ps: with ps; [
-    # Dependency of sqlformat
-    sqlparse
-  ]);
-
   # TODO: Check out these plugins as additions / replacements:
 
   # - https://github.com/NTBBloodbath/rest.nvim recommended by Sascha, allows to write and execute requests
@@ -221,7 +209,12 @@ in {
 
     colorscheme-smyckblue
     neotags
-    configuration
+    {
+      plugin = configuration;
+      config = ''
+        au FileType sql setlocal formatprg=${sqlformat}/bin/sqlformat
+      '';
+    }
     syntax-typoscript
 
     # More UI related
@@ -272,7 +265,6 @@ in {
     # Adding features
 
     ag
-    sqlformat
     diff-fold
     BufOnly-vim
 

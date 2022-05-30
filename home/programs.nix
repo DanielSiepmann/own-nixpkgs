@@ -1,11 +1,16 @@
 { config, pkgs }:
 
-{
+let
+
+  sqlformat = pkgs.callPackage ./packages/sqlformat {
+  };
+
+in {
   # Let Home Manager install and manage itself.
   home-manager.enable = true;
 
   neovim = import ./programs/neovim.nix {
-    inherit pkgs;
+    inherit pkgs sqlformat;
   };
 
   git = import ./programs/git.nix {
