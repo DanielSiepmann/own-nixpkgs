@@ -19,6 +19,7 @@ with pkgs; [
   ncdu
   tree
   (callPackage ./packages/rst2pdf { })
+  numlockx
 
   espeak
   bc
