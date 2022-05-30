@@ -37,6 +37,9 @@ in {
     inherit config pkgs;
   };
 
+  gpg = import ./programs/gpg.nix {
+  };
+
   ssh = import ./programs/ssh.nix {
   };
 

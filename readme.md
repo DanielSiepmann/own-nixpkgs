@@ -109,10 +109,6 @@ Todos
 
 Migration:
 
-* Migrate PGP?
-
-   * Right now I've installed gnupg2, gnupg, gpg on ubuntu
-
 * Thunderbird configuration to nix. Seems like no module exists, but is same as
   for firefox.
 
