@@ -10,7 +10,12 @@ let
 
 in writeShellApplication {
   name = "sqlformat";
+
+  runtimeInputs = [
+    python
+  ];
+
   text = ''
-    ${python}/bin/python3 -m sqlparse --keywords upper --identifiers lower --reindent_aligned --indent_width 4 <(cat -)
+    python3 -m sqlparse --keywords upper --identifiers lower --reindent_aligned --indent_width 4 <(cat -)
   '';
 }

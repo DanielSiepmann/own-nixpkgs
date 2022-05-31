@@ -1,7 +1,14 @@
-{ writeShellApplication }:
+{
+  writeShellApplication,
+  git
+}:
 
 writeShellApplication {
   name = "custom-push-etckeeper";
+
+  runtimeInputs = [
+    git
+  ];
 
   text = ''
     mkdir /tmp/etckeeper

@@ -2,7 +2,9 @@
   writeShellApplication,
   dmenu,
   dunst,
-  bc
+  bc,
+  firefox,
+  i3
 }:
 
 let
@@ -58,6 +60,7 @@ let
     name = "dmenu-custom-scripts-system";
 
     runtimeInputs = [
+      i3
       dmenu
       dunst
     ];
@@ -70,6 +73,7 @@ let
 
     runtimeInputs = [
       dmenu
+      firefox
     ];
 
     text = ''
