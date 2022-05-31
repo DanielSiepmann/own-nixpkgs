@@ -10,16 +10,24 @@
     "borg/exclude".source = ./files/borg-exclude;
     "ctags/config.ctags".source = ./files/ctags;
     "keepassxc/keepassxc.ini".text = pkgs.lib.generators.toINI { } {
+
       General = {
         ConfigVersion = 2;
       };
+
       GUI = {
         ApplicationTheme = "dark";
         CompactMode = true;
+
         HidePreviewPanel = false;
         HideToolbar = true;
         HideUsernames = false;
+
+        MinimizeToTray = true;
+        ShowTrayIcon = true;
+        TrayIconAppearance = "monochrome-dark";
       };
+
       PasswordGenerator = {
         AdditionalChars = "";
         AdvancedMode = true;
@@ -31,6 +39,20 @@
         Quotes = true;
         SpecialChars = false;
       };
+
+      Browser = {
+        CustomProxyLocation = "";
+        Enabled = true;
+        SearchInAllDatabases = true;
+      };
+
+      Security = {
+        ClearSearchTimeout = 1;
+        LockDatabaseIdle = true;
+        LockDatabaseIdleSeconds = 60;
+        Security_HideNotes = true;
+      };
+
     };
     "litecli/config".source = ./files/litecli;
     "phpactor".source = ./files/phpactor;

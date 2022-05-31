@@ -8,6 +8,10 @@
 
   profiles = {
     default = {
+      # Extensions:
+      # * https://addons.mozilla.org/en-US/firefox/addon/multi-account-containers/
+      # * https://addons.mozilla.org/en-US/firefox/addon/languagetool/
+      # * https://addons.mozilla.org/en-US/firefox/addon/keepassxc-browser/
       name = "default";
       id = 0;
       isDefault = true;
