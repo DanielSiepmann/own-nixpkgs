@@ -160,6 +160,21 @@
 
         "security.disable_button.openCertManager" = false;
         "security.disable_button.openDeviceManager" = false;
+
+        "services.sync.declinedEngines" = "prefs,tabs,history,forms,passwords,creditcards";
+        "services.sync.engine.history" = false;
+        "services.sync.engine.passwords" = false;
+        "services.sync.engine.prefs" = false;
+        "services.sync.engine.prefs.modified" = false;
+        "services.sync.engine.tabs" = false;
+
+        "signon.autofillForms" = false;
+        "signon.generation.enabled" = false;
+        "signon.rememberSignons" = false;
+
+        "browser.bookmarks.restore_default_bookmarks" = false;
+        "browser.bookmarks.showMobileBookmarks" = false;
+
       };
       userContent = pkgs.lib.fileContents ./firefox/userContent.css;
     };
