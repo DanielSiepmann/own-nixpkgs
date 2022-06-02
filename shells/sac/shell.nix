@@ -29,6 +29,31 @@ let
       "$PROJECT_ROOT/vendor/bin/phpstan"
     '';
   };
+
+  reinstallFrontend = pkgs.writeShellApplication {
+    name = "compileFrontend";
+    runtimeInputs = [
+      pkgs.nodejs-14_x
+      pkgs.nodePackages.npm
+    ];
+    text = ''
+      rm -rf "$PROJECT_ROOT/frontend/build/*"
+      npm ci --prefix="$PROJECT_ROOT/frontend/"
+    '';
+  };
+
+  compileFrontend = pkgs.writeShellApplication {
+    name = "compileFrontend";
+    runtimeInputs = [
+      pkgs.nodejs-14_x
+      pkgs.nodePackages.npm
+    ];
+    text = ''
+      npm run build --prefix="$PROJECT_ROOT/frontend"
+      notify-send "Done compiling frontend"
+    '';
+  };
+
 in pkgs.mkShell {
   name = "TYPO3";
   buildInputs = [
@@ -36,6 +61,8 @@ in pkgs.mkShell {
     pkgs.php74Packages.composer
     projectCsFixer
     projectPhpStan
+    reinstallFrontend
+    compileFrontend
   ];
 
   shellHook = ''
