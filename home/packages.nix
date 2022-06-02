@@ -11,6 +11,7 @@ with pkgs; [
   networkmanager_dmenu
   (callPackage ./packages/custom/dmenu-scripts { })
   (callPackage ./packages/custom/update-system { })
+  (callPackage ./packages/custom/update-ubuntu-system { })
   (callPackage ./packages/custom/push-etckeeper { })
   (callPackage ./packages/custom/backup { })
   dunst
