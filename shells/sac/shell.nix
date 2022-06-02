@@ -30,14 +30,27 @@ let
     '';
   };
 
+  projectPhpStan74 = pkgs.writeShellApplication {
+    name = "projectPhpStan74";
+    runtimeInputs = [
+      php
+    ];
+    text = ''
+      rm -rf "$TMP/phpstan/"
+      "$PROJECT_ROOT/vendor/bin/codecept" build
+      "$PROJECT_ROOT/vendor/bin/phpstan" --configuration=/app/phpstan_php74.neon
+    '';
+  };
+
   reinstallFrontend = pkgs.writeShellApplication {
-    name = "compileFrontend";
+    name = "reinstallFrontend";
     runtimeInputs = [
       pkgs.nodejs-14_x
       pkgs.nodePackages.npm
     ];
     text = ''
       rm -rf "$PROJECT_ROOT/frontend/build/*"
+      rm -rf "$PROJECT_ROOT/frontend/node_modules/"
       npm ci --prefix="$PROJECT_ROOT/frontend/"
     '';
   };
@@ -49,8 +62,9 @@ let
       pkgs.nodePackages.npm
     ];
     text = ''
+      rm -rf "$PROJECT_ROOT/frontend/build/*"
       npm run build --prefix="$PROJECT_ROOT/frontend"
-      notify-send "Done compiling frontend"
+      notify-send "done compiling frontend"
     '';
   };
 
@@ -61,6 +75,7 @@ in pkgs.mkShell {
     pkgs.php74Packages.composer
     projectCsFixer
     projectPhpStan
+    projectPhpStan74
     reinstallFrontend
     compileFrontend
   ];
