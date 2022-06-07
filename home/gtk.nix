@@ -10,12 +10,12 @@
 
   theme = {
     package = pkgs.qogir-theme;
-    name = "Qogir-Ubuntu-Dark";
+    name = "Qogir-Dark";
   };
 
   iconTheme = {
     package = pkgs.qogir-icon-theme;
-    name = "Qogir-ubuntu-dark";
+    name = "Qogir-dark";
   };
 
   font = {
