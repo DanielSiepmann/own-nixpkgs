@@ -1,6 +1,9 @@
-local telescopeActions = require "telescope.actions"
-local telescopeActionsLayout = require "telescope.actions.layout"
-require('telescope').setup({
+local telescope = require('telescope')
+local actions = require('telescope.actions')
+local actionsLayout = require('telescope.actions.layout')
+local themes = require('telescope.themes')
+
+telescope.setup({
     defaults = {
         layout_strategy = 'center',
         layout_config = {
@@ -9,15 +12,15 @@ require('telescope').setup({
         sorting_strategy = 'ascending',
         default_mappings = {
             i = {
-                ["<C-j>"] = telescopeActions.move_selection_next,
-                ["<C-k>"] = telescopeActions.move_selection_previous,
-                ["<C-c>"] = telescopeActions.close,
+                ["<C-j>"] = actions.move_selection_next,
+                ["<C-k>"] = actions.move_selection_previous,
+                ["<C-c>"] = actions.close,
 
-                ["<CR>"] = telescopeActions.select_default,
-                ["<C-h>"] = telescopeActions.which_key,
-                ["<C-v>"] = telescopeActions.select_vertical,
+                ["<CR>"] = actions.select_default,
+                ["<C-h>"] = actions.which_key,
+                ["<C-v>"] = actions.select_vertical,
 
-                ["<C-p>"] = telescopeActionsLayout.toggle_preview,
+                ["<C-p>"] = actionsLayout.toggle_preview,
             },
         },
 
@@ -25,5 +28,12 @@ require('telescope').setup({
             hide_on_startup = true,
         },
     },
+    extensions = {
+        ['ui-select'] = {
+            themes.get_dropdown({
+            }),
+        },
+    },
 })
-require('telescope').load_extension('custom_runs')
+telescope.load_extension('custom_runs')
+telescope.load_extension('ui-select')

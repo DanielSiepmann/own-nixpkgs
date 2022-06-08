@@ -249,6 +249,8 @@ in {
       config = pkgs.lib.fileContents ./neovim/plugins/telescope-ctags-outline.lua;
     }
 
+    telescope-ui-select-nvim
+
     # Syntax
 
     syntax-nix
