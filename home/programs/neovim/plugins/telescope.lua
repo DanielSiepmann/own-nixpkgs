@@ -1,7 +1,6 @@
 local telescope = require('telescope')
 local actions = require('telescope.actions')
 local actionsLayout = require('telescope.actions.layout')
-local themes = require('telescope.themes')
 
 telescope.setup({
     defaults = {
@@ -28,12 +27,5 @@ telescope.setup({
             hide_on_startup = true,
         },
     },
-    extensions = {
-        ['ui-select'] = {
-            themes.get_dropdown({
-            }),
-        },
-    },
 })
 telescope.load_extension('custom_runs')
-telescope.load_extension('ui-select')
