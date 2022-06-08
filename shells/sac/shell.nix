@@ -7,7 +7,7 @@ let
   };
 
   projectCsFixer = pkgs.writeShellApplication {
-    name = "projectCsFixer";
+    name = "project-csfixer";
     runtimeInputs = [
       php
     ];
@@ -19,7 +19,7 @@ let
   };
 
   projectPhpStan = pkgs.writeShellApplication {
-    name = "projectPhpStan";
+    name = "project-phpstan-80";
     runtimeInputs = [
       php
     ];
@@ -31,19 +31,29 @@ let
   };
 
   projectPhpStan74 = pkgs.writeShellApplication {
-    name = "projectPhpStan74";
+    name = "project-phpstan-74";
     runtimeInputs = [
       php
     ];
     text = ''
       rm -rf "$TMP/phpstan/"
       "$PROJECT_ROOT/vendor/bin/codecept" build
-      "$PROJECT_ROOT/vendor/bin/phpstan" --configuration=/app/phpstan_php74.neon
+      "$PROJECT_ROOT/vendor/bin/phpstan" --configuration="$PROJECT_ROOT/phpstan_php74.neon"
     '';
   };
 
-  reinstallFrontend = pkgs.writeShellApplication {
-    name = "reinstallFrontend";
+  projectRector = pkgs.writeShellApplication {
+    name = "project-rector";
+    runtimeInputs = [
+      php
+    ];
+    text = ''
+      "$PROJECT_ROOT/bin/rector.sh"
+    '';
+  };
+
+  projectFrontendReinstall = pkgs.writeShellApplication {
+    name = "project-frontend-reinstall";
     runtimeInputs = [
       pkgs.nodejs-14_x
       pkgs.nodePackages.npm
@@ -55,8 +65,8 @@ let
     '';
   };
 
-  compileFrontend = pkgs.writeShellApplication {
-    name = "compileFrontend";
+  projectFrontendCompile = pkgs.writeShellApplication {
+    name = "project-frontend-compile";
     runtimeInputs = [
       pkgs.nodejs-14_x
       pkgs.nodePackages.npm
@@ -76,8 +86,9 @@ in pkgs.mkShell {
     projectCsFixer
     projectPhpStan
     projectPhpStan74
-    reinstallFrontend
-    compileFrontend
+    projectRector
+    projectFrontendReinstall
+    projectFrontendCompile
   ];
 
   shellHook = ''
