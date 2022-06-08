@@ -175,6 +175,7 @@
         "browser.bookmarks.restore_default_bookmarks" = false;
         "browser.bookmarks.showMobileBookmarks" = false;
 
+        "network.IDN_show_punycode" = true;
       };
       userContent = pkgs.lib.fileContents ./firefox/userContent.css;
     };
