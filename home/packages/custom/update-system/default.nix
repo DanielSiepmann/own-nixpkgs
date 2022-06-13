@@ -3,14 +3,16 @@
 writeShellApplication {
   name = "custom-update-system";
 
+  # Including this doesn't work
+  # oldVersion=$(home-manager generations | head -n 2 | tail -n 1 | cut -d' ' -f 7)
+  # newVersion=$(home-manager generations | head -n 1 | cut -d' ' -f 7)
+  # nvd diff "$oldVersion" "$newVersion"
+
   text = ''
     nix-channel --update
     home-manager switch
     home-manager expire-generations '-30 days'
     nix-env --delete-generations +5
-    oldVersion=$(home-manager generations | head -n 2 | tail -n 1 | cut -d' ' -f 7)
-    newVersion=$(home-manager generations | head -n 1 | cut -d' ' -f 7)
-    nvd diff "$oldVersion" "$newVersion"
     nix store gc
     nix store optimise
   '';
