@@ -121,10 +121,10 @@ let
 
   phpactor = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
     pname = "phpactor";
-    version = "037eb96d63603a780ec28663edc86e7c837d1406";
+    version = "3dadcf86a19dc6c16c8ceca2cc9c0be62867f874";
     src = pkgs.fetchzip {
       url = "https://daniel-siepmann.de/fileadmin/${pname}-${version}.tar.gz";
-      sha256 = "sha256-MYpXjn3qHdHfDFtJWtpdxpQvEayyAKXwcL/Bdw7fmos=";
+      sha256 = "sha256-voiorqXRRvPIL5Nl4V5BSr0MJjI4v/1QgvC98DI8of0=";
     };
 
     nativeBuildInputs = [
@@ -133,8 +133,9 @@ let
 
     postInstall = ''
       wrapProgram $out/bin/phpactor \
-        --prefix PATH : ${pkgs.lib.strings.makeBinPath [ pkgs.php74 ]} \
-        --prefix PATH : ${pkgs.lib.strings.makeBinPath [ pkgs.php74Packages.composer ]}
+        --prefix PATH : ${pkgs.lib.strings.makeBinPath [ pkgs.php80 ]} \
+        --prefix PATH : ${pkgs.lib.strings.makeBinPath [ pkgs.php80Packages.composer ]} \
+        --prefix PATH : ${pkgs.lib.strings.makeBinPath [ pkgs.git ]}
     '';
   };
 
