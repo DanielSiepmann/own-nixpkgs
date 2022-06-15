@@ -1,5 +1,7 @@
 # i3blocks config file
 #
+# TODO: Use nix to reload the blocks on config change
+#
 # Please see man i3blocks for a complete reference!
 # The man page is also hosted at http://vivien.github.io/i3blocks
 #
@@ -42,7 +44,7 @@ signal=10
 
 # Date Time
 [time]
-command=date '+📅 %a %Y-%m-%d %H:%M:%S'; date '+📅 %a %d. %H:%M:%S'
+command=LC_TIME=en_US.utf8 date '+📅 %a %B %Y-%m-%d %H:%M:%S'; date '+📅 %a %d. %H:%M:%S'
 interval=1
 
 # vi: ft=conf
