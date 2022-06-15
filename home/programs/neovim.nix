@@ -44,8 +44,8 @@ let
     name = "syntax-typoscript";
     src = pkgs.fetchgit {
       url = "https://gitea.daniel-siepmann.de/danielsiepmann/vim-syntax-typoscript.git";
-      rev = "v1.1.0";
-      sha256 = "ifdebcxzIskrs4FtIOtNc/L9lBS8oGeThJR+vccfVyc=";
+      rev = "v2.0.0";
+      sha256 = "sha256-fCB+ikDmkfEP/W0pFYGrsZiH30vT0g3z6GZpRGk0Rhc=";
     };
   };
 
