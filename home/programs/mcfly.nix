@@ -4,5 +4,5 @@ _:
   enable = true;
 
   keyScheme = "vim";
-  enableFuzzySearch = true;
+  fuzzySearchFactor = 5;
 }
