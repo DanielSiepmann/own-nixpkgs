@@ -381,6 +381,10 @@ in {
       config = pkgs.lib.fileContents ./neovim/plugins/test.vim;
     }
 
+    # Presentations
+    presenting-vim
+    goyo-vim
+
     # Dependencies for other plugins
 
     vim-addon-mw-utils

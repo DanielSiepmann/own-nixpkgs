@@ -127,4 +127,11 @@ function! TelescopeCurrentComposerPackage()
     endif
 endfunc
 
+function! Present()
+    :StartPresenting
+    :Goyo
+    set nospell
+    " hi! EndOfBuffer ctermfg=#242424
+endfunction
+
 command! -nargs=0 Reg call Reg()
