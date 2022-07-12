@@ -23,7 +23,7 @@ writeShellApplication {
       /media/daniels/Backup/borg::"$(date +%F-%R)" \
       ~/
 
-    rsync -az ~/.config/nixpkgs /media/daniels/Backup/
+    rsync -az --delete ~/.config/nixpkgs /media/daniels/Backup/
 
     sudo ${rsync}/bin/rsync -az /etc/.git /media/daniels/Backup/etc/
     sudo chown daniels:daniels -R /media/daniels/Backup/etc/
