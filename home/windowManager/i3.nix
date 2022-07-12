@@ -174,6 +174,10 @@ in {
     startup = [
       # Start programs / applets
       {
+        command = "numlockx off";
+        notification = false;
+      }
+      {
         command = "clipit";
         notification = false;
       }
