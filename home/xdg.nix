@@ -64,6 +64,12 @@
     "cmus/rc".source = ./files/cmus/rc;
     "cmus/smyckblue.theme".source = ./files/cmus/smyckblue.theme;
 
+    "networkmanager-dmenu/config.ini".text = pkgs.lib.generators.toINI { } {
+      dmenu = {
+        dmenu_command = "dmenu -i -l 25";
+      };
+    };
+
   };
 
   dataFile = {
@@ -75,16 +81,6 @@
   };
 
   desktopEntries = {
-    networkmanager-dmenu = {
-      type = "Application";
-      exec = "${pkgs.networkmanager_dmenu}/bin/networkmanager_dmenu";
-      name = "Networkmanager dmenu";
-      comment = "Networkmanaging using dmenu";
-      genericName = "Networkmanager Setting";
-      categories = [
-        "Network"
-      ];
-    };
     slack-typo3 = {
       name = "Slack TYPO3";
       type = "Application";
