@@ -10,10 +10,10 @@
 
 vimUtils.buildVimPluginFrom2Nix rec {
   pname = "phpactor";
-  version = "f07b2a65e3b5f84c49a76fadb9752f8cafd7e879";
+  version = "e7d404c2c6fbe606e5a6374b8e3d0c0d0430487f";
   src = fetchzip {
     url = "https://daniel-siepmann.de/fileadmin/${pname}-${version}.tar.gz";
-    sha256 = "sha256-I4oKEgXY5N63IIxr4leqm5WHsgtQJXmQhHmmpPDtOGQ=";
+    sha256 = "sha256-mZ4MZdo7zNXhnUn7OOMfM0hNJe0YFygQ9LMl3YZX0+I=";
   };
 
   nativeBuildInputs = [
