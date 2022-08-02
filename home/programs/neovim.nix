@@ -119,25 +119,7 @@ let
     };
   };
 
-  phpactor = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    pname = "phpactor";
-    version = "f07b2a65e3b5f84c49a76fadb9752f8cafd7e879";
-    src = pkgs.fetchzip {
-      url = "https://daniel-siepmann.de/fileadmin/${pname}-${version}.tar.gz";
-      sha256 = "sha256-I4oKEgXY5N63IIxr4leqm5WHsgtQJXmQhHmmpPDtOGQ=";
-    };
-
-    nativeBuildInputs = [
-      pkgs.makeWrapper
-    ];
-
-    postInstall = ''
-      wrapProgram $out/bin/phpactor \
-        --prefix PATH : ${pkgs.lib.strings.makeBinPath [ pkgs.php80 ]} \
-        --prefix PATH : ${pkgs.lib.strings.makeBinPath [ pkgs.php80Packages.composer ]} \
-        --prefix PATH : ${pkgs.lib.strings.makeBinPath [ pkgs.git ]}
-    '';
-  };
+  phpactor = pkgs.callPackage ./neovim/nix-plugins/phpactor.nix { };
 
   neoterm = pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "neoterm";
