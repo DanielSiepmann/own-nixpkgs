@@ -25,7 +25,7 @@ writeShellApplication {
 
     rsync -az --delete ~/.config/nixpkgs /media/daniels/Backup/
 
-    sudo ${rsync}/bin/rsync -az /etc/.git /media/daniels/Backup/etc/
+    sudo rsync -az /etc/.git /media/daniels/Backup/etc/
     sudo chown daniels:daniels -R /media/daniels/Backup/etc/
     cd /media/daniels/Backup/etc/
     git reset --hard master
