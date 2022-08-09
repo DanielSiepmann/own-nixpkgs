@@ -1,1 +1,2 @@
 home/programs/ssh-match-blocks.nix filter=git-crypt diff=git-crypt
+home/files/composer/auth.json filter=git-crypt diff=git-crypt

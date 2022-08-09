@@ -70,6 +70,9 @@
       };
     };
 
+    "composer/update-channel".text = "stable";
+    "composer/auth.json".source = ./files/composer/auth.json;
+
   };
 
   dataFile = {
