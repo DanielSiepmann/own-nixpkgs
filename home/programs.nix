@@ -47,7 +47,6 @@ in {
   };
 
   firefox = import ./programs/firefox.nix {
-    inherit pkgs;
   };
 
   # Media

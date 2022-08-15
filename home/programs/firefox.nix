@@ -1,4 +1,4 @@
-{ pkgs }:
+_:
 
 {
   enable = true;
@@ -177,13 +177,13 @@
 
         "network.IDN_show_punycode" = true;
       };
-      userContent = pkgs.lib.fileContents ./firefox/userContent.css;
+      userContent = builtins.readFile(./firefox/userContent.css);
     };
     toggl = {
       name = "toggl";
       id = 1;
       isDefault = false;
-      userChrome = pkgs.lib.fileContents ./firefox/kioskLikeUserChrome.css;
+      userChrome = builtins.readFile(./firefox/kioskLikeUserChrome.css);
       settings = {
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
       };
@@ -192,7 +192,7 @@
       name = "mailhog";
       id = 2;
       isDefault = false;
-      userChrome = pkgs.lib.fileContents ./firefox/kioskLikeUserChrome.css;
+      userChrome = builtins.readFile(firefox/kioskLikeUserChrome.css);
       settings = {
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
       };
