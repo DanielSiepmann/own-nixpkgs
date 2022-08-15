@@ -204,12 +204,12 @@ in {
 
     {
       plugin = nerdtree;
-      config = pkgs.lib.fileContents ./neovim/plugins/nerdtree.vim;
+      config = builtins.readFile(./neovim/plugins/nerdtree.vim);
     }
 
     {
       plugin = undotree;
-      config = pkgs.lib.fileContents ./neovim/plugins/undotree.vim;
+      config = builtins.readFile(./neovim/plugins/undotree.vim);
     }
 
     {
@@ -217,19 +217,19 @@ in {
       # Instead they make it hard to only show what I'm interested in within PHP files.
       # As they changed the building with nested structures.
       plugin = tagbar;
-      config = pkgs.lib.fileContents ./neovim/plugins/tagbar.vim;
+      config = builtins.readFile(./neovim/plugins/tagbar.vim);
     }
 
     {
       plugin = telescope-nvim;
       type = "lua";
-      config = pkgs.lib.fileContents ./neovim/plugins/telescope.lua;
+      config = builtins.readFile(./neovim/plugins/telescope.lua);
     }
 
     {
       plugin = telescope-ctags-outline;
       type = "lua";
-      config = pkgs.lib.fileContents ./neovim/plugins/telescope-ctags-outline.lua;
+      config = builtins.readFile(./neovim/plugins/telescope-ctags-outline.lua);
     }
 
     dressing-nvim
@@ -244,7 +244,7 @@ in {
     vim-twig
     {
       plugin = syntax-php;
-      config = pkgs.lib.fileContents ./neovim/plugins/php.vim;
+      config = builtins.readFile(./neovim/plugins/php.vim);
     }
 
     # Adding features
@@ -269,14 +269,14 @@ in {
 
     {
       plugin = vdebug;
-      config = pkgs.lib.fileContents ./neovim/plugins/vdebug.vim;
+      config = builtins.readFile(./neovim/plugins/vdebug.vim);
     }
 
     {
       # Seems to be broken: https://github.com/kassio/neoterm/issues/338
       # Therefore I install my own version where this bug is disabled
       plugin = neoterm;
-      config = pkgs.lib.fileContents ./neovim/plugins/neoterm.vim;
+      config = builtins.readFile(./neovim/plugins/neoterm.vim);
     }
 
     {
@@ -339,14 +339,14 @@ in {
     {
       plugin = lsp_signature-nvim;
       type = "lua";
-      config = pkgs.lib.fileContents ./neovim/plugins/lsp-signature.lua;
+      config = builtins.readFile(./neovim/plugins/lsp-signature.lua);
     }
 
     # More related to testing, linting, …
 
     {
       plugin = ale;
-      config = pkgs.lib.fileContents(./neovim/plugins/ale.vim)
+      config = builtins.readFile(./neovim/plugins/ale.vim)
         # Keep line break as fileContents strips last EOL
         + ''
 
@@ -360,7 +360,7 @@ in {
 
     {
       plugin = test;
-      config = pkgs.lib.fileContents ./neovim/plugins/test.vim;
+      config = builtins.readFile(./neovim/plugins/test.vim);
     }
 
     # Presentations
