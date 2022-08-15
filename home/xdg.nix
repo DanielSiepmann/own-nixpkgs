@@ -122,12 +122,12 @@
     toggl = {
       name = "Toggl Time Tracking";
       type = "Application";
-      exec = "${pkgs.firefox}/bin/firefox --class=\"time-tracking\" --new-instance -P toggl https://track.toggl.com/timer";
+      exec = "firefox --class=\"time-tracking\" --new-instance -P toggl https://track.toggl.com/timer";
     };
     mailhog-ui = {
       name = "Mailhog";
       type = "Application";
-      exec = "${pkgs.firefox}/bin/firefox --class=\"mailhog\" --new-instance -P mailhog https://mailhog.localhost";
+      exec = "firefox --class=\"mailhog\" --new-instance -P mailhog https://mailhog.localhost";
     };
   };
 

@@ -17,7 +17,7 @@
   # Use screen instead of tmux as some tools might not be aware of tmux
   terminal = "screen-256color";
 
-  shell = "${pkgs.zsh}/bin/zsh";
+  shell = "zsh";
 
   sensibleOnTop = false;
 

@@ -1,4 +1,4 @@
-{ config, pkgs }:
+{ config }:
 
 let
   modifier = config.xsession.windowManager.i3.config.modifier;
@@ -13,7 +13,7 @@ in {
 
     defaultWorkspace = "workspace 1";
 
-    menu = "${pkgs.i3}/bin/i3-dmenu-desktop";
+    menu = "i3-dmenu-desktop";
 
     fonts = {
       names = [ "monospace" ];
@@ -67,7 +67,7 @@ in {
       workspaceButtons = true;
       workspaceNumbers = true;
 
-      statusCommand = "${pkgs.i3blocks}/bin/i3blocks";
+      statusCommand = "i3blocks";
 
       fonts = {
         names = ["monospace"];
