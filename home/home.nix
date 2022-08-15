@@ -44,9 +44,9 @@ in {
     };
 
     sessionVariables = {
-      TERMINAL = "${pkgs.st}/bin/st";
-      EDITOR = "${pkgs.neovim}/bin/nvim";
-      SHELL = "${pkgs.zsh}/bin/zsh";
+      TERMINAL = "st";
+      EDITOR = "nvim";
+      SHELL = "zsh";
 
       TYPO3_CONTEXT = "Development/dsiepmann";
       TYPO3_ADDITIONAL_CONFIGURATION = "/home/daniels/.local/share/typo3-configuration/AdditionalConfiguration.inc.php";
