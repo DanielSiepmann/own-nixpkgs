@@ -73,6 +73,8 @@
     "composer/update-channel".text = "stable";
     "composer/auth.json".source = ./files/composer/auth.json;
 
+    "nvim/syntax/php.vim".source = ./files/nvim/syntax/php.vim;
+
   };
 
   dataFile = {

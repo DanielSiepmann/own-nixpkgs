@@ -59,16 +59,6 @@ let
     };
   };
 
-  syntax-php = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    name = "syntax-php";
-    src = pkgs.fetchFromGitHub {
-      owner = "StanAngeloff";
-      repo = "php.vim";
-      rev = "2ec2ab9fcc65bfc47c7ba6b3846903528188ceea";
-      sha256 = "lgsaCU6Rzzynkd9SID0chjKaxgEWznrmEl133Syc6cY=";
-    };
-  };
-
   syntax-fluid = pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "syntax-fluid";
     src = pkgs.fetchFromGitHub {
@@ -242,10 +232,9 @@ in {
     typescript-vim
     syntax-fluid
     vim-twig
-    {
-      plugin = syntax-php;
-      config = builtins.readFile(./neovim/plugins/php.vim);
-    }
+    # PHP Syntax is loaded via xdg config file.
+    # This is necessart as Vim provides a native syntax which would be loaded before the one defined here.
+    # See: https://github.com/NixOS/nixpkgs/commit/cda1f8ae46869c429971323717d622d5b17d9854 where runtimepath is not set.
 
     # Adding features
 
