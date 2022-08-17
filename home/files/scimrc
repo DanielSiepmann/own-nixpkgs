@@ -1,0 +1,26 @@
+set input_bar_bottom
+
+color "type=HEADINGS fg=DEFAULT_COLOR bg=DEFAULT_COLOR"
+color "type=HEADINGS_ODD fg=DEFAULT_COLOR bg=DEFAULT_COLOR"
+
+color "type=GRID_EVEN fg=DEFAULT_COLOR bg=DEFAULT_COLOR"
+color "type=GRID_ODD fg=DEFAULT_COLOR bg=DEFAULT_COLOR"
+
+color "type=CELL_ID bold=1 fg=CYAN bg=DEFAULT_COLOR"
+color "type=CELL_FORMAT bold=1 fg=CYAN bg=DEFAULT_COLOR"
+color "type=CELL_CONTENT bold=1 fg=CYAN bg=DEFAULT_COLOR"
+
+color "type=CELL_SELECTION bold=1 fg=CYAN bg=BLACK"
+color "type=CELL_SELECTION_SC bold=1 fg=CYAN bg=BLACK"
+
+color "type=STRG bold=0 fg=DEFAULT_COLOR bg=DEFAULT_COLOR"
+color "type=NUMB bold=0 fg=DEFAULT_COLOR bg=DEFAULT_COLOR"
+color "type=DATEF bold=0 fg=DEFAULT_COLOR bg=DEFAULT_COLOR"
+color "type=EXPRESSION bold=1 fg=YELLOW bg=DEFAULT_COLOR"
+color "type=CELL_ERROR bold=1 fg=RED bg=DEFAULT_COLOR"
+color "type=CELL_NEGATIVE bold=0 fg=DEFAULT_COLOR bg=DEFAULT_COLOR"
+
+color "type=INFO_MSG bold=1 fg=DEFAULT_COLOR bg=CYAN"
+color "type=ERROR_MSG bold=1 fg=DEFAULT_COLOR bg=RED"
+
+color "type=MODE bold=1 fg=CYAN bg=DEFAULT_COLOR"

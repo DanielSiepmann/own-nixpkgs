@@ -35,6 +35,7 @@ with pkgs; [
   litecli
   sqlite
   mycli
+  sc-im
   # mytop
   robo3t
   mkcert
