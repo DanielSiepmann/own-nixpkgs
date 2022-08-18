@@ -1,23 +1,30 @@
 {
-  pkgs ? import <nixpkgs> { },
-  phpsChannel ? import <phps>
+  pkgs ? import <nixpkgs> { }
 }:
 
 let
-  phps = phpsChannel.packages.x86_64-linux;
-  php = phps.php73.buildEnv {
-    # We are in CLI Context and need other defaults
-    extraConfig = "memory_limit = 5G";
+
+  projectFrontendReinstall = pkgs.writeShellApplication {
+    name = "project-frontend-reinstall";
+    text = ''
+      rm -rf node_modules/
+      yarn install
+    '';
   };
-  composer = pkgs.composer1.override {
-    inherit php;
+
+  projectFrontendCompile = pkgs.writeShellApplication {
+    name = "project-frontend-compile";
+    text = ''
+      yarn run build
+      notify-send "done compiling frontend"
+    '';
   };
 
 in pkgs.mkShell {
   name = "TYPO3";
   buildInputs = [
-    php
-    composer
+    projectFrontendReinstall
+    projectFrontendCompile
   ];
 
   shellHook = ''
