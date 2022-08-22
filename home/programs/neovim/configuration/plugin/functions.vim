@@ -73,7 +73,7 @@ function! Reg()
 endfunction
 
 function! SortParagraph()
-    execute ":normal! vip:'<,'>sort\<esc>"
+    execute ":normal! vip:'<,'>!sort\<esc>"
 endfunction
 
 " Generate .. _: anchor for headline. Cursor have to be on line with headline.
