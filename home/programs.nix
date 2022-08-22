@@ -43,9 +43,6 @@ in {
   ssh = import ./programs/ssh.nix {
   };
 
-  zathura = import ./programs/zathura.nix {
-  };
-
   firefox = import ./programs/firefox.nix {
   };
 
