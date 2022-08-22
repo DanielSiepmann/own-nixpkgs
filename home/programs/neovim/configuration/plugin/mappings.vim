@@ -29,9 +29,13 @@ nnoremap <leader>am :PhpactorContextMenu<cr>
 nnoremap <leader>au :PhpactorImportClass<cr>
 nnoremap <leader>ag :PhpactorGotoDefinition<cr>
 
+" Testing
 nnoremap <silent> <leader>tn :TestNearest<cr>
 nnoremap <silent> <leader>tl :TestLast<cr>
 nnoremap <silent> <leader>tf :TestFile<cr>
+" Toggle Summary
+nnoremap <silent> <leader>ts :UltestSummary<cr>
+nnoremap <silent> <leader>tu :Ultest<cr>
 
 nnoremap <leader>so :call SortParagraph()<cr>
 nnoremap <silent> <leader>gtt :call OpenPHPUnitTestFilename()<cr>
