@@ -17,8 +17,8 @@ let
     name = "colorscheme-smyckblue";
     src = pkgs.fetchgit {
       url = "https://gitea.daniel-siepmann.de/danielsiepmann/vim-colorscheme-smyckblue.git";
-      rev = "v1.1.1";
-      sha256 = "sha256-MxkgNfezyZEJwlKDQJXmIUpj5MzUJ2E66cZB8JchG78=";
+      rev = "v1.2.0";
+      sha256 = "sha256-sPb+okBt060i3eYPIRwXK9O9aCE35z09vxexqv++BH0=";
     };
   };
 
@@ -350,6 +350,16 @@ in {
     {
       plugin = test;
       config = builtins.readFile(./neovim/plugins/test.vim);
+    }
+
+    # I don't like the approach of https://github.com/nvim-neotest/neotest.
+    # It enforces me to use adapters and only supports some frameworks,
+    # I prefer ultest which is a wrapper around the test plugin from above.
+    {
+      plugin = vim-ultest;
+      config = ''
+        let g:ultest_deprecation_notice = 0
+      '';
     }
 
     # Presentations
