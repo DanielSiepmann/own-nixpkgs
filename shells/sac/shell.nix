@@ -1,56 +1,6 @@
 { pkgs ? import <nixpkgs> { } }:
 
 let
-  php = pkgs.php74.buildEnv {
-    # We are in CLI Context and need other defaults
-    extraConfig = "memory_limit = 5G";
-  };
-
-  projectCsFixer = pkgs.writeShellApplication {
-    name = "project-csfixer";
-    runtimeInputs = [
-      php
-    ];
-    text = ''
-      rm -f "$PROJECT_ROOT/.php_cs.cache"
-      "$PROJECT_ROOT/vendor/bin/php-cs-fixer" fix --config "$PROJECT_ROOT/.php_cs.php"
-      git s;
-    '';
-  };
-
-  projectPhpStan = pkgs.writeShellApplication {
-    name = "project-phpstan-80";
-    runtimeInputs = [
-      php
-    ];
-    text = ''
-      rm -rf "$TMP/phpstan/"
-      "$PROJECT_ROOT/vendor/bin/codecept" build
-      "$PROJECT_ROOT/vendor/bin/phpstan"
-    '';
-  };
-
-  projectPhpStan74 = pkgs.writeShellApplication {
-    name = "project-phpstan-74";
-    runtimeInputs = [
-      php
-    ];
-    text = ''
-      rm -rf "$TMP/phpstan/"
-      "$PROJECT_ROOT/vendor/bin/codecept" build
-      "$PROJECT_ROOT/vendor/bin/phpstan" --configuration="$PROJECT_ROOT/phpstan_php74.neon"
-    '';
-  };
-
-  projectRector = pkgs.writeShellApplication {
-    name = "project-rector";
-    runtimeInputs = [
-      php
-    ];
-    text = ''
-      "$PROJECT_ROOT/bin/rector.sh"
-    '';
-  };
 
   projectFrontendReinstall = pkgs.writeShellApplication {
     name = "project-frontend-reinstall";
@@ -81,12 +31,6 @@ let
 in pkgs.mkShell {
   name = "TYPO3";
   buildInputs = [
-    php
-    pkgs.php74Packages.composer
-    projectCsFixer
-    projectPhpStan
-    projectPhpStan74
-    projectRector
     projectFrontendReinstall
     projectFrontendCompile
   ];
