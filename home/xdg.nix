@@ -10,6 +10,7 @@
     "borg/exclude".source = ./files/borg-exclude;
     "ctags/config.ctags".source = ./files/ctags;
     "sc-im/scimrc".source = ./files/scimrc;
+    "ncdu/config".source = ./files/ncdu;
     "keepassxc/keepassxc.ini".text = pkgs.lib.generators.toINI { } {
 
       General = {
