@@ -1,5 +1,7 @@
 set input_bar_bottom
 
+FMT A0:XX9999 "0"
+
 color "type=HEADINGS fg=DEFAULT_COLOR bg=DEFAULT_COLOR"
 color "type=HEADINGS_ODD fg=DEFAULT_COLOR bg=DEFAULT_COLOR"
 
