@@ -10,6 +10,7 @@
     # pkgs.purple-signald
     (pkgs.callPackage ./../packages/purple-signald { })
     (pkgs.callPackage ./../packages/purple-mattermost { })
+    (pkgs.callPackage ./../packages/purple-microsoft-teams { })
     (pkgs.callPackage ./../packages/purple-libnotify { })
     (pkgs.callPackage ./../packages/purple-events { }) # Dependency
   ];
