@@ -1,0 +1,5 @@
+gtk-font-name = "Roboto Mono Medium 16"
+style "purplerc_style"
+{
+}
+widget_class "*" style "purplerc_style"

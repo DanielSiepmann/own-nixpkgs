@@ -49,6 +49,11 @@ in {
   firefox = import ./programs/firefox.nix {
   };
 
+  pidgin = import ./programs/pidgin.nix {
+    inherit pkgs;
+  };
+  signald.enable = true;
+
   # Media
   cmus.enable = true;
 }
