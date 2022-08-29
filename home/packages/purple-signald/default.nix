@@ -19,6 +19,7 @@ stdenv.mkDerivation rec {
   ];
 
   PKG_CONFIG_PURPLE_PLUGINDIR = "${placeholder "out"}/lib/purple-2";
+  PKG_CONFIG_PURPLE_DATADIR = "${placeholder "out"}/share";
   PKG_CONFIG_PIDGIN_DATADIR = "${placeholder "out"}/share";
 
   meta = with lib; {
