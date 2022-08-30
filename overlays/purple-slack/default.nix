@@ -1,5 +1,5 @@
 self: super: {
-  purple-slack = super.purple-slack.overrideAttrs (old: {
+  purple-slack = super.purple-slack.overrideAttrs(old: {
     version = "2022-08-30";
 
     src = super.fetchFromGitHub {
