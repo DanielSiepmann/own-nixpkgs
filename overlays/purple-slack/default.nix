@@ -11,6 +11,7 @@ self: super: {
 
     patches = (old.patches or []) ++ [
       ./browser-based-auth.patch
+      ./call-transformation.patch
     ];
   });
 }
