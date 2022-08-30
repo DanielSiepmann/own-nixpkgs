@@ -7,6 +7,8 @@ style "purplerc_style"
 {
     # Change the color of the typing notification
     GtkIMHtml::typing-notification-color = "#CDEE69"
+    # Change the font of the typing message
+    GtkIMHtml::typing-notification-font = "Roboto Mono Medium 18"
     # Change the color of the nick in received message
     GtkIMHtml::receive-name-color = "#CDEE69"
     # Change the color of the nick in sent message
@@ -16,7 +18,7 @@ widget_class "*" style "purplerc_style"
 
 style "*pidgin_conv_entry_style"
 {
-    font_name = "Roboto Mono Medium 16"
+    font_name = "Roboto Mono Medium 18"
 }
 widget "*pidgin_conv_entry" style "*pidgin_conv_entry_style"
 
