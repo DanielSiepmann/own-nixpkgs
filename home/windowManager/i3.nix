@@ -109,7 +109,6 @@ in {
       extraConfig = ''
         separator_symbol " "
       '';
-
     }];
 
     window = {
@@ -155,12 +154,11 @@ in {
         { window_role = "^browser$"; }
       ];
       "3:💬" = [
+        { class = "^Pidgin$"; }
+        { class = "^thunderbird$"; }
         { class = "^chat$"; }
-        { class = "^Signal$"; }
+        { class = "^mail$"; }
         { class = "^phone$"; }
-      ];
-      "4:✉️" = [
-        { class = "^Thunderbird$"; }
       ];
       "5:🎵" = [
         # TODO: Assign cmus, but it is opened within terminal
@@ -246,7 +244,7 @@ in {
       "${modifier}+1" = "workspace 1";
       "${modifier}+2" = "workspace 2:💶";
       "${modifier}+3" = "workspace 3:💬";
-      "${modifier}+4" = "workspace 4:✉️";
+      "${modifier}+4" = "workspace 4";
       "${modifier}+5" = "workspace 5:🎵";
       "${modifier}+6" = "workspace 6:T3";
       "${modifier}+7" = "workspace 7";
@@ -258,7 +256,7 @@ in {
       "${modifier}+Shift+1" = "move container to workspace 1";
       "${modifier}+Shift+2" = "move container to workspace 2:💶";
       "${modifier}+Shift+3" = "move container to workspace 3:💬";
-      "${modifier}+Shift+4" = "move container to workspace 4:✉️";
+      "${modifier}+Shift+4" = "move container to workspace 4";
       "${modifier}+Shift+5" = "move container to workspace 5:🎵";
       "${modifier}+Shift+6" = "move container to workspace 6:T3";
       "${modifier}+Shift+7" = "move container to workspace 7";
