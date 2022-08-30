@@ -1,21 +1,27 @@
-# This file automatically written by the Pidgin GTK+ Theme Control plugin.
-# Any changes to this file will be overwritten by the plugin when told to
-# write the settings again.
 # The FAQ (http://developer.pidgin.im/wiki/FAQ) contains some further examples
 # of possible pidgin gtkrc settings.
+# A sample can be found here: https://developer.pidgin.im/wiki/SampleGtkrc2.0
+
 gtk-font-name = "Roboto Mono Medium 18"
 style "purplerc_style"
 {
-	GtkIMHtml::typing-notification-color = "#CDEE69"
+    # Change the color of the typing notification
+    GtkIMHtml::typing-notification-color = "#CDEE69"
+    # Change the color of the nick in received message
+    GtkIMHtml::receive-name-color = "#CDEE69"
+    # Change the color of the nick in sent message
+    GtkIMHtml::send-name-color = "#72B3CC"
 }
 widget_class "*" style "purplerc_style"
+
 style "*pidgin_conv_entry_style"
 {
-	font_name = "Roboto Mono Medium 16"
+    font_name = "Roboto Mono Medium 16"
 }
 widget "*pidgin_conv_entry" style "*pidgin_conv_entry_style"
+
 style "*pidgin_conv_imhtml_style"
 {
-	font_name = "Roboto Mono Medium 18"
+    font_name = "Roboto Mono Medium 18"
 }
 widget "*pidgin_conv_imhtml" style "*pidgin_conv_imhtml_style"
