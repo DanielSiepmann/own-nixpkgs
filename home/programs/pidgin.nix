@@ -6,7 +6,6 @@
   plugins = [
     pkgs.pidgin-window-merge
     pkgs.purple-slack
-    pkgs.purple-matrix
     # Waiting for https://github.com/NixOS/nixpkgs/issues/188384 to switch back to official package
     # pkgs.purple-signald
     (pkgs.callPackage ./../packages/purple-signald { })
