@@ -1,0 +1,413 @@
+https://github.com/kacf/slack-libpurple/commit/8a09a6d94c1020aeb7aef1ab3b08a088e4fbfac0.patch
+
+From 8a09a6d94c1020aeb7aef1ab3b08a088e4fbfac0 Mon Sep 17 00:00:00 2001
+From: Kristian Amlie <kristian.amlie@northern.tech>
+Date: Wed, 20 Jul 2022 15:43:03 +0200
+Subject: [PATCH] Enable credentials using browser obtained token and cookie.
+
+The way it works is that you need two tokens from the browser.
+Currently, getting them is inconvenient, but let's start with the
+basics, and we can improve later.
+
+1. Get the main token by entering the browser devtools while logged
+   into Slack (normally F12). From there, select "Storage", then
+   "Local Storage", "https://app.slack.com" and "localConfig_v2". From
+   inside this value, fish out the value of the "token" key, which
+   starts with "xoxc-". Make sure to get the whole token, and not the
+   surrounding quotes. Paste this value in some temporary place.
+
+2. Now move from "Local Storage" to "Cookies", and again
+   "https://app.slack.com". Copy the value of the "d" cookie, which
+   starts with "xoxd-". Paste this value after the one from the
+   previous step, with exactly one space in between.
+
+3. Take the two concatenated values, and paste them into the password
+   field of the Slack account. The value should look like this:
+   "xoxc-12345 xoxd-67890" (but much longer obviously).
+
+About the implementation: This requires using form based submission,
+because the JSON based API is broken and does not return the correct
+data, even with the same parameters (see issue #123). Therefore the
+way the token is passed, even the single token which already worked,
+is now changed to form data.
+
+Since `slack_api_get` is no longer a valid call when form based
+submission is used (it requires post), this function has been removed.
+
+Signed-off-by: Kristian Amlie <kristian.amlie@northern.tech>
+---
+ slack-api.c          | 65 ++++++++++++++++++--------------------------
+ slack-api.h          |  1 -
+ slack-auth.c         |  6 ++--
+ slack-blist.c        |  2 +-
+ slack-channel.c      |  6 ++--
+ slack-conversation.c | 12 ++++----
+ slack-rtm.c          |  2 +-
+ slack-thread.c       |  2 +-
+ slack-user.c         |  8 +++---
+ slack.c              | 26 ++++++++++++++++--
+ slack.h              |  1 +
+ 11 files changed, 70 insertions(+), 61 deletions(-)
+
+diff --git a/slack-api.c b/slack-api.c
+index 287e7ec..75eb2da 100644
+--- a/slack-api.c
++++ b/slack-api.c
+@@ -108,19 +108,6 @@ static void api_run(SlackAccount *sa) {
+ 	api_retry(call);
+ }
+ 
+-static GString *slack_api_encode_url(SlackAccount *sa, const char *pfx, const char *endpoint, va_list qargs) {
+-	GString *url = g_string_new(NULL);
+-	g_string_printf(url, "%s/%s%s?token=%s", sa->api_url, pfx, endpoint, sa->token);
+-
+-	const char *param;
+-	while ((param = va_arg(qargs, const char*))) {
+-		const char *val = va_arg(qargs, const char*);
+-		g_string_append_printf(url, "&%s=%s", param, purple_url_encode(val));
+-	}
+-
+-	return url;
+-}
+-
+ static char *slack_api_encode_post_request(SlackAccount *sa, const char *url, va_list qargs) {
+ 	GString *request;
+ 	gchar *host = NULL, *path = NULL;
+@@ -128,29 +115,41 @@ static char *slack_api_encode_post_request(SlackAccount *sa, const char *url, va
+ 
+ 	GString *postdata;
+ 	const char *param;
+-	gboolean sep = FALSE;
+ 
+-	postdata = g_string_new("{");
++	// Just a long random number.
++	guint64 delim = ((guint64)g_random_int() << 32) | (guint64)g_random_int();
++
++	postdata = g_string_new("");
++	g_string_printf(postdata, "-----------------------------%" G_GUINT64_FORMAT "\r\n", delim);
+ 	while ((param = va_arg(qargs, const char*))) {
+ 		const char *val = va_arg(qargs, const char*);
+-		if (sep)
+-			g_string_append_c(postdata, ',');
+-		append_json_string(postdata, param);
+-		g_string_append_c(postdata, ':');
+-		append_json_string(postdata, val);
+-		sep = TRUE;
++		g_string_append_printf(postdata, "\
++Content-Disposition: form-data; name=\"%s\"\r\n\
++\r\n\
++%s\r\n\
++-----------------------------%" G_GUINT64_FORMAT "\r\n",
++			param, val, delim);
+ 	}
+-	g_string_append_c(postdata, '}');
++
++	g_string_append_printf(postdata,
++"Content-Disposition: form-data; name=\"token\"\r\n\
++\r\n\
++%s\r\n\
++-----------------------------%" G_GUINT64_FORMAT "\r\n",
++		sa->token, delim);
+ 
+ 	request = g_string_new(NULL);
+ 	g_string_append_printf(request, "\
+ POST /%s HTTP/1.0\r\n\
+ Host: %s\r\n\
+-Authorization: Bearer %s\r\n\
+-Content-Type: application/json;charset=utf-8\r\n\
+-Content-Length: %" G_GSIZE_FORMAT "\r\n\
+-\r\n",
+-		path, host, sa->token, postdata->len);
++Content-Type: multipart/form-data; boundary=---------------------------%" G_GUINT64_FORMAT "\r\n\
++Content-Length: %" G_GSIZE_FORMAT "\r\n",
++		path, host, delim, postdata->len);
++
++	if (sa->d_cookie) {
++		g_string_append_printf(request, "Cookie: d=%s\r\n", sa->d_cookie);
++	}
++	g_string_append(request, "\r\n");
+ 	g_string_append(request, postdata->str);
+ 
+ 	g_free(host);
+@@ -174,18 +173,6 @@ static void slack_api_call_url(SlackAccount *sa, SlackAPICallback callback, gpoi
+ 		api_retry(call);
+ }
+ 
+-void slack_api_get(SlackAccount *sa, SlackAPICallback callback, gpointer user_data, const char *endpoint, ...)
+-{
+-	va_list qargs;
+-	va_start(qargs, endpoint);
+-	GString *url = slack_api_encode_url(sa, "", endpoint, qargs);
+-	va_end(qargs);
+-
+-	slack_api_call_url(sa, callback, user_data, url->str, NULL);
+-
+-	g_string_free(url, TRUE);
+-}
+-
+ void slack_api_post(SlackAccount *sa, SlackAPICallback callback, gpointer user_data, const gchar *endpoint, ...)
+ {
+ 	GString *url = g_string_new(NULL);
+diff --git a/slack-api.h b/slack-api.h
+index 6463da0..6415a46 100644
+--- a/slack-api.h
++++ b/slack-api.h
+@@ -10,7 +10,6 @@ PurpleConnectionError slack_api_connection_error(const gchar *error);
+ typedef struct _SlackAPICall SlackAPICall;
+ typedef gboolean SlackAPICallback(SlackAccount *sa, gpointer user_data, json_value *json, const char *error);
+ 
+-void slack_api_get(SlackAccount *sa, SlackAPICallback *callback, gpointer user_data, const char *endpoint, /* const char *query_param1, const char *query_value1, */ ...) G_GNUC_NULL_TERMINATED;
+ void slack_api_post(SlackAccount *sa, SlackAPICallback *callback, gpointer user_data, const char *endpoint, /* const char *query_param1, const char *query_value1, */ ...) G_GNUC_NULL_TERMINATED;
+ void slack_api_disconnect(SlackAccount *sa);
+ 
+diff --git a/slack-auth.c b/slack-auth.c
+index 5a41f76..d157ee5 100644
+--- a/slack-auth.c
++++ b/slack-auth.c
+@@ -49,7 +49,7 @@ slack_auth_login_finduser_cb(SlackAccount *sa, gpointer user_data, json_value *j
+ 
+ 	/* now do the actual login */
+ 	slack_login_step(sa);
+-	slack_api_get(sa, slack_auth_login_signin_cb,
++	slack_api_post(sa, slack_auth_login_signin_cb,
+ 		NULL, "auth.signin",
+ 		"user", user_id,
+ 		"password", purple_account_get_password(sa->account),
+@@ -75,7 +75,7 @@ slack_auth_login_findteam_cb(SlackAccount *sa, gpointer user_data, json_value *j
+ 
+ 	/* now validate that the user exists and get their ID. */
+ 	slack_login_step(sa);
+-	slack_api_get(sa, slack_auth_login_finduser_cb,
++	slack_api_post(sa, slack_auth_login_finduser_cb,
+ 		NULL, "auth.findUser",
+ 		"email", sa->email,
+ 		"team", sa->team.id,
+@@ -86,7 +86,7 @@ slack_auth_login_findteam_cb(SlackAccount *sa, gpointer user_data, json_value *j
+ void
+ slack_auth_login(SlackAccount *sa) {
+ 	/* validate the team and get it's ID */
+-	slack_api_get(sa, slack_auth_login_findteam_cb,
++	slack_api_post(sa, slack_auth_login_findteam_cb,
+ 		NULL, "auth.findTeam",
+ 		"domain", sa->host,
+ 		NULL);
+diff --git a/slack-blist.c b/slack-blist.c
+index be5c7ba..2756aef 100644
+--- a/slack-blist.c
++++ b/slack-blist.c
+@@ -140,7 +140,7 @@ struct roomlist_expand {
+ };
+ 
+ #define ROOMLIST_CALL(sa, expand, ARGS...) \
+-	slack_api_get(sa, roomlist_cb, expand, "conversations.list", "exclude_archived", expand->parent ? "false" : "true", "type", "public_channel,private_channel,mpim,im", SLACK_PAGINATE_LIMIT_ARG, ##ARGS, NULL)
++	slack_api_post(sa, roomlist_cb, expand, "conversations.list", "exclude_archived", expand->parent ? "false" : "true", "type", "public_channel,private_channel,mpim,im", SLACK_PAGINATE_LIMIT_ARG, ##ARGS, NULL)
+ 
+ static gboolean roomlist_cb(SlackAccount *sa, gpointer data, json_value *json, const char *error) {
+ 	struct roomlist_expand *expand = data;
+diff --git a/slack-channel.c b/slack-channel.c
+index 66e91b2..2c860d1 100644
+--- a/slack-channel.c
++++ b/slack-channel.c
+@@ -179,7 +179,7 @@ static gboolean channels_members_cb(SlackAccount *sa, gpointer data, json_value
+ 	json_value *metadata = json_get_prop_type(json, "response_metadata", object);
+ 	char *next_cursor = json_get_prop_strptr(metadata, "next_cursor");
+ 	if (strcmp(next_cursor, "")) {
+-		slack_api_get(sa, channels_members_cb, chan, "conversations.members", "channel", chan->object.id, "cursor", next_cursor, NULL);
++		slack_api_post(sa, channels_members_cb, chan, "conversations.members", "channel", chan->object.id, "cursor", next_cursor, NULL);
+ 	}
+ 
+ 	return FALSE;
+@@ -206,7 +206,7 @@ static gboolean channels_info_cb(SlackAccount *sa, gpointer data, json_value *js
+ 	}
+ 
+ 	if (purple_account_get_bool(sa->account, "channel_members", TRUE))
+-		slack_api_get(sa, channels_members_cb, chan, "conversations.members", "channel", chan->object.id, NULL);
++		slack_api_post(sa, channels_members_cb, chan, "conversations.members", "channel", chan->object.id, NULL);
+ 
+ 	if (purple_account_get_bool(sa->account, "open_history", FALSE)) {
+ 		slack_get_history_unread(sa, &chan->object, json);
+@@ -225,7 +225,7 @@ void slack_chat_open(SlackAccount *sa, SlackChannel *chan) {
+ 
+ 	serv_got_joined_chat(sa->gc, chan->cid, chan->object.name);
+ 
+-	slack_api_get(sa, channels_info_cb, GINT_TO_POINTER(chan->type), "conversations.info", "channel", chan->object.id, NULL);
++	slack_api_post(sa, channels_info_cb, GINT_TO_POINTER(chan->type), "conversations.info", "channel", chan->object.id, NULL);
+ }
+ 
+ static gboolean channels_join_cb(SlackAccount *sa, gpointer data, json_value *json, const char *error) {
+diff --git a/slack-conversation.c b/slack-conversation.c
+index 613ab61..51c7420 100644
+--- a/slack-conversation.c
++++ b/slack-conversation.c
+@@ -16,7 +16,7 @@ static SlackObject *conversation_update(SlackAccount *sa, json_value *json) {
+ }
+ 
+ #define CONVERSATIONS_LIST_CALL(sa, ARGS...) \
+-	slack_api_get(sa, conversations_list_cb, NULL, "conversations.list", "types", "public_channel,private_channel,mpim,im", "exclude_archived", "true", SLACK_PAGINATE_LIMIT_ARG, ##ARGS, NULL)
++	slack_api_post(sa, conversations_list_cb, NULL, "conversations.list", "types", "public_channel,private_channel,mpim,im", "exclude_archived", "true", SLACK_PAGINATE_LIMIT_ARG, ##ARGS, NULL)
+ 
+ static gboolean conversations_list_cb(SlackAccount *sa, gpointer data, json_value *json, const char *error) {
+ 	json_value *chans = json_get_prop_type(json, "channels", array);
+@@ -101,7 +101,7 @@ static gboolean conversation_counts_cb(SlackAccount *sa, gpointer data, json_val
+ 
+ void slack_conversation_counts(SlackAccount *sa) {
+ 	/* Private API, not documented. Found by EionRobb (Github). */
+-	slack_api_get(sa, conversation_counts_cb, NULL, "users.counts", "mpim_aware", "true", "only_relevant_ims", "true", "simple_unreads", "true", NULL);
++	slack_api_post(sa, conversation_counts_cb, NULL, "users.counts", "mpim_aware", "true", "only_relevant_ims", "true", "simple_unreads", "true", NULL);
+ }
+ 
+ SlackObject *slack_conversation_get_conversation(SlackAccount *sa, PurpleConversation *conv) {
+@@ -158,7 +158,7 @@ void slack_conversation_retrieve(SlackAccount *sa, const char *sid, SlackConvers
+ 	struct conversation_retrieve *lookup = g_new(struct conversation_retrieve, 1);
+ 	lookup->cb = cb;
+ 	lookup->data = data;
+-	slack_api_get(sa, conversation_retrieve_cb, lookup, "conversations.info", "channel", sid, NULL);
++	slack_api_post(sa, conversation_retrieve_cb, lookup, "conversations.info", "channel", sid, NULL);
+ }
+ 
+ static gboolean mark_conversation_timer(gpointer data) {
+@@ -323,9 +323,9 @@ void slack_get_history(SlackAccount *sa, SlackObject *conv, const char *since, u
+ 	char count_buf[6] = "";
+ 	snprintf(count_buf, 5, "%u", MIN(count, SLACK_HISTORY_LIMIT_COUNT));
+ 	if (thread_ts)
+-		slack_api_get(sa, get_history_cb, h, "conversations.replies", "channel", id, "oldest", since ?: "0", "limit", count_buf, "ts", thread_ts, NULL);
++		slack_api_post(sa, get_history_cb, h, "conversations.replies", "channel", id, "oldest", since ?: "0", "limit", count_buf, "ts", thread_ts, NULL);
+ 	else
+-		slack_api_get(sa, get_history_cb, h, "conversations.history", "channel", id, "oldest", since ?: "0", "limit", count_buf, NULL);
++		slack_api_post(sa, get_history_cb, h, "conversations.history", "channel", id, "oldest", since ?: "0", "limit", count_buf, NULL);
+ }
+ 
+ void slack_get_history_unread(SlackAccount *sa, SlackObject *conv, json_value *json) {
+@@ -353,5 +353,5 @@ static gboolean get_conversation_unread_cb(SlackAccount *sa, gpointer data, json
+ void slack_get_conversation_unread(SlackAccount *sa, SlackObject *conv) {
+ 	const char *id = slack_conversation_id(conv);
+ 	g_return_if_fail(id);
+-	slack_api_get(sa, get_conversation_unread_cb, g_object_ref(conv), "conversations.info", "channel", id, NULL);
++	slack_api_post(sa, get_conversation_unread_cb, g_object_ref(conv), "conversations.info", "channel", id, NULL);
+ }
+diff --git a/slack-rtm.c b/slack-rtm.c
+index 1a84e1f..d4ee8f2 100644
+--- a/slack-rtm.c
++++ b/slack-rtm.c
+@@ -232,5 +232,5 @@ void slack_rtm_send(SlackAccount *sa, SlackRTMCallback *callback, gpointer user_
+ }
+ 
+ void slack_rtm_connect(SlackAccount *sa) {
+-	slack_api_get(sa, rtm_connect_cb, NULL, "rtm.connect", "batch_presence_aware", "1", "presence_sub", "true", NULL);
++	slack_api_post(sa, rtm_connect_cb, NULL, "rtm.connect", "batch_presence_aware", "1", "presence_sub", "true", NULL);
+ }
+diff --git a/slack-thread.c b/slack-thread.c
+index 75e2b9d..bf5ae00 100644
+--- a/slack-thread.c
++++ b/slack-thread.c
+@@ -225,7 +225,7 @@ static void slack_thread_lookup_ts(SlackAccount *sa, slack_thread_lookup_ts_cb *
+ 	lookup->rest = g_strdup(rest);
+ 
+ 	const char *id = slack_conversation_id(conv);
+-	slack_api_get(sa, slack_thread_lookup_ts_history_cb, lookup, "conversations.history", "channel", id, "oldest", start, "latest", end, "inclusive", "1", NULL);
++	slack_api_post(sa, slack_thread_lookup_ts_history_cb, lookup, "conversations.history", "channel", id, "oldest", start, "latest", end, "inclusive", "1", NULL);
+ }
+ 
+ static void slack_thread_post_lookup_cb(SlackAccount *sa, SlackObject *conv, gpointer data, const char *thread_ts, const char *msg) {
+diff --git a/slack-user.c b/slack-user.c
+index 88292b4..3b3d151 100644
+--- a/slack-user.c
++++ b/slack-user.c
+@@ -120,7 +120,7 @@ static gboolean users_list_cb(SlackAccount *sa, gpointer data, json_value *json,
+ 
+ 	char *cursor = json_get_prop_strptr1(json_get_prop(json, "response_metadata"), "next_cursor");
+ 	if (cursor)
+-		slack_api_get(sa, users_list_cb, NULL, "users.list", "presence", "false", SLACK_PAGINATE_LIMIT_ARG, "cursor", cursor, NULL);
++		slack_api_post(sa, users_list_cb, NULL, "users.list", "presence", "false", SLACK_PAGINATE_LIMIT_ARG, "cursor", cursor, NULL);
+ 	else
+ 		slack_login_step(sa);
+ 	return FALSE;
+@@ -128,7 +128,7 @@ static gboolean users_list_cb(SlackAccount *sa, gpointer data, json_value *json,
+ 
+ void slack_users_load(SlackAccount *sa) {
+ 	// g_hash_table_remove_all(sa->users); /* this isn't really necessary, and we'd prefer to preserve self */
+-	slack_api_get(sa, users_list_cb, NULL, "users.list", "presence", "false", SLACK_PAGINATE_LIMIT_ARG, NULL);
++	slack_api_post(sa, users_list_cb, NULL, "users.list", "presence", "false", SLACK_PAGINATE_LIMIT_ARG, NULL);
+ }
+ 
+ struct user_retrieve {
+@@ -156,7 +156,7 @@ void slack_user_retrieve(SlackAccount *sa, const char *uid, SlackUserCallback *c
+ 	struct user_retrieve *lookup = g_new(struct user_retrieve, 1);
+ 	lookup->cb = cb;
+ 	lookup->data = data;
+-	slack_api_get(sa, user_retrieve_cb, lookup, "users.info", "user", uid, NULL);
++	slack_api_post(sa, user_retrieve_cb, lookup, "users.info", "user", uid, NULL);
+ }
+ 
+ static void presence_set(SlackAccount *sa, json_value *json, const char *presence) {
+@@ -272,7 +272,7 @@ void slack_get_info(PurpleConnection *gc, const char *who) {
+ 	if (!user)
+ 		users_info_cb(sa, g_strdup(who), NULL, NULL);
+ 	else
+-		slack_api_get(sa, users_info_cb, g_strdup(who), "users.info", "user", user->object.id, NULL);
++		slack_api_post(sa, users_info_cb, g_strdup(who), "users.info", "user", user->object.id, NULL);
+ }
+ 
+ static void avatar_load_next(SlackAccount *sa);
+diff --git a/slack.c b/slack.c
+index 709baf6..5b8259a 100644
+--- a/slack.c
++++ b/slack.c
+@@ -282,14 +282,35 @@ static void slack_login(PurpleAccount *account) {
+ 	/* check if a token has been stored in the password field. */
+ 	const char *password = purple_account_get_password(sa->account);
+ 	if(g_regex_match_simple("^xox.-.+", password, 0, 0)) {
+-		/* the password is a token, so copy it to the token field */
+-		sa->token = g_strdup(password);
++		/* The password is a token. There might be one or two tokens
++		   depending on whether we are using the cookie token or not. */
++		gchar **tokens = g_regex_split_simple(" +", password, 0, 0);
++		gboolean normal_token = FALSE;
++		gboolean cookie_token = FALSE;
++		for (int c = 0; tokens[c] != NULL; c++) {
++			/* copy to the respective token field */
++			if (!cookie_token && strncmp("xoxd-", tokens[c], 5) == 0) {
++				sa->d_cookie = g_strdup(tokens[c]);
++				cookie_token = TRUE;
++			} else if (!normal_token) {
++				sa->token = g_strdup(tokens[c]);
++				normal_token = TRUE;
++			} else {
++				purple_connection_error_reason(
++					purple_account_get_connection(sa->account),
++					PURPLE_CONNECTION_ERROR_AUTHENTICATION_FAILED,
++					"Wrong number of auth tokens.");
++				return;
++			}
++		}
++		g_strfreev(tokens);
+ 
+ 		/* set the api url to the property host */
+ 		sa->api_url = g_strdup_printf("https://%s/api", sa->host);
+ 
+ 		/* finally skip the mobile login as we already have a token */
+ 		sa->login_step = 3;
++
+ 	} else {
+ 		if(!password || !*password) {
+ 			purple_connection_error_reason(
+@@ -409,6 +430,7 @@ static void slack_close(PurpleConnection *gc) {
+ 	g_object_unref(sa->self);
+ 
+ 	g_free(sa->api_url);
++	g_free(sa->d_cookie);
+ 	g_free(sa->token);
+ 	g_free(sa->email);
+ 	g_free(sa->host);
+diff --git a/slack.h b/slack.h
+index 2f6454e..490722a 100644
+--- a/slack.h
++++ b/slack.h
+@@ -20,6 +20,7 @@ typedef struct _SlackAccount {
+ 	char *host;
+ 	char *api_url; /* e.g., "https://slack.com/api" */
+ 	char *token; /* url encoded */
++	char *d_cookie;
+ 
+ 	short login_step;
+ 	GQueue api_calls; /* SlackAPICall */

@@ -88,11 +88,6 @@
   };
 
   desktopEntries = {
-    slack-sac = {
-      name = "Slack SAC";
-      type = "Application";
-      exec = "${pkgs.chromium}/bin/chromium --class=\"chat\" --new-window --app=https://app.slack.com/client/T3FANTPL5/unreads";
-    };
     microsoft-teams = {
       name = "Microsoft Teams";
       type = "Application";
