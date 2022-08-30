@@ -88,16 +88,6 @@
   };
 
   desktopEntries = {
-    slack-typo3 = {
-      name = "Slack TYPO3";
-      type = "Application";
-      exec = "${pkgs.chromium}/bin/chromium --class=\"chat\" --new-window --app=https://app.slack.com/client/T024TUMLZ/unreads";
-    };
-    slack-codappix = {
-      name = "Slack Codappix";
-      type = "Application";
-      exec = "${pkgs.chromium}/bin/chromium --class=\"chat\" --new-window --app=https://app.slack.com/client/T2DPNS55W/unreads";
-    };
     slack-sac = {
       name = "Slack SAC";
       type = "Application";
@@ -107,11 +97,6 @@
       name = "Microsoft Teams";
       type = "Application";
       exec = "${pkgs.chromium}/bin/chromium --class=\"chat\" --new-window --user-agent=\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36\" --new-window --app=https://teams.microsoft.com/";
-    };
-    mattermost = {
-      name = "Mattermost werkraum-media";
-      type = "Application";
-      exec = "${pkgs.chromium}/bin/chromium --class=\"chat\" --new-window --app=https://mattermost.werkraum-media.de/";
     };
     werkraum-jitsi = {
       name = "Jitsi werkraum-media";
