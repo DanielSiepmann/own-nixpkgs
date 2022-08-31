@@ -1,0 +1,51 @@
+diff --git a/README.md b/README.md
+index fe44a64..00ec35f 100644
+--- a/README.md
++++ b/README.md
+@@ -64,6 +64,7 @@ Here's how slack concepts are mapped to purple:
+ - `/delete`: remove your last message
+ - `/thread|th [thread-timestamp] [message]`: post `message` in a thread, where `thread-timestamp` matches the configured display format (either `thread_timestamp` or `thread_datestamp`)
+ - `/getthread|gth [thread-timestamp]`: fetch messages in a thread, where `thread-timestamp` matches the configured display format (either `thread_timestamp` or `thread_datestamp`)
++- `/call`: start a new call
+ 
+ ## Known issues
+ - Handling of messages while not connected or not open is not great.
+diff --git a/slack-cmd.c b/slack-cmd.c
+index 49188fb..6adbae8 100644
+--- a/slack-cmd.c
++++ b/slack-cmd.c
+@@ -128,6 +128,23 @@ static PurpleCmdRet cmd_delete(PurpleConversation *conv, const gchar *cmd, gchar
+ 	return PURPLE_CMD_RET_OK;
+ }
+ 
++static PurpleCmdRet cmd_startcall(PurpleConversation *conv, const gchar *cmd, gchar **args, gchar **error, void *data) {
++	SlackAccount *sa = get_slack_account(conv->account);
++	if (!sa)
++		return PURPLE_CMD_RET_FAILED;
++
++	SlackObject *obj = slack_conversation_get_conversation(sa, conv);
++	if (!obj) {
++		return PURPLE_CMD_RET_FAILED;
++	}
++
++	gchar *url = g_strconcat("https://app.slack.com/free-willy/", sa->team.id, "/", slack_conversation_id(obj), NULL);
++	slack_write_message(sa, obj, url, PURPLE_MESSAGE_SEND);
++	g_free(url);
++
++	return PURPLE_CMD_RET_OK;
++}
++
+ static PurpleCmdRet cmd_thread(PurpleConversation *conv, const gchar *cmd, gchar **args, gchar **error, void *data) {
+ 	SlackAccount *sa = get_slack_account(conv->account);
+ 	if (!sa)
+@@ -192,6 +209,10 @@ void slack_cmd_register() {
+ 			SLACK_PLUGIN_ID, cmd_delete, "delete: remove your last message", NULL);
+ 	commands = g_slist_prepend(commands, GUINT_TO_POINTER(id));
+ 
++	id = purple_cmd_register("call", "", PURPLE_CMD_P_PRPL, PURPLE_CMD_FLAG_IM | PURPLE_CMD_FLAG_CHAT | PURPLE_CMD_FLAG_PRPL_ONLY,
++			SLACK_PLUGIN_ID, cmd_startcall, "call", NULL);
++	commands = g_slist_prepend(commands, GUINT_TO_POINTER(id));
++
+ 	static const char *thread_cmds[] = {"thread", "th", NULL};
+ 	for (cmdp = thread_cmds; *cmdp; cmdp++) {
+ 		id = purple_cmd_register(*cmdp, "s", PURPLE_CMD_P_PRPL, PURPLE_CMD_FLAG_IM | PURPLE_CMD_FLAG_CHAT | PURPLE_CMD_FLAG_PRPL_ONLY,
