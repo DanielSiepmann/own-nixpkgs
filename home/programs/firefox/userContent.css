@@ -70,3 +70,11 @@
         display: none !important;
     }
 }
+
+@-moz-document domain(saccas.atlassian.net) {
+    code {
+        background-color: #80808085;
+        border: solid 1px black;
+        padding: 5px 10px;
+    }
+}
