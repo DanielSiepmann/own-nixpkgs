@@ -1,21 +1,22 @@
 diff --git a/slack-message.c b/slack-message.c
-index de49fa6..f870a04 100644
+index de49fa6..038261d 100644
 --- a/slack-message.c
 +++ b/slack-message.c
-@@ -164,6 +164,17 @@ void slack_message_to_html(GString *html, SlackAccount *sa, gchar *s, PurpleMess
+@@ -164,6 +164,18 @@ void slack_message_to_html(GString *html, SlackAccount *sa, gchar *s, PurpleMess
  		}
  		s = r+1;
  	}
 +
 +	if (strstr(html->str, "slack.com/call") != NULL) {
-+		char find[200] = "";
-+		strcat(find, sa->host);
-+		strcat(find, "/call");
++		gchar *find = g_strconcat(sa->host, "/call", NULL);
++		gchar *replace = g_strconcat( "app.slack.com/free-willy/", sa->team.id, NULL);
++		gchar *newHtml = purple_strreplace(html->str, find, replace);
 +
-+		char replace[60] = "app.slack.com/free-willy/";
-+		strcat(replace, sa->team.id);
++		g_string_assign(html, newHtml);
 +
-+		g_string_replace(html, find, replace, 0);
++		g_free(find);
++		g_free(replace);
++		g_free(newHtml);
 +	}
  }
  
