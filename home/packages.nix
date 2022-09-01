@@ -27,6 +27,7 @@ with pkgs; [
 
   borgbackup
   git-crypt
+  git-remote-hg
   keepassxc
 
   libreoffice
