@@ -13,6 +13,7 @@ self: super: {
       ./browser-based-auth.patch
       ./call-transformation.patch
       ./call-command.patch
+      ./open-command.patch
     ];
   });
 }

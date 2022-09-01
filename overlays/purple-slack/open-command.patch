@@ -1,0 +1,48 @@
+diff --git a/slack-cmd.c b/slack-cmd.c
+index 49188fb..e9fb391 100644
+--- a/slack-cmd.c
++++ b/slack-cmd.c
+@@ -78,6 +78,7 @@ static PurpleCmdRet send_cmd(PurpleConversation *conv, const gchar *cmd, gchar *
+ 
+ 	/* https://github.com/ErikKalkoken/slackApiDoc/blob/master/chat.command.md */
+ 	slack_api_post(sa, send_cmd_cb, conv, "chat.command", "channel", slack_conversation_id(obj), "command", msg->str, "text", args && args[0] ? args[0] : "", NULL);
++
+ 	g_string_free(msg, TRUE);
+ 
+ 	return PURPLE_CMD_RET_OK;
+@@ -158,6 +159,24 @@ static PurpleCmdRet cmd_getthread(PurpleConversation *conv, const gchar *cmd, gc
+ 	return PURPLE_CMD_RET_OK;
+ }
+ 
++static PurpleCmdRet cmd_open(PurpleConversation *conv, const gchar *cmd, gchar **args, gchar **error, void *data) {
++	SlackAccount *sa = get_slack_account(conv->account);
++	if (!sa)
++		return PURPLE_CMD_RET_FAILED;
++
++	SlackObject *obj = slack_conversation_get_conversation(sa, conv);
++	if (!obj) {
++		return PURPLE_CMD_RET_FAILED;
++	}
++
++	gchar *message = g_strconcat("This conversation is available at: https://app.slack.com/client/", sa->team.id, "/", slack_conversation_id(obj), NULL);
++	slack_write_message(sa, obj, message, PURPLE_MESSAGE_SEND);
++	g_free(message);
++
++
++	return PURPLE_CMD_RET_OK;
++}
++
+ static GSList *commands = NULL;
+ 
+ void slack_cmd_register() {
+@@ -184,6 +203,10 @@ void slack_cmd_register() {
+ 			SLACK_PLUGIN_ID, cmd_history, "history: fetch unread previous messages", NULL);
+ 	commands = g_slist_prepend(commands, GUINT_TO_POINTER(id));
+ 
++	id = purple_cmd_register("open", "", PURPLE_CMD_P_PRPL, PURPLE_CMD_FLAG_IM | PURPLE_CMD_FLAG_CHAT | PURPLE_CMD_FLAG_PRPL_ONLY,
++			SLACK_PLUGIN_ID, cmd_open, "Provides URL of current conversation", NULL);
++	commands = g_slist_prepend(commands, GUINT_TO_POINTER(id));
++
+ 	id = purple_cmd_register("edit", "s", PURPLE_CMD_P_PRPL, PURPLE_CMD_FLAG_IM | PURPLE_CMD_FLAG_CHAT | PURPLE_CMD_FLAG_PRPL_ONLY,
+ 			SLACK_PLUGIN_ID, cmd_edit, "edit [new message]: edit your last message to be new message", NULL);
+ 	commands = g_slist_prepend(commands, GUINT_TO_POINTER(id));
