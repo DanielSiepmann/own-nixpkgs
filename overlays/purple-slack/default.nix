@@ -9,6 +9,12 @@ self: super: {
       sha256 = "sha256-WqAQIDN947Wzns8QIZn7MUNmy2s35g0axIC1fjg1YCU=";
     };
 
+    # Further ideas to add:
+    # Add command to react to messages
+    # Prevent duplicates of incoming messages (happens from time to time)
+    # Formatting (bold, italic, …) see: https://github.com/dylex/slack-libpurple/pull/122
+    # Transform emoticons
+    # Receive reactions
     patches = (old.patches or []) ++ [
       ./browser-based-auth.patch
       ./call-transformation.patch
