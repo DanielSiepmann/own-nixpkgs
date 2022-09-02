@@ -5,21 +5,27 @@ self: super: {
     src = super.fetchFromGitHub {
       owner = "dylex";
       repo = "slack-libpurple";
-      rev = "90da1de76425b5d4485c578597be14dbd5b539c8";
-      sha256 = "sha256-WqAQIDN947Wzns8QIZn7MUNmy2s35g0axIC1fjg1YCU=";
+      rev = "f91a5db6f148668afac8384eb349c545308b14fd";
+      sha256 = "sha256-VrkjeE8MYyrjdhmFS4f1OZDN6v69lDKITQQUCj3/1zY=";
     };
 
     # Further ideas to add:
+    # Transform emoticons
     # Add command to react to messages
+    # Support sending of files
     # Prevent duplicates of incoming messages (happens from time to time)
     # Formatting (bold, italic, …) see: https://github.com/dylex/slack-libpurple/pull/122
-    # Transform emoticons
     # Receive reactions
     patches = (old.patches or []) ++ [
+      # 3rd Party
       ./browser-based-auth.patch
-      ./call-transformation.patch
-      ./call-command.patch
+
+      # Own
+      # ./smiley-transformation.patch
       ./open-command.patch
+
+      # Send upstream
+      ./call-command.patch
     ];
   });
 }
