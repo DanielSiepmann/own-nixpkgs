@@ -1,29 +1,168 @@
+diff --git a/src/gtk-2.0/apps.rc b/src/gtk-2.0/apps.rc
+index cb3ee0d..a95ce47 100644
+--- a/src/gtk-2.0/apps.rc
++++ b/src/gtk-2.0/apps.rc
+@@ -8,10 +8,10 @@ style "dark-sidebar" {
+   GtkTreeView::even_row_color = @dark_sidebar_bg
+ 
+ 
+-  base[NORMAL] = @dark_sidebar_bg
++  base[NORMAL] = @bg_color
+   base[INSENSITIVE] = @dark_sidebar_bg
+ 
+-  text[NORMAL] = @fg_color
++  text[NORMAL] = @text_color
+   text[ACTIVE] = @selected_fg_color
+   text[SELECTED] = @selected_fg_color
+ }
+diff --git a/src/gtk-2.0/main.rc b/src/gtk-2.0/main.rc
+index 227ce64..4118c15 100644
+--- a/src/gtk-2.0/main.rc
++++ b/src/gtk-2.0/main.rc
+@@ -686,6 +686,7 @@ style "menu" {
+ 
+   bg[NORMAL] = @menu_bg
+   bg[INSENSITIVE] = @menu_bg
++  fg[INSENSITIVE] = @insensitive_fg_color
+   bg[PRELIGHT] = @menu_bg
+ 
+   engine "pixmap" { # For menus that use horizontal lines rather than gtkseparator
+diff --git a/src/gtk-2.0/menubar-toolbar-Dark.rc b/src/gtk-2.0/menubar-toolbar-Dark.rc
+index 4f40982..e0fa95d 100644
+--- a/src/gtk-2.0/menubar-toolbar-Dark.rc
++++ b/src/gtk-2.0/menubar-toolbar-Dark.rc
+@@ -2,10 +2,12 @@ style "menubar" {
+ 
+   bg[NORMAL] = @base_color
+   fg[NORMAL] = @text_color
+-  fg[PRELIGHT] = shade(1.15, @text_color)
++  bg[PRELIGHT] = @prelight_bg_color
++  fg[PRELIGHT] = @selected_fg_color
+   fg[ACTIVE] = shade(1.15, @text_color)
+   fg[SELECTED] = @selected_fg_color
+-  fg[INSENSITIVE] = shade(0.7, @text_color)
++  bg[INSENSITIVE] = @insensitive_bg_color
++  fg[INSENSITIVE] = @insensitive_fg_color
+ 
+   xthickness = 0
+   ythickness = 0
+@@ -26,7 +28,8 @@ style "menubar-borderless" {
+   bg[NORMAL] = @base_color
+   fg[NORMAL] = @text_color
+   fg[SELECTED] = @selected_fg_color
+-  fg[INSENSITIVE] = shade(0.7, @text_color)
++  bg[INSENSITIVE] = @insensitive_bg_color
++  fg[INSENSITIVE] = @insensitive_fg_color
+ 
+   xthickness = 0
+   ythickness = 0
+@@ -47,6 +50,7 @@ style "menubar_item" {
+   xthickness = 2
+   ythickness = 4
+ 
++  bg[PRELIGHT] = @prelight_bg_color
+   fg[PRELIGHT] = @selected_fg_color
+ 
+   engine "pixmap" {
+@@ -73,13 +77,14 @@ style "menubar-text" {
+ 
+ style "toolbar_text" {
+   fg[NORMAL] = @tooltip_fg_color
+-  fg[PRELIGHT] = shade(1.15, @tooltip_fg_color)
+-  fg[INSENSITIVE] = shade(0.7, @tooltip_fg_color)
++  bg[PRELIGHT] = @prelight_bg_color
++  fg[PRELIGHT] = @selected_fg_color
++  bg[INSENSITIVE] = @insensitive_bg_color
++  fg[INSENSITIVE] = @insensitive_fg_color
+   fg[ACTIVE] = shade(0.9, @tooltip_fg_color)
+ 
+   text[NORMAL] = @tooltip_fg_color
+-  text[PRELIGHT] = shade(1.15, @tooltip_fg_color)
+-  text[INSENSITIVE] = shade(0.7, @tooltip_fg_color)
++  text[INSENSITIVE] = @insensitive_fg_color
+   text[ACTIVE] = shade(0.9, @tooltip_fg_color)
+ 
+ }
+@@ -130,6 +135,7 @@ style "toolbar_entry" {
+   base[NORMAL] = @base_color
+   base[ACTIVE] = @base_color
+   base[INSENSITIVE] = @insensitive_bg_color
++  fg[INSENSITIVE] = @insensitive_fg_color
+ 
+   text[NORMAL] = @text_color
+ 
+@@ -153,15 +159,6 @@ style "toolbar_entry" {
+       stretch = TRUE
+     }
+ 
+-    image {
+-      function = SHADOW
+-      state = INSENSITIVE
+-      detail = "entry"
+-      file = "assets/entry-disabled-toolbar.png"
+-      border = {6, 6, 6, 6}
+-      stretch = TRUE
+-    }
+-
+     image {
+       function = FLAT_BOX
+       state    = ACTIVE
+diff --git a/src/gtk-2.0/panel.rc b/src/gtk-2.0/panel.rc
+index 45162eb..ce5da7f 100644
+--- a/src/gtk-2.0/panel.rc
++++ b/src/gtk-2.0/panel.rc
+@@ -43,7 +43,6 @@ style "panelbar" {
+   fg[ACTIVE] = shade(1.0, @tooltip_fg_color)
+   fg[PRELIGHT] = shade(1.1, @tooltip_fg_color)
+   fg[SELECTED] = @selected_fg_color
+-
+   bg[SELECTED] = @selected_bg_color
+ 
+ }
+@@ -57,7 +56,7 @@ style "panelbuttons" {
+   fg[PRELIGHT] = @selected_fg_color
+   fg[ACTIVE] = @selected_fg_color
+   fg[SELECTED] = @selected_fg_color
+-  fg[INSENSITIVE] = mix(0.28, @tooltip_fg_color, @tooltip_bg_color)
++  fg[INSENSITIVE] = @insensitive_fg_color
+   bg[PRELIGHT] = shade(1.2, @tooltip_bg_color)
+   bg[ACTIVE] = shade(1.5, @tooltip_bg_color)
+ 
 diff --git a/src/gtk-2.0/theme/gtkrc-Dark b/src/gtk-2.0/theme/gtkrc-Dark
-index 56b7670..1dbe2c9 100644
+index 56b7670..88e0102 100644
 --- a/src/gtk-2.0/theme/gtkrc-Dark
 +++ b/src/gtk-2.0/theme/gtkrc-Dark
-@@ -1,17 +1,17 @@
- gtk-color-scheme = "base_color: #282A33"
+@@ -1,18 +1,19 @@
+-gtk-color-scheme = "base_color: #282A33"
 -gtk-color-scheme = "text_color: #d3dae3"
 -gtk-color-scheme = "bg_color: #32343D"
 -gtk-color-scheme = "fg_color: #d3dae3"
+-gtk-color-scheme = "tooltip_bg_color: #21232b"
+-gtk-color-scheme = "tooltip_fg_color: #D3DAE3"
+-gtk-color-scheme = "selected_bg_color: #5294e2"
+-gtk-color-scheme = "selected_fg_color: #ffffff"
+-gtk-color-scheme = "insensitive_bg_color: #333641"
+-gtk-color-scheme = "insensitive_fg_color: #7c818c"
+-gtk-color-scheme = "notebook_bg: #282A33"
+-gtk-color-scheme = "dark_sidebar_bg: #272931"
++gtk-color-scheme = "base_color: #2E3436"
 +gtk-color-scheme = "text_color: #D3DAE3"
 +gtk-color-scheme = "bg_color: #2E3436"
 +gtk-color-scheme = "fg_color: #D3DAE3"
- gtk-color-scheme = "tooltip_bg_color: #21232b"
- gtk-color-scheme = "tooltip_fg_color: #D3DAE3"
--gtk-color-scheme = "selected_bg_color: #5294e2"
-+gtk-color-scheme = "selected_bg_color: #9CD9F0"
- gtk-color-scheme = "selected_fg_color: #ffffff"
- gtk-color-scheme = "insensitive_bg_color: #333641"
- gtk-color-scheme = "insensitive_fg_color: #7c818c"
--gtk-color-scheme = "notebook_bg: #282A33"
--gtk-color-scheme = "dark_sidebar_bg: #272931"
++gtk-color-scheme = "tooltip_bg_color: #77DFD8"
++gtk-color-scheme = "tooltip_fg_color: #F7F7F7"
++gtk-color-scheme = "prelight_bg_color: #77DFD8"
++gtk-color-scheme = "selected_bg_color: #72B3CC"
++gtk-color-scheme = "selected_fg_color: #F7F7F7"
++gtk-color-scheme = "insensitive_bg_color: #72B3CC"
++gtk-color-scheme = "insensitive_fg_color: #FFFFFF"
 +gtk-color-scheme = "notebook_bg: #2E3436"
 +gtk-color-scheme = "dark_sidebar_bg: #2E3436"
  gtk-color-scheme = "link_color: #5294e2"
 -gtk-color-scheme = "menu_bg: #383c4a"
+-gtk-color-scheme = "menu_fg: #e3e4e7"
 +gtk-color-scheme = "menu_bg: #2E3436"
- gtk-color-scheme = "menu_fg: #e3e4e7"
++gtk-color-scheme = "menu_fg: #D3DAE3"
  
  gtk-icon-sizes = "gtk-button=16,16" # This makes button icons smaller.
+ gtk-auto-mnemonics = 1
