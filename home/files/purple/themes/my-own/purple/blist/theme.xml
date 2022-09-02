@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<theme type="pidgin buddy list" name="My Own" author="Daniel Siepmann">
+	<description>My own custom theme</description>
+	<icon_theme name="(Default)"/>
+
+	<blist color="#2E3436"/>
+
+	<groups>
+		<expanded background="#2E3436" color="#D3D7CF" font="Roboto Mono"/>
+		<collapsed background="#2E3436" color="#D3D7CF" font="Roboto Mono"/>
+	</groups>
+
+	<buddys>
+		<placement
+			status_icon="0"
+			name="1"
+			emblem="2"
+			buddy_icon="3"
+			protocol_icon="4"
+
+			show_status="1"
+		/>
+
+		<background color="#2E3436" font="Roboto Mono"/>
+		<contact_text color="#D3D7CF" font="Roboto Mono"/>
+		<online_text color="#D3D7CF" font="Roboto Mono"/>
+		<away_text color="#5D5D5D" font="Roboto Mono"/>
+		<offline_text color="#000000" font="Roboto Mono"/>
+		<idle_text color="#5D5D5D" font="Roboto Mono"/>
+		<message_text color="#CDEE69" font="Roboto Mono"/>
+		<message_nick_said_text color="#FFE377" font="Roboto Mono"/>
+		<status_text color="D3D7CF" font="Roboto Mono"/>
+	</buddys>
+</theme>

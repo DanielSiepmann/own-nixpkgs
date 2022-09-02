@@ -5,6 +5,10 @@ Author=Daniel Siepmann, Steffen Vogel, .H.
 
 # See: https://developer.pidgin.im/wiki/SmileyThemes#Creating
 # See: https://unicode.org/emoji/charts/full-emoji-list.html
+# See: https://github.com/PowaBanga/pidgin-EAP
+
+# I should check these as well:
+# https://github.com/stv0g/unicode-emoji
 
 [default]
 1f642.png	🙂	:slightly_smiling_face: :)

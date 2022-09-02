@@ -36,6 +36,10 @@
         target = ".purple/smileys/my-own";
         source = ./../../files/purple/smileys;
       };
+      pidginTheme = {
+        target = ".purple/themes/my-own";
+        source = ./../../files/purple/themes/my-own;
+      };
     };
   };
 }
