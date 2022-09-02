@@ -2,7 +2,6 @@
 
 {
   config = {
-
     programs.pidgin = {
       enable = true;
 

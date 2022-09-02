@@ -10,7 +10,6 @@ self: super: {
     };
 
     # Further ideas to add:
-    # Transform emoticons
     # Add command to react to messages
     # Support sending of files
     # Prevent duplicates of incoming messages (happens from time to time)
@@ -21,7 +20,6 @@ self: super: {
       ./browser-based-auth.patch
 
       # Own
-      # ./smiley-transformation.patch
       ./open-command.patch
 
       # Send upstream
