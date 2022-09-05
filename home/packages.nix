@@ -61,6 +61,7 @@ with pkgs; [
 
   # Communication
   thunderbird
+  evolution
 
   # Media
   vlc
