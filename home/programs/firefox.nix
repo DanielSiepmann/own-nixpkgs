@@ -150,6 +150,7 @@ _:
         "pref.privacy.disable_button.view_passwords" = false;
         "app.shield.optoutstudies.enabled" = false;
         "privacy.donottrackheader.enabled" = true;
+        "privacy.resistFingerprinting" = false;
         "privacy.firstparty.isolate" = true;
         "privacy.trackingprotection.enabled" = true;
         "privacy.trackingprotection.socialtracking.enabled" = true;
