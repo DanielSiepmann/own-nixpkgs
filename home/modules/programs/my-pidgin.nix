@@ -10,12 +10,11 @@
         pkgs.pidgin-window-merge
 
         # Protocols
-        # Waiting for https://github.com/NixOS/nixpkgs/issues/188384 to switch back to official package
-        # pkgs.purple-signald
+        pkgs.purple-signald
         pkgs.purple-slack
-        (pkgs.callPackage ./../../packages/purple-signald { })
         (pkgs.callPackage ./../../packages/purple-mattermost { })
-        (pkgs.callPackage ./../../packages/purple-microsoft-teams { })
+        # Login does not work yet, also don't know the tenant domain
+        # (pkgs.callPackage ./../../packages/purple-microsoft-teams { })
 
         # System integration
         (pkgs.callPackage ./../../packages/purple-libnotify { })
