@@ -133,6 +133,14 @@ in {
           command = "border none";
           criteria = { class = "^vlc$"; };
         }
+        {
+          command = "sticky enable; resize set 70 140";
+          criteria = { class = "^evolution-alarm-notify$"; };
+        }
+        {
+          command = "sticky disable";
+          criteria = { class = "^Pidgin$"; };
+        }
       ];
     };
 
@@ -142,6 +150,7 @@ in {
 
       criteria = [
         { "class" = "KeePassXC"; }
+        { "class" = "^evolution-alarm-notify$"; }
       ];
     };
 
