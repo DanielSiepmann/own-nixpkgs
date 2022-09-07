@@ -10,6 +10,7 @@ self: super: {
     };
 
     # Further ideas to add:
+    # Adjust color of text rendered to start call or open chat
     # Add command to react to messages
     # Support sending of files
     # Prevent duplicates of incoming messages (happens from time to time)
