@@ -91,7 +91,7 @@
     microsoft-teams = {
       name = "Microsoft Teams";
       type = "Application";
-      exec = "${pkgs.chromium}/bin/chromium --class=\"chat\" --new-window --user-agent=\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36\" --new-window --app=https://teams.microsoft.com/";
+      exec = "${pkgs.chromium}/bin/chromium --class=\"chat\" --new-window --user-agent=\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36\" --new-window --app=https://teams.microsoft.com/";
     };
     phone = {
       name = "Phone (Sipgate)";
