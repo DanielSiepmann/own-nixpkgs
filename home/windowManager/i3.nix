@@ -138,7 +138,7 @@ in {
           criteria = { class = "^evolution-alarm-notify$"; };
         }
         {
-          command = "sticky disable";
+          command = "floating disable";
           criteria = { class = "^Pidgin$"; };
         }
       ];
