@@ -129,7 +129,7 @@ index 45162eb..ce5da7f 100644
    bg[ACTIVE] = shade(1.5, @tooltip_bg_color)
  
 diff --git a/src/gtk-2.0/theme/gtkrc-Dark b/src/gtk-2.0/theme/gtkrc-Dark
-index 56b7670..88e0102 100644
+index 56b7670..91a320c 100644
 --- a/src/gtk-2.0/theme/gtkrc-Dark
 +++ b/src/gtk-2.0/theme/gtkrc-Dark
 @@ -1,18 +1,19 @@
@@ -146,13 +146,13 @@ index 56b7670..88e0102 100644
 -gtk-color-scheme = "notebook_bg: #282A33"
 -gtk-color-scheme = "dark_sidebar_bg: #272931"
 +gtk-color-scheme = "base_color: #2E3436"
-+gtk-color-scheme = "text_color: #D3DAE3"
++gtk-color-scheme = "text_color: #D3D7CF"
 +gtk-color-scheme = "bg_color: #2E3436"
-+gtk-color-scheme = "fg_color: #D3DAE3"
-+gtk-color-scheme = "tooltip_bg_color: #77DFD8"
-+gtk-color-scheme = "tooltip_fg_color: #F7F7F7"
++gtk-color-scheme = "fg_color: #D3D7CF"
++gtk-color-scheme = "tooltip_bg_color: #2E3436"
++gtk-color-scheme = "tooltip_fg_color: #D3D7CF"
 +gtk-color-scheme = "prelight_bg_color: #77DFD8"
-+gtk-color-scheme = "selected_bg_color: #72B3CC"
++gtk-color-scheme = "selected_bg_color: #5D5D5D"
 +gtk-color-scheme = "selected_fg_color: #F7F7F7"
 +gtk-color-scheme = "insensitive_bg_color: #72B3CC"
 +gtk-color-scheme = "insensitive_fg_color: #FFFFFF"
@@ -162,7 +162,7 @@ index 56b7670..88e0102 100644
 -gtk-color-scheme = "menu_bg: #383c4a"
 -gtk-color-scheme = "menu_fg: #e3e4e7"
 +gtk-color-scheme = "menu_bg: #2E3436"
-+gtk-color-scheme = "menu_fg: #D3DAE3"
++gtk-color-scheme = "menu_fg: #D3D7CF"
  
  gtk-icon-sizes = "gtk-button=16,16" # This makes button icons smaller.
  gtk-auto-mnemonics = 1
