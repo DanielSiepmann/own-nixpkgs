@@ -20,6 +20,7 @@ with pkgs; [
   ncdu
   tree
   (callPackage ./packages/rst2pdf { })
+  (callPackage ./packages/sitediff { })
   numlockx
 
   espeak
