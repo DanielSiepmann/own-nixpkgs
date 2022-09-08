@@ -10,6 +10,13 @@
     }
 }
 
+@-moz-document domain(www.gesetze-im-internet.de) {
+    #container {
+        background-color: #EEF1F6;
+        color: black;
+    }
+}
+
 @-moz-document url("www.reddit.com") {
     .promotedlink {
         display: none;
