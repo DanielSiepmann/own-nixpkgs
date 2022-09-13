@@ -70,9 +70,9 @@ in {
       tc = "tmux new-session -s ";
 
       # TYPO3 contribution specific commands
-      t3Push = "git push origin HEAD:refs/for/master";
-      t3Pull = "git pull --rebase origin master; git checkout master";
-      t3Rollback = "git checkout master; git reset --hard origin/master";
+      t3Push = "git push origin HEAD:refs/for/main";
+      t3Pull = "git pull --rebase origin main; git checkout main";
+      t3Rollback = "git checkout main; git reset --hard origin/main";
       t3Clean = "t3Rollback && t3Pull";
     };
 
