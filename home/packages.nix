@@ -9,6 +9,7 @@ with pkgs; [
   dmenu
 
   networkmanager_dmenu
+  # TODO: Create one `./packages/custom/default.nix which includes all other?
   (callPackage ./packages/custom/dmenu-scripts { })
   (callPackage ./packages/custom/update-system { })
   (callPackage ./packages/custom/update-ubuntu-system { })
@@ -18,6 +19,7 @@ with pkgs; [
   i3blocks
   st
   ncdu
+  baobab # GUI of ndeu
   tree
   (callPackage ./packages/rst2pdf { })
   (callPackage ./packages/sitediff { })
