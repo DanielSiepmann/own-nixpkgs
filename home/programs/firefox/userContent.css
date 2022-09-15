@@ -85,3 +85,11 @@
         padding: 5px 10px;
     }
 }
+
+@-moz-document domain(jira.reuter365.net) {
+    #viewissue-devstatus-panel_heading,
+    #greenhopper-agile-issue-web-panel_heading,
+    #ppm-wbs-issue-details-panel-bigpicture {
+        display: none;
+    }
+}
