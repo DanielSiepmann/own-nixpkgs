@@ -15,6 +15,7 @@ with pkgs; [
   (callPackage ./packages/custom/update-ubuntu-system { })
   (callPackage ./packages/custom/push-etckeeper { })
   (callPackage ./packages/custom/backup { })
+  (callPackage ./packages/custom/build-phpactor { })
   dunst
   i3blocks
   st
