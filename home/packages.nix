@@ -64,7 +64,6 @@ with pkgs; [
   (callPackage ./packages/custom/customer-project { })
 
   # Communication
-  thunderbird
   evolution
 
   # Media
