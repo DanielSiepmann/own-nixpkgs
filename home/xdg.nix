@@ -116,9 +116,11 @@
     # Use file --mime-type <filename> to detect mime type
     defaultApplications = {
 
-      "application/pdf" = [ "org.pwmt.zathura-pdf-mupdf.desktop" ];
-      "text/calendar" = [ "thunderbird.desktop" ];
+      "text/calendar" = [ "evolution.desktop" ];
 
+      "application/pdf" = [ "org.pwmt.zathura-pdf-mupdf.desktop" ];
+
+      # Images
       "image/bmp" = [ "feh.desktop" ];
       "image/gif" = [ "feh.desktop" ];
       "image/jpeg" = [ "feh.desktop" ];
@@ -136,6 +138,10 @@
       "image/x-portable-pixmap" = [ "feh.desktop" ];
       "image/x-tga" = [ "feh.desktop" ];
       "image/x-xbitmap" = [ "feh.desktop" ];
+
+      # Video
+      "video/mp4" = [ "vlc.desktop" ];
+      "video/m4v" = [ "vlc.desktop" ];
     };
   };
 
