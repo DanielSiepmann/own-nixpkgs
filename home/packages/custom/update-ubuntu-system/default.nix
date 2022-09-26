@@ -9,9 +9,6 @@ writeShellApplication {
     sudo apt upgrade -V -y
     sudo apt autoremove -y
 
-    sudo snap refresh --list
-    sudo snap refresh
-
     sudo fwupdmgr refresh
     sudo fwupdmgr get-updates
     fwupdmgr update -y
