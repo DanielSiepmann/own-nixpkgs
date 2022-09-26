@@ -22,9 +22,10 @@ writeShellApplication {
     git clone --depth 1 https://github.com/phpactor/phpactor.git .
     composer install -o --no-dev
     version=$(git show -s --format=%H)
+    rm -rf .git/
     cd /tmp
-    tar -czf "phpactor-$version.tar.gz" phpactor-build
+    tar -czf "phpactor-$version.tar.gz" /tmp/phpactor-build/*
     rsync -vaz "phpactor-$version.tar.gz" daniel-siepmann.de:webs/daniel-siepmann.de/htdocs/public/fileadmin/
-    rm -rf /tmp/phpactor-build
+    rm -rf /tmp/phpactor-build "phpactor-$version.tar.gz"
   '';
 }

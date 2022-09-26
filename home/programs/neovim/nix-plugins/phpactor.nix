@@ -1,6 +1,6 @@
 {
   vimUtils,
-  fetchzip,
+  fetchurl,
   makeWrapper,
   lib,
   php80,
@@ -10,10 +10,10 @@
 
 vimUtils.buildVimPluginFrom2Nix rec {
   pname = "phpactor";
-  version = "873fa51ae06eb3dd568ac02c111503b88b76e723";
-  src = fetchzip {
+  version = "3e7cb48b0ca429f92bcd57c236c39f170e9d23b1";
+  src = fetchurl {
     url = "https://daniel-siepmann.de/fileadmin/${pname}-${version}.tar.gz";
-    sha256 = "sha256-WTjxYD0iduV+oHyDCNnL8YOg9qTYGo9vZyDATx0O+no=";
+    sha256 = "sha256-JX6aLuzmJ4rrcG0FNgzt2zITmnRrpitUI591oPn+fhY=";
   };
 
   nativeBuildInputs = [
