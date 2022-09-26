@@ -60,6 +60,14 @@
     }
 }
 
+@-moz-document domain(forge.typo3.org) {
+    /* Hide elements */
+    #content .badge,
+    .next-prev-links {
+        display: none;
+    }
+}
+
 @-moz-document domain(redmine.werkraum-media.de) {
     /* Hide elements */
     #sidebar,
