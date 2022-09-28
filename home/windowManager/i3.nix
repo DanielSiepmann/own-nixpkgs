@@ -134,8 +134,8 @@ in {
           criteria = { class = "^vlc$"; };
         }
         {
-          command = "sticky enable; resize set 70 140";
-          criteria = { class = "^evolution-alarm-notify$"; };
+          command = "floating enable, sticky enable, resize set 1024 400, move position center";
+          criteria = { class = "^Evolution-alarm-notify$"; };
         }
         {
           command = "floating disable";
@@ -150,7 +150,6 @@ in {
 
       criteria = [
         { "class" = "KeePassXC"; }
-        { "class" = "^evolution-alarm-notify$"; }
       ];
     };
 
