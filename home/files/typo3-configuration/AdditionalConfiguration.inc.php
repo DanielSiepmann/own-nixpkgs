@@ -4,6 +4,7 @@ date_default_timezone_set('Europe/Berlin');
 ini_set('timezone', 'Europe/Berlin');
 
 require_once 'SystemSettings.php';
+require_once 'Assets.php';
 require_once 'Gfx.php';
 require_once 'MailSettings.php';
 require_once 'CachingConfigurations.php';
