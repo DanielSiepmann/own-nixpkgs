@@ -9,24 +9,27 @@ let
   # This structure is the same for plugins.
   # I therefore just load this folder as plugin.
   configuration = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    name = "configuration";
+    pname = "configuration";
+    version = "v1.0.0";
     src = ./neovim/configuration;
   };
 
-  colorscheme-smyckblue = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    name = "colorscheme-smyckblue";
+  colorscheme-smyckblue = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    pname = "colorscheme-smyckblue";
+    version = "v1.2.0";
     src = pkgs.fetchgit {
-      url = "https://gitea.daniel-siepmann.de/danielsiepmann/vim-colorscheme-smyckblue.git";
-      rev = "v1.2.0";
+      url = "https://gitea.daniel-siepmann.de/danielsiepmann/vim-${pname}.git";
+      rev = version;
       sha256 = "sha256-sPb+okBt060i3eYPIRwXK9O9aCE35z09vxexqv++BH0=";
     };
   };
 
-  neotags = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    name = "neotags";
+  neotags = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    pname = "neotags";
+    version = "v0.3.0";
     src = pkgs.fetchgit {
-      url = "https://gitea.daniel-siepmann.de/danielsiepmann/neotags.git";
-      rev = "v0.3.0";
+      url = "https://gitea.daniel-siepmann.de/danielsiepmann/${pname}.git";
+      rev = version;
       sha256 = "uJ7cl+1Ngff0FKzjmh1i7O/PkNjPvPT+ZEHgceeZcz0=";
     };
 
@@ -40,83 +43,91 @@ let
     '';
   };
 
-  syntax-typoscript = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    name = "syntax-typoscript";
+  syntax-typoscript = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    pname = "syntax-typoscript";
+    version = "v2.0.0";
     src = pkgs.fetchgit {
-      url = "https://gitea.daniel-siepmann.de/danielsiepmann/vim-syntax-typoscript.git";
-      rev = "v2.0.0";
+      url = "https://gitea.daniel-siepmann.de/danielsiepmann/vim-${pname}.git";
+      rev = version;
       sha256 = "sha256-fCB+ikDmkfEP/W0pFYGrsZiH30vT0g3z6GZpRGk0Rhc=";
     };
   };
 
-  syntax-nix = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    name = "syntax-nix";
+  syntax-nix = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    pname = "syntax-nix";
+    version = "63b47b39c8d481ebca3092822ca8972e08df769b";
     src = pkgs.fetchFromGitHub {
       owner = "LnL7";
       repo = "vim-nix";
-      rev = "63b47b39c8d481ebca3092822ca8972e08df769b";
+      rev = version;
       sha256 = "wQzNXfE7JFalgiCQ2ksPAUyFKacmJV7mNKmKDe9jySI=";
     };
   };
 
-  syntax-fluid = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    name = "syntax-fluid";
+  syntax-fluid = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    pname = "syntax-fluid";
+    version = "cedc4ad871941e8f7134d1d71f9434f1bc3d93d5";
     src = pkgs.fetchFromGitHub {
       owner = "mipmip";
       repo = "vim-fluid";
-      rev = "cedc4ad871941e8f7134d1d71f9434f1bc3d93d5";
+      rev = version;
       sha256 = "LiS2Dqw1K1Fu5VfHQnxIBDxDzEarmSAUUavQcwHRDsQ=";
     };
   };
 
-  syntax-mustache = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    name = "syntax-mustahce";
+  syntax-mustache = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    pname = "syntax-mustahce";
+    version = "0153fe03a919add2d6cf2d41b2d5b6e1188bc0e0";
     src = pkgs.fetchFromGitHub {
       owner = "mustache";
       repo = "vim-mustache-handlebars";
-      rev = "0153fe03a919add2d6cf2d41b2d5b6e1188bc0e0";
+      rev = version;
       sha256 = "lmYt+GKuXhbOhu3HufqIFE2DvzUYlk5vGqU6tpJ2yjY=";
     };
   };
 
-  ag = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    name = "ag";
+  ag = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    pname = "ag";
+    version = "c478f7973074f15bbf82c298a1678b4e23f1767a";
     src = pkgs.fetchFromGitHub {
       owner = "rking";
-      repo = "ag.vim";
-      rev = "c478f7973074f15bbf82c298a1678b4e23f1767a";
+      repo = "${pname}.vim";
+      rev = version;
       sha256 = "jlR8NFG7IRCYiQ7ocQQCI2npAPujgQFZ6RpFX8zwTAA=";
     };
   };
 
-  vdebug = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    name = "vdebug";
+  vdebug = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    pname = "vdebug";
+    version = "v2.0.0";
     src = pkgs.fetchFromGitHub {
       owner = "joonty";
-      repo = "vdebug";
-      rev = "v2.0.0";
+      repo = pname;
+      rev = version;
       sha256 = "kobMC6TRFZcEbgFdOaBgXUzoeWQUrVzUKylN1N9nEnc=";
     };
   };
 
-  diff-fold = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    name = "diff-fold";
+  diff-fold = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    pname = "diff-fold";
+    version = "48b4505c1b6f14ceb4e4be732aad337147ef36cd";
     src = pkgs.fetchFromGitHub {
       owner = "sgeb";
-      repo = "vim-diff-fold";
-      rev = "48b4505c1b6f14ceb4e4be732aad337147ef36cd";
+      repo = "vim-${pname}";
+      rev = version;
       sha256 = "M3CAUueEhLD0J6sLUpRkFv+vK4aGYO+Xnokxmn+VxqU=";
     };
   };
 
   phpactor = pkgs.callPackage ./neovim/nix-plugins/phpactor.nix { };
 
-  neoterm = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    name = "neoterm";
+  neoterm = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    pname = "neoterm";
+    version = "e78179a9ceb98de8d0c37bdda435a5deab4d5e71";
     src = pkgs.fetchFromGitHub {
       owner = "kassio";
-      repo = "neoterm";
-      rev = "e78179a9ceb98de8d0c37bdda435a5deab4d5e71";
+      repo = pname;
+      rev = version;
       sha256 = "0w962xfcgigdw41wblrv1l55xki0kl5vwkdbm6jlr44hzii0nhgz";
     };
     patches = [
@@ -124,22 +135,24 @@ let
     ];
   };
 
-  tagbar = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    name = "tagbar";
+  tagbar = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    pname = "tagbar";
+    version = "v2.7";
     src = pkgs.fetchFromGitHub {
       owner = "majutsushi";
-      repo = "tagbar";
-      rev = "v2.7";
+      repo = pname;
+      rev = version;
       sha256 = "Eg6xRwisopmBexqkWjRbSi9aQC4uCXbFO6SCK1LY+Ow=";
     };
   };
 
-  test = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    name = "test";
+  test = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    pname = "test";
+    version = "16a3b6da1bab42473d42d7e02d89d549d7a5e138";
     src = pkgs.fetchFromGitHub {
-      owner = "vim-test";
-      repo = "vim-test";
-      rev = "16a3b6da1bab42473d42d7e02d89d549d7a5e138";
+      owner = "vim-${pname}";
+      repo = "vim-${pname}";
+      rev = version;
       sha256 = "CVSTy/FeBgyzRK8NWDMiIynz7DRlFenruiCOjowYnMI=";
     };
     patches = [
@@ -149,12 +162,13 @@ let
     ];
   };
 
-  telescope-ctags-outline = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    name = "telescope-ctags-outline";
+  telescope-ctags-outline = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    pname = "telescope-ctags-outline";
+    version = "35b2df9545f72352502703ba06b7ab711fa25e51";
     src = pkgs.fetchFromGitHub {
       owner = "fcying";
-      repo = "telescope-ctags-outline.nvim";
-      rev = "35b2df9545f72352502703ba06b7ab711fa25e51";
+      repo = "${pname}.nvim";
+      rev = version;
       sha256 = "e8QcD7H2unmoaLaN1JUxtOGQYBJGAXtfSnj8sW66ff4=";
     };
   };
