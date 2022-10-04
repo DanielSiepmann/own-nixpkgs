@@ -65,6 +65,7 @@ with pkgs; [
 
   # Communication
   evolution
+  libsForQt5.korganizer
 
   # Media
   vlc
