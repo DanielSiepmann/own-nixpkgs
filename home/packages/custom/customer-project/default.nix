@@ -125,6 +125,19 @@ let
 
             let "windowId+=1"
         fi
+        # Start oracle proxy docker container
+        if [ -d "$projectRoot/oraproxy/" ]; then
+            oraproxyPath="$projectRoot/oraproxy/"
+
+            ${tmuxBin} new-window -n docker -t "$session"
+            ${tmuxBin} send-keys -t "$session:$windowId" "cd $oraproxyPath" C-m
+            ${tmuxBin} send-keys C-l
+            # Missing C-m at end, because we don't want to submit.
+            # We often don't need oraproxy running to do our job.
+            ${tmuxBin} send-keys -t "$session:$windowId" "docker-compose run --rm --service-ports oraproxy"
+
+            let "windowId+=1"
+        fi
         # Start elastic container
         if [ -d "$projectRoot/elastic/" ]; then
             elasticPath="$projectRoot/elastic/"
