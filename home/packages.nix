@@ -27,13 +27,11 @@ with pkgs; [
   (callPackage ./packages/sitediff { })
   numlockx
 
-  espeak
-  bc
-
   borgbackup
+  keepassxc
+  # Git itself is installed via git module
   git-crypt
   git-remote-hg
-  keepassxc
 
   libreoffice
 
@@ -43,8 +41,7 @@ with pkgs; [
   mycli
   sc-im
   # mytop
-  robo3t
-  mkcert
+  mkcert # TODO: Create own wrapper script to create new certs
   tig
   universal-ctags
   silver-searcher
