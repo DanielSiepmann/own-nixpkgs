@@ -4,6 +4,8 @@
 
   imports = [
     ./home/modules/programs/cmus.nix
+    ./home/modules/programs/vdirsyncer.nix
+    ./home/modules/programs/khal.nix
     ./home/modules/programs/languagetool.nix
     ./home/modules/programs/mailhog.nix
     ./home/modules/programs/signald.nix

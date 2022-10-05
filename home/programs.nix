@@ -49,6 +49,13 @@ in {
   firefox = import ./programs/firefox.nix {
   };
 
+  vdirsyncer = import ./programs/vdirsyncer.nix {
+    inherit config pkgs;
+  };
+  khal = import ./programs/khal.nix {
+    inherit config;
+  };
+
   # Media
   cmus.enable = true;
 }

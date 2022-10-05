@@ -17,6 +17,10 @@
         ConfigVersion = 2;
       };
 
+      FdoSecrets = {
+        Enabled = true;
+      };
+
       GUI = {
         ApplicationTheme = "dark";
         CompactMode = true;
