@@ -109,16 +109,11 @@ Todos
 
 Migration:
 
-* Thunderbird configuration to nix. Seems like no module exists, but is same as
-  for firefox.
-
 * Migrate home manager to use flake for better rollback support if update breaks something.
 
 * Maybe create upstream PRs for
 
   * `home/modules/programs/*.nix`
-
-* i3lock-color
 
 Additions:
 
