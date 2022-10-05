@@ -61,6 +61,8 @@
 
     # TYPO3 documentation specific
     "Documentation-GENERATED-temp*/"
+    # Customer specific
+    "config/env/development-dsiepmann/"
   ];
 
   # TODO: Check out these additions
