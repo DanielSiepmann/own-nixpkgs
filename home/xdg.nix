@@ -118,7 +118,7 @@
 
       "inode/directory" = [ "org.gnome.Nautilus.desktop" ];
 
-      "text/calendar" = [ "evolution.desktop" ];
+      "text/calendar" = [ "org.kde.korganizer.desktop" ];
 
       "application/pdf" = [ "org.pwmt.zathura-pdf-mupdf.desktop" ];
 
