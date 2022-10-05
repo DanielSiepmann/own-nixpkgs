@@ -109,6 +109,10 @@ Todos
 
 Migration:
 
+* Check vpnc which is currently installed via ubuntu.
+
+* Install i3lock (Right now installed via ubuntu)
+
 * Migrate home manager to use flake for better rollback support if update breaks something.
 
 * Maybe create upstream PRs for
