@@ -116,6 +116,8 @@
     # Use file --mime-type <filename> to detect mime type
     defaultApplications = {
 
+      "inode/directory" = [ "org.gnome.Nautilus.desktop" ];
+
       "text/calendar" = [ "evolution.desktop" ];
 
       "application/pdf" = [ "org.pwmt.zathura-pdf-mupdf.desktop" ];
