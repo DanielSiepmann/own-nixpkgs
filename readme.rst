@@ -88,7 +88,7 @@ Manual changes
 List of manual needed changes for various reasons.
 
 * Allow gdm3 to use xsessions as login.
-  Add the following content as `/usr/share/xsessions/xsession.desktop`:
+  Add the following content as `/usr/share/xsessions/xsession.desktop`::
 
       [Desktop Entry]
       Name=XSession
