@@ -8,6 +8,7 @@ with pkgs; [
   # System tools
   dmenu
   gnome.nautilus # File Manager
+  gnome.gnome-screenshot
 
   networkmanager_dmenu
   # TODO: Create one `./packages/custom/default.nix which includes all other?
