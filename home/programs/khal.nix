@@ -3,6 +3,9 @@
 {
   enable = true;
 
+  frequency = "*-*-* *:14,29,44,59:00";
+  time_delta = "16m";
+
   configuration = ''
     [calendars]
 
