@@ -58,4 +58,13 @@ in {
 
   # Media
   cmus.enable = true;
+
+  offlineimap.enable = true;
+  neomutt = {
+    enable = true;
+    vimKeys = true;
+    sidebar = {
+      enable = true;
+    };
+  };
 }

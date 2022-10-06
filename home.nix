@@ -51,6 +51,10 @@
 
   fonts.fontconfig.enable = true;
 
+  accounts.email = import ./home/accounts/email.nix {
+    inherit config pkgs;
+  };
+
   xsession = import ./home/xsession.nix {
     inherit config pkgs;
   };
