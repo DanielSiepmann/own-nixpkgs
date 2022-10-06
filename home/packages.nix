@@ -62,7 +62,7 @@ with pkgs; [
   (callPackage ./packages/custom/customer-project { })
 
   # Communication
-  evolution
+  thunderbird
 
   # Media
   vlc
