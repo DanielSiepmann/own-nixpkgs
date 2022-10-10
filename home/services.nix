@@ -11,6 +11,5 @@
 
     languagetool.enable = true;
     mailhog.enable = true;
-    nextcloud-client.enable = true;
 
 }

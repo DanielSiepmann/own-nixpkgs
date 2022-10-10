@@ -34,6 +34,8 @@ with pkgs; [
   git-crypt
   git-remote-hg
 
+  rclone
+
   libreoffice
 
   # Dev tools
