@@ -10,8 +10,6 @@
 
   # Can be re sourced via: __HM_ZSH_SESS_VARS_SOURCED= source ~/.zshenv
   sessionVariables = {
-    MANPAGER="${pkgs.page}/bin/page -C -e 'au User PageDisconnect sleep 100m|%y p|enew! |bd! #|pu p|set ft=man'";
-
     # Reduce timeout after <ESC> (vi keybindings)
     KEYTIMEOUT = 1;
   };
