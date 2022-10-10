@@ -16,7 +16,13 @@ let
         exit 0;
       fi
 
-      notify-send -u critical "Upcoming Events" "$events"
+      notify-send \
+        --urgency=critical \
+        --expire-time=90000 \
+        --icon="${config.gtk.iconTheme.package}/share/icons/${config.gtk.iconTheme.name}/32/apps/office-calendar.svg" \
+        --category="x-custom.calendar.event" \
+        "Upcoming Events" \
+        "$events"
       exit 0
     '';
   };
