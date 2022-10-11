@@ -270,6 +270,23 @@ snippet testfile
 		}
 	}
 
+snippet codeceptiontestfile
+	<?php
+
+	declare(strict_types=1);
+
+	namespace Tests`expand('%:h:s?tests/??:s?.*_?\u&?:gs?_.?\U&?:gs?_??:gs?/?\\\?:s??\\\?')`;
+
+	use PhpbrowserTester;
+
+	class ${1:`expand('%:t:s?.php??')`}
+	{
+		public function firstTest(PhpbrowserTester $I): void
+		{
+			$I->amOnPage('');
+		}
+	}
+
 snippet Exception
 	throw new \Exception('${1}', `strftime('%s')`);
 
