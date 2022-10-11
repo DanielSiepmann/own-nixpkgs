@@ -78,4 +78,6 @@ with pkgs; [
   python39Packages.mutagen
   darktable
   feh
+
+  gtk-engine-murrine
 ]
