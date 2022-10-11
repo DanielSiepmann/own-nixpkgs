@@ -39,6 +39,14 @@ let g:tagbar_type_fluid = {
     \ 'sort' : 0,
 \ }
 
+let g:tagbar_type_snippets = {
+    \ 'ctagstype' : 'snippets',
+    \ 'kinds' : [
+        \ 's:snippets:1',
+    \ ],
+    \ 'sort' : 0,
+\ }
+
 " Provided by yats bundle
 let g:tagbar_type_typescript = {
     \ 'ctagstype' : 'typescript',

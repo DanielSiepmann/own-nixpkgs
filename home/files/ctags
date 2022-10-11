@@ -43,6 +43,10 @@
 --regex-xml=/<!--\s*(.*)\s*-->/\1/c,comment,comments/
 --regex-xml=/id="(.*)"/\1/i,id,ids/
 
+--langdef=snippets
+--langmap=snippets:.snippets
+--regex-snippets=/^snippet (.*)$/\1/s,snippet,snippets/
+
 --langdef=apache
 --langmap=apache:.conf
 --regex-apache=/Server(Name|Alias) ([0-9a-zA-Z\._-]+)/\2/s,server,servers/
@@ -67,6 +71,7 @@
 # --languages=+reStructuredText
 --languages=+Markdown
 --languages=+SQL
+--languages=+snippets
 # --languages=+Make
 --languages=+Vim
 --languages=+xml
