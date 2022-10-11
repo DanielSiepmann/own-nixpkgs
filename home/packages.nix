@@ -17,6 +17,8 @@ with pkgs; [
   (callPackage ./packages/custom/update-ubuntu-system { })
   (callPackage ./packages/custom/push-etckeeper { })
   (callPackage ./packages/custom/backup { })
+  (callPackage ./packages/custom/nextcloud-sync/from-local.nix { })
+  (callPackage ./packages/custom/nextcloud-sync/from-remote.nix { })
   (callPackage ./packages/custom/build-phpactor { })
   i3blocks
   st
