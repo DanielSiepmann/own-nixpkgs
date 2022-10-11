@@ -134,10 +134,6 @@ in {
           criteria = { class = "^vlc$"; };
         }
         {
-          command = "floating enable, sticky enable, resize set 1024 400, move position center";
-          criteria = { class = "^Evolution-alarm-notify$"; };
-        }
-        {
           command = "floating disable";
           criteria = { class = "^Pidgin$"; };
         }
