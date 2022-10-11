@@ -22,7 +22,7 @@ case "$chosen" in
 "logout")
     i3-msg exit
     ;;
-# Not supported, seems to complicated and not recommended with ssh
+# Not supported, seems to complicated and not recommended with
 # "hibernate")
 #     pkill -u "$USER" -USR1 dunst
 #     i3lock -c '#2E3436'

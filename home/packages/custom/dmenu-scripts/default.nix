@@ -2,20 +2,15 @@
   writeShellApplication,
   dmenu,
   dunst,
+  libnotify,
   bc,
-  firefox,
-  i3
+  i3,
+  xdg-utils
 }:
 
 let
 
-  # Still has many references to Ubuntu system tools.
-  # Will migrate step by step and update references.
-
-  # For now it is cool to have a first custom package which can be installed.
-
-  # It already uses nix dunst and dmenu.
-  # Also things like version switch should not be necessary once I managed nix shells.
+  # Things like version switch should not be necessary once I managed nix shells.
 
   dmenu-custom-scripts-calc = writeShellApplication {
     name = "dmenu-custom-scripts-calc";
@@ -73,12 +68,12 @@ let
 
     runtimeInputs = [
       dmenu
-      firefox
+      xdg-utils
     ];
 
     text = ''
       file=$(find ~/Projects/docs/php/ -maxdepth 1 -name '*.html' -printf "%f\n" | dmenu -i -l 20 -p "Search Term")
-      firefox --new-tab "http://php.docs.localhost/$file"
+      xdg-open "http://php.docs.localhost/$file"
     '';
   };
 
@@ -87,6 +82,7 @@ let
 
     runtimeInputs = [
       dmenu
+      libnotify
     ];
 
     text = ''
@@ -102,6 +98,7 @@ let
 
     runtimeInputs = [
       dmenu
+      libnotify
     ];
 
     text = builtins.readFile ./xdebug.sh;
@@ -109,7 +106,7 @@ let
 
 in
 writeShellApplication {
-  name = "dmenu_selection";
+  name = "custom-dmenu-selection";
 
   # TODO: Find way to remove the nix prefixes from "files"
   text = ''

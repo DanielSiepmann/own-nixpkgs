@@ -16,7 +16,7 @@ let
     name = "project-frontend-compile";
     text = ''
       yarn run build
-      notify-send "done compiling frontend"
+      ${pkgs.libnotify}/bin/notify-send "done compiling frontend"
     '';
   };
 

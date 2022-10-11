@@ -1,4 +1,4 @@
-{ config }:
+{ config, pkgs }:
 
 let
   modifier = config.xsession.windowManager.i3.config.modifier;
@@ -216,7 +216,7 @@ in {
       # For docs, see: https://developer.gnome.org/integration-guide/stable/desktop-files.html.en
       "${modifier}+a" = "exec --no-startup-id i3-dmenu-desktop";
 
-      "${modifier}+space" = "exec --no-startup-id dmenu_selection";
+      "${modifier}+space" = "exec --no-startup-id custom-dmenu-selection";
 
       # change focus
       "${modifier}+h" = "focus left";
@@ -317,10 +317,10 @@ in {
       # ~ > pacmd move-sink-input 3 8
 
       # Function Key Bindings (💡)
-      "XF86MonBrightnessUp" = "exec xbacklight -inc 10 && notify-send \"Changed Display Brightness\" \"Now: $(xbacklight)\"";
-      "XF86MonBrightnessDown" = "exec xbacklight -dec 10 && notify-send \"Changed Display Brightness\" \"Now: $(xbacklight)\"";
-      "Shift+XF86MonBrightnessUp" = "exec xbacklight -inc 1 && notify-send \"Changed Display Brightness\" \"Now: $(xbacklight)\"";
-      "Shift+XF86MonBrightnessDown" = "exec xbacklight -dec 1 && notify-send \"Changed Display Brightness\" \"Now: $(xbacklight)\"";
+      "XF86MonBrightnessUp" = "exec xbacklight -inc 10 && ${pkgs.libnotify}/bin/notify-send \"Changed Display Brightness\" \"Now: $(xbacklight)\"";
+      "XF86MonBrightnessDown" = "exec xbacklight -dec 10 && ${pkgs.libnotify}/bin/notify-send \"Changed Display Brightness\" \"Now: $(xbacklight)\"";
+      "Shift+XF86MonBrightnessUp" = "exec xbacklight -inc 1 && ${pkgs.libnotify}/bin/notify-send \"Changed Display Brightness\" \"Now: $(xbacklight)\"";
+      "Shift+XF86MonBrightnessDown" = "exec xbacklight -dec 1 && ${pkgs.libnotify}/bin/notify-send \"Changed Display Brightness\" \"Now: $(xbacklight)\"";
 
       # Dunst Key Bindings
       # See: man dunstctl.1

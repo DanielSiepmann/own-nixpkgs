@@ -5,8 +5,6 @@ with lib;
 let
   cfg = config.programs.khal;
 
-  # TODO: Make more compatible, e.g. provide notify from outside and add checks whether to use or not.
-  # Maybe create small php script instead which parses the khal output and checks for beginning
   notificationScript = pkgs.writeShellApplication {
     name = "khal-notification";
     text = ''
@@ -16,7 +14,7 @@ let
         exit 0;
       fi
 
-      notify-send \
+      ${pkgs.libnotify}/bin/notify-send \
         --urgency=critical \
         --expire-time=90000 \
         --icon="${config.gtk.iconTheme.package}/share/icons/${config.gtk.iconTheme.name}/32/apps/office-calendar.svg" \
