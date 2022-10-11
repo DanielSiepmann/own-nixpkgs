@@ -3,6 +3,8 @@
 {
   enable = true;
 
+  dotDir = ".config/zsh";
+
   autocd = true;
   enableSyntaxHighlighting = true;
 
@@ -21,6 +23,7 @@
     ignoreSpace = true;
     extended = true;
     share = false;
+    path = "${config.xdg.dataHome}/zsh/zsh_history";
   };
 
   initExtra = ''

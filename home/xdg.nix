@@ -81,6 +81,8 @@
 
     "nvim/syntax/php.vim".source = ./files/nvim/syntax/php.vim;
 
+    "docker/config.json".source = ./files/docker/config.json;
+
   };
 
   dataFile = {

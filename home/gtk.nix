@@ -1,4 +1,4 @@
-{ pkgs }:
+{ config, pkgs }:
 
 # Possible alternatives:
 # https://github.com/FedoraQt/adwaita-qt
@@ -23,6 +23,8 @@
     name = "Roboto Mono";
     size = 14;
   };
+
+  gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
 
   gtk3.extraConfig = {
     gtk-application-prefer-dark-theme = 1;

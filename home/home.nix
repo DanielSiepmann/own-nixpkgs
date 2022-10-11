@@ -1,4 +1,4 @@
-{ pkgs }:
+{ config, pkgs }:
 
 let
   enLocale = "en_US.utf8";
@@ -48,13 +48,33 @@ in {
       EDITOR = "nvim";
       SHELL = "zsh";
 
-      TYPO3_CONTEXT = "Development/dsiepmann";
-      TYPO3_ADDITIONAL_CONFIGURATION = "/home/daniels/.local/share/typo3-configuration/AdditionalConfiguration.inc.php";
+      # Configure look up paths to not clutter home folder but follow XDG
+
+      XAUTHORITY = "${config.xdg.stateHome}/Xauthority";
+      ERRFILE = "${config.xdg.cacheHome}/X11/xsession-errors";
+
+      MYSQL_HISTFILE = "${config.xdg.dataHome}/mysql_history";
+      LESSHISTFILE = "${config.xdg.cacheHome}/less/history";
+
+      BUNDLE_USER_CONFIG = "${config.xdg.configHome}/bundle";
+      BUNDLE_USER_CACHE = "${config.xdg.cacheHome}/bundle";
+      BUNDLE_USER_PLUGIN = "${config.xdg.dataHome}/bundle";
+
+      ICEAUTHORITY = "${config.xdg.cacheHome}/ICEauthority";
+      DVDCSS_CACHE = "${config.xdg.dataHome}/dvdcss";
+      DOCKER_CONFIG = "${config.xdg.configHome}/docker";
+
+      # Program specific vars
 
       LSCOLORS = "HxGxDxDxbxDxDxababcxcx";
       LS_COLORS = "di=1;37:ln=1;36:so=1;33:pi=1;33:ex=31:bd=1;33:cd=1;33:su=30;41:sg=30;41:tw=32:ow=32";
       GREP_COLOR = "0;30;44";
       PHAN_COLOR_SCHEME = "code";
+
+      # Custom vars
+
+      TYPO3_CONTEXT = "Development/dsiepmann";
+      TYPO3_ADDITIONAL_CONFIGURATION = "${config.xdg.dataHome}/typo3-configuration/AdditionalConfiguration.inc.php";
     };
 
     shellAliases = {

@@ -38,6 +38,7 @@ in {
   };
 
   gpg = import ./programs/gpg.nix {
+    inherit config;
   };
 
   ssh = import ./programs/ssh.nix {

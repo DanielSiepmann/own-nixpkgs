@@ -36,7 +36,7 @@
     file = import ./home/files.nix { };
 
   } // import ./home/home.nix {
-    inherit pkgs;
+    inherit config pkgs;
   };
 
   targets.genericLinux.enable = true;
@@ -71,7 +71,7 @@
     inherit pkgs;
   };
   gtk = import ./home/gtk.nix {
-    inherit pkgs;
+    inherit config pkgs;
   };
 
   services = import ./home/services.nix {
