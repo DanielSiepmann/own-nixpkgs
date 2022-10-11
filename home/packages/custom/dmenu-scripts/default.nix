@@ -107,26 +107,6 @@ let
     text = builtins.readFile ./xdebug.sh;
   };
 
-  dmenu-custom-scripts-start-videorecording = writeShellApplication {
-    name = "dmenu-custom-scripts-start-videorecording";
-
-    runtimeInputs = [
-      dmenu
-    ];
-
-    text = builtins.readFile ./start-videorecording.sh;
-  };
-
-  dmenu-custom-scripts-stop-videorecording = writeShellApplication {
-    name = "dmenu-custom-scripts-stop-videorecording";
-
-    text = ''
-      kill "$(cat /tmp/runningRecording.txt)"
-      rm /tmp/runningRecording.txt
-      notify-send "Stoped recording"
-    '';
-  };
-
 in
 writeShellApplication {
   name = "dmenu_selection";
@@ -140,8 +120,6 @@ writeShellApplication {
     scripts+=("${dmenu-custom-scripts-php-version.name}")
     scripts+=("${dmenu-custom-scripts-docs-php.name}")
     scripts+=("${dmenu-custom-scripts-xdebug.name}")
-    scripts+=("${dmenu-custom-scripts-start-videorecording.name}")
-    scripts+=("${dmenu-custom-scripts-stop-videorecording.name}")
 
     OIFS="$IFS" IFS=$'\n'
     scriptsString="''${scripts[*]}"
@@ -167,12 +145,6 @@ writeShellApplication {
       ;;
     "${dmenu-custom-scripts-xdebug.name}")
       bash "${dmenu-custom-scripts-xdebug}/bin/${dmenu-custom-scripts-xdebug.name}" || exit 0
-      ;;
-    "${dmenu-custom-scripts-start-videorecording.name}")
-      bash "${dmenu-custom-scripts-start-videorecording}/bin/${dmenu-custom-scripts-start-videorecording.name}" || exit 0
-      ;;
-    "${dmenu-custom-scripts-stop-videorecording.name}")
-      bash "${dmenu-custom-scripts-stop-videorecording}/bin/${dmenu-custom-scripts-stop-videorecording.name}" || exit 0
       ;;
     *)
       exit 0
