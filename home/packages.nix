@@ -70,6 +70,7 @@ with pkgs; [
   vlc
   handbrake
   yt-dlp
+  spotdl
   # Does not work for some reason, need installed via apt
   # sound-juicer
   # audacity
