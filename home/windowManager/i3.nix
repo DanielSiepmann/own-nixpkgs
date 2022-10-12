@@ -189,10 +189,6 @@ in {
         command = "nm-applet";
         notification = false;
       }
-      {
-        command = "blueman-applet";
-        notification = false;
-      }
     ];
 
     keybindings = {
