@@ -207,8 +207,9 @@ in {
     # More UI related
 
     {
-      plugin = nerdtree;
-      config = builtins.readFile(./neovim/plugins/nerdtree.vim);
+      plugin = nvim-tree-lua;
+      type = "lua";
+      config = builtins.readFile(./neovim/plugins/nvim-tree-lua.lua);
     }
 
     {
