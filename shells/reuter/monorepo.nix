@@ -1,8 +1,17 @@
 {
   pkgs ? import <nixpkgs> { }
+  ,phps ? import <phps>
 }:
 
 let
+
+  php = phps.packages.x86_64-linux.php73;
+
+  phpWithMoreMemory = php.buildEnv {
+    extraConfig = ''
+          memory_limit = 4G
+    '';
+  };
 
   projectFrontendReinstall = pkgs.writeShellApplication {
     name = "project-frontend-reinstall";
@@ -20,28 +29,70 @@ let
     '';
   };
 
+  projectPhpstan = pkgs.writeShellApplication {
+    name = "project-phpstan";
+
+    runtimeInputs = [
+      phpWithMoreMemory
+    ];
+
+    text = ''
+      ./vendor/bin/phpstan
+    '';
+  };
+
+  projectCgl = pkgs.writeShellApplication {
+    name = "project-cgl";
+
+    runtimeInputs = [
+      php
+    ];
+
+    text = ''
+      ./vendor/bin/ecs
+    '';
+  };
+
+  projectTestsUnit = pkgs.writeShellApplication {
+    name = "project-tests-unit";
+
+    runtimeInputs = [
+      php
+    ];
+
+    text = ''
+      ./vendor/bin/phpunit --testsuite unit --color --testdox
+    '';
+  };
+
 in pkgs.mkShell {
   name = "TYPO3";
   buildInputs = [
     projectFrontendReinstall
     projectFrontendCompile
+
+    projectPhpstan
+    projectCgl
+    projectTestsUnit
+
+    php
   ];
+
+  PS1 = "\\033[0;32m\\]\\W >\\[\\033[0m\\] ";
+
+  typo3DatabaseName = "testing";
+  typo3DatabaseHost = "localhost";
+  typo3DatabaseUsername = "testing";
+  typo3DatabasePassword = "testing";
+
+  TYPO3_CONTEXT = "Development/dsiepmann";
+  TYPO3_DATABASE = "reuter_reuter";
+  TYPO3_BASE = "https://monorepo.emoto2.localhost/reuter/";
+  BASE_URL = "https://monorepo.emoto2.localhost/reuter/";
+  TYPO3_ADDITIONAL_CONFIGURATION = "/home/daniels/.local/share/typo3-configuration/AdditionalConfiguration.inc.php";
 
   shellHook = ''
     export PROJECT_ROOT="$(pwd)"
     export PATH="/home/daniels/Applications/node-v10.24.1-linux-x64/bin/:$PATH"
-
-    export PS1="\033[0;32m\]\W >\[\033[0m\] "
-
-    export typo3DatabaseName=testing
-    export typo3DatabaseHost=localhost
-    export typo3DatabaseUsername=testing
-    export typo3DatabasePassword=testing
-
-    export TYPO3_CONTEXT=Development/dsiepmann
-    export TYPO3_DATABASE=emoto2_reuter
-    export TYPO3_BASE=https://reuter.emoto2.localhost/
-    export BASE_URL=https://reuter.emoto2.localhost/
-    export TYPO3_ADDITIONAL_CONFIGURATION=/home/daniels/.local/share/typo3-configuration/AdditionalConfiguration.inc.php
   '';
 }
