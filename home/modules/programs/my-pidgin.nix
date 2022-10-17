@@ -14,7 +14,7 @@
         pkgs.purple-slack
         (pkgs.callPackage ./../../packages/purple-mattermost { })
         # Login does not work yet, also don't know the tenant domain
-        # (pkgs.callPackage ./../../packages/purple-microsoft-teams { })
+        (pkgs.callPackage ./../../packages/purple-microsoft-teams { })
 
         # System integration
         (pkgs.callPackage ./../../packages/purple-libnotify { })
