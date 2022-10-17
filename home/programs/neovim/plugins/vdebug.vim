@@ -26,6 +26,3 @@ let g:vdebug_keymap = {
     \    "close" : "<Leader>6",
     \    "eval_visual" : "",
 \}
-
-" https://github.com/vim-vdebug/vdebug/issues/369
-" let g:vdebug_features = {'extended_properties': 1}
