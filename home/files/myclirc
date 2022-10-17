@@ -17,7 +17,7 @@ multi_line = False
 destructive_warning = True
 
 # log_file location.
-log_file = $XDG_DATA_DIRS/mycli.log
+log_file = ~/.local/share/mycli.log
 
 # Default log level. Possible values: "CRITICAL", "ERROR", "WARNING", "INFO"
 # and "DEBUG".
@@ -27,14 +27,17 @@ log_file = $XDG_DATA_DIRS/mycli.log
 # line below.
 # audit_log = ~/.mycli-audit.log
 
-# Timing of sql statments and table rendering.
+# Timing of sql statements and table rendering.
 timing = True
 
-# Table format. Possible values: psql, plain, simple, grid, fancy_grid, pipe,
-# orgtbl, rst, mediawiki, html, latex, latex_booktabs, tsv.
-# Recommended: psql, fancy_grid and grid.
-# Supports way more, send `\T` within client to get a full list of supported formats.
-# Can be changed interactively by sending `\T <format>` within the client
+# Beep after long-running queries are completed; 0 to disable.
+beep_after_seconds = 0
+
+# Table format. Possible values: ascii, double, github,
+# psql, plain, simple, grid, fancy_grid, pipe, orgtbl, rst, mediawiki, html,
+# latex, latex_booktabs, textile, moinmoin, jira, vertical, tsv, csv.
+# Recommended: ascii
+; table_format = ascii
 table_format = psql_unicode
 
 # Syntax coloring style. Possible values (many support the "-dark" suffix):
@@ -42,8 +45,8 @@ table_format = psql_unicode
 # friendly, monokai, paraiso, colorful, murphy, bw, pastie, paraiso, trac, default,
 # fruity.
 # Screenshots at http://mycli.net/syntax
-# syntax_style = default
-# syntax_style = manni
+# Can be further modified in [colors]
+; syntax_style = default
 syntax_style = native
 
 # Keybindings: Possible values: emacs, vi.
@@ -55,12 +58,41 @@ key_bindings = vi
 wider_completion_menu = False
 
 # MySQL prompt
-# \t - Product type (Percona, MySQL, Mariadb)
-# \u - Username
-# \h - Hostname of the server
+# \D - The full current date
 # \d - Database name
+# \h - Hostname of the server
+# \m - Minutes of the current time
 # \n - Newline
-prompt = "\t \u@\h:\d> "
+# \P - AM/PM
+# \p - Port
+# \R - The current time, in 24-hour military time (0-23)
+# \r - The current time, standard 12-hour time (1-12)
+# \s - Seconds of the current time
+# \t - Product type (Percona, MySQL, MariaDB, TiDB)
+# \A - DSN alias name (from the [alias_dsn] section)
+# \u - Username
+# \x1b[...m - insert ANSI escape sequence
+prompt = '\t \u@\h:\d> '
+prompt_continuation = '->'
+
+# Skip intro info on startup and outro info on exit
+less_chatty = true
+
+# Use alias from --login-path instead of host name in prompt
+login_path_as_host = False
+
+# Cause result sets to be displayed vertically if they are too wide for the current window,
+# and using normal tabular format otherwise. (This applies to statements terminated by ; or \G.)
+auto_vertical_output = true
+
+# keyword casing preference. Possible values "lower", "upper", "auto"
+keyword_casing = auto
+
+# disabled pager on startup
+enable_pager = false
+
+# Choose a specific pager
+pager = 'less'
 
 # Custom colors for the completion menu, toolbar, etc.
 [colors]
