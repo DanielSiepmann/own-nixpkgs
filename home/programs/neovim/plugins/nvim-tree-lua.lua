@@ -44,6 +44,9 @@ require("nvim-tree").setup({
     git = {
         enable = false,
     },
+    filters = {
+        dotfiles = true,
+    },
     live_filter = {
         always_show_folders = false,
     },
