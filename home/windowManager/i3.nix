@@ -182,10 +182,6 @@ in {
         notification = false;
       }
       {
-        command = "clipit";
-        notification = false;
-      }
-      {
         command = "nm-applet";
         notification = false;
       }
