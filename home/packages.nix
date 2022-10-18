@@ -7,7 +7,6 @@ with pkgs; [
 
   # System tools
   dmenu
-  gnome.nautilus # File Manager
   gnome.gnome-screenshot
 
   networkmanager_dmenu

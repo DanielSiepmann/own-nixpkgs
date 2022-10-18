@@ -129,6 +129,14 @@ Additions:
 * Integrate https://github.com/Wilfred/difftastic for diffing source code
   https://github.com/nix-community/home-manager/pull/2850
 
+* Alternative file managers:
+
+   * http://www.krusader.org
+
+   * https://ignorantguru.github.io/spacefm/
+
+   * https://www.mucommander.com/
+
 Resources
 ---------
 
