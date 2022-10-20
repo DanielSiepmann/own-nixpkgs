@@ -68,7 +68,7 @@
 --languages=+apache
 # --languages=+ruby
 --languages=+python
-# --languages=+reStructuredText
+--languages=+reStructuredText
 --languages=+Markdown
 --languages=+SQL
 --languages=+snippets

@@ -82,21 +82,14 @@ let g:tagbar_type_xml = {
     \ 'sort' : 0,
 \ }
 
-" " Show outline of rst files
-" let g:tagbar_type_rst = {
-"     \ 'ctagstype': 'rst',
-"     \ 'ctagsbin' : '~/.dotfiles/bin/rst2ctags/rst2ctags.py',
-"     \ 'ctagsargs' : '-f - --sort=yes',
-"     \ 'kinds' : [
-"         \ 's:sections',
-"         \ 'i:images'
-"     \ ],
-"     \ 'sro' : '|',
-"     \ 'kind2scope' : {
-"         \ 's' : 'section',
-"     \ },
-"     \ 'sort': 0,
-"     \ }
+" Show outline of rst files
+let g:tagbar_type_rst = {
+    \ 'ctagstype': 'reStructuredText',
+    \ 'kinds' : [
+        \ 'c:chapters:0',
+    \ ],
+    \ 'sort': 0,
+    \ }
 
 " SOURCE: https://github.com/mtscout6/vim-tagbar-css/blob/master/plugin/tagbar-css.vim
 let g:tagbar_type_css = {
