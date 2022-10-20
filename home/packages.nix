@@ -22,7 +22,6 @@ with pkgs; [
   i3blocks
   st
   ncdu
-  baobab # GUI of ndeu
   tree
   (callPackage ./packages/rst2pdf { })
   (callPackage ./packages/sitediff { })
@@ -77,7 +76,6 @@ with pkgs; [
   # audacity
   ffmpeg
   python39Packages.mutagen
-  darktable
   feh
 
   gtk-engine-murrine
