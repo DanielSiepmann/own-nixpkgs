@@ -67,7 +67,7 @@ _:
 
         "intl.accept_languages" = "en,de";
         "browser.search.countryCode" = "DE";
-        "browser.search.hiddenOneOffs" = "Google,Amazon.de,Bing,DuckDuckGo,Wikipedia (en)";
+        "browser.search.hiddenOneOffs" = "eBay,Google,Amazon.de,Bing,DuckDuckGo,Wikipedia (en)";
         "browser.search.region" = "DE";
         "browser.search.suggest.enabled" = false;
 
