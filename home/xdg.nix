@@ -19,6 +19,7 @@
 
       FdoSecrets = {
         Enabled = true;
+        ShowNotification = false;
       };
 
       GUI = {
