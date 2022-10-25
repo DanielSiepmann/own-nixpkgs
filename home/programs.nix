@@ -48,6 +48,7 @@ in {
   };
 
   firefox = import ./programs/firefox.nix {
+    inherit pkgs;
   };
 
   vdirsyncer = import ./programs/vdirsyncer.nix {
