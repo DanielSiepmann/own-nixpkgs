@@ -47,6 +47,17 @@
             icon = ./../../assets/mdn.png;
             definedAliases = [ "@mdn" ];
           };
+          "MariaDB Knowledge Base" = {
+            urls = [{
+              template = "https://mariadb.com/kb/en/+search/";
+              params = [
+                { name = "q"; value = "{searchTerms}"; }
+              ];
+            }];
+
+            icon = ./../../assets/sql.png;
+            definedAliases = [ "@sql" ];
+          };
           "Nix Packages" = {
             urls = [{
               template = "https://search.nixos.org/packages";
