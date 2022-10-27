@@ -251,6 +251,16 @@
       id = 1;
       isDefault = false;
       userChrome = builtins.readFile(./firefox/kioskLikeUserChrome.css);
+
+      # Hide elements I don't need
+      userContent = ''
+        .css-4tkxba-ShowMoreContainer,
+        [data-heap-id="side-nav-link-subscription"],
+        [data-heap-id="side-nav-link-integrations"],
+        [data-heap-id="side-nav-link-insights"] {
+          display: none !important;
+        }
+      '';
       settings = {
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
       };
