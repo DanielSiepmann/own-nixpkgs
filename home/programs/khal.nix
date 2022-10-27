@@ -21,6 +21,9 @@
     [[typo3]]
     path = ${config.xdg.dataHome}/vdir/calendars/private/typo3
     color = #FFE377
+    [[nixosorg]]
+    path = ${config.xdg.dataHome}/vdir/calendars/private/nixosorg
+    color = light blue
 
     [[work]]
     path = ${config.xdg.dataHome}/vdir/calendars/company/personal

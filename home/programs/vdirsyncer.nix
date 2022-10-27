@@ -5,6 +5,8 @@
 
   frequency = "Mon..Thu *-*-* 15,12,8:00";
 
+  # Run `vdirsyncer discover <name>` after adding a new pair
+
   configuration = ''
     [general]
     status_path = "${config.xdg.dataHome}/vdirsyncer/status/"
@@ -24,6 +26,19 @@
     password.fetch = ["command", "${pkgs.libsecret}/bin/secret-tool", "lookup", "account", "app-dsiepmann@nextcloud.daniel-siepmann.de"]
     start_date = "datetime.now() - timedelta(days=60)"
     end_date = "datetime.now() + timedelta(days=365)"
+
+    [pair nixos]
+    a = "nixos_calendar_private"
+    b = "nixos_calendar_public"
+    collections = null
+    [storage nixos_calendar_private]
+    type = "caldav"
+    url = "https://nextcloud.daniel-siepmann.de/remote.php/dav/calendars/dsiepmann/nixosorg/"
+    username = "dsiepmann"
+    password.fetch = ["command", "${pkgs.libsecret}/bin/secret-tool", "lookup", "account", "app-dsiepmann@nextcloud.daniel-siepmann.de"]
+    [storage nixos_calendar_public]
+    type = "http"
+    url = "https://calendar.google.com/calendar/ical/b9o52fobqjak8oq8lfkhg3t0qg%40group.calendar.google.com/public/basic.ics"
 
     [pair company_calendar]
     a = "company_calendar_local"
