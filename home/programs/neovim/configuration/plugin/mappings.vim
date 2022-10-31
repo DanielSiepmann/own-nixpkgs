@@ -20,8 +20,8 @@ nnoremap <silent> <leader>pc :call TelescopeCurrentComposerPackage()<cr>
 " lca = lsp code action
 nnoremap <leader>lca :lua vim.lsp.buf.code_action()<cr>
 
-nnoremap <leader>k :NvimTreeToggle<cr>
-nnoremap <leader>f :NvimTreeFindFile<cr>
+nnoremap <leader>k :NERDTreeToggle<cr>
+nnoremap <leader>f :NERDTreeFind<cr>
 nnoremap <leader>b :TagbarToggle<cr>
 nnoremap <leader>u :UndotreeToggle<cr>
 
