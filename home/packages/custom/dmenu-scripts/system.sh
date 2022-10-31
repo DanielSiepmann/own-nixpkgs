@@ -6,7 +6,7 @@
 
 # guess i3lock via nix points to other PAM and therefore does not identify by password
 
-chosen=$(echo -e "lock\nsuspend\nlogout" | dmenu -i)
+chosen=$(echo -e "lock\nsuspend\nlogout" | dmenu -i -l 3)
 case "$chosen" in
 "lock")
     pkill -u "$USER" -USR1 dunst

@@ -1,5 +1,5 @@
 activeString=""
-action=$(echo -e "enable\ndisable\n" | dmenu -i -p "$activeString")
+action=$(echo -e "enable\ndisable\n" | dmenu -l 2 -i -p "$activeString")
 case "$action" in
 "enable")
     sudo /bin/ln -s /etc/php/7.2/mods-available/xdebug.ini /etc/php/7.2/cli/conf.d/20-xdebug.ini || true

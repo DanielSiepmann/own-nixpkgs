@@ -202,7 +202,7 @@ in {
       # shipping a .desktop file. It is a wrapper around dmenu, so you need that
       # installed.
       # For docs, see: https://developer.gnome.org/integration-guide/stable/desktop-files.html.en
-      "${modifier}+a" = "exec --no-startup-id i3-dmenu-desktop";
+      "${modifier}+a" = "exec --no-startup-id i3-dmenu-desktop --dmenu='dmenu -i -l 20'";
 
       "${modifier}+space" = "exec --no-startup-id custom-dmenu-selection";
 

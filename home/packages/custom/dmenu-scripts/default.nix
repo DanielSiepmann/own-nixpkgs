@@ -36,7 +36,7 @@ let
     ];
 
     text = ''
-      chosen=$(echo -e "pause\nresume" | dmenu -i)
+      chosen=$(echo -e "pause\nresume" | dmenu -i -l 2)
       case "$chosen" in
       "pause")
         dunstctl set-paused true
