@@ -50,7 +50,6 @@ in {
 
       # Configure look up paths to not clutter home folder but follow XDG
 
-      XAUTHORITY = "${config.xdg.stateHome}/Xauthority";
       ERRFILE = "${config.xdg.cacheHome}/X11/xsession-errors";
 
       MYSQL_HISTFILE = "${config.xdg.dataHome}/mysql_history";
