@@ -107,6 +107,14 @@ List of manual needed changes for various reasons.
 Todos
 -----
 
+MacBook:
+
+* Fix warning: ignoring untrusted substituter 'https://fossar.cachix.org'.
+
+* Fix brightness and loudness keyboard.
+
+* Fix host resolving outages.
+
 Migration:
 
 * Check vpnc which is currently installed via ubuntu.
