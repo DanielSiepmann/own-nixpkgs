@@ -8,6 +8,7 @@ with pkgs; [
   # System tools
   dmenu
   gnome.gnome-screenshot
+  acpilight # Used to support xbacklight on hikari
 
   networkmanager_dmenu
   # TODO: Create one `./packages/custom/default.nix which includes all other?
