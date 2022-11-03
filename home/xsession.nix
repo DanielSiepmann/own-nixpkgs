@@ -1,8 +1,6 @@
-{ config, pkgs }:
+{ config, pkgs, ownLib }:
 
 let
-  ownLib = import ./packages/lib;
-
   initExtraHikari = ''
     xrandr --auto --output eDP-1 --brightness 1 --scale 1.25x1.25
 

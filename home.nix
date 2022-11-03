@@ -1,6 +1,9 @@
 { config, pkgs, lib, ... }:
 
-{
+let
+  ownLib = import ./home/packages/lib;
+
+in {
 
   imports = [
     ./home/modules/programs/cmus.nix
@@ -46,7 +49,7 @@
   };
 
   programs = import ./home/programs.nix {
-    inherit config pkgs;
+    inherit config pkgs ownLib;
   };
 
   fonts.fontconfig.enable = true;
@@ -56,7 +59,7 @@
   };
 
   xsession = import ./home/xsession.nix {
-    inherit config pkgs;
+    inherit config pkgs ownLib;
   };
 
   xdg = import ./home/xdg.nix {

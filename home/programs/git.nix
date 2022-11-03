@@ -1,4 +1,4 @@
-{ pkgs }:
+{ pkgs, ownLib }:
 
 {
   enable = true;
@@ -8,7 +8,7 @@
 
   signing = {
     key = "15560EF4";
-    signByDefault = true;
+    signByDefault = if ownLib.onHikari {} then false else true;
   };
 
   aliases = {

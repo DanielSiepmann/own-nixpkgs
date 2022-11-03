@@ -1,4 +1,4 @@
-{ config, pkgs }:
+{ config, pkgs, ownLib }:
 
 let
 
@@ -14,7 +14,7 @@ in {
   };
 
   git = import ./programs/git.nix {
-    inherit pkgs;
+    inherit pkgs ownLib;
   };
 
   htop = import ./programs/htop.nix {
@@ -34,7 +34,7 @@ in {
   };
 
   keychain = import ./programs/keychain.nix {
-    inherit config pkgs;
+    inherit config pkgs ownLib;
   };
 
   gpg = import ./programs/gpg.nix {
