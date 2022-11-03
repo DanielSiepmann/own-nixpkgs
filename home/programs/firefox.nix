@@ -254,6 +254,7 @@
 
       # Hide elements I don't need
       userContent = ''
+        .left-nav h6,
         .css-4tkxba-ShowMoreContainer,
         [data-heap-id="side-nav-link-subscription"],
         [data-heap-id="side-nav-link-integrations"],
