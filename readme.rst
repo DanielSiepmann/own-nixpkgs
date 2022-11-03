@@ -109,9 +109,7 @@ Todos
 
 MacBook:
 
-* Fix warning: ignoring untrusted substituter 'https://fossar.cachix.org'.
-
-* Fix brightness and loudness keyboard.
+* Migrate PGP Key
 
 * Fix host resolving outages.
 
