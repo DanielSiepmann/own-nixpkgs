@@ -65,7 +65,7 @@ in {
       DOCKER_CONFIG = "${config.xdg.configHome}/docker";
 
       # Program specific vars
-
+      BORG_PASSCOMMAND = "${pkgs.libsecret}/bin/secret-tool lookup account borg-passphrase";
       LSCOLORS = "HxGxDxDxbxDxDxababcxcx";
       LS_COLORS = "di=1;37:ln=1;36:so=1;33:pi=1;33:ex=31:bd=1;33:cd=1;33:su=30;41:sg=30;41:tw=32:ow=32";
       GREP_COLOR = "0;30;44";
