@@ -107,10 +107,6 @@ List of manual needed changes for various reasons.
 Todos
 -----
 
-MacBook:
-
-* Fix host resolving outages.
-
 Migration:
 
 * Check vpnc which is currently installed via ubuntu.
