@@ -109,8 +109,6 @@ Todos
 
 MacBook:
 
-* Provide (remove) proper input for keychain (gpg)
-
 * Provide script to update system
 
 Migration:
