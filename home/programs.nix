@@ -14,7 +14,7 @@ in {
   };
 
   git = import ./programs/git.nix {
-    inherit pkgs ownLib;
+    inherit pkgs;
   };
 
   htop = import ./programs/htop.nix {

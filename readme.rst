@@ -109,8 +109,6 @@ Todos
 
 MacBook:
 
-* Migrate PGP Key
-
 * Fix host resolving outages.
 
 Migration:
