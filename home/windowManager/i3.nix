@@ -1,7 +1,9 @@
-{ config, pkgs }:
+{ config, pkgs, ownLib }:
 
 let
   modifier = config.xsession.windowManager.i3.config.modifier;
+
+  soundSwitcherForHikari2 = if ownLib.onHikari { } then "" else "-D pulse";
 in {
   enable = true;
   config = {
@@ -285,9 +287,9 @@ in {
       "XF86AudioPlay" = "exec cmus-remote --pause";
       "XF86AudioPrev" = "exec cmus-remote --prev";
       "XF86AudioNext" = "exec cmus-remote --next";
-      "XF86AudioMute" = "exec \"amixer -D pulse sset Master 0\"";
-      "XF86AudioRaiseVolume" = "exec \"amixer -D pulse sset Master 5%+\"";
-      "XF86AudioLowerVolume" = "exec \"amixer -D pulse sset Master 5%-\"";
+      "XF86AudioMute" = "exec \"amixer ${soundSwitcherForHikari2} sset Master 0\"";
+      "XF86AudioRaiseVolume" = "exec \"amixer ${soundSwitcherForHikari2} sset Master 5%+\"";
+      "XF86AudioLowerVolume" = "exec \"amixer ${soundSwitcherForHikari2} sset Master 5%-\"";
 
       # Switch sound device:
       # https://askubuntu.com/a/72076/491377

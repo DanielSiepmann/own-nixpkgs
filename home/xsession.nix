@@ -36,6 +36,6 @@ in {
   '';
 
   windowManager.i3 = import ./windowManager/i3.nix {
-    inherit config pkgs;
+    inherit config pkgs ownLib;
   };
 }
