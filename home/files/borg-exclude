@@ -3,7 +3,12 @@
 /home/daniels/.gvfs
 /home/daniels/.icons
 /home/daniels/.java
-/home/daniels/.local
+/home/daniels/.local/bin
+/home/daniels/.local/lib
+/home/daniels/.local/share/vim/
+/home/daniels/.local/share/icons/
+/home/daniels/.local/share/mime/
+/home/daniels/.local/state
 /home/daniels/.mozilla
 /home/daniels/.nix-profile/
 /home/daniels/.node
