@@ -107,6 +107,12 @@ List of manual needed changes for various reasons.
 Todos
 -----
 
+MacBook:
+
+* Provide (remove) proper input for keychain (gpg)
+
+* Provide script to update system
+
 Migration:
 
 * Check vpnc which is currently installed via ubuntu.
