@@ -9,7 +9,7 @@ require('telescope').setup({
                 rst = '--reStructuredText-types=csSt',
                 sql = '--SQL-types=tE',
                 xml = '--xml-types=ci',
-                yaml = '--yaml-types=t',
+                yaml = '--Yaml-types=t',
             },
         },
     },

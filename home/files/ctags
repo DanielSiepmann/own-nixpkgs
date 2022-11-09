@@ -38,10 +38,8 @@
 --regex-html=/<f:section name="([0-9a-zA-Z\._-]+)"/\1/s,section,sections/
 # --regex-html=/id="([0-9a-zA-Z\._-]+)"/\1/i,id,ids/
 
---langdef=xml
 --langmap=xml:.xml.xlf.xliff
 --regex-xml=/<!--\s*(.*)\s*-->/\1/c,comment,comments/
---regex-xml=/id="(.*)"/\1/i,id,ids/
 
 --langdef=snippets
 --langmap=snippets:.snippets
@@ -51,9 +49,8 @@
 --langmap=apache:.conf
 --regex-apache=/Server(Name|Alias) ([0-9a-zA-Z\._-]+)/\2/s,server,servers/
 
---langdef=yaml
---langmap=yaml:.yaml.yml
---regex-yaml=/^([a-zA-Z0-9_.:]*):.*$/\1/t,toplevel/
+--langmap=Yaml:.yaml.yml
+--regex-Yaml=/^([a-zA-Z0-9_.:]*):.*$/\1/t,toplevel/
 
 --fields=*
 # --*-kinds=*
@@ -77,5 +74,5 @@
 --languages=+xml
 --languages=+html
 # --languages=+java
---languages=+yaml
+--languages=+Yaml
 # vim: commentstring=#%s ft=conf
