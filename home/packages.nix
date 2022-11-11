@@ -14,6 +14,7 @@ with pkgs; [
   # TODO: Create one `./packages/custom/default.nix which includes all other?
   (callPackage ./packages/custom/dmenu-scripts { })
   (callPackage ./packages/custom/update-system { })
+  (callPackage ./packages/custom/update-nixos-system { })
   (callPackage ./packages/custom/update-ubuntu-system { })
   (callPackage ./packages/custom/push-etckeeper { })
   (callPackage ./packages/custom/backup { })
