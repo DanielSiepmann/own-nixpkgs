@@ -307,10 +307,10 @@ in {
       # ~ > pacmd move-sink-input 3 8
 
       # Function Key Bindings (💡)
-      "XF86MonBrightnessUp" = "exec xbacklight -inc 10 && ${pkgs.libnotify}/bin/notify-send \"Changed Display Brightness\" \"Now: $(xbacklight)\"";
-      "XF86MonBrightnessDown" = "exec xbacklight -dec 10 && ${pkgs.libnotify}/bin/notify-send \"Changed Display Brightness\" \"Now: $(xbacklight)\"";
-      "Shift+XF86MonBrightnessUp" = "exec xbacklight -inc 1 && ${pkgs.libnotify}/bin/notify-send \"Changed Display Brightness\" \"Now: $(xbacklight)\"";
-      "Shift+XF86MonBrightnessDown" = "exec xbacklight -dec 1 && ${pkgs.libnotify}/bin/notify-send \"Changed Display Brightness\" \"Now: $(xbacklight)\"";
+      "XF86MonBrightnessUp" = "exec xbacklight -inc 10 && ${pkgs.libnotify}/bin/notify-send \"Changed Display Brightness\"";
+      "XF86MonBrightnessDown" = "exec xbacklight -dec 10 && ${pkgs.libnotify}/bin/notify-send \"Changed Display Brightness\"";
+      "Shift+XF86MonBrightnessUp" = "exec xbacklight -inc 1 && ${pkgs.libnotify}/bin/notify-send \"Changed Display Brightness\"";
+      "Shift+XF86MonBrightnessDown" = "exec xbacklight -dec 1 && ${pkgs.libnotify}/bin/notify-send \"Changed Display Brightness\"";
 
       # Dunst Key Bindings
       # See: man dunstctl.1
