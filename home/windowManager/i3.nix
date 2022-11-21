@@ -229,11 +229,6 @@ in {
       # enter fullscreen mode for the focused container
       "${modifier}+f" = "fullscreen toggle";
 
-      # change container layout (stacked, tabbed, toggle split)
-      "${modifier}+s" = "layout stacking";
-      "${modifier}+t" = "layout tabbed";
-      "${modifier}+e" = "layout toggle split";
-
       # toggle tiling / floating
       "${modifier}+Shift+f" = "floating toggle";
 
