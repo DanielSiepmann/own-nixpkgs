@@ -266,6 +266,11 @@ in {
       # Show the first scratchpad window
       "${modifier}+minus" = "scratchpad show";
 
+      # Show Terminal
+      "${modifier}+t" = "[class=\"st-256color\"] scratchpad show";
+      # Show KeepassXC
+      "${modifier}+p" = "[class=\"KeePassXC\"] scratchpad show";
+
       # reload the configuration file
       "${modifier}+Shift+c" = "reload";
       # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
