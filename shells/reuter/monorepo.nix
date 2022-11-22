@@ -6,6 +6,7 @@
 let
 
   php = phps.packages.x86_64-linux.php73;
+  composer = pkgs.php81Packages.composer;
 
   phpWithMoreMemory = php.buildEnv {
     extraConfig = ''
@@ -76,6 +77,7 @@ in pkgs.mkShell {
     projectTestsUnit
 
     php
+    composer
   ];
 
   PS1 = "\\033[0;32m\\]\\W >\\[\\033[0m\\] ";
