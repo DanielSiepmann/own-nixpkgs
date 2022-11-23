@@ -11,7 +11,6 @@ in {
     ./home/modules/programs/khal.nix
     ./home/modules/programs/languagetool.nix
     ./home/modules/programs/mailhog.nix
-    ./home/modules/programs/signald.nix
     ./home/modules/programs/my-pidgin.nix
   ];
 

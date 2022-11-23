@@ -10,7 +10,6 @@
         pkgs.pidgin-window-merge
 
         # Protocols
-        pkgs.purple-signald
         pkgs.purple-slack
         (pkgs.callPackage ./../../packages/purple-mattermost { })
         (pkgs.callPackage ./../../packages/purple-microsoft-teams { })
@@ -20,9 +19,6 @@
         (pkgs.callPackage ./../../packages/purple-events { }) # Dependency
       ];
     };
-
-    # Necessary to connect to signal from pidgin
-    programs.signald.enable = true;
 
     home.file = {
       pidginGtkRc = {

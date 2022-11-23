@@ -66,6 +66,7 @@ with pkgs; [
   (callPackage ./packages/custom/customer-project { })
 
   # Communication
+  signal-desktop
   thunderbird
 
   # Media
