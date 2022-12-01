@@ -99,12 +99,12 @@ let
 
   vdebug = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
     pname = "vdebug";
-    version = "v2.0.0";
+    version = "f979cc065e63796bdf60f014ae2280ce8e72cded";
     src = pkgs.fetchFromGitHub {
       owner = "joonty";
       repo = pname;
       rev = version;
-      sha256 = "kobMC6TRFZcEbgFdOaBgXUzoeWQUrVzUKylN1N9nEnc=";
+      sha256 = "sha256-0pvRdqogxYs2QMH1uHTJzLY5QtvenSyowcqkGhtauLY=";
     };
   };
 
