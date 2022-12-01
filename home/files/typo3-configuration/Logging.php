@@ -18,6 +18,17 @@ class UriProcessor extends AbstractProcessor implements ProcessorInterface
     }
 }
 
+class LCTimeProcessor extends AbstractProcessor implements ProcessorInterface
+{
+    public function processLogRecord(LogRecord $logRecord)
+    {
+        $logRecord->addData([
+            'LC_TIME' => setlocale(LC_TIME, 0),
+        ]);
+        return $logRecord;
+    }
+}
+
 $GLOBALS['TYPO3_CONF_VARS']['LOG']['das']['writerConfiguration'] = [
     \TYPO3\CMS\Core\Log\LogLevel::DEBUG => [
         \TYPO3\CMS\Core\Log\Writer\FileWriter::class => [
