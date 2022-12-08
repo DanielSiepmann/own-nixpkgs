@@ -4,33 +4,16 @@
 // Disable some for local development
 // => Done inside Vim, Vim will delete some files after editing
 
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['extbase_reflection']['backend'] =
-    \Codappix\CdxFileBackend\FileBackend::class;
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['extbase_object']['backend'] =
-    \Codappix\CdxFileBackend\FileBackend::class;
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['extbase_datamapfactory_datamap']['backend'] =
-    \Codappix\CdxFileBackend\FileBackend::class;
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['dashboard_rss']['backend'] =
-    \Codappix\CdxFileBackend\FileBackend::class;
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['adminpanel_requestcache']['backend'] =
-    \Codappix\CdxFileBackend\FileBackend::class;
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['workspaces_cache']['backend'] =
-    \Codappix\CdxFileBackend\FileBackend::class;
-
 // Extensions
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['thuecat_fetchdata']['backend'] =
-    \Codappix\CdxFileBackend\FileBackend::class;
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['thuecat_fetchdata']['backend'] = \Codappix\CdxFileBackend\FileBackend::class;
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['thuecat_fetchdata']['options'] = [
     'defaultLifetime' => 60 * 60 * 24 * 7 * 4,
 ];
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['tx_schema']['backend'] =
-    \Codappix\CdxFileBackend\FileBackend::class;
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['tx_schema']['backend'] = \Codappix\CdxFileBackend\FileBackend::class;
 
 // reuter dynamics
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['shop_assets']['backend'] =
-    \Codappix\CdxFileBackend\FileBackend::class;
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['filter_url']['backend'] =
-    \Codappix\CdxFileBackend\FileBackend::class;
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['shop_assets']['backend'] = \Codappix\CdxFileBackend\FileBackend::class;
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['filter_url']['backend'] = \Codappix\CdxFileBackend\FileBackend::class;
 
 if (
     class_exists(\TYPO3\CMS\Core\Utility\VersionNumberUtility::class)

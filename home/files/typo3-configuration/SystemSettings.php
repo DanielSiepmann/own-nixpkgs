@@ -43,7 +43,7 @@ if (isset($GLOBALS['TYPO3_CONF_VARS']['SYS']['systemLocale']) && in_array($GLOBA
     $GLOBALS['TYPO3_CONF_VARS']['SYS']['systemLocale'] = 'de_DE.UTF-8';
 }
 
-$GLOBALS['TYPO3_CONF_VARS']['FE']['versionNumberInFilename'] = false;
+$GLOBALS['TYPO3_CONF_VARS']['FE']['versionNumberInFilename'] = '';
 $GLOBALS['TYPO3_CONF_VARS']['BE']['versionNumberInFilename'] = false;
 
 $GLOBALS['TYPO3_CONF_VARS']['BE']['installToolPassword'] = '$1$eItwKedf$13XVDVlAwXXMvO4DKw/YQ0';
