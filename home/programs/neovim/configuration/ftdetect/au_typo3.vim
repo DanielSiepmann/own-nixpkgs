@@ -18,10 +18,12 @@ augroup typo3
     autocmd BufWritePost **/*.xlf :silent !rm */**/cache/**/l10n/*
     autocmd BufWritePost **/*.yml,**/*.yaml :silent !rm */**/cache/**/yamlsettings_form*
     " Performance issues for typoscript, keep an eye
-    autocmd BufWritePost *.tsconfig,*.typoscript,*.ts,*/TypoScript/*.ts,*/TypoScript/*.txt :silent !rm -rf */**/var/**/pages/*
-    autocmd BufWritePost *.tsconfig,*.typoscript,*.ts,*/TypoScript/*.ts,*/TypoScript/*.txt :silent !rm -rf */**/var/**/pagesection/*
-    autocmd BufWritePost *.tsconfig,*.typoscript,*.ts,*/TypoScript/*.ts,*/TypoScript/*.txt :silent !rm -rf */**/var/**/cache_pages/*
-    autocmd BufWritePost *.tsconfig,*.typoscript,*.ts,*/TypoScript/*.ts,*/TypoScript/*.txt :silent !rm -rf */**/var/**/cache_pagesection/*
+    " Disable for now as cache flushing is slow.
+    " One can reload without browser cache in order to get changes applied.
+    " autocmd BufWritePost *.tsconfig,*.typoscript,*.ts,*/TypoScript/*.ts,*/TypoScript/*.txt :silent !rm -rf */**/var/**/pages/*
+    " autocmd BufWritePost *.tsconfig,*.typoscript,*.ts,*/TypoScript/*.ts,*/TypoScript/*.txt :silent !rm -rf */**/var/**/pagesection/*
+    " autocmd BufWritePost *.tsconfig,*.typoscript,*.ts,*/TypoScript/*.ts,*/TypoScript/*.txt :silent !rm -rf */**/var/**/cache_pages/*
+    " autocmd BufWritePost *.tsconfig,*.typoscript,*.ts,*/TypoScript/*.ts,*/TypoScript/*.txt :silent !rm -rf */**/var/**/cache_pagesection/*
 
     " ext:news
     autocmd BufWritePost **/Classes/Domain/Model/News.php :silent !rm -rf */**/var/cache/code/news/*
