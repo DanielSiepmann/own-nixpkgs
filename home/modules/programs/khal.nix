@@ -18,7 +18,7 @@ let
     text = ''
       date=$(date "+%H:%M:00")
       events=$(${workingKhalPkgs.khal}/bin/khal list --notstarted "$date" "$1")
-      if [ -z "$events" ]; then
+      if ! echo "$events" | grep -v "No events"; then
         exit 0;
       fi
 
