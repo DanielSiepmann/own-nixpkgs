@@ -89,9 +89,10 @@
       whitespace = "-blank-at-eol,-space-before-tab,-indent-with-non-tab,-tab-in-indent,-blank-at-eof,-trailing-space-,cr-at-eol";
     };
 
-    diff = {
-      noprefix = true;
-    };
+    # Not possible right now, due to: https://github.com/gitonomy/gitlib/issues/114 for onw customer project
+    # diff = {
+    #   noprefix = true;
+    # };
 
     pager = {
       branch = false;
