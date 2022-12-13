@@ -85,6 +85,14 @@
       ui = "auto";
     };
 
+    core = {
+      whitespace = "-blank-at-eol,-space-before-tab,-indent-with-non-tab,-tab-in-indent,-blank-at-eof,-trailing-space-,cr-at-eol";
+    };
+
+    diff = {
+      noprefix = true;
+    };
+
     pager = {
       branch = false;
       show = false;
