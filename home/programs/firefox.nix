@@ -22,6 +22,7 @@
           "PHP.net"
           "MDN (developer.mozilla.org)"
           "Nix Packages"
+          "Packagist"
         ];
         engines = {
           "PHP.net" = {
@@ -70,6 +71,17 @@
 
             icon = "''${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
             definedAliases = [ "@np" ];
+          };
+          "Packagist" = {
+            urls = [{
+              template = "https://packagist.org/";
+              params = [
+                { name = "query"; value = "{searchTerms}"; }
+              ];
+            }];
+
+            icon = ./../../assets/packagist.png;
+            definedAliases = [ "@packagist" ];
           };
 
           "Bing".metaData.hidden = true;
