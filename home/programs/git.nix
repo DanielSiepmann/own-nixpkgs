@@ -65,8 +65,9 @@
     "config/env/development-dsiepmann/"
   ];
 
-  # TODO: Check out these additions
-  # - https://github.com/dandavison/delta - A syntax-highlighting pager for git, diff, and grep output 
+  diff-so-fancy = {
+    enable = true;
+  };
 
   extraConfig = {
     advice = {
