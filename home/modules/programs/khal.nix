@@ -5,20 +5,12 @@ with lib;
 let
   cfg = config.programs.khal;
 
-  # See: https://nixos.wiki/wiki/FAQ/Pinning_Nixpkgs
-  # See: https://github.com/NixOS/nixpkgs/issues/205014
-  workingKhalPkgs = import (builtins.fetchTarball {
-    name = "nixpkgs-working-khal";
-    url = "https://github.com/nixos/nixpkgs/archive/54582ac93fa8a1784bc8a2009a6cc6efe5a9106f.tar.gz";
-    sha256 = "1ggfbg44xw8zwlwimgl04di5c9h9rfm27c80w9qjq378sr5sr8ly";
-  }) {};
-
   notificationScript = pkgs.writeShellApplication {
     name = "khal-notification";
     text = ''
       date=$(date "+%H:%M:00")
-      events=$(${workingKhalPkgs.khal}/bin/khal list --notstarted "$date" "$1")
-      if ! echo "$events" | grep -v "No events"; then
+      events=$(${pkgs.khal}/bin/khal list --notstarted "$date" "$1")
+      if [ -z "$events" ]; then
         exit 0;
       fi
 
@@ -39,7 +31,7 @@ in {
 
     package = mkOption {
       type = types.package;
-      default = workingKhalPkgs.khal;
+      default = pkgs.khal;
       description = "khal package to install.";
     };
 
