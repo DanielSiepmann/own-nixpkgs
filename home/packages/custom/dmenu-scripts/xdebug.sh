@@ -16,6 +16,9 @@ case "$action" in
 
     sudo /bin/ln -s /etc/php/8.1/mods-available/xdebug.ini /etc/php/8.1/cli/conf.d/20-xdebug.ini || true
     sudo /bin/ln -s /etc/php/8.1/mods-available/xdebug.ini /etc/php/8.1/fpm/conf.d/20-xdebug.ini || true
+
+    sudo /bin/ln -s /etc/php/8.2/mods-available/xdebug.ini /etc/php/8.1/cli/conf.d/20-xdebug.ini || true
+    sudo /bin/ln -s /etc/php/8.2/mods-available/xdebug.ini /etc/php/8.1/fpm/conf.d/20-xdebug.ini || true
     ;;
 "disable")
     sudo /usr/bin/unlink /etc/php/7.2/cli/conf.d/20-xdebug.ini || true
@@ -32,6 +35,9 @@ case "$action" in
 
     sudo /usr/bin/unlink /etc/php/8.1/cli/conf.d/20-xdebug.ini || true
     sudo /usr/bin/unlink /etc/php/8.1/fpm/conf.d/20-xdebug.ini || true
+
+    sudo /usr/bin/unlink /etc/php/8.2/cli/conf.d/20-xdebug.ini || true
+    sudo /usr/bin/unlink /etc/php/8.2/fpm/conf.d/20-xdebug.ini || true
     ;;
 *)
     exit 0
@@ -43,5 +49,6 @@ sudo /bin/systemctl reload php7.3-fpm.service || true
 sudo /bin/systemctl reload php7.4-fpm.service || true
 sudo /bin/systemctl reload php8.0-fpm.service || true
 sudo /bin/systemctl reload php8.1-fpm.service || true
+sudo /bin/systemctl reload php8.2-fpm.service || true
 pkill -SIGRTMIN+10 i3blocks || true
 notify-send "switching xdebug: $action"
