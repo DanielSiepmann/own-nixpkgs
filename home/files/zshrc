@@ -18,6 +18,13 @@ bindkey '^r' history-incremental-search-backward
 # # ctrl-k search history forward to have vim like binding
 bindkey '^k' history-search-forward
 
+# Use vim keys within completion
+zmodload zsh/complist
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+
 # also complete defined alias
 setopt completealiases
 # Correct mistyped commands
