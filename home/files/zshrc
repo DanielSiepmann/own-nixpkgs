@@ -1,5 +1,5 @@
 autoload -U colors && colors
-autoload -U promptinit
+autoload -U promptinit; compinit
 autoload -U complist
 
 # Set vim mode
@@ -54,11 +54,15 @@ setopt list_types
 setopt PROMPT_SUBST
 PROMPT=$'%{$fg[blue]%}%1~ > %{$reset_color%}'
 
-zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
-zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
+zstyle ':completion:*:descriptions' format '%F{blue}-- %d --%f'
+zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
+zstyle ':completion:*:warnings' format '%F{yellow} -- Sorry no matches -- %d%b%f'
+zstyle ':completion:*:*:*:*:corrections' format '%F{yellow}!- %d (errors: %e) -!%f'
 zstyle ':completion:*' menu select
 zstyle ':completion:*' use-cache on
-zstyle ':completion:*' list-colors ''${(s.:.)LS_COLORS}
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
+zstyle ':completion:*' completer _extensions _complete _approximate
 
 zstyle ':completion:*' group-name ''
 zstyle ':completion::complete:git-checkout:argument-rest:' group-order heads-local heads-remote commit-tags
