@@ -30,5 +30,7 @@
     path = "${config.xdg.dataHome}/zsh/zsh_history";
   };
 
-  initExtra = builtins.readFile(../files/zshrc);
+  initExtra = builtins.readFile(../files/zshrc) + ''
+    zstyle ':completion:*' cache-path ${config.xdg.cacheHome}/zsh-completion/
+  '';
 }

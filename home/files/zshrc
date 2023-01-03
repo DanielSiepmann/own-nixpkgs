@@ -4,7 +4,6 @@ autoload -U complist
 
 # Set vim mode
 set -o vi
-
 # Allow editing of current line in $EDITOR using command mode V
 autoload -U edit-command-line
 zle -N edit-command-line
@@ -25,18 +24,21 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 
+# Add vim like text objects
 autoload -Uz select-bracketed select-quoted
 zle -N select-quoted
 zle -N select-bracketed
 for km in viopp visual; do
     bindkey -M $km -- '-' vi-up-line-or-history
     for c in {a,i}${(s..)^:-\'\"\`\|,./:;=+@}; do
-    bindkey -M $km $c select-quoted
+        bindkey -M $km $c select-quoted
     done
     for c in {a,i}${(s..)^:-'()[]{}<>bB'}; do
-    bindkey -M $km $c select-bracketed
+        bindkey -M $km $c select-bracketed
     done
 done
+
+# Set options
 
 # also complete defined alias
 setopt completealiases
@@ -47,9 +49,9 @@ setopt list_packed
 # When listing files that are possible completions, show the type of each file with a trailing identifying mark.
 setopt list_types
 
+# Set Prompt
 # Allow for functions in the prompt.
 setopt PROMPT_SUBST
-
 PROMPT=$'%{$fg[blue]%}%1~ > %{$reset_color%}'
 
 zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
@@ -57,9 +59,8 @@ zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
 zstyle ':completion:*' menu select
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' list-colors ''${(s.:.)LS_COLORS}
-zstyle ':completion:*' cache-path ${config.xdg.cacheHome}/zsh-completion/
 
-zstyle ':completion:*' group-name '''
+zstyle ':completion:*' group-name ''
 zstyle ':completion::complete:git-checkout:argument-rest:' group-order heads-local heads-remote commit-tags
 zstyle ':completion::complete:git-checkout:argument-rest:commits' command 'echo'
 zstyle ':completion::complete:git-checkout:argument-rest:valid-ref-names' command 'echo'
