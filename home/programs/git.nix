@@ -67,6 +67,9 @@
 
   diff-so-fancy = {
     enable = true;
+    markEmptyLines = false;
+    stripLeadingSymbols = false;
+    useUnicodeRuler = false;
   };
 
   extraConfig = {
