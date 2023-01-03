@@ -18,7 +18,7 @@ let
     pname = "colorscheme-smyckblue";
     version = "v1.2.0";
     src = pkgs.fetchgit {
-      url = "https://gitea.daniel-siepmann.de/danielsiepmann/vim-${pname}.git";
+      url = "https://git.daniel-siepmann.de/danielsiepmann/vim-${pname}.git";
       rev = version;
       sha256 = "sha256-sPb+okBt060i3eYPIRwXK9O9aCE35z09vxexqv++BH0=";
     };
@@ -28,7 +28,7 @@ let
     pname = "neotags";
     version = "v0.3.0";
     src = pkgs.fetchgit {
-      url = "https://gitea.daniel-siepmann.de/danielsiepmann/${pname}.git";
+      url = "https://git.daniel-siepmann.de/danielsiepmann/${pname}.git";
       rev = version;
       sha256 = "uJ7cl+1Ngff0FKzjmh1i7O/PkNjPvPT+ZEHgceeZcz0=";
     };
@@ -47,7 +47,7 @@ let
     pname = "syntax-typoscript";
     version = "v2.0.0";
     src = pkgs.fetchgit {
-      url = "https://gitea.daniel-siepmann.de/danielsiepmann/vim-${pname}.git";
+      url = "https://git.daniel-siepmann.de/danielsiepmann/vim-${pname}.git";
       rev = version;
       sha256 = "sha256-fCB+ikDmkfEP/W0pFYGrsZiH30vT0g3z6GZpRGk0Rhc=";
     };
