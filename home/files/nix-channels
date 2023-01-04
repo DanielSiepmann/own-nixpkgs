@@ -1,3 +1,3 @@
 https://nixos.org/channels/nixpkgs-unstable nixpkgs
-https://github.com/polykernel/home-manager/archive/refs/heads/pointercursor-xcursor-path-patch1.tar.gz home-manager
+https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
 https://github.com/fossar/nix-phps/archive/master.tar.gz phps
