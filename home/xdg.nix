@@ -95,25 +95,30 @@
   };
 
   desktopEntries = {
+    toggl = {
+      name = "Toggl Time Tracking";
+      type = "Application";
+      exec = "firefox --new-instance -P toggl --class=\"time-tracking\" https://track.toggl.com/timer";
+    };
+    mailhog-ui = {
+      name = "Mailhog";
+      type = "Application";
+      exec = "firefox --new-instance -P mailhog --class=\"mailhog\" https://mailhog.localhost";
+    };
     microsoft-teams = {
       name = "Microsoft Teams";
       type = "Application";
-      exec = "${pkgs.chromium}/bin/chromium --class=\"chat\" --new-window --user-agent=\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36\" --new-window --app=https://teams.microsoft.com/";
+      exec = "${pkgs.chromium}/bin/chromium --class=\"chat\" --new-window --app=https://teams.microsoft.com/ --user-agent=\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36\"";
+    };
+    slack = {
+      name = "Slack";
+      type = "Application";
+      exec = "${pkgs.chromium}/bin/chromium --class=\"chat\" --new-window --app=https://slack.com/";
     };
     phone = {
       name = "Phone (Sipgate)";
       type = "Application";
       exec = "${pkgs.chromium}/bin/chromium --class=\"phone\" --new-window --app=https://app.sipgate.com/w3/phone/phone";
-    };
-    toggl = {
-      name = "Toggl Time Tracking";
-      type = "Application";
-      exec = "firefox --class=\"time-tracking\" --new-instance -P toggl https://track.toggl.com/timer";
-    };
-    mailhog-ui = {
-      name = "Mailhog";
-      type = "Application";
-      exec = "firefox --class=\"mailhog\" --new-instance -P mailhog https://mailhog.localhost";
     };
   };
 
