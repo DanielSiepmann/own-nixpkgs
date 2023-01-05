@@ -94,6 +94,9 @@ in {
       t3Pull = "git pull --rebase origin main; git checkout main";
       t3Rollback = "git checkout main; git reset --hard origin/main";
       t3Clean = "t3Rollback && t3Pull";
+
+      # TYPO3 documentation specific commands
+      t3Doc = "mkdir -p Documentation-GENERATED-temp; docker run --rm --user=$(id -u):$(id -g) -v $(pwd):/PROJECT:ro -v $(pwd)/Documentation-GENERATED-temp:/RESULT t3docs/render-documentation:latest makehtml -c allow_unsafe 0";
     };
 
 }
