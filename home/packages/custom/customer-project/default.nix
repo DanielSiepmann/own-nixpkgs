@@ -1,17 +1,23 @@
 {
-  stdenv,
+  writeShellApplication,
   bash,
   gnused,
   mycli,
   tmux
 }:
 
-let
-  tmuxBin = "${tmux}/bin/tmux";
-  mycliBin = "${mycli}/bin/mycli";
-  sedBin = "${gnused}/bin/sed";
-  source = ''
-    #!${bash}/bin/bash
+writeShellApplication {
+  name = "custom-project";
+
+  runtimeInputs = [
+    bash
+    gnused
+    mycli
+    tmux
+  ];
+
+  text = ''
+    #!bash/bin/bash
 
     # This script will create a new tmux session (or attach existing)
 
@@ -19,35 +25,34 @@ let
     # TODO/NOTE: Does not yet start nix shells, something for future once I figured it out.
 
     # Initialize some variables
-    domain="$(echo $1 | ${sedBin} 's/\./-/g')"
+    domain="''${1/\./-/}"
     session="project-$domain"
     projectName="$(pwd)/$1"
+    projectFolder="$(dirname "$projectName")"
     projectRoot="$(pwd)/$1"
-    url="https://$domain.$(basename $(pwd) | ${sedBin} 's/\-//g').localhost/"
+    url="https://$domain.$(basename "$(pwd)" | sed 's/\-//g').localhost/"
     editorPath="$projectRoot"
 
     # Only create session if not already exists
-    ${tmuxBin} has-session -t "$session"
-    if [ $? != 0 ]
-    then
+    if ! tmux has-session -t "$session"; then
         windowId=0
-        databaseName=$(basename $projectName)
-        databaseName="$(basename $(dirname $projectName))_"$databaseName
+        databaseName=$(basename "$projectName")
+        databaseName="$(basename "$projectFolder")_$databaseName"
         databaseName=''${databaseName//-/}
 
         # Support legacy variant with underscrore in db name
         if ! mysql -u admin "$databaseName" -e exit > /dev/null 2>&1 ; then
-            databaseName=$(basename $projectName)
+            databaseName=$(basename "$projectName")
             # Replace - with _ for project name
             databaseName=''${databaseName//-/_}
-            databaseName="$(basename $(dirname $projectName))_"$databaseName
+            databaseName="$(basename "$projectFolder")_$databaseName"
             # Replace - with nothing for customer name, which was added right above
             databaseName=''${databaseName//-/}
         fi
 
         # Support legacy variant without customer prefix for now
         if ! mysql -u admin "$databaseName" -e exit > /dev/null 2>&1 ; then
-            databaseName=$(basename $projectName)
+            databaseName=$(basename "$projectName")
             databaseName=''${databaseName//-/_}
         fi
 
@@ -59,54 +64,54 @@ let
         fi
 
         # Open Editor
-        ${tmuxBin} new-session -s "$session" -n editor -d
-        ${tmuxBin} send-keys "export TYPO3_BASE=$url TYPO3_COMPOSER_AUTOLOAD=1  SOLR_HOST=localhost SOLR_PORT=8983 SOLR_SCHEME=http SOLR_CORE=core_de" C-m
-        ${tmuxBin} send-keys "export typo3DatabaseName=testing typo3DatabaseHost=localhost typo3DatabaseUsername=testing typo3DatabasePassword=testing" C-m
-        ${tmuxBin} send-keys " renice -n 5 \$\$" C-m
-        ${tmuxBin} send-keys " cd $editorPath" C-m
-        ${tmuxBin} send-keys C-l
-        ${tmuxBin} send-keys " nvim" C-m
-        let "windowId+=1"
+        tmux new-session -s "$session" -n editor -d
+        tmux send-keys "export TYPO3_BASE=$url TYPO3_COMPOSER_AUTOLOAD=1  SOLR_HOST=localhost SOLR_PORT=8983 SOLR_SCHEME=http SOLR_CORE=core_de" C-m
+        tmux send-keys "export typo3DatabaseName=testing typo3DatabaseHost=localhost typo3DatabaseUsername=testing typo3DatabasePassword=testing" C-m
+        tmux send-keys " renice -n 5 \$\$" C-m
+        tmux send-keys " cd $editorPath" C-m
+        tmux send-keys C-l
+        tmux send-keys " nvim" C-m
+        (( "windowId+=1" ))
 
         # Open Shell
-        ${tmuxBin} new-window -n project -t "$session"
-        ${tmuxBin} send-keys -t "$session:$windowId" "cd $editorPath" C-m
-        ${tmuxBin} send-keys " renice -n 5 \$\$" C-m
-        ${tmuxBin} send-keys "export TYPO3_BASE=$url TYPO3_COMPOSER_AUTOLOAD=1 SOLR_HOST=localhost SOLR_PORT=8983 SOLR_SCHEME=http SOLR_CORE=core_de" C-m
-        ${tmuxBin} send-keys "export typo3DatabaseName=testing typo3DatabaseHost=localhost typo3DatabaseUsername=testing typo3DatabasePassword=testing" C-m
-        ${tmuxBin} send-keys C-l
+        tmux new-window -n project -t "$session"
+        tmux send-keys -t "$session:$windowId" "cd $editorPath" C-m
+        tmux send-keys " renice -n 5 \$\$" C-m
+        tmux send-keys "export TYPO3_BASE=$url TYPO3_COMPOSER_AUTOLOAD=1 SOLR_HOST=localhost SOLR_PORT=8983 SOLR_SCHEME=http SOLR_CORE=core_de" C-m
+        tmux send-keys "export typo3DatabaseName=testing typo3DatabaseHost=localhost typo3DatabaseUsername=testing typo3DatabasePassword=testing" C-m
+        tmux send-keys C-l
         if [ "$databaseName" != "" ]; then
-            ${tmuxBin} send-keys "export TYPO3_DATABASE=$databaseName" C-m
-            ${tmuxBin} send-keys C-l
+            tmux send-keys "export TYPO3_DATABASE=$databaseName" C-m
+            tmux send-keys C-l
         else
-            ${tmuxBin} send-keys "export TYPO3_DATABASE="
+            tmux send-keys "export TYPO3_DATABASE="
         fi
-        let "windowId+=1"
-        ${tmuxBin} select-pane -t 0
+        (( "windowId+=1" ))
+        tmux select-pane -t 0
 
         # Connect to database
-        ${tmuxBin} new-window -n database -t "$session"
-        ${tmuxBin} send-keys -t "$session:$windowId" "cd $editorPath" C-m
-        ${tmuxBin} send-keys " renice -n 5 \$\$" C-m
+        tmux new-window -n database -t "$session"
+        tmux send-keys -t "$session:$windowId" "cd $editorPath" C-m
+        tmux send-keys " renice -n 5 \$\$" C-m
 
         if [ "$databaseName" != "" ]; then
-            ${tmuxBin} send-keys "${mycliBin} -u admin -D $databaseName" C-m
+            tmux send-keys "mycli -u admin -D $databaseName" C-m
         else
-            ${tmuxBin} send-keys "${mycliBin} -u admin -D "
+            tmux send-keys "mycli -u admin -D "
         fi
-        ${tmuxBin} send-keys C-l
+        tmux send-keys C-l
 
-        ${tmuxBin} select-pane -t 0
-        let "windowId+=1"
+        tmux select-pane -t 0
+        (( "windowId+=1" ))
 
         # Open export folder
         # This step is specific to one customer
         if [ -d "$projectRoot/project/typo3export/files/export-edit/" ]; then
-            ${tmuxBin} new-window -n export -t "$session"
-            ${tmuxBin} send-keys -t "$session:$windowId" "cd $projectRoot/project/typo3export/files/export-edit/" C-m
-            ${tmuxBin} send-keys C-l
+            tmux new-window -n export -t "$session"
+            tmux send-keys -t "$session:$windowId" "cd $projectRoot/project/typo3export/files/export-edit/" C-m
+            tmux send-keys C-l
 
-            let "windowId+=1"
+            (( "windowId+=1" ))
         fi
 
         # TODO: Build dynamically, check each folder for docker-compose.yml and execute?!
@@ -116,80 +121,67 @@ let
         if [ -d "$projectRoot/solr/" ]; then
             solrPath="$projectRoot/solr/"
 
-            ${tmuxBin} new-window -n docker -t "$session"
-            ${tmuxBin} send-keys -t "$session:$windowId" "cd $solrPath" C-m
-            ${tmuxBin} send-keys C-l
+            tmux new-window -n docker -t "$session"
+            tmux send-keys -t "$session:$windowId" "cd $solrPath" C-m
+            tmux send-keys C-l
             # Missing C-m at end, because we don't want to submit.
             # We often don't need solr running to do our job.
-            ${tmuxBin} send-keys -t "$session:$windowId" "docker-compose run --rm --service-ports solr"
+            tmux send-keys -t "$session:$windowId" "docker-compose run --rm --service-ports solr"
 
-            let "windowId+=1"
+            (( "windowId+=1" ))
         fi
         # Start oracle proxy docker container
         if [ -d "$projectRoot/oraproxy/" ]; then
             oraproxyPath="$projectRoot/oraproxy/"
 
-            ${tmuxBin} new-window -n docker -t "$session"
-            ${tmuxBin} send-keys -t "$session:$windowId" "cd $oraproxyPath" C-m
-            ${tmuxBin} send-keys C-l
+            tmux new-window -n docker -t "$session"
+            tmux send-keys -t "$session:$windowId" "cd $oraproxyPath" C-m
+            tmux send-keys C-l
             # Missing C-m at end, because we don't want to submit.
             # We often don't need oraproxy running to do our job.
-            ${tmuxBin} send-keys -t "$session:$windowId" "docker-compose run --rm --service-ports oraproxy"
+            tmux send-keys -t "$session:$windowId" "docker-compose run --rm --service-ports oraproxy"
 
-            let "windowId+=1"
+             (( "windowId+=1" ))
         fi
         # Start elastic container
         if [ -d "$projectRoot/elastic/" ]; then
             elasticPath="$projectRoot/elastic/"
 
-            ${tmuxBin} new-window -n docker -t "$session"
-            ${tmuxBin} send-keys -t "$session:$windowId" "cd $elasticPath" C-m
-            ${tmuxBin} send-keys C-l
+            tmux new-window -n docker -t "$session"
+            tmux send-keys -t "$session:$windowId" "cd $elasticPath" C-m
+            tmux send-keys C-l
             # Missing C-m at end, because we don't want to submit.
             # We often don't need elastic running to do our job.
-            ${tmuxBin} send-keys -t "$session:$windowId" "docker-compose run --rm --service-ports elastic"
+            tmux send-keys -t "$session:$windowId" "docker-compose run --rm --service-ports elastic"
 
-            let "windowId+=1"
+            (( "windowId+=1" ))
         fi
         # Start mysql docker container
         if [ -d "$projectRoot/mysql/" ]; then
             mysqlPath="$projectRoot/mysql/"
-            ${tmuxBin} split-window
-            ${tmuxBin} send-keys "cd $mysqlPath" C-m
-            ${tmuxBin} send-keys C-l
-            ${tmuxBin} send-keys "docker-compose run --rm mysql" C-m
+            tmux split-window
+            tmux send-keys "cd $mysqlPath" C-m
+            tmux send-keys C-l
+            tmux send-keys "docker-compose run --rm mysql" C-m
         fi
         # Start mongodb container
         if [ -d "$projectRoot/mongodb/" ]; then
             mongodbPath="$projectRoot/mongodb/"
 
-            ${tmuxBin} new-window -n docker -t "$session"
-            ${tmuxBin} send-keys -t "$session:$windowId" "cd $mongodbPath" C-m
-            ${tmuxBin} send-keys C-l
+            tmux new-window -n docker -t "$session"
+            tmux send-keys -t "$session:$windowId" "cd $mongodbPath" C-m
+            tmux send-keys C-l
             # Missing C-m at end, because we don't want to submit.
             # We often don't need mongodb running to do our job.
-            ${tmuxBin} send-keys -t "$session:$windowId" "docker-compose run --rm --service-ports mongodb"
+            tmux send-keys -t "$session:$windowId" "docker-compose run --rm --service-ports mongodb"
 
-            let "windowId+=1"
+            (( "windowId+=1" ))
         fi
 
         # Activate shell
-        ${tmuxBin} select-window -t 1
+        tmux select-window -t 1
     fi
     # Attach to existing or created session
-    ${tmuxBin} attach -t "$session"
-  '';
-in
-stdenv.mkDerivation {
-  name = "custom-customer-project";
-
-  src = source;
-
-  dontUnpack = true;
-
-  installPhase = ''
-    mkdir -p "$out/bin"
-    printf "%s" "$src" > "$out/bin/customerProject"
-    chmod ug+x $out/bin/customerProject
+    tmux attach -t "$session"
   '';
 }
