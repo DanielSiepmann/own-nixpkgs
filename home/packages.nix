@@ -27,7 +27,6 @@ with pkgs; [
   tree
   (callPackage ./packages/rst2pdf { })
   (callPackage ./packages/sitediff { })
-  numlockx
 
   borgbackup
   keepassxc

@@ -180,10 +180,6 @@ in {
     startup = [
       # Start programs / applets
       {
-        command = "numlockx off";
-        notification = false;
-      }
-      {
         command = "nm-applet";
         notification = false;
       }
