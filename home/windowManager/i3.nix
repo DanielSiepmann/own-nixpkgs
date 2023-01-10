@@ -177,14 +177,6 @@ in {
       ];
     };
 
-    startup = [
-      # Start programs / applets
-      {
-        command = "nm-applet";
-        notification = false;
-      }
-    ];
-
     keybindings = {
       # kill focused window
       "${modifier}+Shift+q" = "kill";
