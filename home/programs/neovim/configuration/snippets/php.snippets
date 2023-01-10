@@ -9,6 +9,38 @@ snippet additionalconf
 snippet xdebug
 	\xdebug_break();
 
+snippet services.php
+	<?php
+	
+	declare(strict_types=1);
+	
+	namespace DanielSiepmann`expand('%:h:s?.*ext/??:s?Classes/??:s?local_packages/??:s?localPackages/??:s?packages/??:s?.*_?\u&?:gs?_.?\U&?:gs?_??:gs?/?\\\?:s??\\\?')`;
+	
+	use Symfony\Component\DependencyInjection\ContainerBuilder;
+	use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+	
+	return static function (ContainerConfigurator $containerConfigurator, ContainerBuilder $container) {
+		${0}
+	};
+
+snippet compilerpass
+	$container->registerForAutoconfiguration(Translator::class)->addTag('e2_core.environmentspecific.translator');
+	$container->addCompilerPass(new class implements CompilerPassInterface {
+		public function process(ContainerBuilder $container): void
+		{
+			$registry = $container->findDefinition(Registry::class);
+			$serviceNames = array_keys($container->findTaggedServiceIds('e2_core.environmentspecific.translator'));
+			foreach ($serviceNames as $serviceName) {
+				$registry->addMethodCall(
+					'addEntry',
+					[
+						$container->findDefinition($serviceName),
+					]
+				);
+			}
+		}
+	});
+
 snippet t3sqlde
 	\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Database\ConnectionPool::class)
 		->getConnectionByName('Default')
