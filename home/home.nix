@@ -43,6 +43,10 @@ in {
       gtk.enable = true;
     };
 
+    sessionPath = [
+      "$HOME/.local/bin"
+    ];
+
     sessionVariables = {
       TERMINAL = "st";
       EDITOR = "nvim";
