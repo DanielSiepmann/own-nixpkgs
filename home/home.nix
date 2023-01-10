@@ -103,4 +103,5 @@ in {
       t3Doc = "mkdir -p Documentation-GENERATED-temp; docker run --rm --user=$(id -u):$(id -g) -v $(pwd):/PROJECT:ro -v $(pwd)/Documentation-GENERATED-temp:/RESULT t3docs/render-documentation:latest makehtml -c allow_unsafe 0";
     };
 
+    enableNixpkgsReleaseCheck = true;
 }
