@@ -18,43 +18,22 @@ writeShellApplication {
 
   text = ''
     #!bash/bin/bash
-
     # This script will create a new tmux session (or attach existing)
-
-    # TODO/NOTE: mysql is still coming from Ubuntu system, same goes for docker-compose
     # TODO/NOTE: Does not yet start nix shells, something for future once I figured it out.
 
-    # Initialize some variables
-    domain="''${1/\./-/}"
-    session="project-$domain"
-    projectName="$(pwd)/$1"
-    projectFolder="$(dirname "$projectName")"
-    projectRoot="$(pwd)/$1"
-    url="https://$domain.$(basename "$(pwd)" | sed 's/\-//g').localhost/"
-    editorPath="$projectRoot"
-
+    session="project-''${1/\./-/}"
     # Only create session if not already exists
     if ! tmux has-session -t "$session"; then
+
         windowId=0
-        databaseName=$(basename "$projectName")
-        databaseName="$(basename "$projectFolder")_$databaseName"
+
+        projectName="$1"
+        customerName="$(pwd | cut -d'/' -f 7)"
+        projectRoot="$(pwd)/$projectName"
+        editorPath="$projectRoot"
+        databaseName="''${customerName}_''${projectName}"
         databaseName=''${databaseName//-/}
-
-        # Support legacy variant with underscrore in db name
-        if ! mysql -u admin "$databaseName" -e exit > /dev/null 2>&1 ; then
-            databaseName=$(basename "$projectName")
-            # Replace - with _ for project name
-            databaseName=''${databaseName//-/_}
-            databaseName="$(basename "$projectFolder")_$databaseName"
-            # Replace - with nothing for customer name, which was added right above
-            databaseName=''${databaseName//-/}
-        fi
-
-        # Support legacy variant without customer prefix for now
-        if ! mysql -u admin "$databaseName" -e exit > /dev/null 2>&1 ; then
-            databaseName=$(basename "$projectName")
-            databaseName=''${databaseName//-/_}
-        fi
+        url="https://$projectName.$customerName.localhost/"
 
         editorPath="$projectRoot"
         if [ -d "$projectRoot/project" ]; then
@@ -93,22 +72,20 @@ writeShellApplication {
         tmux new-window -n database -t "$session"
         tmux send-keys -t "$session:$windowId" "cd $editorPath" C-m
         tmux send-keys " renice -n 5 \$\$" C-m
-
         if [ "$databaseName" != "" ]; then
             tmux send-keys "mycli -u admin -D $databaseName" C-m
         else
             tmux send-keys "mycli -u admin -D "
         fi
         tmux send-keys C-l
-
         tmux select-pane -t 0
         (( "windowId+=1" ))
 
         # Open export folder
         # This step is specific to one customer
-        if [ -d "$projectRoot/project/typo3export/files/export-edit/" ]; then
+        if [ -d "$projectRoot/typo3export/files/export-edit/" ]; then
             tmux new-window -n export -t "$session"
-            tmux send-keys -t "$session:$windowId" "cd $projectRoot/project/typo3export/files/export-edit/" C-m
+            tmux send-keys -t "$session:$windowId" "cd $projectRoot/typo3export/files/export-edit/" C-m
             tmux send-keys C-l
 
             (( "windowId+=1" ))
@@ -155,14 +132,6 @@ writeShellApplication {
             tmux send-keys -t "$session:$windowId" "docker-compose run --rm --service-ports elastic"
 
             (( "windowId+=1" ))
-        fi
-        # Start mysql docker container
-        if [ -d "$projectRoot/mysql/" ]; then
-            mysqlPath="$projectRoot/mysql/"
-            tmux split-window
-            tmux send-keys "cd $mysqlPath" C-m
-            tmux send-keys C-l
-            tmux send-keys "docker-compose run --rm mysql" C-m
         fi
         # Start mongodb container
         if [ -d "$projectRoot/mongodb/" ]; then
