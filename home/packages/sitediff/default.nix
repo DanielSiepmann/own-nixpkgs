@@ -1,22 +1,23 @@
 {
   lib,
-  fetchFromGitHub,
   bundlerApp,
-  bundlerUpdateScript,
   makeWrapper,
-  ruby
+  ruby_3_1
 }:
+
+# See: https://nixos.wiki/wiki/Packaging/Ruby
+# I've placed a shell.nix so nix-shell within the folder and project-update should update.
 
 bundlerApp rec {
   pname = "sitediff";
   exes = [ "sitediff" ];
 
-  inherit ruby;
+  ruby = ruby_3_1;
   gemdir = ./.;
 
   buildInputs = [ makeWrapper ];
 
-  passthru.updateScript = bundlerUpdateScript "sitediff";
+  passthru.updateScript = ./update.sh;
 
   meta = with lib; {
     description = "SiteDiff makes it easy to see differences between two versions of a website.";
@@ -26,4 +27,3 @@ bundlerApp rec {
     platforms = platforms.unix;
   };
 }
-

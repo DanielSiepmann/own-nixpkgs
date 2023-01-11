@@ -4,17 +4,17 @@ GEM
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
     diffy (3.3.0)
-    ethon (0.15.0)
+    ethon (0.16.0)
       ffi (>= 1.15.0)
     ffi (1.15.5)
-    mini_portile2 (2.8.0)
+    mini_portile2 (2.8.1)
     minitar (0.9)
-    nokogiri (1.13.8)
+    nokogiri (1.13.10)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
-    pkg-config (1.4.9)
+    pkg-config (1.5.1)
     public_suffix (3.1.1)
-    racc (1.6.0)
+    racc (1.6.2)
     rainbow (3.0.0)
     sitediff (1.1.1)
       addressable (~> 2.5.2)
@@ -36,4 +36,4 @@ DEPENDENCIES
   sitediff
 
 BUNDLED WITH
-   2.1.4
+   2.4.3
