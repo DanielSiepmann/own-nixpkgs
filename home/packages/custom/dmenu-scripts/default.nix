@@ -104,6 +104,16 @@ let
     text = builtins.readFile ./xdebug.sh;
   };
 
+  dmenu-custom-scripts-open-issue = writeShellApplication {
+    name = "dmenu-custom-scripts-open-issue";
+
+    runtimeInputs = [
+      dmenu
+    ];
+
+    text = builtins.readFile ./customer-issue.sh;
+  };
+
 in
 writeShellApplication {
   name = "custom-dmenu-selection";
@@ -113,6 +123,7 @@ writeShellApplication {
     scripts=()
     scripts+=("${dmenu-custom-scripts-calc.name}")
     scripts+=("${dmenu-custom-scripts-notifications.name}")
+    scripts+=("${dmenu-custom-scripts-open-issue.name}")
     scripts+=("${dmenu-custom-scripts-system.name}")
     scripts+=("${dmenu-custom-scripts-php-version.name}")
     scripts+=("${dmenu-custom-scripts-docs-php.name}")
@@ -130,6 +141,9 @@ writeShellApplication {
       ;;
     "${dmenu-custom-scripts-notifications.name}")
       bash "${dmenu-custom-scripts-notifications}/bin/${dmenu-custom-scripts-notifications.name}" || exit 0
+      ;;
+    "${dmenu-custom-scripts-open-issue.name}")
+      bash "${dmenu-custom-scripts-open-issue}/bin/${dmenu-custom-scripts-open-issue.name}" || exit 0
       ;;
     "${dmenu-custom-scripts-system.name}")
       bash "${dmenu-custom-scripts-system}/bin/${dmenu-custom-scripts-system.name}" || exit 0
