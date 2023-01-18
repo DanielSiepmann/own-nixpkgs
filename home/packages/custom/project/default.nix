@@ -24,7 +24,6 @@ writeShellApplication {
     session="project-''${1/\./-/}"
     # Only create session if not already exists
     if ! tmux has-session -t "$session"; then
-
         windowId=0
 
         projectName="$1"
@@ -46,6 +45,8 @@ writeShellApplication {
         tmux new-session -s "$session" -n editor -d
         tmux send-keys "export TYPO3_BASE=$url TYPO3_COMPOSER_AUTOLOAD=1  SOLR_HOST=localhost SOLR_PORT=8983 SOLR_SCHEME=http SOLR_CORE=core_de" C-m
         tmux send-keys "export typo3DatabaseName=testing typo3DatabaseHost=localhost typo3DatabaseUsername=testing typo3DatabasePassword=testing" C-m
+        # TODO: Find a better way to determine instance path for acceptance tests
+        tmux send-keys "export INSTANCE_PATH=\"$editorPath/typo3temp/var/tests/acceptance\"" C-m
         tmux send-keys " renice -n 5 \$\$" C-m
         tmux send-keys " cd $editorPath" C-m
         tmux send-keys C-l

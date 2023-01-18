@@ -62,7 +62,7 @@ with pkgs; [
   # Use in conjuncion with https://github.com/autozimu/LanguageClient-neovim
   # rnix-lsp
 
-  (callPackage ./packages/custom/customer-project { })
+  (callPackage ./packages/custom/project { })
 
   # Communication
   signal-desktop
