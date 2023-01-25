@@ -70,7 +70,8 @@ with pkgs; [
 
   # Media
   vlc
-  handbrake
+  # Disabled due to https://github.com/NixOS/nixpkgs/issues/211297
+  # handbrake
   yt-dlp
   spotdl
   # Does not work for some reason, need installed via apt
