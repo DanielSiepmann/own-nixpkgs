@@ -4,6 +4,8 @@ let
   modifier = config.xsession.windowManager.i3.config.modifier;
 
   soundSwitcherForHikari2 = if ownLib.onHikari { } then "" else "-D pulse";
+  displayBrightnessDevice = if ownLib.onHikari { } then "mba6x_backlight" else "";
+  keyboardBrightnessDevice = if ownLib.onHikari { } then "smc::kbd_backlight" else "";
 in {
   enable = true;
   config = {
@@ -303,15 +305,15 @@ in {
       # ~ > pacmd move-sink-input 3 8
 
       # Function Key Bindings (💡)
-      "XF86MonBrightnessUp" = "exec xbacklight -inc 10 && ${pkgs.libnotify}/bin/notify-send \"Changed Display Brightness\"";
-      "XF86MonBrightnessDown" = "exec xbacklight -dec 10 && ${pkgs.libnotify}/bin/notify-send \"Changed Display Brightness\"";
-      "Shift+XF86MonBrightnessUp" = "exec xbacklight -inc 1 && ${pkgs.libnotify}/bin/notify-send \"Changed Display Brightness\"";
-      "Shift+XF86MonBrightnessDown" = "exec xbacklight -dec 1 && ${pkgs.libnotify}/bin/notify-send \"Changed Display Brightness\"";
+      "XF86MonBrightnessUp" = "exec ${pkgs.brightnessctl}/bin/brightnessctl --device ${displayBrightnessDevice} s +10";
+      "XF86MonBrightnessDown" = "exec ${pkgs.brightnessctl}/bin/brightnessctl --device ${displayBrightnessDevice} s 10-";
+      "SHIFT+XF86MonBrightnessUp" = "exec ${pkgs.brightnessctl}/bin/brightnessctl --device ${displayBrightnessDevice} s +1";
+      "SHIFT+XF86MonBrightnessDown" = "exec ${pkgs.brightnessctl}/bin/brightnessctl --device ${displayBrightnessDevice} s 1-";
 
-      "XF86KbdBrightnessUp" = "exec ${pkgs.brightnessctl}/bin/brightnessctl --device smc::kbd_backlight s +25";
-      "XF86KbdBrightnessDown" = "exec ${pkgs.brightnessctl}/bin/brightnessctl --device smc::kbd_backlight s 25-";
-      "SHIFT+XF86KbdBrightnessUp" = "exec ${pkgs.brightnessctl}/bin/brightnessctl --device smc::kbd_backlight s +10";
-      "SHIFT+XF86KbdBrightnessDown" = "exec ${pkgs.brightnessctl}/bin/brightnessctl --device smc::kbd_backlight s 10-";
+      "XF86KbdBrightnessUp" = "exec ${pkgs.brightnessctl}/bin/brightnessctl --device ${keyboardBrightnessDevice} s +25";
+      "XF86KbdBrightnessDown" = "exec ${pkgs.brightnessctl}/bin/brightnessctl --device ${keyboardBrightnessDevice} s 25-";
+      "SHIFT+XF86KbdBrightnessUp" = "exec ${pkgs.brightnessctl}/bin/brightnessctl --device ${keyboardBrightnessDevice} s +10";
+      "SHIFT+XF86KbdBrightnessDown" = "exec ${pkgs.brightnessctl}/bin/brightnessctl --device ${keyboardBrightnessDevice} s 10-";
 
       # Dunst Key Bindings
       # See: man dunstctl.1
