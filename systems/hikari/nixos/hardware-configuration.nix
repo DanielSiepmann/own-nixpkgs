@@ -4,8 +4,9 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+  imports = [
+	<nixos-hardware/apple/macbook-air/6>
+	(modulesPath + "/installer/scan/not-detected.nix")
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
@@ -14,9 +15,11 @@
   boot.extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/e03f6328-d9da-487a-bd81-5ab198d1fc48";
+    { device = "/dev/disk/by-uuid/bb322f78-2e67-41dc-9385-8a5fe9abb103";
       fsType = "ext4";
     };
+
+  boot.initrd.luks.devices."luks-4bbd7327-2cd7-4aed-90ea-32030abdc894".device = "/dev/disk/by-uuid/4bbd7327-2cd7-4aed-90ea-32030abdc894";
 
   fileSystems."/boot/efi" =
     { device = "/dev/disk/by-uuid/67E3-17ED";

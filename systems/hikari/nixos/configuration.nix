@@ -7,7 +7,6 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      <nixos-hardware/apple/macbook-air/6>
       ./hardware-configuration.nix
 
       ./cachix.nix
@@ -17,6 +16,11 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
+
+  # Setup keyfile
+  boot.initrd.secrets = {
+    "/crypto_keyfile.bin" = null;
+  };
 
   networking.hostName = "hikari"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -40,8 +44,14 @@
 
   services.dnsmasq = {
     enable = true;
-    servers = config.networking.nameservers;
+    settings = {
+      server = config.networking.nameservers;
+    };
   };
+
+  # Enable network manager applet
+  programs.nm-applet.enable = true;
+  programs.dconf.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
@@ -63,11 +73,10 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  services.xserver.exportConfiguration = true;
 
-  # Enable the XFCE Desktop Environment.
+  # Enable the LXQT Desktop Environment.
   services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.desktopManager.xfce.enable = true;
+  services.xserver.desktopManager.lxqt.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
@@ -110,14 +119,19 @@
     ];
   };
 
+  # Enable automatic login for the user.
+  services.xserver.displayManager.autoLogin.enable = true;
+  services.xserver.displayManager.autoLogin.user = "daniels";
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    git
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    git
+  #  wget
     xorg.xbacklight
   ];
 
