@@ -308,6 +308,11 @@ in {
       "Shift+XF86MonBrightnessUp" = "exec xbacklight -inc 1 && ${pkgs.libnotify}/bin/notify-send \"Changed Display Brightness\"";
       "Shift+XF86MonBrightnessDown" = "exec xbacklight -dec 1 && ${pkgs.libnotify}/bin/notify-send \"Changed Display Brightness\"";
 
+      "XF86KbdBrightnessUp" = "exec ${pkgs.brightnessctl}/bin/brightnessctl --device smc::kbd_backlight s +25";
+      "XF86KbdBrightnessDown" = "exec ${pkgs.brightnessctl}/bin/brightnessctl --device smc::kbd_backlight s 25-";
+      "SHIFT+XF86KbdBrightnessUp" = "exec ${pkgs.brightnessctl}/bin/brightnessctl --device smc::kbd_backlight s +10";
+      "SHIFT+XF86KbdBrightnessDown" = "exec ${pkgs.brightnessctl}/bin/brightnessctl --device smc::kbd_backlight s 10-";
+
       # Dunst Key Bindings
       # See: man dunstctl.1
       "Control+space" = "exec --no-startup-id dunstctl close-all";
