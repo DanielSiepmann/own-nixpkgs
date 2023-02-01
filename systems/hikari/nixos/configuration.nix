@@ -5,26 +5,32 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
 
-      ./cachix.nix
-    ];
+    ./cachix.nix
+  ];
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
+  boot = {
+    # Bootloader.
+    loader = {
+      systemd-boot.enable = true;
+      efi = {
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot/efi";
+      };
+    };
 
-  # Setup keyfile
-  boot.initrd.secrets = {
-    "/crypto_keyfile.bin" = null;
+    # Setup keyfile
+    initrd.secrets = {
+      "/crypto_keyfile.bin" = null;
+    };
   };
 
-  networking.hostName = "hikari"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking = {
+    hostName = "hikari"; # Define your hostname.
+
     nameservers = [
       # DNS.WATCH
       "84.200.69.80"
@@ -33,14 +39,10 @@
       "209.244.0.3"
       "209.244.0.4"
     ];
+
+    # Enable networking
+    networkmanager.enable = true;
   };
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
-  networking.networkmanager.enable = true;
 
   services.dnsmasq = {
     enable = true;
@@ -49,39 +51,51 @@
     };
   };
 
-  # Enable network manager applet
-  programs.nm-applet.enable = true;
-  programs.dconf.enable = true;
+  programs = {
+    # Enable network manager applet
+    nm-applet.enable = true;
+    dconf.enable = true;
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.utf8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "de_DE.utf8";
-    LC_IDENTIFICATION = "de_DE.utf8";
-    LC_MEASUREMENT = "de_DE.utf8";
-    LC_MONETARY = "de_DE.utf8";
-    LC_NAME = "de_DE.utf8";
-    LC_NUMERIC = "de_DE.utf8";
-    LC_PAPER = "de_DE.utf8";
-    LC_TELEPHONE = "de_DE.utf8";
-    LC_TIME = "de_DE.utf8";
+  i18n = {
+    defaultLocale = "en_US.utf8";
+    extraLocaleSettings = {
+      LC_ADDRESS = "de_DE.utf8";
+      LC_IDENTIFICATION = "de_DE.utf8";
+      LC_MEASUREMENT = "de_DE.utf8";
+      LC_MONETARY = "de_DE.utf8";
+      LC_NAME = "de_DE.utf8";
+      LC_NUMERIC = "de_DE.utf8";
+      LC_PAPER = "de_DE.utf8";
+      LC_TELEPHONE = "de_DE.utf8";
+      LC_TIME = "de_DE.utf8";
+    };
   };
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the LXQT Desktop Environment.
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.desktopManager.lxqt.enable = true;
-
-  # Configure keymap in X11
   services.xserver = {
+    enable = true;
+
+    # Configure keymap in X11
     layout = "us";
     xkbVariant = "";
+
+    # Enable the LXQT Desktop Environment.
+    desktopManager.lxqt.enable = true;
+
+    displayManager = {
+      lightdm.enable = true;
+
+      # Enable automatic login for the user.
+      autoLogin = {
+        enable = true;
+        user = "daniels";
+      };
+    };
   };
 
   # Enable CUPS to print documents.
@@ -96,16 +110,7 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
   };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.daniels = {
@@ -119,44 +124,20 @@
     ];
   };
 
-  # Enable automatic login for the user.
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "daniels";
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    vim
     git
-  #  wget
     xorg.xbacklight
   ];
 
   environment.variables = {
     EDITOR = "vim";
   };
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   services.udev.extraRules = ''
     ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="intel_backlight", MODE="0666", RUN+="${pkgs.coreutils}/bin/chmod a+w /sys/class/backlight/%k/brightness"
@@ -170,5 +151,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.05"; # Did you read the comment?
-
 }
