@@ -10,6 +10,8 @@
     ./hardware-configuration.nix
 
     ./cachix.nix
+
+    ./web-development.nix
   ];
 
   boot = {
