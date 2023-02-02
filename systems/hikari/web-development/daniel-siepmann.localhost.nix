@@ -1,9 +1,11 @@
 { pkgs, lib, config, ... }:
 
+# TODO: Move to template / function and call with variables
 let
   domain = "daniel-siepmann.localhost";
   documentRoot = "/var/projects/own/daniel-siepmann.de/project/public/";
   databaseName = "own_danielsiepmann";
+  phpPackage = pkgs.php82;
 in {
   services = {
     httpd.virtualHosts.${domain} = {
@@ -71,11 +73,11 @@ in {
     };
     phpfpm.pools.${domain} = {
       inherit (config.services.httpd) user group;
-      phpPackage = pkgs.php82;
+      inherit phpPackage;
       settings = {
         "listen.owner" = config.services.httpd.user;
         "listen.group" = config.services.httpd.group;
-        "pm" = "static";
+        "pm" = "ondemand";
         "pm.max_children" = 15;
         "php_admin_value[max_execution_time]" = 240;
         "php_admin_value[max_input_vars]" = 1500;
