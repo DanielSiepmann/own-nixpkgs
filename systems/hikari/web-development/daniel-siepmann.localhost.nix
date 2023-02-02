@@ -3,6 +3,7 @@
 let
   domain = "daniel-siepmann.localhost";
   documentRoot = "/var/projects/own/daniel-siepmann.de/project/public/";
+  databaseName = "own_danielsiepmann";
 in {
   services = {
     httpd.virtualHosts.${domain} = {
@@ -76,10 +77,15 @@ in {
         "listen.group" = config.services.httpd.group;
         "pm" = "static";
         "pm.max_children" = 15;
+        "php_admin_value[max_execution_time]" = 240;
+        "php_admin_value[max_input_vars]" = 1500;
       };
       phpEnv = {
+        TYPO3_ADDITIONAL_CONFIGURATION = "/var/projects/own/typo3-configuration/AdditionalConfiguration.inc.php";
+        TYPO3_DATABASE = databaseName;
         TYPO3_CONTEXT = "Development/dsiepmann";
       };
     };
+    mysql.ensureDatabases = [databaseName];
   };
 }
