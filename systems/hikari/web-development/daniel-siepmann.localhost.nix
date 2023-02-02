@@ -84,6 +84,7 @@ in {
         TYPO3_ADDITIONAL_CONFIGURATION = "/var/projects/own/typo3-configuration/AdditionalConfiguration.inc.php";
         TYPO3_DATABASE = databaseName;
         TYPO3_CONTEXT = "Development/dsiepmann";
+        IMAGEMAGICK_PATH = lib.makeBinPath [ pkgs.imagemagick ] + "/";
       };
     };
     mysql.ensureDatabases = [databaseName];

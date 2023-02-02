@@ -1,5 +1,7 @@
 { pkgs, lib, ... }:
 
+# TODO: Find way to place typo3-configuration at expected path.
+
 {
   imports = [
     ./web-development/daniel-siepmann.localhost.nix
