@@ -1,5 +1,7 @@
 { config, pkgs, ownLib }:
 
+# Use `xbindkeys --key` to find key name, see: https://wiki.archlinux.org/title/Xbindkeys
+
 let
   modifier = config.xsession.windowManager.i3.config.modifier;
 
