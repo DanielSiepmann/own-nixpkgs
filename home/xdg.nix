@@ -55,7 +55,7 @@
       };
 
       Security = {
-        ClearSearchTimeout = 1;
+        ClearSearchTimeout = 120;
         LockDatabaseIdle = true;
         LockDatabaseIdleSeconds = 120;
         Security_HideNotes = true;
