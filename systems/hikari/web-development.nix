@@ -4,6 +4,8 @@
 
 {
   imports = [
+    ./web-development/mailhog.localhost.nix
+
     ./web-development/daniel-siepmann.localhost.nix
   ];
 
