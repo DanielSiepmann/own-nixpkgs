@@ -80,6 +80,8 @@
     "composer/update-channel".text = "stable";
     "composer/auth.json".source = ./files/composer/auth.json;
 
+    "rclone/rclone.conf".source = ./files/rclone.conf;
+
     "nvim/syntax/php.vim".source = ./files/nvim/syntax/php.vim;
 
     "docker/config.json".source = ./files/docker/config.json;
