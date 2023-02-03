@@ -76,7 +76,7 @@ with pkgs; [
   spotdl
   # Does not work for some reason, need installed via apt
   # sound-juicer
-  # audacity
+  # tenacity
   ffmpeg
   python39Packages.mutagen
   feh
