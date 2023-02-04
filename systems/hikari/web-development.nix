@@ -1,6 +1,6 @@
-{ pkgs, lib, ... }:
+{ pkgs, config, lib, ... }:
 
-# TODO: Find way to place typo3-configuration at expected path.
+# TODO: Find way to define project base path "/var/projects/"
 
 {
   imports = [
@@ -71,4 +71,11 @@
       };
     };
   };
+
+  systemd.tmpfiles.rules = [
+    # Would be cool to improve this somehow.
+    # Current issues: The link is created once against nix store.
+    # Changes are not reflected until reboot?
+    "C /var/projects/own/typo3-configuration - - - - ${config.users.users.daniels.home}/.local/share/typo3-configuration"
+  ];
 }

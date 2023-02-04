@@ -2,4 +2,5 @@ home/programs/ssh-match-blocks.nix filter=git-crypt diff=git-crypt
 home/files/composer/auth.json filter=git-crypt diff=git-crypt
 home/files/docker/config.json filter=git-crypt diff=git-crypt
 home/files/rclone.conf filter=git-crypt diff=git-crypt
+home/files/typo3-configuration/client-specific/** filter=git-crypt diff=git-crypt
 home/packages/custom/dmenu-scripts/customer-issue.sh filter=git-crypt diff=git-crypt
