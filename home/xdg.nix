@@ -155,6 +155,9 @@
       "image/x-tga" = [ "feh.desktop" ];
       "image/x-xbitmap" = [ "feh.desktop" ];
 
+      # Audio
+      "audio/mpeg" = [ "vlc.desktop" ];
+
       # Video
       "video/mp4" = [ "vlc.desktop" ];
       "video/m4v" = [ "vlc.desktop" ];
