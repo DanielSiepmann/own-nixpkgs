@@ -120,9 +120,7 @@
     description = "Daniel Siepmann";
     extraGroups = [ "networkmanager" "wheel" "video" ];
     packages = with pkgs; [
-      firefox
       i3lock
-    #  thunderbird
     ];
   };
 
