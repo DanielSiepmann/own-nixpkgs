@@ -358,6 +358,7 @@ in {
           let g:ale_gitcommit_gitlint_executable = '${pkgs.gitlint}/bin/gitlint'
           let g:ale_nix_statix_check_executable = '${pkgs.statix}/bin/statix'
           let g:ale_languagetool_executable = '${pkgs.languagetool}/bin/languagetool-commandline'
+          let g:ale_rstcheck_executable = '${pkgs.rstcheck}/bin/rstcheck'
         '';
     }
 

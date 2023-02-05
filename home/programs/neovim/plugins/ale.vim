@@ -26,3 +26,5 @@ let g:ale_sign_warning = '!'
 let g:ale_php_phpcs_standard = 'PSR12'
 
 let g:ale_php_phpstan_executable = 'vendor/bin/phpstan'
+
+call ale#handlers#languagetool#DefineLinter('rst')
