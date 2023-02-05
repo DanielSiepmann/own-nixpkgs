@@ -4,6 +4,7 @@
   imports = [
     ./mkcert.nix
 
+    ./static-files.nix
     ./mailhog.localhost.nix
 
     ./daniel-siepmann.localhost.nix

@@ -20,6 +20,7 @@ with pkgs; [
   (callPackage ./packages/custom/backup { })
   (callPackage ./packages/custom/nextcloud-sync/from-local.nix { })
   (callPackage ./packages/custom/nextcloud-sync/from-remote.nix { })
+  (callPackage ./packages/custom/typo3-documentation-rendering { })
   (callPackage ./packages/custom/build-phpactor { })
   i3blocks
   st
@@ -52,6 +53,8 @@ with pkgs; [
   wget
   kcachegrind
   geckodriver
+  podman
+  podman-compose
 
   # In order to pull binaries from their.
   # E.g. phps: https://github.com/fossar/nix-phps#how-to-use
