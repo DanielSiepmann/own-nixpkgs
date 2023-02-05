@@ -3,7 +3,7 @@
 # TODO: Move to template / function and call with variables
 let
   domain = "daniel-siepmann.localhost";
-  documentRoot = "/var/projects/own/daniel-siepmann.de/project/public/";
+  documentRoot = "${config.custom.web-development.rootPath}/own/daniel-siepmann.de/project/public/";
   databaseName = "own_danielsiepmann";
   phpPackage = pkgs.php82;
 in {
@@ -11,8 +11,8 @@ in {
     httpd.virtualHosts.${domain} = {
 
       forceSSL = true;
-      sslServerCert = "/var/projects/own/mkcert/${domain}.pem";
-      sslServerKey = "/var/projects/own/mkcert/${domain}-key.pem";
+      sslServerCert = "${config.custom.web-development.certFolder}${domain}.pem";
+      sslServerKey = "${config.custom.web-development.certFolder}${domain}-key.pem";
 
       inherit documentRoot;
 

@@ -7,8 +7,8 @@ in {
     httpd.virtualHosts.${domain} = {
 
       forceSSL = true;
-      sslServerCert = "/var/projects/own/mkcert/${domain}.pem";
-      sslServerKey = "/var/projects/own/mkcert/${domain}-key.pem";
+      sslServerCert = "${config.custom.web-development.certFolder}${domain}.pem";
+      sslServerKey = "${config.custom.web-development.certFolder}${domain}-key.pem";
 
       extraConfig = ''
         RequestHeader unset Authorization

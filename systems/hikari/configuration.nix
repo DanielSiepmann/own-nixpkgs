@@ -11,7 +11,7 @@
 
     ./cachix.nix
 
-    ./web-development.nix
+    ./web-development
   ];
 
   boot = {

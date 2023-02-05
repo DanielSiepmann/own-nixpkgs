@@ -27,12 +27,24 @@ let
     '';
   };
 in {
-  # TODO: Run once before httpd service starts?
-  environment.systemPackages = [
-    custom-generate-certs
-  ];
+  options = {
+    custom.web-development = {
+      certFolder = lib.mkOption {
+        type = lib.types.path;
+        default = "${config.custom.web-development.rootPath}/own/mkcert/";
+      };
+    };
+  };
 
-  security.pki.certificateFiles = [
-    /var/projects/own/mkcert/rootCA.pem
-  ];
+  config = {
+    # TODO: Run once before httpd service starts?
+    environment.systemPackages = [
+      custom-generate-certs
+    ];
+
+    # NOTE: Disable until root certificate is generated, then add again
+    security.pki.certificates = [
+      (builtins.readFile "${config.custom.web-development.certFolder}rootCA.pem")
+    ];
+  };
 }
