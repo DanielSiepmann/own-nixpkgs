@@ -5,9 +5,11 @@ let
 in {
   services = {
     httpd.virtualHosts.${domain} = {
-      # TODO: Add SSL
-      # forceSSL = true;
-      # addSSL = true;
+
+      forceSSL = true;
+      sslServerCert = "/var/projects/own/mkcert/${domain}.pem";
+      sslServerKey = "/var/projects/own/mkcert/${domain}-key.pem";
+
       extraConfig = ''
         RequestHeader unset Authorization
         ProxyRequests Off
