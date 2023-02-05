@@ -121,6 +121,7 @@
     extraGroups = [ "networkmanager" "wheel" "video" ];
     packages = with pkgs; [
       i3lock
+      xsel
     ];
   };
 
