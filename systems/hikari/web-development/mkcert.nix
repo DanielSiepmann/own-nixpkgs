@@ -1,6 +1,14 @@
 { pkgs, lib, config, ... }:
 
 let
+  certFolder = "/var/projects/own/mkcert";
+
+  domains = builtins.concatStringsSep " " (
+    map (domain: "\"${domain}\"") (
+      builtins.attrNames config.services.httpd.virtualHosts
+    )
+  );
+
   custom-generate-certs = pkgs.writeShellApplication {
     name = "custom-generate-certs";
 
@@ -9,12 +17,13 @@ let
     ];
 
     text = ''
-      mkcert -install
-      mkdir -p /var/projects/own/mkcert/
-      pushd /var/projects/own/mkcert/
-      # TODO: Grep from nix config
-      mkcert daniel-siepmann.localhost
-      mkcert mailhog.localhost
+      mkdir -p ${certFolder}
+      pushd ${certFolder}
+      declare -a domains=(${domains})
+      for domain in "''${domains[@]}"
+      do
+        CAROOT="${certFolder}" mkcert "$domain"
+      done
     '';
   };
 in {
