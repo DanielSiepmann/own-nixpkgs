@@ -4,8 +4,8 @@ let
   domain = "mailhog.localhost";
 in {
   services = {
-    httpd.virtualHosts.${domain} = {
 
+    httpd.virtualHosts.${domain} = {
       forceSSL = true;
       sslServerCert = "${config.custom.web-development.certFolder}${domain}.pem";
       sslServerKey = "${config.custom.web-development.certFolder}${domain}-key.pem";
@@ -23,5 +23,6 @@ in {
         </LocationMatch>
       '';
     };
+
   };
 }

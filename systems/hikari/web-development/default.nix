@@ -2,21 +2,25 @@
 
 {
   imports = [
+
     ./mkcert.nix
 
     ./static-files.nix
     ./mailhog.localhost.nix
 
     ./daniel-siepmann.localhost.nix
+
   ];
 
   options = {
+
     custom.web-development = {
       rootPath = lib.mkOption {
         type = lib.types.path;
         default = "/var/projects";
       };
     };
+
   };
 
   config = {
@@ -90,5 +94,6 @@
       # Changes are not reflected until reboot?
       "C ${config.custom.web-development.rootPath}/own/typo3-configuration - - - - ${config.users.users.daniels.home}/.local/share/typo3-configuration"
     ];
+
   };
 }

@@ -8,6 +8,7 @@ let
   phpPackage = pkgs.php82;
 in {
   services = {
+
     httpd.virtualHosts.${domain} = {
 
       forceSSL = true;
@@ -74,6 +75,7 @@ in {
         </FilesMatch>
       '';
     };
+
     phpfpm.pools.${domain} = {
       inherit (config.services.httpd) user group;
       inherit phpPackage;
@@ -92,6 +94,8 @@ in {
         IMAGEMAGICK_PATH = lib.makeBinPath [ pkgs.imagemagick ] + "/";
       };
     };
+
     mysql.ensureDatabases = [databaseName];
+
   };
 }

@@ -37,6 +37,7 @@ in {
   };
 
   config = {
+
     # TODO: Run once before httpd service starts?
     environment.systemPackages = [
       custom-generate-certs
@@ -46,5 +47,6 @@ in {
     security.pki.certificates = [
       (builtins.readFile "${config.custom.web-development.certFolder}rootCA.pem")
     ];
+
   };
 }
