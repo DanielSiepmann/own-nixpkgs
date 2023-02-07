@@ -176,7 +176,7 @@
         "devtools.inspector.three-pane-first-run" = false;
         "devtools.layout.flex-item.opened" = false;
         "devtools.netmonitor.columnsData" = "[{\"name\":\"status\",\"minWidth\":30,\"width\":6.77},{\"name\":\"method\",\"minWidth\":30,\"width\":5.48},{\"name\":\"domain\",\"minWidth\":30,\"width\":16.79},{\"name\":\"file\",\"minWidth\":30,\"width\":19.65},{\"name\":\"cause\",\"minWidth\":30,\"width\":10.44},{\"name\":\"type\",\"minWidth\":30,\"width\":5.55},{\"name\":\"transferred\",\"minWidth\":30,\"width\":6.87},{\"name\":\"contentSize\",\"minWidth\":30,\"width\":10.66},{\"name\":\"waterfall\",\"minWidth\":150,\"width\":25},{\"name\":\"startTime\",\"minWidth\":30,\"width\":7.7},{\"name\":\"duration\",\"minWidth\":30,\"width\":6.31},{\"name\":\"protocol\",\"minWidth\":30,\"width\":6.98},{\"name\":\"scheme\",\"minWidth\":30,\"width\":7.56},{\"name\":\"initiator\",\"minWidth\":30,\"width\":7.39}]";
-        "devtools.netmonitor.filters" = "[\"images\"]";
+        "devtools.netmonitor.filters" = "[]";
         "devtools.netmonitor.msg.visibleColumns" = "[\"data\",\"time\"]";
         "devtools.netmonitor.panes-network-details-height" = 50;
         "devtools.netmonitor.panes-network-details-width" = 572;
