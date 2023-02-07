@@ -3,8 +3,6 @@
 writeShellApplication {
   name = "custom-update-nixos-system";
 
-  # Including this doesn't work
-
   text = ''
     sudo nixos-rebuild switch --upgrade-all
 
