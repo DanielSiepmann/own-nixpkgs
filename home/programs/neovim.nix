@@ -294,10 +294,19 @@ in {
 
     # LSP (=Language Server Protocol)
 
+    # I remove diagnostics as I use ale instead.
+    # Maybe some day I need both or use lsp for some languages, docs:
+    # - https://neovim.io/doc/user/diagnostic.html#diagnostic-api
+    # - https://github.com/neovim/nvim-lspconfig/issues/662
     {
       plugin = nvim-lspconfig;
       type = "lua";
       config = ''
+        vim.diagnostic.config({
+          virtual_text = false,
+          signs = false,
+        })
+
         require('lspconfig').phpactor.setup({
           cmd = {
             '${phpactor}/bin/phpactor',
