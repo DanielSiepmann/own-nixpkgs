@@ -17,11 +17,16 @@ Update to nixpkgs unstable via:
 
 See: https://nixos.wiki/wiki/Nix_channels
 
+I also need older php versions:
+
+        nix-channel --add https://github.com/fossar/nix-phps/archive/master.tar.gz phps
+        nix-channel --update
+
 Ad hardware channel:
 
         nix-channel --add https://github.com/NixOS/nixos-hardware/archive/master.tar.gz nixos-hardware
         nix-channel --update
-        
+
 See: https://github.com/NixOS/nixos-hardware
 
 TODOs

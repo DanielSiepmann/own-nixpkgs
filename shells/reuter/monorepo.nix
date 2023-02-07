@@ -6,7 +6,7 @@
 let
 
   php = phps.packages.x86_64-linux.php73;
-  composer = pkgs.php81Packages.composer;
+  inherit (pkgs.php81Packages) composer;
 
   phpWithMoreMemory = php.buildEnv {
     extraConfig = ''
@@ -91,7 +91,7 @@ in pkgs.mkShell {
   TYPO3_DATABASE = "reuter_reuter";
   TYPO3_BASE = "https://monorepo.emoto2.localhost/reuter/";
   BASE_URL = "https://monorepo.emoto2.localhost/reuter/";
-  TYPO3_ADDITIONAL_CONFIGURATION = "/home/daniels/.local/share/typo3-configuration/AdditionalConfiguration.inc.php";
+  TYPO3_ADDITIONAL_CONFIGURATION = "/var/projects/own/typo3-configuration/AdditionalConfiguration.inc.php";
 
   shellHook = ''
     export PROJECT_ROOT="$(pwd)"

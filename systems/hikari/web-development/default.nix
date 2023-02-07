@@ -11,6 +11,8 @@
 
     ./domains/daniel-siepmann.localhost.nix
 
+    ./domains/monorepo.reuter.localhost.nix
+
   ];
 
   options = {
@@ -67,6 +69,7 @@
             ensurePermissions = {
               # TODO: Auto build from defined databases?!
               "own_danielsiepmann.*" = "ALL PRIVILEGES";
+              "reuter_reuter.*" = "ALL PRIVILEGES";
             };
           }
         ];
