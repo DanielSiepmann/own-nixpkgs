@@ -3,12 +3,13 @@
 {
   imports = [
 
-    ./mkcert.nix
+    ./lib/mkcert.nix
 
-    ./static-files.nix
-    ./mailhog.localhost.nix
+    ./domains/mailhog.localhost.nix
 
-    ./daniel-siepmann.localhost.nix
+    ./domains/tea-docs.typo3.localhost.nix
+
+    ./domains/daniel-siepmann.localhost.nix
 
   ];
 

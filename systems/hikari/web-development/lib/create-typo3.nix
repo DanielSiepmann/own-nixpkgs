@@ -1,16 +1,19 @@
-{ pkgs, lib, config, ... }:
+{
+  config
+  , lib
+  , pkgs
+  , domain
+  , relativeDocumentRoot
+  , databaseName
+  , phpPackage
+}:
 
-# TODO: Move to template / function and call with variables
 let
-  domain = "daniel-siepmann.localhost";
-  documentRoot = "${config.custom.web-development.rootPath}/own/daniel-siepmann.de/project/public/";
-  databaseName = "own_danielsiepmann";
-  phpPackage = pkgs.php82;
+  documentRoot = "${config.custom.web-development.rootPath}/${relativeDocumentRoot}";
 in {
   services = {
 
     httpd.virtualHosts.${domain} = {
-
       forceSSL = true;
       sslServerCert = "${config.custom.web-development.certFolder}${domain}.pem";
       sslServerKey = "${config.custom.web-development.certFolder}${domain}-key.pem";

@@ -1,8 +1,11 @@
-{ pkgs, lib, config, ... }:
+{
+  config
+  , domain
+  , relativeDocumentRoot
+}:
 
 let
-  domain = "tea-docs.typo3.localhost";
-  documentRoot = "${config.custom.web-development.rootPath}/typo3/tea/Documentation-GENERATED-temp/Result/project/0.0.0/";
+  documentRoot = "${config.custom.web-development.rootPath}/${relativeDocumentRoot}";
 in {
   services = {
 
