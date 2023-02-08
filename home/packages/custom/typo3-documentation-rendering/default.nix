@@ -1,22 +1,27 @@
 {
   writeShellApplication,
+  ownLib,
   podman
 }:
 
-writeShellApplication {
+let
+  usePodman = ownLib.onHikari {};
+  runner = if usePodman then "podman" else "docker";
+  image = (if usePodman then "podman" else "") + "t3docs/render-documentation:latest";
+  runtimeInputs = if usePodman then [ podman ] else [ ];
+
+in writeShellApplication {
   name = "custom-typo3-render-documentation";
 
-  runtimeInputs = [
-    podman
-  ];
+  inherit runtimeInputs;
 
   # See: https://t3docs.github.io/DRC-The-Docker-Rendering-Container/07-To-be-sorted/quickstart.html#build-html-with-plain-docker-commands
   text = ''
-    podman \
+    ${runner} \
       run --rm \
       -v "$(pwd)":/PROJECT:ro \
       -v "$(pwd)/Documentation-GENERATED-temp":/RESULT \
-      docker.io/t3docs/render-documentation:latest \
+      ${image} \
       makehtml
   '';
 }

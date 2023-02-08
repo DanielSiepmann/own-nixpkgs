@@ -1,4 +1,4 @@
-{ pkgs }:
+{ pkgs, ownLib }:
 
 with pkgs; [
   nix
@@ -20,7 +20,9 @@ with pkgs; [
   (callPackage ./packages/custom/backup { })
   (callPackage ./packages/custom/nextcloud-sync/from-local.nix { })
   (callPackage ./packages/custom/nextcloud-sync/from-remote.nix { })
-  (callPackage ./packages/custom/typo3-documentation-rendering { })
+  (callPackage ./packages/custom/typo3-documentation-rendering {
+    inherit ownLib;
+  })
   (callPackage ./packages/custom/build-phpactor { })
   i3blocks
   st

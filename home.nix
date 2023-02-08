@@ -32,7 +32,7 @@ in {
     stateVersion = "22.05";
 
     packages = import ./home/packages.nix {
-      inherit pkgs;
+      inherit pkgs ownLib;
     };
 
     file = import ./home/files.nix { };
