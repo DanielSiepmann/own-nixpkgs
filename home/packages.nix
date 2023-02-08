@@ -77,6 +77,7 @@ with pkgs; [
   # Should be solved with https://github.com/NixOS/nixpkgs/pull/212306
   # Waiting for fix to arrive
   # handbrake
+  # Typical download looks like: yt-dlp -S 'res:700,ext:mp4' <url>
   yt-dlp
   spotdl
   # Does not work for some reason, need installed via apt
