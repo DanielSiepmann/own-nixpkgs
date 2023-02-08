@@ -74,6 +74,8 @@ with pkgs; [
   # Media
   vlc
   # Disabled due to https://github.com/NixOS/nixpkgs/issues/211297
+  # Should be solved with https://github.com/NixOS/nixpkgs/pull/212306
+  # Waiting for fix to arrive
   # handbrake
   yt-dlp
   spotdl
