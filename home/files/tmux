@@ -27,6 +27,8 @@ bind-key -N "Split window vertical" '"' split-window -v -c "#{pane_current_path}
 bind-key -N "Switch to last session" -r \\ switch-client -l
 bind-key -N "Switch to last window" -r ] select-window -t :!
 
+bind-key -N "Toggle synchronized panes" S set-window-option synchronize-panes
+
 # Define update interval of status line
 set -g status-interval 30
 
