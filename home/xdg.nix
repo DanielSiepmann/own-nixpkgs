@@ -112,6 +112,11 @@
       type = "Application";
       exec = "${pkgs.chromium}/bin/chromium --class=\"chat\" --new-window --app=https://teams.microsoft.com/ --user-agent=\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36\"";
     };
+    slack-typo3 = {
+      name = "Slack: TYPO3";
+      type = "Application";
+      exec = "${pkgs.chromium}/bin/chromium --class=\"chat\" --new-window --app=https://typo3.slack.com/";
+    };
     slack = {
       name = "Slack";
       type = "Application";
