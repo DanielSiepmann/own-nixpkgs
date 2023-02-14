@@ -117,6 +117,11 @@
       type = "Application";
       exec = "${pkgs.chromium}/bin/chromium --class=\"chat\" --new-window --app=https://typo3.slack.com/";
     };
+    slack-sac = {
+      name = "Slack: SAC";
+      type = "Application";
+      exec = "${pkgs.chromium}/bin/chromium --class=\"chat\" --new-window --app=https://saccas.slack.com/";
+    };
     slack = {
       name = "Slack";
       type = "Application";
