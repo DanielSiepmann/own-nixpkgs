@@ -1,6 +1,7 @@
 "code_transform.refactor.generate_accessor.prefix": "get"
 "code_transform.refactor.generate_accessor.upper_case_first": true
 "language_server_completion.trim_leading_dollar": true
+"language_server.diagnostics_on_update": false
 "language_server_phpstan.enabled": true
 "indexer.follow_symlinks": true
 "indexer.exclude_patterns":

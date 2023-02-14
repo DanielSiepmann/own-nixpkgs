@@ -1,7 +1,7 @@
 {
   writeShellApplication,
-  php80,
-  php80Packages,
+  php82,
+  php82Packages,
   git
 }:
 
@@ -9,8 +9,8 @@ writeShellApplication {
   name = "custom-build-phpactor";
 
   runtimeInputs = [
-    php80
-    php80Packages.composer
+    php82
+    php82Packages.composer
     git
   ];
 
