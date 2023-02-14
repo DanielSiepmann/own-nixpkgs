@@ -1,9 +1,7 @@
 {
   writeShellApplication,
   bash,
-  gnused,
-  mycli,
-  tmux
+  gnused
 }:
 
 writeShellApplication {
@@ -12,8 +10,6 @@ writeShellApplication {
   runtimeInputs = [
     bash
     gnused
-    mycli
-    tmux
   ];
 
   text = ''
