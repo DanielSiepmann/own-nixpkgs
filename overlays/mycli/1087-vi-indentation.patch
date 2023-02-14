@@ -1,0 +1,30 @@
+See: https://github.com/dbcli/mycli/issues/1087#issuecomment-1275053520
+
+--- /mycli/key_bindings.py
++++ /mycli/key_bindings.py
+@@ -1,6 +1,6 @@
+ import logging
+ from prompt_toolkit.enums import EditingMode
+-from prompt_toolkit.filters import completion_is_selected, emacs_mode, vi_mode
++from prompt_toolkit.filters import completion_is_selected, emacs_mode, vi_navigation_mode
+ from prompt_toolkit.key_binding import KeyBindings
+ 
+ _logger = logging.getLogger(__name__)
+@@ -61,7 +61,7 @@
+         else:
+             b.start_completion(select_first=False)
+ 
+-    @kb.add('>', filter=vi_mode)
++    @kb.add('>', filter=vi_navigation_mode)
+     @kb.add('c-x', 'p', filter=emacs_mode)
+     def _(event):
+         """
+@@ -82,7 +82,7 @@
+                 cursorpos_abs -= 1
+             b.cursor_position = min(cursorpos_abs, len(b.text))
+ 
+-    @kb.add('<', filter=vi_mode)
++    @kb.add('<', filter=vi_navigation_mode)
+     @kb.add('c-x', 'u', filter=emacs_mode)
+     def _(event):
+         """
