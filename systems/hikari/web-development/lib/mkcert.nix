@@ -44,6 +44,7 @@ in {
     ];
 
     # NOTE: Disable until root certificate is generated, then add again
+    # Maybe check for file existense and throw proper error message?
     security.pki.certificates = [
       (builtins.readFile "${config.custom.web-development.certFolder}rootCA.pem")
     ];

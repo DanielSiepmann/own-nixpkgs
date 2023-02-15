@@ -24,9 +24,15 @@
       };
     };
 
-    # Setup keyfile
-    initrd.secrets = {
-      "/crypto_keyfile.bin" = null;
+    initrd = {
+      # Setup keyfile
+      secrets = {
+        "/crypto_keyfile.bin" = null;
+      };
+      luks.devices."luks-77a26fd0-f3c7-4eca-be5e-dba6b6c66e4f" = {
+        device = "/dev/disk/by-uuid/77a26fd0-f3c7-4eca-be5e-dba6b6c66e4f";
+        keyFile = "/crypto_keyfile.bin";
+      };
     };
   };
 
