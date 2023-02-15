@@ -28,20 +28,6 @@
 # Each block command defaults to the script name to avoid boilerplate.
 markup=pango
 
-# Versions for development
-[php_version]
-label=🐘
-command=
-command=echo "$(php --version | head -1 | cut -d' ' -f2 | cut -d'.' -f1,2)"
-interval=once
-signal=10
-
-[xdebug]
-label=🤸
-command=[ -L /etc/php/8.0/cli/conf.d/20-xdebug.ini ] && echo "yes" || echo "no"
-interval=once
-signal=10
-
 # Date Time
 [time]
 command=LC_TIME=en_US.utf8 date '+📅 %a %B %Y-%m-%d %H:%M:%S'; date '+📅 %a %d. %H:%M:%S'
