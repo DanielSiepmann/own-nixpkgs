@@ -10,12 +10,12 @@
 
 let
   pname = "phpactor";
-  version = "4e89a6965fdaf42a536b56519c7f2e9fe35f90af";
+  version = "3e7cb48b0ca429f92bcd57c236c39f170e9d23b1";
 in vimUtils.buildVimPluginFrom2Nix {
   inherit pname version;
   src = fetchurl {
     url = "https://daniel-siepmann.de/fileadmin/${pname}-${version}.tar.gz";
-    sha256 = "C548mTIa+J+LsnQPvGU5kKeWQaRizdv+zu0YgJn+wJA=";
+    sha256 = "JX6aLuzmJ4rrcG0FNgzt2zITmnRrpitUI591oPn+fhY=";
   };
 
   nativeBuildInputs = [
