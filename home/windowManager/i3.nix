@@ -8,6 +8,7 @@ let
   soundSwitcherForHikari2 = if ownLib.onHikari { } then "" else "-D pulse";
   displayBrightnessDevice = if ownLib.onHikari { } then "mba6x_backlight" else "";
   keyboardBrightnessDevice = if ownLib.onHikari { } then "smc::kbd_backlight" else "";
+  displayBuiltInOutput = if ownLib.onHikari { } then "eDP-1" else "eDP1";
 in {
   enable = true;
   config = {
@@ -350,16 +351,16 @@ in {
       # TODO: Maybe move to dmenu script instead?!
       # "display setup: [a]uto [e]extern only [h]ome [i]intern [r]ecord [v]ideo" = {
       displays = {
-        "a" = "exec xrandr --auto --output eDP1 --scale 1x1 --mode 1920x1080 && xbacklight -set 10;";
-        "e" = "exec xrandr --auto --output eDP1 --off";
-        "h" = "exec xrandr --output eDP1 --off --output DP2-1 --scale 1x1 --mode 2560x1440";
-        "v" = "exec xrandr --auto --output DP2-1 --primary --scale 1x1 --mode 2560x1440 --output eDP1 --mode 1920x1080 --left-of DP2-1";
-        "r" = "exec xrandr --output DP2-1 --primary --mode 1920x1080 --output eDP1 --mode 1920x1080 --left-of DP2-1 && xbacklight -set 100;";
+        "a" = "exec xrandr --auto && xbacklight -set 10;";
+        "e" = "exec xrandr --auto --output ${displayBuiltInOutput} --off";
+        "h" = "exec xrandr --output ${displayBuiltInOutput} --off --output DP2-1 --scale 1x1 --mode 2560x1440";
+        "v" = "exec xrandr --auto --output DP2-1 --primary --scale 1x1 --mode 2560x1440 --output ${displayBuiltInOutput} --mode 1920x1080 --left-of DP2-1";
+        "r" = "exec xrandr --output DP2-1 --primary --mode 1920x1080 --output ${displayBuiltInOutput} --mode 1920x1080 --left-of DP2-1 && xbacklight -set 100;";
 
         # Mirror
-        # xrandr --output eDP1 --rate 60 --mode 1920x1080 --fb 1920x1080 --output DP1 --mode 1920x1080 --same-as eDP1
+        # xrandr --output ${displayBuiltInOutput} --rate 60 --mode 1920x1080 --fb 1920x1080 --output DP1 --mode 1920x1080 --same-as ${displayBuiltInOutput}
         # To turn off, use position, e.g.:
-        # xrandr --output DP1 --right-of eDP1
+        # xrandr --output DP1 --right-of ${displayBuiltInOutput}
 
         # back to normal: Enter or Escape
         "Return" = "mode default";
