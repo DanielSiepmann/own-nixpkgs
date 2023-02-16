@@ -58,6 +58,7 @@
     # PHP Specific
     ".phpunit.result.cache"
     ".phpunit.cache"
+    ".php-cs-fixer.cache"
     "phpcs.xml"
 
     # TYPO3 documentation specific
