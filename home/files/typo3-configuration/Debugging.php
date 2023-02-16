@@ -18,4 +18,4 @@ $GLOBALS['TYPO3_CONF_VARS']['BE']['lang']['debug'] = false;
 $GLOBALS['TYPO3_CONF_VARS']['BE']['languageDebug'] = false;
 
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['errorHandlerErrors'] = E_ALL & ~ (E_NOTICE | E_DEPRECATED);
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['exceptionalErrors']  = E_ALL & ~ (E_NOTICE | E_DEPRECATED);
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['exceptionalErrors']  = E_ALL & ~ (E_NOTICE | E_WARNING | E_DEPRECATED);
