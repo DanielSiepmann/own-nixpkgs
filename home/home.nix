@@ -89,6 +89,9 @@ in {
       # Open in main view with ALL commits, not only current branch tree.
       tiga = "tig --all --show-signature";
 
+      # Start a nix-shell with zsh instead of bash
+      ns = "nix-shell --run zsh";
+
       # Tmux outside tmux.
       ta = "tmux attach";
       tc = "tmux new-session -s ";
