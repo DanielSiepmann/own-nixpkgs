@@ -1,10 +1,15 @@
 {
   writeShellApplication,
   bash,
-  gnused
+  gnused,
+  ownLib
 }:
 
-writeShellApplication {
+let
+
+  positionOfCustomerName = if ownLib.onHikari {} then "5" else "7";
+
+in writeShellApplication {
   name = "custom-project";
 
   runtimeInputs = [
@@ -23,7 +28,7 @@ writeShellApplication {
         windowId=0
 
         projectName="$1"
-        customerName="$(pwd | cut -d'/' -f 7)"
+        customerName="$(pwd | cut -d'/' -f ${positionOfCustomerName})"
         projectRoot="$(pwd)/$projectName"
         editorPath="$projectRoot"
         databaseName="''${customerName}_''${projectName}"
@@ -78,12 +83,11 @@ writeShellApplication {
         tmux send-keys -t "$session:$windowId" "cd $editorPath" C-m
         tmux send-keys " renice -n 5 \$\$" C-m
         if [ "$databaseName" != "" ]; then
-            tmux send-keys "mycli -u admin -D $databaseName" C-m
+            tmux send-keys "mycli -u daniels -D $databaseName" C-m
         else
-            tmux send-keys "mycli -u admin -D "
+            tmux send-keys "mycli -u daniels -D "
         fi
         tmux send-keys C-l
-        tmux select-pane -t 0
         (( "windowId+=1" ))
 
         # Open export folder
