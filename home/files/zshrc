@@ -50,9 +50,19 @@ setopt list_packed
 setopt list_types
 
 # Set Prompt
-# Allow for functions in the prompt.
-setopt PROMPT_SUBST
-PROMPT=$'%{$fg[blue]%}%1~ > %{$reset_color%}'
+autoload -Uz add-zsh-hook
+setopt promptsubst
+
+nix_subshell () {
+    prompt_color="blue"
+    # check for IN_NIX_SHELL
+    if [[ "$IN_NIX_SHELL" ]]; then
+        prompt_color="yellow"
+    fi
+}
+add-zsh-hook precmd nix_subshell
+
+PROMPT=$'%{$fg[${prompt_color}]%}%1~ > %{$reset_color%}'
 
 zstyle ':completion:*:descriptions' format '%F{blue}-- %d --%f'
 zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
