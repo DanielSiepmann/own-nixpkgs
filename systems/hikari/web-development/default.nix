@@ -65,6 +65,7 @@
           }
           {
             # INITIALLY once change dev user to be identified by password
+            # alter user dev@localhost IDENTIFIED VIA mysql_native_password USING PASSWORD('dev');
             name = "dev";
             ensurePermissions = {
               # TODO: Auto build from defined databases?!
