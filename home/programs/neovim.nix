@@ -148,16 +148,16 @@ let
 
   test = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
     pname = "test";
-    version = "16a3b6da1bab42473d42d7e02d89d549d7a5e138";
+    version = "c63b94c1e5089807f4532e05f087351ddb5a207c";
     src = pkgs.fetchFromGitHub {
       owner = "vim-${pname}";
       repo = "vim-${pname}";
       rev = version;
-      sha256 = "CVSTy/FeBgyzRK8NWDMiIynz7DRlFenruiCOjowYnMI=";
+      sha256 = "feXB4AHalJgJDxS/kM3aXGwyi3xvSfMlFULUGNIE7bM=";
     };
     patches = [
       ./neovim/patches/disable_test_paratest.patch
-      ./neovim/patches/test_extend_codeception_detection.patch
+      ./neovim/patches/test_fix_codeception_nearest.patch
       ./neovim/patches/test_limit_codeception.patch
     ];
   };
