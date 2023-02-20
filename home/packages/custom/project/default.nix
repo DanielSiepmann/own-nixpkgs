@@ -42,26 +42,25 @@ in writeShellApplication {
             editorPath="$projectRoot/htdocs"
         fi
 
-        # Start new session with editor as name for first window
-        tmux new-session -s "$session" -n editor -d
-
-        # Set environment
-        tmux set-environment -t "$session" TYPO3_BASE "$url"
-        tmux set-environment -t "$session" TYPO3_COMPOSER_AUTOLOAD 1
-
-        tmux set-environment -t "$session" typo3DatabaseName testing
-        tmux set-environment -t "$session" typo3DatabaseHost localhost
-        tmux set-environment -t "$session" typo3DatabaseUsername testing
-        tmux set-environment -t "$session" typo3DatabasePassword testing
-        tmux set-environment -t "$session" TYPO3_DATABASE "$databaseName"
-
-        # TODO: Find a better way to determine instance path for acceptance tests
-        tmux set-environment -t "$session" INSTANCE_PATH "$editorPath/typo3temp/var/tests/acceptance"
-
-        tmux set-environment -t "$session" SOLR_HOST localhost
-        tmux set-environment -t "$session" SOLR_PORT 8983
-        tmux set-environment -t "$session" SOLR_SCHEME http
-        tmux set-environment -t "$session" SOLR_CORE core_de
+        # Start new session
+        # with editor as name for first window
+        # and set environment
+        tmux new-session \
+          -s "$session" \
+          -n editor \
+          -d \
+          -e TYPO3_BASE="$url" \
+          -e TYPO3_COMPOSER_AUTOLOAD=1 \
+          -e typo3DatabaseName=testing \
+          -e typo3DatabaseHost=localhost \
+          -e typo3DatabaseUsername=testing \
+          -e typo3DatabasePassword=testing \
+          -e TYPO3_DATABASE="$databaseName" \
+          -e INSTANCE_PATH="$editorPath/typo3temp/var/tests/acceptance" \
+          -e SOLR_HOST=localhost \
+          -e SOLR_PORT=8983 \
+          -e SOLR_SCHEME=http \
+          -e SOLR_CORE=core_de
 
         # Open Editor
         tmux send-keys " renice -n 5 \$\$" C-m
