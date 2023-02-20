@@ -28,7 +28,6 @@ in {
       genericName = "Music player";
       categories = [
         "ConsoleOnly"
-        "Audio"
         "Player"
       ];
     };
