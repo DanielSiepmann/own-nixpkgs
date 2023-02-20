@@ -8,6 +8,7 @@
 let
 
   positionOfCustomerName = if ownLib.onHikari {} then "5" else "7";
+  mysqlUser = if ownLib.onHikari {} then "-u daniels" else "";
 
 in writeShellApplication {
   name = "custom-project";
@@ -81,10 +82,9 @@ in writeShellApplication {
         tmux new-window -n database -t "$session"
         tmux send-keys -t "$session:$windowId" "cd $editorPath" C-m
         tmux send-keys " renice -n 5 \$\$" C-m
+        tmux send-keys "mycli ${mysqlUser} -D "
         if [ "$databaseName" != "" ]; then
-            tmux send-keys "mycli -u daniels -D $databaseName" C-m
-        else
-            tmux send-keys "mycli -u daniels -D "
+            tmux send-keys "$databaseName" C-m
         fi
         tmux send-keys C-l
         (( "windowId+=1" ))
