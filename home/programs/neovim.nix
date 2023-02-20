@@ -318,9 +318,9 @@ in {
         table.insert(runtime_path, "lua/?.lua")
         table.insert(runtime_path, "lua/?/init.lua")
 
-        require('lspconfig').sumneko_lua.setup({
+        require('lspconfig').lua_ls.setup({
           cmd = {
-            '${pkgs.sumneko-lua-language-server}/bin/lua-language-server',
+            '${pkgs.lua-language-server}/bin/lua-language-server',
           },
           settings = {
             Lua = {
