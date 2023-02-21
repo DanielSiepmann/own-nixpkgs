@@ -90,7 +90,7 @@ in {
       tiga = "tig --all --show-signature";
 
       # Start a nix-shell with zsh instead of bash
-      ns = "nix-shell --run zsh";
+      nsz = "nix-shell --run zsh";
 
       # Tmux outside tmux.
       ta = "tmux attach";
