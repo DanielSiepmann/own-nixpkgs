@@ -11,57 +11,7 @@
     "ctags/config.ctags".source = ./files/ctags;
     "sc-im/scimrc".source = ./files/scimrc;
     "ncdu/config".source = ./files/ncdu;
-    "keepassxc/keepassxc.ini".text = pkgs.lib.generators.toINI { } {
-
-      General = {
-        ConfigVersion = 2;
-      };
-
-      FdoSecrets = {
-        Enabled = true;
-        ShowNotification = false;
-      };
-
-      GUI = {
-        ApplicationTheme = "dark";
-        CompactMode = true;
-
-        HidePreviewPanel = false;
-        HideToolbar = true;
-        HideUsernames = false;
-
-        MinimizeToTray = true;
-        ShowTrayIcon = true;
-        TrayIconAppearance = "monochrome-light";
-
-      };
-
-      PasswordGenerator = {
-        AdditionalChars = "";
-        AdvancedMode = true;
-        Braces = true;
-        Dashes = true;
-        ExcludedChars = "*<>!?";
-        Length = 16;
-        Math = true;
-        Quotes = true;
-        SpecialChars = false;
-      };
-
-      Browser = {
-        CustomProxyLocation = "";
-        Enabled = true;
-        SearchInAllDatabases = true;
-      };
-
-      Security = {
-        ClearSearchTimeout = 120;
-        LockDatabaseIdle = true;
-        LockDatabaseIdleSeconds = 120;
-        Security_HideNotes = true;
-      };
-
-    };
+    "keepassxc/keepassxc.ini".text = pkgs.lib.generators.toINI { } (import ./files/keepassxc-ini.nix);
     "litecli/config".source = ./files/litecli;
     "phpactor".source = ./files/phpactor;
     "tig/config".source = ./files/tig;
