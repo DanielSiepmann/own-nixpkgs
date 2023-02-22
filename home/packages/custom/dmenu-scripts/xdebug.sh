@@ -17,8 +17,8 @@ case "$action" in
     sudo /bin/ln -s /etc/php/8.1/mods-available/xdebug.ini /etc/php/8.1/cli/conf.d/20-xdebug.ini || true
     sudo /bin/ln -s /etc/php/8.1/mods-available/xdebug.ini /etc/php/8.1/fpm/conf.d/20-xdebug.ini || true
 
-    sudo /bin/ln -s /etc/php/8.2/mods-available/xdebug.ini /etc/php/8.1/cli/conf.d/20-xdebug.ini || true
-    sudo /bin/ln -s /etc/php/8.2/mods-available/xdebug.ini /etc/php/8.1/fpm/conf.d/20-xdebug.ini || true
+    sudo /bin/ln -s /etc/php/8.2/mods-available/xdebug.ini /etc/php/8.2/cli/conf.d/20-xdebug.ini || true
+    sudo /bin/ln -s /etc/php/8.2/mods-available/xdebug.ini /etc/php/8.2/fpm/conf.d/20-xdebug.ini || true
     ;;
 "disable")
     sudo /usr/bin/unlink /etc/php/7.2/cli/conf.d/20-xdebug.ini || true
