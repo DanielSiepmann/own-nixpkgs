@@ -25,8 +25,11 @@ stdenv.mkDerivation rec {
         --replace "purple.get_variable('plugindir')" "'${placeholder "out"}/lib/purple-2'"
   '';
 
-  buildInputs = [
+  nativeBuildInputs = [
     meson
+  ];
+
+  buildInputs = [
     pidgin
     libnotify
     ninja
