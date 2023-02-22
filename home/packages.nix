@@ -89,4 +89,4 @@ with pkgs; [
   feh
 
   gtk-engine-murrine
-]
+] ++ (if ownLib.onHikari {} then [ gtkpod ] else [ ])
