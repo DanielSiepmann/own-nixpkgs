@@ -8,15 +8,11 @@ with pkgs; [
   # System tools
   dmenu
   gnome.gnome-screenshot
-  acpilight # Used to support xbacklight on hikari
 
   networkmanager_dmenu
   # TODO: Create one `./packages/custom/default.nix which includes all other?
   (callPackage ./packages/custom/dmenu-scripts { })
   (callPackage ./packages/custom/update-system { })
-  (callPackage ./packages/custom/update-nixos-system { })
-  (callPackage ./packages/custom/update-ubuntu-system { })
-  (callPackage ./packages/custom/push-etckeeper { })
   (callPackage ./packages/custom/backup { })
   (callPackage ./packages/custom/nextcloud-sync/from-local.nix { })
   (callPackage ./packages/custom/nextcloud-sync/from-remote.nix { })
@@ -35,7 +31,6 @@ with pkgs; [
   keepassxc
   # Git itself is installed via git module
   git-crypt
-  git-remote-hg
 
   rclone
 
@@ -45,7 +40,7 @@ with pkgs; [
   litecli
   sqlite
   mycli
-  sc-im
+  # sc-im
   # mytop
   mkcert # TODO: Create own wrapper script to create new certs
   tig
@@ -55,8 +50,6 @@ with pkgs; [
   wget
   kcachegrind
   geckodriver
-  podman
-  podman-compose
 
   # In order to pull binaries from their.
   # E.g. phps: https://github.com/fossar/nix-phps#how-to-use
@@ -89,4 +82,21 @@ with pkgs; [
   feh
 
   gtk-engine-murrine
-] ++ (if ownLib.onHikari {} then [ gtkpod ] else [ ])
+] ++ (if ownLib.onHikari {} then [
+  # hikari
+
+  acpilight # Used to support xbacklight
+
+  (callPackage ./packages/custom/update-nixos-system { })
+
+  gtkpod
+
+  podman
+  podman-compose
+
+] else [
+  # hikari 2
+
+  (callPackage ./packages/custom/update-ubuntu-system { })
+  (callPackage ./packages/custom/push-etckeeper { })
+])
