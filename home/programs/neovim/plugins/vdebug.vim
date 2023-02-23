@@ -8,7 +8,7 @@ let g:vdebug_options.timeout = 60
 let g:vdebug_options.continuous_mode = 1
 let g:vdebug_options.ide_key = "vim"
 let g:vdebug_options.server = "127.0.0.1"
-let g:vdebug_options.port = 9000
+let g:vdebug_options.port = 9003
 " Plugin options
 let g:vdebug_options.break_on_open = 0
 let g:vdebug_options.watch_window_style = "compact"
