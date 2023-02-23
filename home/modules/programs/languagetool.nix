@@ -33,13 +33,13 @@ in {
     systemd.user.services.languagetool = {
       Unit = {
         Description = "Languagetool Server";
-        StartLimitBurst = 3;
-        StartLimitInterval = 400;
+        StartLimitBurst = 5;
+        StartLimitIntervalSec = 30;
       };
 
       Service = {
         Restart = "on-failure";
-        RestartSec = "2s";
+        RestartSec = "1s";
         Environment = "JAVA_TOOL_OPTIONS=-Xmx256m";
         ExecStart = "${cfg.package}/bin/languagetool-http-server --port ${toString cfg.port} --allow-origin '${cfg.allow-origin}'";
       };
