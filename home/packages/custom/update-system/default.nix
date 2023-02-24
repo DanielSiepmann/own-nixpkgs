@@ -11,8 +11,8 @@ writeShellApplication {
     newVersion=$(home-manager generations | head -n 1 | cut -d' ' -f 7)
     nvd diff "$oldVersion" "$newVersion"
 
-    home-manager expire-generations '-30 days'
-    nix-env --delete-generations +5
+    home-manager expire-generations '-12 days'
+    nix-env --delete-generations +3
     nix store gc
     nix store optimise
   '';
