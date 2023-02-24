@@ -17,9 +17,8 @@
     HideUsernames = false;
 
     MinimizeToTray = true;
-    ShowTrayIcon = true;
+    ShowTrayIcon = false;
     TrayIconAppearance = "monochrome-light";
-
   };
 
   PasswordGenerator = {
