@@ -59,6 +59,10 @@
     };
   };
 
+  documentation = {
+    info.enable = false;
+  };
+
   programs = {
     # Enable network manager applet
     nm-applet.enable = true;
