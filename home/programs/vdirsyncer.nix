@@ -27,19 +27,6 @@
     start_date = "datetime.now() - timedelta(days=60)"
     end_date = "datetime.now() + timedelta(days=365)"
 
-    [pair holidays]
-    a = "holidays_calendar_private"
-    b = "holidays_calendar_public"
-    collections = null
-    [storage holidays_calendar_private]
-    type = "caldav"
-    url = "https://nextcloud.daniel-siepmann.de/remote.php/dav/calendars/dsiepmann/feiertage-synced/"
-    username = "dsiepmann"
-    password.fetch = ["command", "${pkgs.libsecret}/bin/secret-tool", "lookup", "account", "app-dsiepmann@nextcloud.daniel-siepmann.de"]
-    [storage holidays_calendar_public]
-    type = "http"
-    url = "https://feiertage.ics.tools/nordrhein-westfalen.ics"
-
     [pair company_calendar]
     a = "company_calendar_local"
     b = "company_calendar_remote"
