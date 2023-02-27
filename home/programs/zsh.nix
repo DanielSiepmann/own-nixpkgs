@@ -9,7 +9,7 @@
 
   dotDir = ".config/zsh";
 
-  autocd = true;
+  autocd = false;
   enableSyntaxHighlighting = true;
 
   defaultKeymap = "viins";
