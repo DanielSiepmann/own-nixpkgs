@@ -65,6 +65,7 @@
 
   programs = {
     # Enable network manager applet
+    nm-applet.enable = true;
     dconf.enable = true;
   };
 
