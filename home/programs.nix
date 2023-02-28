@@ -29,6 +29,9 @@ in {
     inherit config;
   };
 
+  fzf = import ./programs/fzf.nix {
+  };
+
   zsh = import ./programs/zsh.nix {
     inherit config pkgs;
   };
