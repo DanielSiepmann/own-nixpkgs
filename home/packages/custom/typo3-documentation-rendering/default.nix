@@ -7,7 +7,7 @@
 let
   usePodman = ownLib.onHikari {};
   runner = if usePodman then "podman" else "docker";
-  image = (if usePodman then "podman" else "") + "t3docs/render-documentation:latest";
+  image = (if usePodman then "docker.io/" else "") + "t3docs/render-documentation:latest";
   runtimeInputs = if usePodman then [ podman ] else [ ];
 
 in writeShellApplication {
