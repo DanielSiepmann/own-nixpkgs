@@ -313,10 +313,8 @@ in {
       "SHIFT+XF86MonBrightnessUp" = "exec ${pkgs.brightnessctl}/bin/brightnessctl --device ${displayBrightnessDevice} s +1";
       "SHIFT+XF86MonBrightnessDown" = "exec ${pkgs.brightnessctl}/bin/brightnessctl --device ${displayBrightnessDevice} s 1-";
 
-      "XF86KbdBrightnessUp" = "exec ${pkgs.brightnessctl}/bin/brightnessctl --device ${keyboardBrightnessDevice} s +25";
-      "XF86KbdBrightnessDown" = "exec ${pkgs.brightnessctl}/bin/brightnessctl --device ${keyboardBrightnessDevice} s 25-";
-      "SHIFT+XF86KbdBrightnessUp" = "exec ${pkgs.brightnessctl}/bin/brightnessctl --device ${keyboardBrightnessDevice} s +10";
-      "SHIFT+XF86KbdBrightnessDown" = "exec ${pkgs.brightnessctl}/bin/brightnessctl --device ${keyboardBrightnessDevice} s 10-";
+      "XF86KbdBrightnessUp" = "exec ${pkgs.brightnessctl}/bin/brightnessctl --device ${keyboardBrightnessDevice} s +10";
+      "XF86KbdBrightnessDown" = "exec ${pkgs.brightnessctl}/bin/brightnessctl --device ${keyboardBrightnessDevice} s 10-";
 
       # Dunst Key Bindings
       # See: man dunstctl.1
