@@ -21,9 +21,6 @@
     [[typo3]]
     path = ${config.xdg.dataHome}/vdir/calendars/private/typo3
     color = #FFE377
-    [[holidays]]
-    path = ${config.xdg.dataHome}/vdir/calendars/private/feiertage-synced
-    color = dark green
 
     [[work]]
     path = ${config.xdg.dataHome}/vdir/calendars/company/personal
