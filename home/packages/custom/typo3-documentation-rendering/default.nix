@@ -17,6 +17,7 @@ in writeShellApplication {
 
   # See: https://t3docs.github.io/DRC-The-Docker-Rendering-Container/07-To-be-sorted/quickstart.html#build-html-with-plain-docker-commands
   text = ''
+    mkdir -p Documentation-GENERATED-temp
     ${runner} \
       run --rm \
       -v "$(pwd)":/PROJECT:ro \
