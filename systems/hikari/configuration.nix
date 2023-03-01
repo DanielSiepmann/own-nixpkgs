@@ -50,6 +50,8 @@
 
     # Enable networking
     networkmanager.enable = true;
+
+    extraHosts = builtins.readFile ./files/hosts;
   };
 
   services.dnsmasq = {
