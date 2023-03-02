@@ -162,17 +162,6 @@ let
     ];
   };
 
-  telescope-ctags-outline = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
-    pname = "telescope-ctags-outline";
-    version = "35b2df9545f72352502703ba06b7ab711fa25e51";
-    src = pkgs.fetchFromGitHub {
-      owner = "fcying";
-      repo = "${pname}.nvim";
-      rev = version;
-      sha256 = "e8QcD7H2unmoaLaN1JUxtOGQYBJGAXtfSnj8sW66ff4=";
-    };
-  };
-
 in {
   enable = true;
 
@@ -225,15 +214,9 @@ in {
     }
 
     {
-      plugin = telescope-nvim;
+      plugin = fzf-lua;
       type = "lua";
-      config = builtins.readFile(./neovim/plugins/telescope.lua);
-    }
-
-    {
-      plugin = telescope-ctags-outline;
-      type = "lua";
-      config = builtins.readFile(./neovim/plugins/telescope-ctags-outline.lua);
+      config = builtins.readFile(./neovim/plugins/fzf-lua.lua);
     }
 
     dressing-nvim
