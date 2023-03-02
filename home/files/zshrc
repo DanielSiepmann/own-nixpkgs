@@ -1,5 +1,4 @@
 autoload -U colors && colors
-autoload -U promptinit; compinit
 autoload -U complist
 
 # Set vim mode
