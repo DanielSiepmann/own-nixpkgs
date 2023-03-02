@@ -1,0 +1,30 @@
+diff --git a/lua/fzf-lua/core.lua b/lua/fzf-lua/core.lua
+index 28fd9d5..25baaf7 100644
+--- a/lua/fzf-lua/core.lua
++++ b/lua/fzf-lua/core.lua
+@@ -572,7 +572,7 @@ M.set_header = function(opts, hdr_tbl)
+     cwd = {
+       hdr_txt_opt = "cwd_header",
+       hdr_txt_str = "cwd: ",
+-      hdr_txt_col = "red",
++      hdr_txt_col = "grey",
+       val = function()
+         -- do not display header when we're inside our
+         -- cwd unless the caller specifically requested
+diff --git a/lua/fzf-lua/make_entry.lua b/lua/fzf-lua/make_entry.lua
+index 45ab9fe..bd80f5d 100644
+--- a/lua/fzf-lua/make_entry.lua
++++ b/lua/fzf-lua/make_entry.lua
+@@ -412,9 +412,9 @@ M.tag = function(x, opts)
+   line = line and #line > 0 and tonumber(line)
+   return ("%s%s: %s %s"):format(
+     M.file(file, opts),
+-    not line and "" or ":" .. utils.ansi_codes.green(tostring(line)),
+-    utils.ansi_codes.magenta(name),
+-    utils.ansi_codes.green(tag))
++    not line and "" or ":" .. tostring(line),
++    utils.ansi_codes.blue(name),
++    utils.ansi_codes.clear(tag))
+       , line
+ end
+ 

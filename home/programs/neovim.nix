@@ -214,7 +214,12 @@ in {
     }
 
     {
-      plugin = fzf-lua;
+      plugin = fzf-lua.overrideAttrs (old: {
+        patches = (old.patches or []) ++ [
+          ./neovim/patches/fzf-lua-colors.patch
+        ];
+      });
+
       type = "lua";
       config = builtins.readFile(./neovim/plugins/fzf-lua.lua);
     }
