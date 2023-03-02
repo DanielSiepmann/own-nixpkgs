@@ -70,3 +70,14 @@ zstyle ':completion::complete:git-checkout:argument-rest:' group-order heads-loc
 zstyle ':completion::complete:git-checkout:argument-rest:commits' command 'echo'
 zstyle ':completion::complete:git-checkout:argument-rest:valid-ref-names' command 'echo'
 zstyle ':completion::complete:git-checkout:argument-rest:remote-branch-refs-noprefix' command 'echo'
+
+
+# Configuration for fzf-tab, see: https://github.com/Aloxaf/fzf-tab#configure
+# disable sort when completing `git checkout`
+zstyle ':completion:*:git-checkout:*' sort false
+# set descriptions format to enable group support
+zstyle ':completion:*:descriptions' format '[%d]'
+# set list-colors to enable filename colorizing
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# switch group using `,` and `.`
+zstyle ':fzf-tab:*' switch-group ',' '.'

@@ -32,5 +32,8 @@
 
   initExtra = builtins.readFile(../files/zshrc) + ''
     zstyle ':completion:*' cache-path ${config.xdg.cacheHome}/zsh-completion/
+
+    # Load fzf tab plugin
+    source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.zsh
   '';
 }
