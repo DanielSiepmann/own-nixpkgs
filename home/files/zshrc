@@ -81,3 +81,6 @@ zstyle ':completion:*:descriptions' format '[%d]'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 # switch group using `,` and `.`
 zstyle ':fzf-tab:*' switch-group ',' '.'
+
+# Use tmux popup, see: https://github.com/Aloxaf/fzf-tab/wiki/Configuration#fzf-command
+zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
