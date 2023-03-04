@@ -21,5 +21,14 @@
 
   sensibleOnTop = false;
 
+  plugins = with pkgs.tmuxPlugins; [
+    {
+      plugin = fzf-tmux-url;
+      extraConfig = ''
+        set -g @fzf-url-fzf-options '-p -y 1 -w 95% -h 75%'
+      '';
+    }
+  ];
+
   extraConfig = builtins.readFile ../files/tmux;
 }
