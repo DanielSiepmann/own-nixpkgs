@@ -27,8 +27,9 @@ in {
       comment = "A small, fast and powerful console music player";
       genericName = "Music player";
       categories = [
+        "Audio"
+        "AudioVideo"
         "ConsoleOnly"
-        "Player"
       ];
     };
   };
