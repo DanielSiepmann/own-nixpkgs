@@ -86,7 +86,8 @@ let g:tagbar_type_xml = {
 let g:tagbar_type_rst = {
     \ 'ctagstype': 'reStructuredText',
     \ 'kinds' : [
-        \ 'c:chapters:0',
+        \ 'c:chapter:0',
+        \ 's:section:0',
     \ ],
     \ 'sort': 0,
     \ }
