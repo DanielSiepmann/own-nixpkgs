@@ -1,5 +1,8 @@
 require("fzf-lua").setup({
     fzf_bin = "fzf-tmux",
+    fzf_opts = {
+        ["--border"] = "rounded",
+    },
     fzf_tmux_opts = {
         ["-p"] = "",
         ["-y"] = "1",
