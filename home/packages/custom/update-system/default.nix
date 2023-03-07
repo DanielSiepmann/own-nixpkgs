@@ -7,8 +7,8 @@ writeShellApplication {
     nix-channel --update
     home-manager switch
 
-    oldVersion=$(home-manager generations | head -n 2 | tail -n 1 | cut -d' ' -f 7)
-    newVersion=$(home-manager generations | head -n 1 | cut -d' ' -f 7)
+    oldVersion=$( (home-manager generations; true) | head -n 2 | tail -n 1 | cut -d' ' -f 7)
+    newVersion=$( (home-manager generations; true) | head -n 1 | cut -d' ' -f 7)
     nvd diff "$oldVersion" "$newVersion"
 
     home-manager expire-generations '-12 days'
