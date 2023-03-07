@@ -166,6 +166,7 @@ in {
       ];
       "3:💬" = [
         { class = "^Pidgin$"; }
+        { class = "^Signal$"; }
         { class = "^chat$"; }
         { class = "^phone$"; }
       ];
