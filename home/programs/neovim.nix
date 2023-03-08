@@ -217,6 +217,7 @@ in {
       plugin = fzf-lua.overrideAttrs (old: {
         patches = (old.patches or []) ++ [
           ./neovim/patches/fzf-lua-colors.patch
+          ./neovim/patches/fzf-lua-path.patch
         ];
       });
 
