@@ -5,11 +5,22 @@
   , domain
   , relativeDocumentRoot
   , databaseName
-  , phpPackage
+  , php
 }:
 
 let
+
   documentRoot = "${config.custom.web-development.rootPath}/${relativeDocumentRoot}";
+
+  phpPackage = php.buildEnv {
+    extensions = { enabled, all }: enabled ++ (with all; [
+      xdebug
+    ]);
+    extraConfig = ''
+      xdebug.mode = debug
+    '';
+  };
+
 in {
   custom.web-development = {
 
@@ -95,6 +106,9 @@ in {
         "pm.max_children" = 15;
         "php_admin_value[max_execution_time]" = 240;
         "php_admin_value[max_input_vars]" = 1500;
+        # NOTE: Looks like this doesn't work, we need to set in php itself, see above extraConfig
+        # "php_admin_value[xdebug.mode]" = "debug";
+        "php_admin_value[xdebug.max_nesting_level]" = 400;
       };
       phpEnv = {
         TYPO3_ADDITIONAL_CONFIGURATION = "/var/projects/own/typo3-configuration/AdditionalConfiguration.inc.php";

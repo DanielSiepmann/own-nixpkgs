@@ -33,5 +33,3 @@ TODOs
 -----
 
 * Add docker-compose / podman-compose for Elasticsearch, proxy, solr.
-
-* Add xdebug setup for fpm.
