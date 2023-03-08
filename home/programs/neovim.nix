@@ -162,6 +162,18 @@ let
     ];
   };
 
+  # Use custom one until nixpkgs updates to that version
+  fzf-lua = pkgs.vimUtils.buildVimPluginFrom2Nix rec {
+    pname = "fzf-lua";
+    version = "592ab9a26176a7f9ebd43faf91d1f5d066e0aa07";
+    src = pkgs.fetchFromGitHub {
+      owner = "ibhagwan";
+      repo = pname;
+      rev = version;
+      sha256 = "m1otYK3LKSRb4zGczyUwexmLuU91eZlrN1mvUCUQ66w=";
+    };
+  };
+
 in {
   enable = true;
 
@@ -217,7 +229,6 @@ in {
       plugin = fzf-lua.overrideAttrs (old: {
         patches = (old.patches or []) ++ [
           ./neovim/patches/fzf-lua-colors.patch
-          ./neovim/patches/fzf-lua-path.patch
         ];
       });
 
