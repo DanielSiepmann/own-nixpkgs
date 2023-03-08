@@ -1,17 +1,24 @@
 { pkgs, config, lib, ... }:
 
-{
+let
+
+  mysqlEnsurePermissionsForDevUser = builtins.listToAttrs (
+    map (databaseName: {
+      name = "${databaseName}.*";
+      value = "ALL PRIVILEGES";
+    })
+    config.custom.web-development.databases
+  );
+
+in {
   imports = [
 
     ./lib/mkcert.nix
 
-    ./domains/mailhog.localhost.nix
-
-    ./domains/tea-docs.typo3.localhost.nix
-
-    ./domains/daniel-siepmann.localhost.nix
-
-    ./domains/monorepo.reuter.localhost.nix
+    ./projects/private.nix
+    ./projects/service-wrapper.nix
+    ./projects/typo3.nix
+    ./projects/customer.nix
 
   ];
 
@@ -21,6 +28,19 @@
       rootPath = lib.mkOption {
         type = lib.types.path;
         default = "/var/projects";
+        description = ''
+          The root folder where web development happens.
+          All Projects need to be placed within this folder.
+        '';
+      };
+      databases = lib.mkOption {
+        type = lib.types.listOf lib.types.string;
+        default = [];
+        example = lib.literalExpression "[namespace_project namespace2_project1]";
+        description = ''
+          A list of all necessary databases.
+          Used to create the databases and grant permissions.
+        '';
       };
     };
 
@@ -67,18 +87,14 @@
             # INITIALLY once change dev user to be identified by password
             # alter user dev@localhost IDENTIFIED VIA mysql_native_password USING PASSWORD('dev');
             name = "dev";
-            ensurePermissions = {
-              # TODO: Auto build from defined databases?!
-              "own_danielsiepmann.*" = "ALL PRIVILEGES";
-              "reuter_reuter.*" = "ALL PRIVILEGES";
-            };
+            ensurePermissions = mysqlEnsurePermissionsForDevUser;
           }
         ];
 
         ensureDatabases = [
           "testing" # Used by TYPO3 functional tests
           "testing_at" # Used by TYPO3 Acceptance tests
-        ];
+        ] ++ config.custom.web-development.databases;
 
         settings = {
           mysqld = {
@@ -94,7 +110,7 @@
     };
 
     systemd.tmpfiles.rules = [
-      # Would be cool to improve this somehow.
+      # TODO: Improve linking TYPO3 global configuration
       # Current issues: The link is created once against nix store.
       # Changes are not reflected until reboot?
       "C ${config.custom.web-development.rootPath}/own/typo3-configuration - - - - ${config.users.users.daniels.home}/.local/share/typo3-configuration"

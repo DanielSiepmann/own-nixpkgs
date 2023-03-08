@@ -32,8 +32,6 @@ See: https://github.com/NixOS/nixos-hardware
 TODOs
 -----
 
-* Auto generate permissions for all the databases.
-
 * Add docker-compose / podman-compose for Elasticsearch, proxy, solr.
 
 * Add xdebug setup for fpm.

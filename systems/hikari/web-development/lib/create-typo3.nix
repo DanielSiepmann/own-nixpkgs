@@ -11,6 +11,12 @@
 let
   documentRoot = "${config.custom.web-development.rootPath}/${relativeDocumentRoot}";
 in {
+  custom.web-development = {
+
+    databases = [databaseName];
+
+  };
+
   services = {
 
     httpd.virtualHosts.${domain} = {
@@ -97,8 +103,6 @@ in {
         IMAGEMAGICK_PATH = lib.makeBinPath [ pkgs.imagemagick ] + "/";
       };
     };
-
-    mysql.ensureDatabases = [databaseName];
 
   };
 }

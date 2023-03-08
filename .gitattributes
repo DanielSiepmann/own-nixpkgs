@@ -5,4 +5,5 @@ home/files/rclone.conf filter=git-crypt diff=git-crypt
 home/files/typo3-configuration/client-specific/** filter=git-crypt diff=git-crypt
 home/packages/custom/dmenu-scripts/customer-issue.sh filter=git-crypt diff=git-crypt
 systems/hikari/files/hosts filter=git-crypt diff=git-crypt
+systems/hikari/web-development/projects/customer.nix filter=git-crypt diff=git-crypt
 shells/** filter=git-crypt diff=git-crypt
