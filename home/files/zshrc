@@ -53,7 +53,7 @@ nix_subshell () {
 }
 add-zsh-hook precmd nix_subshell
 
-PROMPT=$'%{$fg[${prompt_color}]%}%1~ > %{$reset_color%}'
+PROMPT=$'\n%{$fg[${prompt_color}]%}%1~ > %{$reset_color%}'
 
 zstyle ':completion:*:descriptions' format '%F{blue}-- %d --%f'
 zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
