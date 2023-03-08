@@ -110,10 +110,11 @@ in {
     };
 
     systemd.tmpfiles.rules = [
-      # TODO: Improve linking TYPO3 global configuration
-      # Current issues: The link is created once against nix store.
+      # TODO: Improve handling of TYPO3 global configuration
+      # Current issue: The files are copied once.
       # Changes are not reflected until reboot?
-      "C ${config.custom.web-development.rootPath}/own/typo3-configuration - - - - ${config.users.users.daniels.home}/.local/share/typo3-configuration"
+      # I can edit the copied files, but need to keep files in sync.
+      "C ${config.custom.web-development.rootPath}/own/typo3-configuration - - - - ${config.users.users.daniels.home}/.config/nixpkgs/home/files/typo3-configuration"
     ];
 
   };
