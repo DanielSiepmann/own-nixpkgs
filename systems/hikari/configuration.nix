@@ -34,6 +34,9 @@
         keyFile = "/crypto_keyfile.bin";
       };
     };
+
+    # NOTE: Keep last kernel as 6.1.15 doesn't work with mba6x_bl, this won't compile
+    kernelPackages = pkgs.linuxKernel.packages.linux_5_15;
   };
 
   networking = {
