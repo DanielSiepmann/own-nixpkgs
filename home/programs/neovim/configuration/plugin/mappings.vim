@@ -4,8 +4,6 @@ let mapleader = ","
 nnoremap H ^
 nnoremap L $
 
-" Toggle paste mode
-nnoremap <leader>v :set paste!<cr>
 " Stop highlighting of search results.
 nnoremap <leader>nh :nohlsearch<cr>
 
