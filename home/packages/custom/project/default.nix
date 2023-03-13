@@ -21,7 +21,7 @@ in writeShellApplication {
   text = ''
     #!bash/bin/bash
     # This script will create a new tmux session (or attach existing)
-    # TODO/NOTE: Does not yet start nix shells, something for future once I figured it out.
+    # NOTE: Does not start nix shells, as this would maybe download stuff, I start them on my own on demand.
 
     session="project-''${1/\./-/}"
     # Only create session if not already exists
